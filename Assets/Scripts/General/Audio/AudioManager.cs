@@ -47,8 +47,7 @@ public class AudioManager : MonoBehaviour
         SFXAudioSources = new List<AudioSource>();
         MusicAudioSource = gameObject.AddComponent<AudioSource>();
 
-        // play the music
-        PlayMusic("SolBeach");
+        // PlayMusic(audioClips.MusicClips[0]);
     }
 
     public void PlaySFX(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f) {        

@@ -146,7 +146,7 @@ public class CameraSideScroller : MonoBehaviour
 		// only return true if there is the tag is Button
 		foreach (RaycastResult result in results)
 		{
-			if (result.gameObject.tag == "Button")
+			if (result.gameObject.tag == "DontSwipe")
 			{
 				return true;
 			}

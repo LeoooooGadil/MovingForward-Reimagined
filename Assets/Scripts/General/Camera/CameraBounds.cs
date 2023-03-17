@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraBounds : MonoBehaviour
 {
-    public BoxCollider2D boundsCollider;
+    BoxCollider2D boundsCollider;
 
     public float leftBound;
     public float rightBound;

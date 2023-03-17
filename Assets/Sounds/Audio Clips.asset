@@ -16,12 +16,18 @@ MonoBehaviour:
   - name: ButtonClick
     clip: {fileID: 8300000, guid: c89734bf5419757419bb8690e170e9e0, type: 3}
     volume: 1
+  - name: PopClick
+    clip: {fileID: 8300000, guid: 09f8dc09efedc414784e7ba556669245, type: 3}
+    volume: 1
+  - name: CloseClick
+    clip: {fileID: 8300000, guid: 632b1c41f6a368540970d173af4f782f, type: 3}
+    volume: 1
   MusicClips:
-  - name: SolBeach
-    clip: {fileID: 8300000, guid: f51cdc1151bcf474884dbb01ce0fcc32, type: 3}
-    volume: 0.2
   - name: INoLongerNeedYou
     clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}
+    volume: 1
+  - name: SolBeach
+    clip: {fileID: 8300000, guid: f51cdc1151bcf474884dbb01ce0fcc32, type: 3}
     volume: 1
   - name: LunarLounnging
     clip: {fileID: 8300000, guid: eed4a5ce624221044b0ac50bd7baf341, type: 3}
