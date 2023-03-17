@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065d01612cb824b47903864ab6cb68eb, type: 3}
+  m_Name: Audio Clips
+  m_EditorClassIdentifier: 
+  SFXClips:
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: c89734bf5419757419bb8690e170e9e0, type: 3}
+    volume: 1
+  MusicClips:
+  - name: SolBeach
+    clip: {fileID: 8300000, guid: f51cdc1151bcf474884dbb01ce0fcc32, type: 3}
+    volume: 0.2
+  - name: INoLongerNeedYou
+    clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}
+    volume: 1
+  - name: LunarLounnging
+    clip: {fileID: 8300000, guid: eed4a5ce624221044b0ac50bd7baf341, type: 3}
+    volume: 1
