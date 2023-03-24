@@ -7,8 +7,9 @@ public class SceneryManager : MonoBehaviour
 {
 	public static SceneryManager instance;
 
-	public string[] sceneryList;
+	public MovingForwardSceneryObject sceneryObject;
 	int currentSceneryIndex = 0;
+	int previousSceneryIndex = 0;
 	public Scene currentScenery;
 
 	void Awake()
@@ -31,19 +32,41 @@ public class SceneryManager : MonoBehaviour
 
 	void UpdateScenery()
 	{
-		Scene currentScene = SceneManager.GetActiveScene();
-
-		var scene = SceneManager.LoadSceneAsync(sceneryList[currentSceneryIndex], LoadSceneMode.Additive);
+		var scene = SceneManager.LoadSceneAsync(sceneryObject.sceneryList[currentSceneryIndex].sceneName, LoadSceneMode.Additive);
 		scene.completed += (AsyncOperation op) =>
-		{
-			SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneryList[currentSceneryIndex]));
+		{	
+			Scene _currentScenery = SceneManager.GetSceneByName(sceneryObject.sceneryList[currentSceneryIndex].sceneName);
+			Scene previousScenery = SceneManager.GetSceneByName(sceneryObject.sceneryList[previousSceneryIndex].sceneName);
 
-			if (currentScenery.name != null)
-				SceneManager.UnloadSceneAsync(currentScenery);
+			SceneManager.SetActiveScene(_currentScenery);
 
-			currentScenery = SceneManager.GetSceneByName(sceneryList[currentSceneryIndex]);
+			if (previousSceneryIndex != currentSceneryIndex)
+			{
+				SceneManager.UnloadSceneAsync(previousScenery);
+			}
 
-			SceneManager.SetActiveScene(currentScene);
+			SceneManager.SetActiveScene(_currentScenery);
+
+			currentScenery = _currentScenery;
 		};
+	}
+
+	public void SetScenery(int index)
+	{
+		previousSceneryIndex = currentSceneryIndex;
+		currentSceneryIndex = index;	
+		UpdateScenery();
+	}
+
+	public void SetScenery(string sceneName)
+	{
+		for (int i = 0; i < sceneryObject.sceneryList.Count; i++)
+		{
+			if (sceneryObject.sceneryList[i].sceneName == sceneName)
+			{
+				SetScenery(i);
+				return;
+			}
+		}
 	}
 }

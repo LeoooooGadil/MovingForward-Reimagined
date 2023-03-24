@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Audio Clips", menuName = "Moving Forward/Audio", order = 1)]
+[CreateAssetMenu(fileName = "Audio Clips Manifest", menuName = "Moving Forward/Audio", order = 1)]
 public class MovingForwardAudioClipsObject : ScriptableObject
 {
 	[SerializeField]

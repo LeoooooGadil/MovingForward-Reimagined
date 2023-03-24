@@ -7,9 +7,12 @@ using UnityEngine.UI;
 
 public class ButtonAnimator : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    private Button button;
 
     public RuntimeAnimatorController animatorController;
+    public string boolParameterName;
+    public bool isActive = true;
+    private Button button;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +27,18 @@ public class ButtonAnimator : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     }
 
 	public void OnPointerDown(PointerEventData eventData)
-	{
+	{   
+        if(!isActive) return;
+
 		Animator animator = GetComponent<Animator>();
-        animator.SetBool("isPushed", true);
+        animator.SetBool(boolParameterName, true);
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
+        if(!isActive) return;
+
 		Animator animator = GetComponent<Animator>();
-        animator.SetBool("isPushed", false);
+        animator.SetBool(boolParameterName, false);
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WorldMenuEscapeHandler : MonoBehaviour
+public class MenuEscapeHandler : MonoBehaviour
 {
     Button button;
 
@@ -16,6 +16,6 @@ public class WorldMenuEscapeHandler : MonoBehaviour
     void ChangeBackToMain()
     {
         AudioManager.instance.PlaySFX("CloseClick");
-        LevelManager.instance.RemoveScene("WorldMenu");
+        MenuManager.Instance.CloseMenu();
     }
 }

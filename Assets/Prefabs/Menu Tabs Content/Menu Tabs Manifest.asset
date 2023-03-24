@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08599b9ec429e9849b7a5bb5dfc89e7a, type: 3}
+  m_Name: Menu Tabs Manifest
+  m_EditorClassIdentifier: 
+  Tabs:
+  - name: WorldMenu
+    ContentPrefab: {fileID: 3812594507491136675, guid: 1b6fa560a263f7845abc8933d87205fa, type: 3}
+    Icon: {fileID: 0}
+    backgroundColor: {r: 0.17254902, g: 0.17254902, b: 0.32941177, a: 1}
+  - name: DailyActivities
+    ContentPrefab: {fileID: 2605670142284894254, guid: 7ec7ed9fa74b74b4f925a44e61335d83, type: 3}
+    Icon: {fileID: 0}
+    backgroundColor: {r: 0.8, g: 0.68235296, b: 0.38431373, a: 1}

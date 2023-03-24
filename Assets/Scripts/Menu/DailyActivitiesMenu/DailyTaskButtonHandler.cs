@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WorldButtonHandler : MonoBehaviour
+public class DailyTaskButtonHandler : MonoBehaviour
 {
     Button button;
 
@@ -16,6 +16,6 @@ public class WorldButtonHandler : MonoBehaviour
     void ChangeToWorldMenu()
     {
         AudioManager.instance.PlaySFX("PopClick");
-        LevelManager.instance.ChangeScene("WorldMenu", false);
+        MenuManager.Instance.OpenMenu(1);
     }
 }

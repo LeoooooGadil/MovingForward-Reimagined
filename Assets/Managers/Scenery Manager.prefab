@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2d11e87d9a9c64bacecd01515118f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneryList:
-  - Location_Home
-  - Location_Out
+  sceneryObject: {fileID: 11400000, guid: 428768516f3caf24cacd1773fe47d846, type: 2}
   currentScenery:
     m_Handle: 0
