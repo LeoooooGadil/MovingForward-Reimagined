@@ -23,6 +23,8 @@ public class CheckboxHandler : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
+        isChecked = dailyTaskItem.IsCompleted();
+
         if (isChecked)
         {
             checkboxImage.color = checkedColor;
@@ -37,7 +39,6 @@ public class CheckboxHandler : MonoBehaviour, IPointerClickHandler
     {
         AudioManager.instance.PlaySFX("AcceptClick");
         dailyTaskItem.SetCompleted(!isChecked);
-        isChecked = !isChecked;
     }
 
     public bool IsChecked()
