@@ -24,6 +24,9 @@ public class ExperienceManager : MonoBehaviour
 		throw new System.NotImplementedException();
 	}
 
+	// this method is called when the player levels up
+	// increase the experience to next level (experienceToNextLevelMultiplier) by the experience to next level (experienceToNextLevelMultiplier) times the experience to next level multiplier (experienceToNextLevelMultiplier)
+	// call SaveExperience() to save the experience
 	public void CalcExpNeededToLevel()
 	{
 		throw new System.NotImplementedException();
