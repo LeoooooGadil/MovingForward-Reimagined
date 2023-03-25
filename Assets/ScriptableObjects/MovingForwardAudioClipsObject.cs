@@ -18,8 +18,10 @@ public class MovingForwardAudioClipsObject : ScriptableObject
 	{
         [SerializeField]
         public string name;
+
         [SerializeField]
 		public AudioClip clip;  
+        
         [SerializeField]
         public float volume = 1.0f;
 	}

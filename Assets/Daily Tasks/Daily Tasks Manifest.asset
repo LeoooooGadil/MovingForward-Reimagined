@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaabf0233895e754881248870f6c13f2, type: 3}
+  m_Name: Daily Tasks Manifest
+  m_EditorClassIdentifier: 
+  Tasks:
+  - name: Make your bed
+    points: 3
+    priority: 0
+  - name: Drink 8 glasses of water
+    points: 80
+    priority: 1
+  - name: Exercise for 30 minutes
+    points: 100
+    priority: 2
+  - name: Read for 30 minutes
+    points: 70
+    priority: 0
+  - name: Write in a journal
+    points: 60
+    priority: 1
+  - name: Meditate for 10 minutes
+    points: 80
+    priority: 1
+  - name: Take a 15-minute break from screens
+    points: 50
+    priority: 0
+  - name: Do a random act of kindness
+    points: 90
+    priority: 2
+  - name: Eat a healthy breakfast
+    points: 80
+    priority: 1
+  - name: Stretch for 10 minutes
+    points: 70
+    priority: 0
+  - name: Call a friend or family member
+    points: 90
+    priority: 2
+  - name: Listen to a podcast or audiobook
+    points: 60
+    priority: 0
+  - name: Take a walk outside
+    points: 70
+    priority: 1
+  - name: Clean a room or area of your home
+    points: 80
+    priority: 1
+  - name: Do a 5-minute declutter
+    points: 50
+    priority: 0
+  - name: Write down 3 things you're grateful for
+    points: 70
+    priority: 0
+  - name: Learn a new word in a foreign language
+    points: 60
+    priority: 0
+  - name: Cook a healthy meal
+    points: 90
+    priority: 2
+  - name: Do a quick home workout
+    points: 70
+    priority: 1
+  - name: Take a cold shower
+    points: 50
+    priority: 0
+  - name: Do a good deed for a neighbor
+    points: 90
+    priority: 2
+  - name: Listen to a new music genre
+    points: 60
+    priority: 0
+  - name: Do a digital detox for an hour
+    points: 80
+    priority: 1
+  - name: Write a thank-you note to someone
+    points: 70
+    priority: 0
+  - name: Learn a new skill or hobby
+    points: 90
+    priority: 2
+  - name: Do a 10-minute clean-up
+    points: 60
+    priority: 0
+  - name: Take a nap
+    points: 80
+    priority: 1
+  - name: Do a self-care activity
+    points: 70
+    priority: 0
+  - name: Plan your day the night before
+    points: 90
+    priority: 2
+  - name: Watch a TED Talk or educational video
+    points: 60
+    priority: 0
+  - name: Do a random act of kindness for a stranger
+    points: 100
+    priority: 2
+  - name: Write down your goals for the day
+    points: 70
+    priority: 0
+  - name: Take a bike ride
+    points: 80
+    priority: 1
+  - name: Practice gratitude by thanking someone
+    points: 70
+    priority: 0
+  - name: Read a chapter from a book
+    points: 60
+    priority: 0
+  - name: Do a 10-minute yoga session
+    points: 70
+    priority: 1
+  - name: Go for a run
+    points: 90
+    priority: 2
+  - name: Spend time in nature
+    points: 80
+    priority: 1
+  - name: Do a social media detox for an hour
+    points: 50
+    priority: 0
+  - name: Write down your thoughts and feelings
+    points: 70
+    priority: 0
+  - name: Take a break and do something you enjoy
+    points: 80
+    priority: 1
+  - name: Make a healthy snack
+    points: 70
+    priority: 0
+  - name: Watch a motivational video
+    points: 60
+    priority: 0
+  - name: Do a 5-minute breathing exercise
+    points: 70
+    priority: 1
+  - name: Practice a random act of kindness for yourself
+    points: 90
+    priority: 2
+  - name: Do a quick clean of your car or workspace
+    points: 70
+    priority: 1
+  - name: Watch a funny video or comedy show
+    points: 60
+    priority: 0
+  - name: Do a 10-minute meditation session
+    points: 70
+    priority: 1
+  - name: Call or text someone you haven't talked to in a while
+    points: 90
+    priority: 2
+  - name: Write down one thing you want to achieve today
+    points: 70
+    priority: 0

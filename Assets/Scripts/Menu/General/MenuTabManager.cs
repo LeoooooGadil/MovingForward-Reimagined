@@ -27,6 +27,9 @@ public class MenuTabManager : MonoBehaviour
 
     void Start()
     {
+		// set the background black and not transparent
+		MenuContentContainerBackground.GetComponent<Image>().color = new Color32(0, 0, 0, 255);
+
         // if MenuManager.instance is not null, then get the current tab from the MenuManager
         if (MenuManager.Instance != null)
         {
@@ -81,6 +84,9 @@ public class MenuTabManager : MonoBehaviour
 
 	void updateTabContent()
 	{
+		GameObject tabContent = MenuTabs.Tabs[currentTab].ContentPrefab;
+		Color backgroundColor = MenuTabs.Tabs[currentTab].backgroundColor;
+
 		// Destroy the current content
 		for (int i = 0; i < MenuContentContainer.transform.childCount; i++)
 		{
@@ -88,9 +94,8 @@ public class MenuTabManager : MonoBehaviour
 			Destroy(oldContent);
 		}
 
-		GameObject tabContent = MenuTabs.Tabs[currentTab].ContentPrefab;
-		Color backgroundColor = MenuTabs.Tabs[currentTab].backgroundColor;
 		MenuContentContainerBackground.GetComponent<Image>().color = backgroundColor;
+
 		// instantiate the new content as a child of the MenuContentContainer object and make it so that the size of the content is the same as the container
         GameObject newContent = Instantiate(tabContent, MenuContentContainer.transform);
 	}

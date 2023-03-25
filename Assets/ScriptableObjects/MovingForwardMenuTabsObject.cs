@@ -16,11 +16,14 @@ public class MovingForwardMenuTabsObject : ScriptableObject
     {
         [SerializeField]
         public string name;
+
         [SerializeField]
         public GameObject ContentPrefab;
+
         [SerializeField]
         public Texture2D Icon;
+        
         [SerializeField]
-        public Color backgroundColor = new Color(0, 0, 0, 1);
+        public Color backgroundColor = new Color(0, 0, 0, 255);
     }
 }
