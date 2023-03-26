@@ -36,7 +36,12 @@ public class ExperienceManager : MonoBehaviour
 	// call SaveExperience() to save the experience
 	public void AdvanceLevel()
 	{
-		throw new System.NotImplementedException();
+		int level = experienceSave.GetLevel();
+		level++;
+		experienceSave.SetLevel(level);
+		CalcExpNeededToLevel();
+
+		SaveExperience();
 	}
 
 	// this method is called when the player levels up
