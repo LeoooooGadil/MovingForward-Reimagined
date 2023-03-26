@@ -11,9 +11,11 @@ public class ExperienceManager : MonoBehaviour
 	public void AddExperience(float xp)
 	{
 		float exp = experienceSave.GetExperience();
-		float experienceToNextLevel = experienceSave.GetExperienceToNextLevel();
 
+		float experienceToNextLevel = experienceSave.GetExperienceToNextLevel();
+		
 		float newExp = exp + xp;
+
 
 		if(newExp >= experienceToNextLevel)
 		{
