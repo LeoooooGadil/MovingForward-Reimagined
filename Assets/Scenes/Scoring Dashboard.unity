@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 255942574}
   - component: {fileID: 255942576}
   - component: {fileID: 255942575}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Content Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 588940335}
   - component: {fileID: 588940337}
   - component: {fileID: 588940336}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Top Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 597100370}
   - component: {fileID: 597100372}
   - component: {fileID: 597100371}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 679098860}
   - component: {fileID: 679098859}
   - component: {fileID: 679098858}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Safe Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 778906140}
   - component: {fileID: 778906139}
   - component: {fileID: 778906138}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   - component: {fileID: 1254950757}
   - component: {fileID: 1254950759}
   - component: {fileID: 1254950758}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Top Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +838,7 @@ GameObject:
   - component: {fileID: 1371161315}
   - component: {fileID: 1371161317}
   - component: {fileID: 1371161316}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 1669551939}
   - component: {fileID: 1669551941}
   - component: {fileID: 1669551940}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1026,7 +1026,7 @@ GameObject:
   - component: {fileID: 1830073280}
   - component: {fileID: 1830073279}
   - component: {fileID: 1830073278}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Dashboard Canvas
   m_TagString: DontSwipe
   m_Icon: {fileID: 0}
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 1862329339}
   - component: {fileID: 1862329341}
   - component: {fileID: 1862329340}
-  m_Layer: 5
+  m_Layer: 16
   m_Name: Main Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
