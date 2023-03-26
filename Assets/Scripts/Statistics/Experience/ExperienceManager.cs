@@ -2,18 +2,47 @@ using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
+	public static ExperienceManager instance;
 	private ExperienceSave experienceSave;
 	private string saveFileName = "experience";
 
+	void Awake() {
+		if (instance != null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
+
 	// this method is called when the player gains experience
-	// add a check to see if the player experience (experience) is greater than the experience to next level (experienceToNextLevelMultiplier)
+	// add a check to see if the player experience (experience) is greater than the experience to next level (experienceToNextLevel)
 	// call SaveExperience() to save the experience
+	// reset the the experience but keep the remainder (experience)
 	public void AddExperience(float xp)
 	{
 		float exp = experienceSave.GetExperience();
-		float experienceToNextLevel = experienceSave.GetExperienceToNextLevel();
+<<<<<<< HEAD
+		float expToNextLevel = experienceSave.GetExperienceToNextLevel();
 
 		float newExp = exp + xp;
+
+		if (newExp >= expToNextLevel)
+		{
+			newExp = expToNextLevel - newExp;
+			AdvanceLevel();
+			experienceSave.SetExperience(newExp);
+		}
+		else
+=======
+
+		float experienceToNextLevel = experienceSave.GetExperienceToNextLevel();
+		
+		float newExp = exp + xp;
+
 
 		if(newExp >= experienceToNextLevel)
 		{
@@ -23,6 +52,7 @@ public class ExperienceManager : MonoBehaviour
 		}
 
 		else 
+>>>>>>> efc8feb6b4e2a3c527c5516b0cef73f8ded8a76c
 			experienceSave.SetExperience(newExp);
 
 		SaveExperience();
@@ -30,7 +60,6 @@ public class ExperienceManager : MonoBehaviour
 
 	// this method is called when the player levels up
 	// increase the level (level) by 1
-	// reset the the experience but keep the remainder (experience)
 	// call SaveExperience() to save the experience
 	public void AdvanceLevel()
 	{

@@ -7,7 +7,7 @@ public class ExperienceSave
     public int level;
     public float experience;
     public float experienceToNextLevel;
-    private float experienceToNextLevelMultiplier = .3f;
+    private float experienceToNextLevelMultiplier = 1.5f;
 
     public ExperienceSave(ExperienceSaveData _experienceSaveData)
     {

@@ -57,9 +57,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: GrislyBeastRegular-0W9rG
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -37189081
   material: {fileID: -6725597484889327725}
-  materialHashCode: 0
+  materialHashCode: 1272788647
   m_Version: 1.1.0
   m_SourceFontFileGUID: 118332a3584e5d64ba73f4a3ba9b430e
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 118332a3584e5d64ba73f4a3ba9b430e, type: 3}
