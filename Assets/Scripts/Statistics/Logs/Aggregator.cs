@@ -34,6 +34,8 @@ public class Aggregator : MonoBehaviour
 		AggregatorSaveData aggregatorSaveData = SaveSystem.Load(saveFileName) as AggregatorSaveData;
 		AggregatorSave aggregatorSave = new AggregatorSave(aggregatorSaveData);
 
+		keys = aggregatorSaveData.keys;
+		
 		dailyTaskLogs = aggregatorSave.dailyTaskLogs;
 	}
 

@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class AggregatorSaveData
 {
-	private List<string> keys = new List<string>();
+	public List<string> keys = new List<string>();
 
 	public Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
 

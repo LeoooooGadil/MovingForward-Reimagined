@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AggregatorSave
 {
-    private List<string> keys = new List<string>();
+    public List<string> keys = new List<string>();
 
     public Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
 
