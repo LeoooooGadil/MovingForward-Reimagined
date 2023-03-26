@@ -68,7 +68,7 @@ public class MenuTab : MonoBehaviour
 
 	public void OnClick()
 	{
-		AudioManager.instance.PlaySFX("ButtonClick");
+		AudioManager.instance.PlaySFX("PopClick");
 		MenuTabManager.Instance.setTabActive(tabIndex);
 	}
 }

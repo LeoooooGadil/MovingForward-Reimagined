@@ -14,10 +14,12 @@ public class CheckboxHandler : MonoBehaviour, IPointerClickHandler
     private bool isChecked = false;
     private Image checkboxImage;
     private DailyTaskItem dailyTaskItem;
+    private DailyTaskAnimator dailyTaskAnimator;
 
     void Start()
     {
         checkboxImage = checkbox.GetComponent<Image>();
+        dailyTaskAnimator = GetComponentInParent<DailyTaskAnimator>();
         dailyTaskItem = GetComponentInParent<DailyTaskItem>();
     }
 

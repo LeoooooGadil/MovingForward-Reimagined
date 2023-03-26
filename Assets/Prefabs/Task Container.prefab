@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: 8123188287278015447}
   - component: {fileID: 3210013148140638977}
   - component: {fileID: 37474345113652862}
+  - component: {fileID: 6076044938252410960}
   m_Layer: 17
   m_Name: Checkbox Container
   m_TagString: Untagged
@@ -678,6 +679,21 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   checkbox: {fileID: 5469632651064935255}
+--- !u!114 &6076044938252410960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977460346216000167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f6bba1216255f49b262804bfeaae72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorController: {fileID: 9100000, guid: dbb913218778ba54ea5e4681c6de3e21, type: 2}
+  triggerParameterName: isChecked
+  isActive: 1
 --- !u!1 &8465146732647042717
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,8 +769,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294046193
+  m_fontColor: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -8,6 +8,6 @@ public class Button_PlayOnClick : MonoBehaviour, IPointerDownHandler
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		// Play the SFX
-        AudioManager.instance.PlaySFX("ButtonClick");
+        AudioManager.instance.PlaySFX("PopClick");
 	}
 }
