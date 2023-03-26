@@ -10,7 +10,22 @@ public class ExperienceManager : MonoBehaviour
 	// call SaveExperience() to save the experience
 	public void AddExperience(float xp)
 	{
-		throw new System.NotImplementedException();
+		float exp = experienceSave.GetExperience();
+		float experienceToNextLevel = experienceSave.GetExperienceToNextLevel();
+
+		float newExp = exp + xp;
+
+		if(newExp >= experienceToNextLevel)
+		{
+			newExp = experienceToNextLevel - newExp;
+			AdvanceLevel();
+			experienceSave.SetExperience(newExp);
+		}
+
+		else 
+			experienceSave.SetExperience(newExp);
+
+		SaveExperience();
 	}
 
 	// this method is called when the player levels up
