@@ -31,6 +31,7 @@ public class DailyTaskSave
         foreach (DailyTask dailyTask in dailyTasks) {
             if (dailyTask.name == name) {
                 dailyTask.SetCompleted(isComplete);
+                Aggregator.instance.Publish(new DailyTaskCompletedEvent(dailyTask));
             }
         }
     }

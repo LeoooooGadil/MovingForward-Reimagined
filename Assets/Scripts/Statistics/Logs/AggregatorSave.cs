@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class AggregatorSave
 {
-    public Dictionary<int, DailyTaskAggregate> dailyTaskLogs = new Dictionary<int, DailyTaskAggregate>();
+    private List<string> keys = new List<string>();
+
+    public Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
 
     public AggregatorSave(AggregatorSaveData _aggregatorSaveData)
     {
-        dailyTaskLogs = new Dictionary<int, DailyTaskAggregate>();
+        dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
 
-        foreach (KeyValuePair<int, DailyTaskAggregate> dailyTaskLog in _aggregatorSaveData.dailyTaskLogs)
+        foreach (KeyValuePair<string, DailyTaskAggregate> dailyTaskLog in _aggregatorSaveData.dailyTaskLogs)
         {
             dailyTaskLogs.Add(dailyTaskLog.Key, dailyTaskLog.Value);
         }
@@ -18,10 +20,10 @@ public class AggregatorSave
 
     public AggregatorSave()
     {
-        dailyTaskLogs = new Dictionary<int, DailyTaskAggregate>();
+        dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
     }
 
-    public void setDailyTaskLogs(Dictionary<int, DailyTaskAggregate> _dailyTaskLogs)
+    public void setDailyTaskLogs(Dictionary<string, DailyTaskAggregate> _dailyTaskLogs)
     {
         dailyTaskLogs = _dailyTaskLogs;
     }

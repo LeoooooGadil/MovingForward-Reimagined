@@ -39,6 +39,8 @@ public class CheckboxHandler : MonoBehaviour, IPointerClickHandler
 
     public void OnClick()
     {
+        if(isChecked) return;
+
         AudioManager.instance.PlaySFX("AcceptClick");
         dailyTaskItem.SetCompleted(!isChecked);
     }

@@ -14,6 +14,8 @@ public class DailyTaskWholeContainerHandler : MonoBehaviour, IPointerClickHandle
 
     public void OnClick()
     {
+        if (dailyTaskItem.IsCompleted()) return;
+
         AudioManager.instance.PlaySFX("AcceptClick");
         dailyTaskItem.SetCompleted(!dailyTaskItem.IsCompleted());
     }

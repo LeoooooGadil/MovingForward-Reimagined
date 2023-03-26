@@ -5,15 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public class AggregatorSaveData
 {
-	public Dictionary<int, DailyTaskAggregate> dailyTaskLogs = new Dictionary<int, DailyTaskAggregate>();
+	private List<string> keys = new List<string>();
+
+	public Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
 
 	public AggregatorSaveData(
+		List<string> _keys,
 		AggregatorSave _aggregatorSave
 		)
 	{
-		dailyTaskLogs = new Dictionary<int, DailyTaskAggregate>();
+		keys = _keys;
 
-		foreach (KeyValuePair<int, DailyTaskAggregate> dailyTaskLog in _aggregatorSave.dailyTaskLogs)
+		dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+
+		foreach (KeyValuePair<string, DailyTaskAggregate> dailyTaskLog in _aggregatorSave.dailyTaskLogs)
 		{
 			dailyTaskLogs.Add(dailyTaskLog.Key, dailyTaskLog.Value);
 		}
