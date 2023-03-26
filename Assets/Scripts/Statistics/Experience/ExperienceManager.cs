@@ -56,12 +56,15 @@ public class ExperienceManager : MonoBehaviour
 
 	// this method is called when the player levels up
 	// increase the experience to next level (experienceToNextLevelMultiplier) by the experience to next level (experienceToNextLevelMultiplier) times the experience to next level multiplier (experienceToNextLevelMultiplier)
-	// call SaveExperience() to save the experience
 	public void CalcExpNeededToLevel()
 	{
-		throw new System.NotImplementedException();
-	}
+		int level = experienceSave.GetLevel();
+		float levelMultiplier = experienceSave.GetExperienceToNextLevelMultiplier();
 
+		float newExpToNextLevel = (level * levelMultiplier * 100) * 0.6f;
+
+		experienceSave.SetExperienceToNextLevel(newExpToNextLevel);
+	}
 
 	public void SaveExperience()
 	{
