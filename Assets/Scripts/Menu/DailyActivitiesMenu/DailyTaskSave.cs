@@ -32,6 +32,8 @@ public class DailyTaskSave
             if (dailyTask.name == name) {
                 dailyTask.SetCompleted(isComplete);
                 Aggregator.instance.Publish(new DailyTaskCompletedEvent(dailyTask));
+                // use the experience manager to add the experience to the player
+                
             }
         }
     }
