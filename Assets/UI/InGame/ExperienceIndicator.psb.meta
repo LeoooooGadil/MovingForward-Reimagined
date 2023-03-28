@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 53a665a6f8dd94e4093b572a622c073f
+guid: 5aebf269c438a95419b100732ab62f5f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -91,7 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Rectangle 1 copy 2
+  - name: Rectangle 1 copy
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -100,9 +100,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1270
-      height: 30
-    spriteID: a6e7cab0625970f49a89823505241071
+      width: 60
+      height: 60
+    spriteID: 1a8ae20b8a1d1b44d805ae41df882682
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -111,7 +111,28 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -11, y: -31}
+    uvTransform: {x: -16, y: -18}
+  - name: Rectangle 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 72
+      width: 60
+      height: 60
+    spriteID: 6838027085d0220499dedb98687f2e08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -16, y: 52}
   characterData:
     bones: []
     parts: []
@@ -142,26 +163,26 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Rectangle 1 copy 2
-    spriteName: Rectangle 1 copy 2
-    isGroup: 0
-    parentIndex: -1
-    spriteID: a6e7cab0625970f49a89823505241071
-    layerID: 6
-    mosaicPosition: {x: 4, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: Rectangle 1 copy
     spriteName: Rectangle 1 copy
     isGroup: 0
     parentIndex: -1
-    spriteID: 6225877c778a451418fee4b7c0f9658c
+    spriteID: 1a8ae20b8a1d1b44d805ae41df882682
     layerID: 5
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
-    isImported: 0
-    isVisible: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rectangle 1
+    spriteName: Rectangle 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6838027085d0220499dedb98687f2e08
+    layerID: 4
+    mosaicPosition: {x: 4, y: 72}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   generateGOHierarchy: 0

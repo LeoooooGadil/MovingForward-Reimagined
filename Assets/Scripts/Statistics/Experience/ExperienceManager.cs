@@ -71,4 +71,9 @@ public class ExperienceManager : MonoBehaviour
 		ExperienceSaveData saveData = new ExperienceSaveData(experienceSave);
 		SaveSystem.Save(saveFileName, saveData);
 	}
+
+	public ExperienceSave GetExperienceSave()
+	{
+		return experienceSave;
+	}
 }
