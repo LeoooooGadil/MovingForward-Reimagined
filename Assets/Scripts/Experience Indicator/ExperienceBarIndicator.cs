@@ -37,6 +37,6 @@ public class ExperienceBarIndicator : MonoBehaviour
 		float range = max - min;
 		float adjustedExperience = experience - min;
 		float experienceNormalized = adjustedExperience / range;
-		return experienceNormalized;
+		return Mathf.Round(experienceNormalized * 100f) / 100f; // Rounds the value to 2 decimal places
 	}
 }
