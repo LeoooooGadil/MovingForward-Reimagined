@@ -20,7 +20,11 @@ public class ExperienceBarIndicator : MonoBehaviour
 
 	public void SetExperienceBar(float maxExperienceNeededToLevelUp, float currentExperience)
 	{
-		float experienceNormalized = ConvertExperienceToNormalized(0, maxExperienceNeededToLevelUp, currentExperience);
+		float minExperience = 0;
+		float maxExperience = maxExperienceNeededToLevelUp;
+		float currentValue = currentExperience;
+
+		float experienceNormalized = ConvertExperienceToNormalized(minExperience, maxExperienceNeededToLevelUp, currentExperience);
 		ExperienceBar.fillAmount = experienceNormalized;
 	}
 
@@ -30,6 +34,9 @@ public class ExperienceBarIndicator : MonoBehaviour
     // return the normalized value of the experience
 	float ConvertExperienceToNormalized(float min, float max, float experience)
 	{
-        throw new System.NotImplementedException();
+		float range = max - min;
+		float adjustedExperience = experience - min;
+		float experienceNormalized = adjustedExperience / range;
+		return experienceNormalized;
 	}
 }
