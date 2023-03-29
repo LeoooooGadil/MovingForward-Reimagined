@@ -746,8 +746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 121.2, y: -18.071518}
-  m_SizeDelta: {x: 160, y: 28.857}
+  m_AnchoredPosition: {x: 121.2, y: -14.9823}
+  m_SizeDelta: {x: 160, y: 22.6786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624720618
 MonoBehaviour:
@@ -761,8 +761,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2.5, y: 2.5}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!114 &624720619
 MonoBehaviour:
@@ -786,7 +786,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d7b6ec63cd29a27498de3c600d539300, type: 3}
-    m_FontSize: 25
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -924,8 +924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2.5, y: 2.5}
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!114 &668668603
 MonoBehaviour:
@@ -983,6 +983,7 @@ GameObject:
   - component: {fileID: 671093480}
   - component: {fileID: 671093483}
   - component: {fileID: 671093485}
+  - component: {fileID: 671093486}
   m_Layer: 5
   m_Name: World Button
   m_TagString: DontSwipe
@@ -1119,6 +1120,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a958b23c12b930f409d713c98d21241e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &671093486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671093478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.2509804}
+  m_EffectDistance: {x: 1, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &844759868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1302,7 @@ GameObject:
   - component: {fileID: 1308510944}
   m_Layer: 5
   m_Name: Experience Bar Indicator
-  m_TagString: Untagged
+  m_TagString: DontSwipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1524,6 +1540,7 @@ GameObject:
   - component: {fileID: 1429363321}
   - component: {fileID: 1429363322}
   - component: {fileID: 1429363323}
+  - component: {fileID: 1429363324}
   m_Layer: 5
   m_Name: ScoreButton
   m_TagString: DontSwipe
@@ -1660,6 +1677,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee722c47980289a449de95f67c3e363e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1429363324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429363317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.2509804}
+  m_EffectDistance: {x: 2, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1581170244
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1734,7 @@ GameObject:
   - component: {fileID: 2071529853}
   - component: {fileID: 2071529855}
   - component: {fileID: 2071529854}
+  - component: {fileID: 2071529856}
   m_Layer: 5
   m_Name: Experience Indicator
   m_TagString: DontSwipe
@@ -1769,6 +1802,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071529852}
   m_CullTransparentMesh: 1
+--- !u!114 &2071529856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071529852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.2509804}
+  m_EffectDistance: {x: 2, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2098195914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,6 +1831,7 @@ GameObject:
   - component: {fileID: 2098195918}
   - component: {fileID: 2098195917}
   - component: {fileID: 2098195916}
+  - component: {fileID: 2098195921}
   m_Layer: 5
   m_Name: Daily Task Button
   m_TagString: DontSwipe
@@ -1919,6 +1968,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098195914}
   m_CullTransparentMesh: 1
+--- !u!114 &2098195921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098195914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.2509804}
+  m_EffectDistance: {x: 2, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &2881971840774456534
 PrefabInstance:
   m_ObjectHideFlags: 0
