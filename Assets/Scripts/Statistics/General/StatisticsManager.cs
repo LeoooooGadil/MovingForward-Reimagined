@@ -7,13 +7,15 @@ public class StatisticsManager : MonoBehaviour
     public static StatisticsManager instance;
 
     void Awake()
-    {
-        if (instance != null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else {
-            Destroy(gameObject);
-        }
-    }
+	{
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject);
+		}
+	}
 }

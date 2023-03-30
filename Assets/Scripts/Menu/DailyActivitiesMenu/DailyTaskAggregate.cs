@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class DailyTaskAggregate
+public class DailyTaskAggregate : IAggregate
 {
 	public string taskName;
 	public float points;
 	public int timestamp;
+
+	public string GetCSVHeader()
+	{
+		return "taskName,points,timestamp";
+	}
+
+	public string GetCSVData()
+	{
+		return taskName + "," + points + "," + timestamp;
+	}
 }
 
 public class DailyTaskCompletedEvent
@@ -21,11 +31,11 @@ public class DailyTaskCompletedEvent
 
 	public DailyTaskAggregate GetData()
 	{
-        DailyTaskAggregate dailyTaskAggregate = new DailyTaskAggregate();
-        dailyTaskAggregate.taskName = dailyTask.name;
-        dailyTaskAggregate.points = dailyTask.points;
-        dailyTaskAggregate.timestamp = TimeStamp.GetTimeStamp();
+		DailyTaskAggregate dailyTaskAggregate = new DailyTaskAggregate();
+		dailyTaskAggregate.taskName = dailyTask.name;
+		dailyTaskAggregate.points = dailyTask.points;
+		dailyTaskAggregate.timestamp = TimeStamp.GetTimeStamp();
 
-        return dailyTaskAggregate;
+		return dailyTaskAggregate;
 	}
 }

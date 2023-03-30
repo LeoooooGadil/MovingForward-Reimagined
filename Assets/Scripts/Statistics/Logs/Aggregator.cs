@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class Aggregator : MonoBehaviour
@@ -9,7 +10,7 @@ public class Aggregator : MonoBehaviour
 	private List<string> keys = new List<string>();
 	private string saveFileName = "aggregatorSaveData";
 
-	Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+	private Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
 
 	void Awake()
 	{
@@ -32,17 +33,24 @@ public class Aggregator : MonoBehaviour
 	public void LoadAggregator()
 	{
 		AggregatorSaveData aggregatorSaveData = SaveSystem.Load(saveFileName) as AggregatorSaveData;
+		
+		if (aggregatorSaveData == null)
+		{
+			return;
+		}
+
 		AggregatorSave aggregatorSave = new AggregatorSave(aggregatorSaveData);
 
 		keys = aggregatorSaveData.keys;
-		
+
 		dailyTaskLogs = aggregatorSave.dailyTaskLogs;
 	}
 
 	public void Publish(DailyTaskCompletedEvent dailyTaskCompletedEvent)
 	{
+		string key = generateKey();
 		DailyTaskAggregate dailyTaskAggregate = dailyTaskCompletedEvent.GetData();
-		dailyTaskLogs.Add(generateKey(), dailyTaskAggregate);
+		dailyTaskLogs.Add(key, dailyTaskAggregate);
 
 		SaveAggregator();
 	}
@@ -54,7 +62,33 @@ public class Aggregator : MonoBehaviour
 
 		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys, aggregatorSave);
 
+		SaveCSV(dailyTaskLogs, "dailyTaskLogs");
+
 		SaveSystem.Save(saveFileName, aggregatorSaveData);
+	}
+
+	public void SaveCSV<T>(Dictionary<string, T> data, string fileName) where T : IAggregate
+	{
+		string path = Application.persistentDataPath + "/" + fileName + ".csv";
+		string csv = string.Empty;
+
+		// add header
+		foreach (KeyValuePair<string, T> entry in data)
+		{
+			csv += entry.Value.GetCSVHeader() + "\n";
+			break;
+		}
+
+		foreach (KeyValuePair<string, T> entry in data)
+		{
+			csv += entry.Value.GetCSVData() + "," + entry.Key + "\n";
+		}
+
+		StreamWriter writer = new StreamWriter(path, false);
+		writer.Write(csv);
+		writer.Flush();
+		writer.Close();
+		Debug.Log("Saved CSV: " + path);
 	}
 
 	public string generateKey()
@@ -65,9 +99,14 @@ public class Aggregator : MonoBehaviour
 			if (!keys.Contains(key))
 			{
 				keys.Add(key);
-				Debug.Log("Key: " + key);
 				return key;
 			}
 		}
 	}
+}
+
+public interface IAggregate
+{
+	string GetCSVHeader();
+	string GetCSVData();
 }

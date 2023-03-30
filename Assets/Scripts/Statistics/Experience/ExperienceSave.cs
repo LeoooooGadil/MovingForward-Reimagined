@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ExperienceSave
 {
-    public int level;
-    public float experience;
-    public float experienceToNextLevel;
+    public int level = 0;
+    public float experience = 0;
+    public float experienceToNextLevel = 100;
     private float experienceToNextLevelMultiplier = 1.5f;
 
     public ExperienceSave(ExperienceSaveData _experienceSaveData)
@@ -14,6 +14,13 @@ public class ExperienceSave
         level = _experienceSaveData.level;
         experience = _experienceSaveData.experience;
         experienceToNextLevel = _experienceSaveData.experienceToNextLevel;
+    }
+
+    public ExperienceSave()
+    {
+        level = 0;
+        experience = 0;
+        experienceToNextLevel = 100;
     }
 
     public void SetLevel(int _level)

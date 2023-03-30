@@ -6,8 +6,9 @@ public class ExperienceManager : MonoBehaviour
 	private ExperienceSave experienceSave;
 	private string saveFileName = "experience";
 
-	void Awake() {
-		if (instance != null)
+	void Awake()
+	{
+		if (instance == null)
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
@@ -16,6 +17,18 @@ public class ExperienceManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		LoadExperience();
+	}
+
+	void LoadExperience()
+	{
+		ExperienceSaveData experienceSaveData = SaveSystem.Load(saveFileName) as ExperienceSaveData;
+		
+		if (experienceSaveData != null)
+			experienceSave = new ExperienceSave(experienceSaveData);
+		else
+			experienceSave = new ExperienceSave();
 	}
 
 	// this method is called when the player gains experience
@@ -31,7 +44,7 @@ public class ExperienceManager : MonoBehaviour
 
 		if (newExp >= expToNextLevel)
 		{
-			newExp = expToNextLevel - newExp;
+			newExp = newExp - expToNextLevel;
 			AdvanceLevel();
 			experienceSave.SetExperience(newExp);
 		}
@@ -74,6 +87,11 @@ public class ExperienceManager : MonoBehaviour
 
 	public ExperienceSave GetExperienceSave()
 	{
+		// check if the experienceSave is null
+		// if it is null, load the experience
+		if (experienceSave == null)
+			LoadExperience();
+
 		return experienceSave;
 	}
 }
