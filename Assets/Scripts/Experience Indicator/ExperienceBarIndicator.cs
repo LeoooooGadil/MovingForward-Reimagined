@@ -18,32 +18,33 @@ public class ExperienceBarIndicator : MonoBehaviour
 		float maxExperienceNeededToLevelUp = experienceSave.GetExperienceToNextLevel();
 		float currentExperience = experienceSave.GetExperience();
 
-		SetExperienceBar(maxExperienceNeededToLevelUp, currentExperience);
 		SetExperienceText(currentExperience);
+		SetExperienceBar(maxExperienceNeededToLevelUp, currentExperience);
 	}
 
 	public void SetExperienceText(float currentExperience)
 	{
 		// lerp the text to the current experience and remove the decimal places
-		ExperienceText.text = Mathf.Lerp(float.Parse(ExperienceText.text), currentExperience, Time.deltaTime * 5).ToString("F0");
-		
+		ExperienceText.text = Mathf.Lerp(float.Parse(ExperienceText.text), currentExperience, Time.deltaTime * 6).ToString("F0");
 	}
 
 	public void SetExperienceBar(float maxExperienceNeededToLevelUp, float currentExperience)
 	{
+		Debug.Log("SetExperienceBar");
 		float minExperience = 0;
 		float maxExperience = maxExperienceNeededToLevelUp;
 		float currentValue = currentExperience;
 
-		float experienceNormalized = ConvertExperienceToNormalized(minExperience, maxExperienceNeededToLevelUp, currentExperience);
-		ExperienceBar.fillAmount = Mathf.Lerp(ExperienceBar.fillAmount, experienceNormalized, Time.deltaTime * 8);
+
+		experienceNormalized = ConvertExperienceToNormalized(minExperience, maxExperienceNeededToLevelUp, currentExperience);
+		ExperienceBar.fillAmount = Mathf.Lerp(ExperienceBar.fillAmount, experienceNormalized, Time.deltaTime * 5);
 	}
-		
+
 
 	// This method is to convert the current value of experience to a normalized value between 0 and 1
 	// This is to be used with the SetExperienceBar method
 	// The min and max values are the minimum and maximum values of the experience bar
-    // return the normalized value of the experience
+	// return the normalized value of the experience
 	float ConvertExperienceToNormalized(float min, float max, float experience)
 	{
 		float fromMin = 0;
