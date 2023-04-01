@@ -383,6 +383,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &336453040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7263098595030184353, guid: 8da348df79828764cad96535eb937a6d, type: 3}
+  m_PrefabInstance: {fileID: 7263098593935378726}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &336453043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336453040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae9e286f02e12f4595447b3df6f6076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &446802268
 GameObject:
   m_ObjectHideFlags: 0
