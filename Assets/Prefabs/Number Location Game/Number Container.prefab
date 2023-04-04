@@ -174,6 +174,7 @@ MonoBehaviour:
   number: 0
   isOccupied: 0
   isCovered: 1
+  isInteractable: 0
 --- !u!114 &5714486241980176174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,10 +224,10 @@ RectTransform:
   m_Father: {fileID: 1476716919785918346}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1476716920009919798
 CanvasRenderer:
@@ -257,7 +258,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d7b6ec63cd29a27498de3c600d539300, type: 3}
+    m_Font: {fileID: 12800000, guid: 976b920d29c075949830414d7e74edfc, type: 3}
     m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0

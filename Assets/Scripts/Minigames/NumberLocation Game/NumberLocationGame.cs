@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class NumberLocationGame : MonoBehaviour
 {
+	public GameObject MinigameUI;
+
 	public TMP_Text numberOfTriesText;
 	public TMP_Text numberOfWinsText;
 	public TMP_Text numberOfLossesText;
@@ -46,12 +48,15 @@ public class NumberLocationGame : MonoBehaviour
 
 	void Update()
 	{
+
+#if UNITY_EDITOR || UNITY_STANDALONE
 		if (Input.GetKeyDown(KeyCode.Space) && state == 0)
 		{
 			DifficultyManager.SetDifficulty(difficulty);
 			howLongToSeeAllNumbers = DifficultyManager.GetDefaultHowLongToNumbersSee();
 			StartCoroutine(StartGame());
 		}
+#endif
 
 		numberOfTriesText.text = howLongToSeeAllNumbers.ToString("F2");
 		numberOfWinsText.text = numberOfTimesWon + " Wins";
@@ -80,6 +85,17 @@ public class NumberLocationGame : MonoBehaviour
 
 		Debug.Log("Numbers to find: " + string.Join(", ", NotFoundNumbers));
 		Debug.Log("Generated numbers: " + string.Join(", ", Number.ToArray()));
+	}
+
+	public void ResetGame()
+	{
+		state = 0;
+		ResetTablets();
+		numberOfTimesLost = 0;
+		numberOfTimesWon = 0;
+		numberOfTimesPlayed = 0;
+		ContainerImage.fillAmount = 1f;
+		StopAllCoroutines();
 	}
 
 	void ResetTablets()
@@ -213,6 +229,20 @@ public class NumberLocationGame : MonoBehaviour
 		}
 	}
 
+	public void StartTheGame()
+	{
+		StartCoroutine(StartFlow());
+	}
+
+	IEnumerator StartFlow()
+	{
+		yield return new WaitForSeconds(1);
+		DifficultyManager.SetDifficulty(difficulty);
+		howLongToSeeAllNumbers = DifficultyManager.GetDefaultHowLongToNumbersSee();
+		StartCoroutine(StartGame());
+		yield return null;
+	}
+
 	IEnumerator AnimateBorder(float howLong)
 	{
 		float time = 0;
@@ -294,9 +324,9 @@ public class NumberLocationDifficulty
 	public float howLongToSeeAllNumbersMedium = 5f;
 	public float howLongToSeeAllNumbersHard = 7f;
 
-	private float howLongToSeeAllNumbersEasyMinus = 0.1f;
-	private float howLongToSeeAllNumbersMediumMinus = 0.2f;
-	private float howLongToSeeAllNumbersHardMinus = 0.3f;
+	public float howLongToSeeAllNumbersEasyMinus = 0.1f;
+	public float howLongToSeeAllNumbersMediumMinus = 0.2f;
+	public float howLongToSeeAllNumbersHardMinus = 0.3f;
 
 	public int[] getNumbers()
 	{
@@ -317,6 +347,21 @@ public class NumberLocationDifficulty
 	public void SetDifficulty(Difficulty value)
 	{
 		difficulty = value;
+	}
+
+	public float GetHowLongMinus()
+	{
+		switch (difficulty)
+		{
+			case Difficulty.Easy:
+				return howLongToSeeAllNumbersEasyMinus;
+			case Difficulty.Medium:
+				return howLongToSeeAllNumbersMediumMinus;
+			case Difficulty.Hard:
+				return howLongToSeeAllNumbersHardMinus;
+			default:
+				return howLongToSeeAllNumbersEasyMinus;
+		}
 	}
 
 	public float GetNewHowLongToNumbersSee(float value)

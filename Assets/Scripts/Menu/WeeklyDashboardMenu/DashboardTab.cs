@@ -11,7 +11,7 @@ public class DashboardTab : MonoBehaviour, IPointerClickHandler
 	public string tabName;
 	public Sprite tabImageActive;
 	public Sprite tabImageInactive;
-	public TMP_Text tabNameText;
+	public Text tabNameText;
 	public DashboardTabManager dashboardTabManager;
 
 	public bool isActive;

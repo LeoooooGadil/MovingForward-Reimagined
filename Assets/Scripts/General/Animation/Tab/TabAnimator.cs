@@ -29,7 +29,7 @@ public class TabAnimator : MonoBehaviour
 		if (!isActive) return;
 
 		isCurrentTab = true;
-		
+
 		Animator animator = GetComponent<Animator>();
 
 		if (animator == null) return;
@@ -43,7 +43,7 @@ public class TabAnimator : MonoBehaviour
 
 		isCurrentTab = false;
 
-        Animator animator = GetComponent<Animator>();
+		Animator animator = GetComponent<Animator>();
 
 		if (animator == null) return;
 

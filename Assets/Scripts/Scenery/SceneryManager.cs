@@ -14,15 +14,7 @@ public class SceneryManager : MonoBehaviour
 
 	void Awake()
 	{
-		if (instance == null)
-		{
-			instance = this;
-			DontDestroyOnLoad(gameObject);
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
+		instance = this;
 	}
 
 	void Start()

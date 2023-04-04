@@ -13,13 +13,20 @@ public class ExperienceBarIndicator : MonoBehaviour
 	void Update()
 	{
 		// Get the experience save data from the ExperienceManager singleton class
-		ExperienceSave experienceSave = ExperienceManager.instance.GetExperienceSave();
+		try
+		{
+			ExperienceSave experienceSave = ExperienceManager.instance.GetExperienceSave();
 
-		float maxExperienceNeededToLevelUp = experienceSave.GetExperienceToNextLevel();
-		float currentExperience = experienceSave.GetExperience();
+			float maxExperienceNeededToLevelUp = experienceSave.GetExperienceToNextLevel();
+			float currentExperience = experienceSave.GetExperience();
 
-		SetExperienceText(currentExperience);
-		SetExperienceBar(maxExperienceNeededToLevelUp, currentExperience);
+			SetExperienceText(currentExperience);
+			SetExperienceBar(maxExperienceNeededToLevelUp, currentExperience);
+		}
+		catch (System.Exception)
+		{
+			return;
+		}
 	}
 
 	public void SetExperienceText(float currentExperience)
@@ -30,7 +37,6 @@ public class ExperienceBarIndicator : MonoBehaviour
 
 	public void SetExperienceBar(float maxExperienceNeededToLevelUp, float currentExperience)
 	{
-		Debug.Log("SetExperienceBar");
 		float minExperience = 0;
 		float maxExperience = maxExperienceNeededToLevelUp;
 		float currentValue = currentExperience;

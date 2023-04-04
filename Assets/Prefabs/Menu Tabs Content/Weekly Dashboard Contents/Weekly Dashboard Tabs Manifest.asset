@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Weekly Dashboard Tabs Manifest
   m_EditorClassIdentifier: 
   Tabs:
-  - name: Daily
+  - name: DAILY
     content: {fileID: 6207167557160925126, guid: 0091791af83a21b49898035a2d880776, type: 3}
-  - name: Weekly
+  - name: WEEKLY
     content: {fileID: 3842005647294906701, guid: e64191f2d9e1a2d47808d5e841194d42, type: 3}

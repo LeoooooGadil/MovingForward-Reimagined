@@ -15,8 +15,8 @@ public class SceneryCard : MonoBehaviour, IPointerUpHandler
     public bool isCurrent { get; set; }
     public int cardIndex { get; set; }
 
-    public TMP_Text cardNameText;
-    public TMP_Text cardStatusText;
+    public Text cardNameText;
+    public Text cardStatusText;
     public Image thumbnailImage;
     public Image frontImage;
 

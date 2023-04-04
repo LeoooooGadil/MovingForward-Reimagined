@@ -66,9 +66,9 @@ public class NumberTablet : MonoBehaviour, IPointerClickHandler
 
 		if (isAccepted)
 		{
-			Image image = GetComponent<Image>();
-			// #33d9b2
-			image.color = new Color(0.2f, 0.85f, 0.7f);
+			// Image image = GetComponent<Image>();
+			// // #33d9b2
+			// image.color = new Color(0.2f, 0.85f, 0.7f);
 		}
 		else
 		{
@@ -99,9 +99,9 @@ public class NumberTablet : MonoBehaviour, IPointerClickHandler
 		for (int i = 0; i < 5; i++)
 		{
 			yield return new WaitForSeconds(0.3f);
-			image.color = new Color(0f, 0f, 0f, 0f);
-			yield return new WaitForSeconds(0.3f);
 			image.color = new Color(0.2f, 0.85f, 0.7f);
+			yield return new WaitForSeconds(0.3f);
+			image.color = new Color(0f, 0f, 0f, 0f);
 		}
 	}
 }
