@@ -28,6 +28,15 @@ MonoBehaviour:
   - name: AcceptClick
     clip: {fileID: 8300000, guid: ddd16025d5ef32249bf91ac485f99fd8, type: 3}
     volume: 1
+  - name: WrongSfx
+    clip: {fileID: 8300000, guid: 540b7fdac2e22e24fb9faedc4d54fe92, type: 3}
+    volume: 1
+  - name: WinSfx
+    clip: {fileID: 8300000, guid: 1fed28b9ae8997044ba9b6bd12c6cea0, type: 3}
+    volume: 1
+  - name: PloukSfx
+    clip: {fileID: 8300000, guid: 1340ba1fa579f674ab71453241682a8a, type: 3}
+    volume: 1
   MusicClips:
   - name: INoLongerNeedYou
     clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}
