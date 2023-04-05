@@ -33,10 +33,15 @@ public class SceneryMenuManager : MonoBehaviour
 			SceneryCard card = sceneryCard.GetComponent<SceneryCard>();
 			card.cardName = scenery.label;
 			card.sceneName = scenery.sceneName;
-            card.thumbnail = scenery.thumbnail;
+			card.thumbnail = scenery.thumbnail;
 			card.isLocked = false;
 			card.isCurrent = scenery.sceneName == sceneryManager.currentScenery.name;
-            card.cardIndex = i;
+			card.cardIndex = i;
 		}
+	}
+
+	void SaveSceneryManager()
+	{
+		
 	}
 }

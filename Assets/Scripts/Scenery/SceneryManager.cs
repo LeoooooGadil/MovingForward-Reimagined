@@ -8,9 +8,10 @@ public class SceneryManager : MonoBehaviour
 	public static SceneryManager instance;
 
 	public MovingForwardSceneryObject sceneryObject;
-	int currentSceneryIndex = 0;
-	int previousSceneryIndex = 0;
+	public SceneryManagerSave sceneryManagerSave;
 	public Scene currentScenery;
+
+	private string saveFileName = "SceneryManager";
 
 	void Awake()
 	{
@@ -19,20 +20,35 @@ public class SceneryManager : MonoBehaviour
 
 	void Start()
 	{
+		LoadSceneryManager();
 		UpdateScenery();
+	}
+
+	void LoadSceneryManager()
+	{
+		SceneryManagerSaveData sceneryManagerSaveData = SaveSystem.Load(saveFileName) as SceneryManagerSaveData;
+
+		if (sceneryManagerSaveData != null)
+		{
+			sceneryManagerSave = new SceneryManagerSave(sceneryManagerSaveData);
+		}
+		else
+		{
+			sceneryManagerSave = new SceneryManagerSave();
+		}
 	}
 
 	void UpdateScenery()
 	{
-		var scene = SceneManager.LoadSceneAsync(sceneryObject.sceneryList[currentSceneryIndex].sceneName, LoadSceneMode.Additive);
+		var scene = SceneManager.LoadSceneAsync(sceneryObject.sceneryList[sceneryManagerSave.currentSceneryIndex].sceneName, LoadSceneMode.Additive);
 		scene.completed += (AsyncOperation op) =>
-		{	
-			Scene _currentScenery = SceneManager.GetSceneByName(sceneryObject.sceneryList[currentSceneryIndex].sceneName);
-			Scene previousScenery = SceneManager.GetSceneByName(sceneryObject.sceneryList[previousSceneryIndex].sceneName);
+		{
+			Scene _currentScenery = SceneManager.GetSceneByName(sceneryObject.sceneryList[sceneryManagerSave.currentSceneryIndex].sceneName);
+			Scene previousScenery = SceneManager.GetSceneByName(sceneryObject.sceneryList[sceneryManagerSave.previousSceneryIndex].sceneName);
 
 			SceneManager.SetActiveScene(_currentScenery);
 
-			if (previousSceneryIndex != currentSceneryIndex)
+			if (sceneryManagerSave.previousSceneryIndex != sceneryManagerSave.currentSceneryIndex)
 			{
 				SceneManager.UnloadSceneAsync(previousScenery);
 			}
@@ -45,9 +61,9 @@ public class SceneryManager : MonoBehaviour
 
 	public void SetScenery(int index)
 	{
-		previousSceneryIndex = currentSceneryIndex;
-		currentSceneryIndex = index;	
+		sceneryManagerSave.SetScenery(index);
 		UpdateScenery();
+		SaveSceneryManager();
 	}
 
 	public void SetScenery(string sceneName)
@@ -60,5 +76,11 @@ public class SceneryManager : MonoBehaviour
 				return;
 			}
 		}
+	}
+
+	void SaveSceneryManager()
+	{
+		SceneryManagerSaveData sceneryManagerSaveData = new SceneryManagerSaveData(sceneryManagerSave);
+		SaveSystem.Save(saveFileName, sceneryManagerSaveData);
 	}
 }
