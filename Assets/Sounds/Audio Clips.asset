@@ -37,6 +37,15 @@ MonoBehaviour:
   - name: PloukSfx
     clip: {fileID: 8300000, guid: 1340ba1fa579f674ab71453241682a8a, type: 3}
     volume: 1
+  - name: MinigameStartSfx
+    clip: {fileID: 8300000, guid: 650eb37c9687fa94198c52363ba72c71, type: 3}
+    volume: 1
+  - name: MinigameWinSfx
+    clip: {fileID: 8300000, guid: 081996442aefca5459330cfa3fb915fa, type: 3}
+    volume: 1
+  - name: MinigameLoseSfx
+    clip: {fileID: 8300000, guid: ab0b3a10f2d968047885bae6196b25ff, type: 3}
+    volume: 1
   MusicClips:
   - name: INoLongerNeedYou
     clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}

@@ -8,11 +8,14 @@ using UnityEngine.UI;
 public class NumberLocationGame : MonoBehaviour
 {
 	public GameObject MinigameUI;
+	public GameObject MinigameWinLosePanel;
 
-	public TMP_Text numberOfTriesText;
+	public TMP_Text lookTimeText;
 	public TMP_Text numberOfWinsText;
-	public TMP_Text numberOfLossesText;
+	public TMP_Text numberOfLivesLeft;
+	public TMP_Text difficultyText;
 
+	private NumberLocationWinLosePanel numberLocationWinLosePanel;
 
 	public List<NumberTablet> Tablets;
 	public List<int> Number;
@@ -38,29 +41,63 @@ public class NumberLocationGame : MonoBehaviour
 	private int numberOfTimesWon = 0;
 	private int numberOfTimesPlayed = 0;
 
+	private int livesLeft = 0;
+
 	public Image ContainerImage;
 
 	public void Start()
 	{
 		state = 0;
+		MinigameWinLosePanel.SetActive(false);
+		numberLocationWinLosePanel = MinigameWinLosePanel.GetComponent<NumberLocationWinLosePanel>();
 		ResetTablets();
 	}
 
 	void Update()
 	{
+		// set the difficulty text to the current difficulty in uppercase
+		setDifficultyText();
+		setLookTimeText();
+		setWinText();
+		setLivesLeftText();
+	}
 
-#if UNITY_EDITOR || UNITY_STANDALONE
-		if (Input.GetKeyDown(KeyCode.Space) && state == 0)
+	void setLivesLeftText()
+	{
+		numberOfLivesLeft.text = livesLeft + " Lives Left";
+	}
+
+	void setWinText()
+	{
+		int winsNeeded = DifficultyManager.howManyWinsToPass;
+		numberOfWinsText.text = numberOfTimesWon + "/" + winsNeeded + " Wins";
+	}
+
+	void setLookTimeText()
+	{
+		lookTimeText.text = howLongToSeeAllNumbers.ToString("F2") + "s";
+	}
+
+	void setDifficultyText()
+	{
+		switch (difficulty)
 		{
-			DifficultyManager.SetDifficulty(difficulty);
-			howLongToSeeAllNumbers = DifficultyManager.GetDefaultHowLongToNumbersSee();
-			StartCoroutine(StartGame());
+			case NumberLocationDifficulty.Difficulty.Easy:
+				// #ffb142
+				difficultyText.color = new Color(1f, 0.698f, 0.258f);
+				difficultyText.text = "EASY";
+				break;
+			case NumberLocationDifficulty.Difficulty.Medium:
+				// #ff793f
+				difficultyText.color = new Color(1f, 0.474f, 0.247f);
+				difficultyText.text = "MEDIUM";
+				break;
+			case NumberLocationDifficulty.Difficulty.Hard:
+				// #ff5252
+				difficultyText.color = new Color(1f, 0.322f, 0.322f);
+				difficultyText.text = "HARD";
+				break;
 		}
-#endif
-
-		numberOfTriesText.text = howLongToSeeAllNumbers.ToString("F2");
-		numberOfWinsText.text = numberOfTimesWon + " Wins";
-		numberOfLossesText.text = numberOfTimesLost + " Loss";
 	}
 
 	void GenerateNumbers()
@@ -190,6 +227,8 @@ public class NumberLocationGame : MonoBehaviour
 			// if it isn't, the player clicked the wrong number
 			AudioManager.instance.PlaySFX("WrongSfx");
 			numberOfTimesLost++;
+			livesLeft--;
+			// check if the player has any lives left if not, the player lost
 			StartCoroutine(LoseGame());
 			return false;
 		}
@@ -236,9 +275,10 @@ public class NumberLocationGame : MonoBehaviour
 
 	IEnumerator StartFlow()
 	{
-		yield return new WaitForSeconds(1);
+		livesLeft = DifficultyManager.GetDefaultLives();
 		DifficultyManager.SetDifficulty(difficulty);
 		howLongToSeeAllNumbers = DifficultyManager.GetDefaultHowLongToNumbersSee();
+		yield return new WaitForSeconds(1);
 		StartCoroutine(StartGame());
 		yield return null;
 	}
@@ -250,6 +290,11 @@ public class NumberLocationGame : MonoBehaviour
 		{
 			ContainerImage.fillAmount = Mathf.Lerp(1, 0, time / howLong);
 			time += Time.deltaTime;
+			// every 1 second pass, play a sound
+			if (time % 1 < Time.deltaTime)
+			{
+				AudioManager.instance.PlaySFX("PopClick");
+			}
 			yield return null;
 		}
 		ContainerImage.fillAmount = 0;
@@ -268,18 +313,14 @@ public class NumberLocationGame : MonoBehaviour
 		ShowAllNumbers();
 		AudioManager.instance.PlaySFX("PopClick");
 		StartCoroutine(AnimateBorder(howLongToSeeAllNumbers));
-		for (int i = 0; i < howLongToSeeAllNumbers; i++)
-		{
-			yield return new WaitForSeconds(0.5f);
-			AudioManager.instance.PlaySFX("PloukSfx");
-			yield return new WaitForSeconds(0.5f);
-		}
+		yield return new WaitForSeconds(howLongToSeeAllNumbers);
 		AudioManager.instance.PlaySFX("PopClick");
 		HideAllOccupiedNumbers();
 		numberOfTimesPlayed++;
 		state = 2;
-
 		howLongToSeeAllNumbers = DifficultyManager.GetNewHowLongToNumbersSee(howLongToSeeAllNumbers);
+
+		yield return null;
 	}
 
 	IEnumerator RestartGame()
@@ -294,6 +335,11 @@ public class NumberLocationGame : MonoBehaviour
 	{
 		state = 1;
 		yield return new WaitForSeconds(2);
+		if (livesLeft <= 0)
+		{
+			StartCoroutine(TotallyLoseGame());
+			yield break;
+		}
 		ResetTablets();
 		StartCoroutine(RestartGame());
 	}
@@ -306,8 +352,29 @@ public class NumberLocationGame : MonoBehaviour
 			tablet.WinGameAnimation();
 		}
 		yield return new WaitForSeconds(3);
+		if (numberOfTimesWon >= DifficultyManager.howManyWinsToPass)
+		{
+			StartCoroutine(TotallyWinGame());
+			yield break;
+		}
 		ResetTablets();
 		StartCoroutine(RestartGame());
+	}
+
+	IEnumerator TotallyWinGame()
+	{
+		state = 1;
+		numberLocationWinLosePanel.isWin = true;
+		MinigameWinLosePanel.SetActive(true);
+		yield return null;
+	}
+
+	IEnumerator TotallyLoseGame()
+	{
+		state = 1;
+		numberLocationWinLosePanel.isWin = false;
+		MinigameWinLosePanel.SetActive(true);
+		yield return null;
 	}
 }
 
@@ -317,16 +384,20 @@ public class NumberLocationDifficulty
 	public Difficulty difficulty;
 
 	private int[] EasyNumbers = { 1, 2, 3, 4, 5 };
-	private int[] MediumNumbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
-	private int[] HardNumbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+	private int[] MediumNumbers = { 1, 2, 3, 4, 5 };
+	private int[] HardNumbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
 
 	public float howLongToSeeAllNumbersEasy = 3f;
-	public float howLongToSeeAllNumbersMedium = 5f;
-	public float howLongToSeeAllNumbersHard = 7f;
+	public float howLongToSeeAllNumbersMedium = 3f;
+	public float howLongToSeeAllNumbersHard = 5f;
 
 	public float howLongToSeeAllNumbersEasyMinus = 0.1f;
 	public float howLongToSeeAllNumbersMediumMinus = 0.2f;
 	public float howLongToSeeAllNumbersHardMinus = 0.3f;
+
+	public int lives = 3;
+
+	public int howManyWinsToPass = 10;
 
 	public int[] getNumbers()
 	{
@@ -395,5 +466,10 @@ public class NumberLocationDifficulty
 			default:
 				return howLongToSeeAllNumbersEasy;
 		}
+	}
+
+	public int GetDefaultLives()
+	{
+		return lives;
 	}
 }

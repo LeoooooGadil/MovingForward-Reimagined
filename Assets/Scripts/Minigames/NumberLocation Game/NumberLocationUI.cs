@@ -19,10 +19,12 @@ public class NumberLocationUI : MonoBehaviour
 
 	public NumberLocationDifficulty.Difficulty difficulty = NumberLocationDifficulty.Difficulty.Easy;
 	public DialogAnimator dialogAnimator;
+	public BackDropLifeCycle backDropLifeCycle;
 
 	public void Start()
 	{
 		dialogAnimator = GetComponent<DialogAnimator>();
+		backDropLifeCycle = BackDrop.GetComponent<BackDropLifeCycle>();
 		PlayButton.onClick.AddListener(PlayButtonClicked);
         
 	}
@@ -88,7 +90,9 @@ public class NumberLocationUI : MonoBehaviour
 	{
         AudioManager.instance.PlaySFX("PopClick");
         dialogAnimator.ExitDialog();
-        yield return new WaitForSeconds(0.1f);
+		backDropLifeCycle.ExitAnimation();
+        yield return new WaitForSeconds(0.2f);
+        AudioManager.instance.PlaySFX("MinigameStartSfx");
 		numberLocationGame.difficulty = difficulty;
 		numberLocationGame.StartTheGame();
         gameObject.SetActive(false);
