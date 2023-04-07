@@ -734,7 +734,6 @@ GameObject:
   - component: {fileID: 570511890}
   - component: {fileID: 570511892}
   - component: {fileID: 570511891}
-  - component: {fileID: 570511893}
   - component: {fileID: 570511894}
   - component: {fileID: 570511895}
   m_Layer: 5
@@ -808,21 +807,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570511889}
   m_CullTransparentMesh: 1
---- !u!114 &570511893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570511889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e28a399b0e68547ab39ca562a45378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 2b0ebdfa54996244aae1b12d38db498b, type: 2}
-  boolParameterName: isPushed
-  isActive: 1
 --- !u!114 &570511894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,6 +1912,7 @@ GameObject:
   - component: {fileID: 2071529855}
   - component: {fileID: 2071529854}
   - component: {fileID: 2071529856}
+  - component: {fileID: 2071529857}
   m_Layer: 5
   m_Name: Experience Indicator
   m_TagString: DontSwipe
@@ -2009,6 +1994,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.2509804}
   m_EffectDistance: {x: 2, y: 1}
   m_UseGraphicAlpha: 1
+--- !u!114 &2071529857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071529852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e28a399b0e68547ab39ca562a45378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorController: {fileID: 9100000, guid: 2b0ebdfa54996244aae1b12d38db498b, type: 2}
+  boolParameterName: isPushed
+  isActive: 1
 --- !u!1 &2098195914
 GameObject:
   m_ObjectHideFlags: 0
