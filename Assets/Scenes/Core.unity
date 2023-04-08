@@ -429,7 +429,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8396176102587892030
 PrefabInstance:
@@ -440,7 +440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 59308602454606198, guid: 7a2ae8f04bd93204f84d64b35929adcc, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 59308602454606198, guid: 7a2ae8f04bd93204f84d64b35929adcc, type: 3}
       propertyPath: m_LocalPosition.x

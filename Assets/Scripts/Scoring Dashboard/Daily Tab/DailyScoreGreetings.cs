@@ -7,40 +7,45 @@ public class DailyScoreGreetings : MonoBehaviour
 {
 	public Text greetingsText;
 
-    void OnEnable()
-    {
-        greetingsText = GetComponent<Text>();
-        UpdateText();
-    }
+	void Start()
+	{
+		greetingsText = GetComponent<Text>();
+	}
 
-    void Start()
+    void Update()
     {
-        greetingsText = GetComponent<Text>();
         UpdateText();
     }
 
 	void UpdateText()
 	{
-        int hour = System.DateTime.Now.Hour;
-        if (hour < 12)
-        {
-            greetingsText.text = "Good Morning";
-        }
-        else if (hour < 18)
-        {
-            greetingsText.text = "Good Afternoon";
-        }
-        else
-        {
-            greetingsText.text = "Good Evening";
-        }
+		int hour = System.DateTime.Now.Hour;
+		if (hour < 12)
+		{
+			greetingsText.text = "Good Morning";
+		}
+		else if (hour < 18)
+		{
+			greetingsText.text = "Good Afternoon";
+		}
+		else
+		{
+			greetingsText.text = "Good Evening";
+		}
 
-        string name = ProfileManager.instance.GetUserName();
+		try
+		{
+			string name = ProfileManager.instance.GetUserName();
 
-        if (name != null)
-        {
-            greetingsText.text += ", " + name;
-        }   
+			if (name != null)
+			{
+				greetingsText.text += ", " + name;
+			}
+		}
+		catch (System.Exception)
+		{
+			// do nothing
+		}
 	}
 
 }
