@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class ExperienceSave
 {
-    public int level = 0;
+    public int level = 1;
     public float experience = 0;
     public float experienceToNextLevel = 100;
     private float experienceToNextLevelMultiplier = 1.5f;
+
+    private int maxLevel = 999; 
 
     public ExperienceSave(ExperienceSaveData _experienceSaveData)
     {
@@ -18,7 +20,7 @@ public class ExperienceSave
 
     public ExperienceSave()
     {
-        level = 0;
+        level = 1;
         experience = 0;
         experienceToNextLevel = 100;
     }
@@ -56,6 +58,11 @@ public class ExperienceSave
     public float GetExperienceToNextLevel()
     {
         return experienceToNextLevel;
+    }
+
+    public int GetMaxLevel()
+    {
+        return maxLevel;
     }
 
     public float GetExperienceToNextLevelMultiplier()

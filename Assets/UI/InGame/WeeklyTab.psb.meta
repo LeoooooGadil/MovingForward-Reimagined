@@ -91,7 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Rectangle 1 copy
+  - name: Rectangle 1 copy 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
       y: 4
       width: 150
       height: 53
-    spriteID: 4de98fe0653b9294ea4b924ab6059736
+    spriteID: 48899fca594fc5d40b462a720c9f28e3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -112,7 +112,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -21, y: -19}
-  - name: Rectangle 1
+  - name: Rectangle 1 copy 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -123,7 +123,7 @@ ScriptedImporter:
       y: 65
       width: 150
       height: 53
-    spriteID: 43f21640dd8908742ae007087bcba9f4
+    spriteID: a2cb6cb7e43c4134a9dd507986fe0bfc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -163,6 +163,26 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Rectangle 1 copy 3
+    spriteName: Rectangle 1 copy 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 48899fca594fc5d40b462a720c9f28e3
+    layerID: 13
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rectangle 1 copy 2
+    spriteName: Rectangle 1 copy 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a2cb6cb7e43c4134a9dd507986fe0bfc
+    layerID: 12
+    mosaicPosition: {x: 4, y: 65}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Rectangle 1 copy
     spriteName: Rectangle 1 copy
     isGroup: 0
@@ -171,8 +191,8 @@ ScriptedImporter:
     layerID: 9
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: Rectangle 1
     spriteName: Rectangle 1
     isGroup: 0
@@ -181,8 +201,8 @@ ScriptedImporter:
     layerID: 8
     mosaicPosition: {x: 4, y: 65}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   generateGOHierarchy: 0

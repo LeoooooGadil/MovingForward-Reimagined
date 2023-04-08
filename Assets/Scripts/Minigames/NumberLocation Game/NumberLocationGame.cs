@@ -157,14 +157,22 @@ public class NumberLocationGame : MonoBehaviour
 		}
 	}
 
+	// this method is used to find a tablet that is not occupied and is not a neighbour of another occupied tablet (if the difficulty is easy)
+	// we cant check the neighbors if the numbers needed to place is above 6 cause it will cause stack overflow (because of recursion)
+	// now that easy and medium are the same, we can check the neighbors if the difficulty is medium.
+	// your task is to review the code and make it so that it checks the neighbors if the difficulty is easy and medium.
+	// right now it only checks the neighbors if the difficulty is easy.
 	NumberTablet FindAppropriateTablet()
 	{
+		// get a random tablet
 		int randomIndex = Random.Range(0, Tablets.Count);
 		NumberTablet tablet = Tablets[randomIndex];
 
+		// initialize the variables
 		bool isLeftNeighbourOccupied = false;
 		bool isRightNeighbourOccupied = false;
 
+		// check if the tablet is occupied
 		if (tablet.isOccupied)
 		{
 			return FindAppropriateTablet();
@@ -172,6 +180,7 @@ public class NumberLocationGame : MonoBehaviour
 
 		if (difficulty == NumberLocationDifficulty.Difficulty.Easy)
 		{
+			// check if the tablet is a neighbour of another occupied tablet
 			if (randomIndex - 1 >= 0)
 			{
 				isLeftNeighbourOccupied = Tablets[randomIndex - 1].isOccupied;
@@ -187,10 +196,12 @@ public class NumberLocationGame : MonoBehaviour
 				return FindAppropriateTablet();
 			}
 
+			// if the tablet is not occupied and is not a neighbour of another occupied tablet, return it
 			return tablet;
 		}
 		else
 		{
+			// if the difficulty is medium or hard, return the tablet
 			return tablet;
 		}
 	}
@@ -268,6 +279,38 @@ public class NumberLocationGame : MonoBehaviour
 		}
 	}
 
+	void UpdateStatistics()
+	{
+		// easy is 75
+		// medium is 100
+		// hard is 150
+
+		float points = 0;
+		switch (difficulty)
+		{
+			case NumberLocationDifficulty.Difficulty.Easy:
+				points = 75;
+				break;
+			case NumberLocationDifficulty.Difficulty.Medium:
+				points = 100;
+				break;
+			case NumberLocationDifficulty.Difficulty.Hard:
+				points = 150;
+				break;
+		}
+
+
+		NumberLocationCompletedEvent numberLocationCompletedEvent = new NumberLocationCompletedEvent(
+			"Won Number Location Minigame",
+			livesLeft,
+			difficulty,
+			numberOfTimesWon,
+			points
+		);
+
+		Aggregator.instance.Publish(numberLocationCompletedEvent);
+	}
+
 	public void StartTheGame()
 	{
 		StartCoroutine(StartFlow());
@@ -308,13 +351,11 @@ public class NumberLocationGame : MonoBehaviour
 		ResetTablets();
 		GenerateNumbers();
 		PlaceNumbers();
-		AudioManager.instance.PlaySFX("PopClick");
 		HideAllNumbers();
 		ShowAllNumbers();
 		AudioManager.instance.PlaySFX("PopClick");
 		StartCoroutine(AnimateBorder(howLongToSeeAllNumbers));
 		yield return new WaitForSeconds(howLongToSeeAllNumbers);
-		AudioManager.instance.PlaySFX("PopClick");
 		HideAllOccupiedNumbers();
 		numberOfTimesPlayed++;
 		state = 2;
@@ -363,9 +404,25 @@ public class NumberLocationGame : MonoBehaviour
 
 	IEnumerator TotallyWinGame()
 	{
+		float points = 0;
+		switch (difficulty)
+		{
+			case NumberLocationDifficulty.Difficulty.Easy:
+				points = 75;
+				break;
+			case NumberLocationDifficulty.Difficulty.Medium:
+				points = 100;
+				break;
+			case NumberLocationDifficulty.Difficulty.Hard:
+				points = 150;
+				break;
+		}
+
 		state = 1;
 		numberLocationWinLosePanel.isWin = true;
+		numberLocationWinLosePanel.score = (int)points;
 		MinigameWinLosePanel.SetActive(true);
+		UpdateStatistics();
 		yield return null;
 	}
 

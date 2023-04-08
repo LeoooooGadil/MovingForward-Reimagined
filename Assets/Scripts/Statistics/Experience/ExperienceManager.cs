@@ -37,6 +37,9 @@ public class ExperienceManager : MonoBehaviour
 	// reset the the experience but keep the remainder (experience)
 	public void AddExperience(float xp)
 	{
+		if(experienceSave.GetLevel() >= experienceSave.GetMaxLevel())
+			return;
+
 		float exp = experienceSave.GetExperience();
 		float expToNextLevel = experienceSave.GetExperienceToNextLevel();
 
@@ -59,6 +62,9 @@ public class ExperienceManager : MonoBehaviour
 	// call SaveExperience() to save the experience
 	public void AdvanceLevel()
 	{
+		if(experienceSave.GetLevel() >= experienceSave.GetMaxLevel())
+			return;
+
 		int level = experienceSave.GetLevel();
 		level++;
 		experienceSave.SetLevel(level);

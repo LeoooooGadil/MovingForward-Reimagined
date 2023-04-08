@@ -56,5 +56,7 @@ public class LevelManager : MonoBehaviour
 
             yield return null;
         }
+
+        GameFlow.instance.InitializeCore();
     }
 }

@@ -16,6 +16,6 @@ public class ScoringEscapeHandler : MonoBehaviour
     void ChangeBackToMain()
     {
         AudioManager.instance.PlaySFX("CloseClick");
-        LevelManager.instance.RemoveScene("Scoring Dashboard");
+        LevelManager.instance.RemoveScene("Stats Menu");
     }
 }

@@ -50,7 +50,12 @@ public class SceneryManager : MonoBehaviour
 
 			if (sceneryManagerSave.previousSceneryIndex != sceneryManagerSave.currentSceneryIndex)
 			{
-				SceneManager.UnloadSceneAsync(previousScenery);
+				// check if the previous scenery is loaded
+				if (previousScenery.isLoaded)
+				{
+					// unload the previous scenery
+					SceneManager.UnloadSceneAsync(previousScenery);
+				}
 			}
 
 			SceneManager.SetActiveScene(_currentScenery);

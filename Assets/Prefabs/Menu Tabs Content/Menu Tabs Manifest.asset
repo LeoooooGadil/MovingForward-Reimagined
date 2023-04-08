@@ -21,7 +21,3 @@ MonoBehaviour:
     ContentPrefab: {fileID: 2605670142284894254, guid: 7ec7ed9fa74b74b4f925a44e61335d83, type: 3}
     Icon: {fileID: 0}
     backgroundColor: {r: 0.1838742, g: 0.32941177, b: 0.17254902, a: 1}
-  - name: WeeklyActivities
-    ContentPrefab: {fileID: 8099995724638246939, guid: 4c9642af4c370e34eb783460f9754b87, type: 3}
-    Icon: {fileID: 0}
-    backgroundColor: {r: 0.17254902, g: 0.3057626, b: 0.32941177, a: 1}

@@ -32,7 +32,7 @@ public class ExperienceBarIndicator : MonoBehaviour
 	public void SetExperienceText(float currentExperience)
 	{
 		// lerp the text to the current experience and remove the decimal places
-		ExperienceText.text = Mathf.Lerp(float.Parse(ExperienceText.text), currentExperience, Time.deltaTime * 6).ToString("F0");
+		ExperienceText.text = Mathf.Lerp(float.Parse(ExperienceText.text), currentExperience, Time.deltaTime * 5).ToString("F0");
 	}
 
 	public void SetExperienceBar(float maxExperienceNeededToLevelUp, float currentExperience)

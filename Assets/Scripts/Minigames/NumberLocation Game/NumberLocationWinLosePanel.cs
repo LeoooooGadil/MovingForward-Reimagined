@@ -28,7 +28,7 @@ public class NumberLocationWinLosePanel : MonoBehaviour
 		if (isWin)
 		{
 			CenterPiece.sprite = WinSprite;
-			TitleText.text = "YOU WIN!";
+			TitleText.text = "YOU WIN";
 			TitleText.color = WinTextColor;
 			DifficultyText.text = difficulty.ToString().ToUpper() + " MODE";
 			ScoreText.text = "+" + score.ToString() + " POINTS";
@@ -37,10 +37,10 @@ public class NumberLocationWinLosePanel : MonoBehaviour
 		else
 		{
 			CenterPiece.sprite = LoseSprite;
-			TitleText.text = "BITCH, YOU LOST!";
+			TitleText.text = "YOU LOSE";
 			TitleText.color = LoseTextColor;
 			DifficultyText.text = difficulty.ToString().ToUpper() + " MODE";
-			ScoreText.text = "-100 POINTS";
+			ScoreText.text = "";
             AudioManager.instance.PlaySFX("MinigameLoseSfx");
 		}
 	}

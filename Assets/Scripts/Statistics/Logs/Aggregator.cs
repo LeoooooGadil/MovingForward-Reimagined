@@ -11,6 +11,7 @@ public class Aggregator : MonoBehaviour
 	private string saveFileName = "aggregatorSaveData";
 
 	private Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 
 	void Awake()
 	{
@@ -44,6 +45,7 @@ public class Aggregator : MonoBehaviour
 		keys = aggregatorSaveData.keys;
 
 		dailyTaskLogs = aggregatorSave.dailyTaskLogs;
+		numberLocationLogs = aggregatorSave.numberLocationLogs;
 	}
 
 	public void Publish(DailyTaskCompletedEvent dailyTaskCompletedEvent)
@@ -51,6 +53,17 @@ public class Aggregator : MonoBehaviour
 		string key = generateKey();
 		DailyTaskAggregate dailyTaskAggregate = dailyTaskCompletedEvent.GetData();
 		dailyTaskLogs.Add(key, dailyTaskAggregate);
+		DailyScoreCalculator.PublishDailyTask(key, dailyTaskAggregate);
+
+		SaveAggregator();
+	}
+
+	public void Publish(NumberLocationCompletedEvent numberLocationCompletedEvent)
+	{
+		string key = generateKey();
+		NumberLocationAggregate numberLocationAggregate = numberLocationCompletedEvent.GetData();
+		numberLocationLogs.Add(key, numberLocationAggregate);
+		DailyScoreCalculator.PublishNumberLocation(key, numberLocationAggregate);
 
 		SaveAggregator();
 	}
@@ -59,10 +72,12 @@ public class Aggregator : MonoBehaviour
 	{
 		AggregatorSave aggregatorSave = new AggregatorSave();
 		aggregatorSave.setDailyTaskLogs(dailyTaskLogs);
+		aggregatorSave.setNumberLocationLogs(numberLocationLogs);
 
-		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys, aggregatorSave);
+		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys,aggregatorSave);
 
 		SaveCSV(dailyTaskLogs, "dailyTaskLogs");
+		SaveCSV(numberLocationLogs, "numberLocationLogs");
 
 		SaveSystem.Save(saveFileName, aggregatorSaveData);
 	}
@@ -89,6 +104,21 @@ public class Aggregator : MonoBehaviour
 		writer.Flush();
 		writer.Close();
 		Debug.Log("Saved CSV: " + path);
+	}
+
+	public Dictionary<string, DailyTaskAggregate> GetTodaysDailyTaskLogs()
+	{
+		Dictionary<string, DailyTaskAggregate> todaysDailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+
+		foreach (KeyValuePair<string, DailyTaskAggregate> entry in dailyTaskLogs)
+		{
+			if (new System.DateTime(entry.Value.timestamp).Date == System.DateTime.Now.Date)
+			{
+				todaysDailyTaskLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysDailyTaskLogs;
 	}
 
 	public string generateKey()

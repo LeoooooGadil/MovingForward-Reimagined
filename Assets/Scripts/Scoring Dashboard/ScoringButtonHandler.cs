@@ -16,6 +16,6 @@ public class ScoringButtonHandler : MonoBehaviour
     void ChangeToScoringMenu()
     {
         AudioManager.instance.PlaySFX("PopClick");
-        LevelManager.instance.ChangeScene("Scoring Dashboard", false);
+        LevelManager.instance.ChangeScene("Stats Menu", false);
     }
 }

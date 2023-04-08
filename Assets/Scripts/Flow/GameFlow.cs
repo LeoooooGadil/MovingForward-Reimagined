@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameFlow : MonoBehaviour
 {
-	static GameFlow instance;
+	public static GameFlow instance;
 
 	void Awake()
 	{
@@ -25,7 +25,7 @@ public class GameFlow : MonoBehaviour
         InitializeCore();
 	}
 
-	void InitializeCore()
+	public void InitializeCore()
 	{
 		// check if core scene is loaded
 		if (!SceneManager.GetSceneByName("Core").isLoaded)

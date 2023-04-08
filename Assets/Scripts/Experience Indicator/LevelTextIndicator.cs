@@ -6,22 +6,31 @@ using UnityEngine.UI;
 public class LevelTextIndicator : MonoBehaviour
 {
 
-    public Text levelText;
-    private int currentLevel = 1;
+	public Text levelText;
+	private int currentLevel = 0;
 
-    // implement indicating the level of the player
-    // make sure to update the text when the level changes
-    // make sure to update the text when the experience changes
-    void Update()
-    {
-        if (ExperienceManager.instance != null)
-        {
-            int level = ExperienceManager.instance.GetExperienceSave().GetLevel();
-            if (level != currentLevel)
-            {
-                currentLevel = level;
-                levelText.text = currentLevel.ToString();
-            }
-        }
-    }
+	// implement indicating the level of the player
+	// make sure to update the text when the level changes
+	// make sure to update the text when the experience changes
+	void Update()
+	{
+		if (ExperienceManager.instance != null)
+		{
+			int level = ExperienceManager.instance.GetExperienceSave().GetLevel();
+			if (level != currentLevel)
+			{
+				currentLevel = level;
+				levelText.text = currentLevel.ToString();
+                UpdateFontSize();
+			}
+		}
+	}
+
+	// implement updating the font size of the text
+	// if the level is 0 to 9 the font size should be 50
+	// if the level is 10 to 99 the font size should be __
+	// if the level is 100 to 999 the font size should be __
+	void UpdateFontSize()
+	{
+	}
 }
