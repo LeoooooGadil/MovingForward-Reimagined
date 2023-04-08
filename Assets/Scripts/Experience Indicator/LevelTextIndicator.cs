@@ -30,6 +30,9 @@ public class LevelTextIndicator : MonoBehaviour
 	// if the level is 0 to 9 the font size should be 50
 	// if the level is 10 to 99 the font size should be __
 	// if the level is 100 to 999 the font size should be __
+	// the max level is 999
+	// the biggest font size should be 50
+	// find the best font for each case
 	void UpdateFontSize()
 	{
 	}
