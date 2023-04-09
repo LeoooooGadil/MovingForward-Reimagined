@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 3a5b4fa3bd8ab304d916b778b61725d9
   - enabled: 1
+    path: Assets/Scenes/Profile Creator.unity
+    guid: 8e7836ebc9c3f684fbf3ec3987cf4178
+  - enabled: 1
     path: Assets/Scenes/Locations/Location_Home.unity
     guid: 38c7a5ff939b0884b8cf348d0718fc05
   - enabled: 1
