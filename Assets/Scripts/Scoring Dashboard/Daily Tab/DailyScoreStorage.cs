@@ -36,6 +36,29 @@ public static class DailyScoreStorage
         SaveDailyScoreStorage();
     }
 
+    public static List<DailyScoreStorageItem> GetDailyScoreStorageItems(int maxItems = 3)
+    {
+        LoadDailyScoreStorage();
+
+        // get only the last maxItems items
+
+        List<DailyScoreStorageItem> dailyScoreStorageItems = new List<DailyScoreStorageItem>();
+
+        foreach (KeyValuePair<string, DailyScoreStorageItem> dailyScoreStorageItem in dailyScoreStorageSave.dailyScoreStorageItems)
+        {
+            dailyScoreStorageItems.Add(dailyScoreStorageItem.Value);
+        }
+
+        dailyScoreStorageItems.Sort((x, y) => y.timestamp.CompareTo(x.timestamp));
+
+        if (dailyScoreStorageItems.Count > maxItems)
+        {
+            dailyScoreStorageItems.RemoveRange(maxItems, dailyScoreStorageItems.Count - maxItems);
+        }
+        
+        return dailyScoreStorageItems;
+    }
+
     public static void SaveDailyScoreStorage()
     {
         DailyScoreStorageSaveData dailyScoreStorageSaveData = new DailyScoreStorageSaveData(dailyScoreStorageSave);
