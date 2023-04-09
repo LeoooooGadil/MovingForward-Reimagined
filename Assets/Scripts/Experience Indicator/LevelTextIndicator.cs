@@ -21,7 +21,7 @@ public class LevelTextIndicator : MonoBehaviour
 			{
 				currentLevel = level;
 				levelText.text = currentLevel.ToString();
-                UpdateFontSize();
+				UpdateFontSize();
 			}
 		}
 	}
@@ -35,5 +35,17 @@ public class LevelTextIndicator : MonoBehaviour
 	// find the best font for each case
 	void UpdateFontSize()
 	{
+			if(currentLevel < 10)
+			{
+				levelText.fontSize = 50;
+			}
+			else if(currentLevel < 100)
+			{
+				levelText.fontSize = 38;
+			}
+			else
+			{
+				levelText.fontSize = 28;
+			}
 	}
 }

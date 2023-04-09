@@ -53,7 +53,7 @@ public class Aggregator : MonoBehaviour
 		string key = generateKey();
 		DailyTaskAggregate dailyTaskAggregate = dailyTaskCompletedEvent.GetData();
 		dailyTaskLogs.Add(key, dailyTaskAggregate);
-		DailyScoreCalculator.PublishDailyTask(key, dailyTaskAggregate);
+		//DailyScoreCalculator.PublishDailyTask(key, dailyTaskAggregate);
 
 		SaveAggregator();
 	}
@@ -63,7 +63,7 @@ public class Aggregator : MonoBehaviour
 		string key = generateKey();
 		NumberLocationAggregate numberLocationAggregate = numberLocationCompletedEvent.GetData();
 		numberLocationLogs.Add(key, numberLocationAggregate);
-		DailyScoreCalculator.PublishNumberLocation(key, numberLocationAggregate);
+		//DailyScoreCalculator.PublishNumberLocation(key, numberLocationAggregate);
 
 		SaveAggregator();
 	}
