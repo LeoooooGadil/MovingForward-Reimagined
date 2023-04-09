@@ -6,6 +6,7 @@ public class DashboardTabManagers : MonoBehaviour
 {
     public DashboardTab[] tabs;
     public GameObject[] tabContents;
+    public GameObject[] tabContentsBackgrounds;
 
     public int selectedTab = 0;
 
@@ -21,6 +22,7 @@ public class DashboardTabManagers : MonoBehaviour
         }
         tab.isSelected = true;
         UpdateTabContents();
+        UpdateTabBackgrounds();
     }
 
     void UpdateTabContents() {
@@ -29,6 +31,16 @@ public class DashboardTabManagers : MonoBehaviour
                 tabContents[i].SetActive(true);
             } else {
                 tabContents[i].SetActive(false);
+            }
+        }
+    }
+
+    void UpdateTabBackgrounds() {
+        for (int i = 0; i < tabContentsBackgrounds.Length; i++) {
+            if (i == selectedTab) {
+                tabContentsBackgrounds[i].SetActive(true);
+            } else {
+                tabContentsBackgrounds[i].SetActive(false);
             }
         }
     }
