@@ -20,7 +20,11 @@ public class ButtonAnimator : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (animatorController == null)
             return;
 
-        Animator animator = gameObject.AddComponent<Animator>();
+        Animator animator = GetComponent<Animator>();
+
+        if (animator == null)
+            animator = gameObject.AddComponent<Animator>();
+
         animator.runtimeAnimatorController = animatorController;
 
         button = GetComponent<Button>();

@@ -16,6 +16,7 @@ public class DailyScoreStorageSaveData
     }
 }
 
+[System.Serializable]
 public class DailyScoreStorageItem
 {
     public string key;

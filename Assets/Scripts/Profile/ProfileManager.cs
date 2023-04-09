@@ -44,11 +44,15 @@ public class ProfileManager : MonoBehaviour
 
 	public string GetUserName()
 	{
+		LoadProfile();
+
 		return profileManagerSave.username;
 	}
 
 	public string GetStatus()
 	{
+		LoadProfile();
+
         return "Depressed";
 	}
 }
