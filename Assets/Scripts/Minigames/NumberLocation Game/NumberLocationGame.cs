@@ -171,14 +171,14 @@ public class NumberLocationGame : MonoBehaviour
 		// initialize the variables
 		bool isLeftNeighbourOccupied = false;
 		bool isRightNeighbourOccupied = false;
-
+	
 		// check if the tablet is occupied
 		if (tablet.isOccupied)
 		{
 			return FindAppropriateTablet();
 		}
 
-		if (difficulty == NumberLocationDifficulty.Difficulty.Easy)
+		if (difficulty == NumberLocationDifficulty.Difficulty.Easy || difficulty == NumberLocationDifficulty.Difficulty.Medium)
 		{
 			// check if the tablet is a neighbour of another occupied tablet
 			if (randomIndex - 1 >= 0)
@@ -201,8 +201,8 @@ public class NumberLocationGame : MonoBehaviour
 		}
 		else
 		{
-			// if the difficulty is medium or hard, return the tablet
-			return tablet;
+		// if the difficulty is medium or hard, return the tablet
+		return tablet;
 		}
 	}
 
