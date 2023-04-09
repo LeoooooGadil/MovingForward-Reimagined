@@ -24,7 +24,7 @@ public class DailyTaskManager : MonoBehaviour
 	void Awake()
 	{
 		DailyTaskSaveData loadedData = SaveSystem.Load(saveFileName) as DailyTaskSaveData;
-		
+
 		if (loadedData != null)
 		{
 			dailyTaskSave = new DailyTaskSave(loadedData);
@@ -35,12 +35,16 @@ public class DailyTaskManager : MonoBehaviour
 		}
 	}
 
-	void Start() {
-		if (dailyTaskSave.GetDailyTaskCount() == 0) {
+	void Start()
+	{
+		if (dailyTaskSave.GetDailyTaskCount() == 0)
+		{
 			SeperateTasksBasedOnTheirPriority();
 			GenerateDailyTasks();
 			SaveDailyTasks();
-		} else {
+		}
+		else
+		{
 			LoadDailyTasksFromMemory();
 		}
 	}
@@ -72,7 +76,8 @@ public class DailyTaskManager : MonoBehaviour
 			Destroy(child.gameObject);
 		}
 
-		// generate the tasks
+		List<MovingForwardDailyTasksObject.MoivngForwardDailyTask> tasks = new List<MovingForwardDailyTasksObject.MoivngForwardDailyTask>();
+
 		for (int i = 0; i < taskCount; i++)
 		{
 			// generate a random number between 0 and 100
@@ -80,31 +85,43 @@ public class DailyTaskManager : MonoBehaviour
 
 			if (randomNumber < lowPercentage)
 			{
-				GenerateTask(lowPriorityTasks);
+				int randomTask = Random.Range(0, lowPriorityTasks.Count);
+				MovingForwardDailyTasksObject.MoivngForwardDailyTask task = lowPriorityTasks[randomTask];
+				dailyTaskSave.AddDailyTask(new DailyTask(task.name, task.points, task.priority));
+				tasks.Add(task);
 			}
 			else if (randomNumber < mediumPercentage)
 			{
-				GenerateTask(mediumPriorityTasks);
+				int randomTask = Random.Range(0, mediumPriorityTasks.Count);
+				MovingForwardDailyTasksObject.MoivngForwardDailyTask task = mediumPriorityTasks[randomTask];
+				dailyTaskSave.AddDailyTask(new DailyTask(task.name, task.points, task.priority));
+				tasks.Add(task);
 			}
 			else if (randomNumber < 100)
 			{
-				GenerateTask(highPriorityTasks);
+				int randomTask = Random.Range(0, highPriorityTasks.Count);
+				MovingForwardDailyTasksObject.MoivngForwardDailyTask task = highPriorityTasks[randomTask];
+				dailyTaskSave.AddDailyTask(new DailyTask(task.name, task.points, task.priority));
+				tasks.Add(task);
 			}
 		}
 
+		StartCoroutine(PlaceGeneratedTaskInContainer(tasks));
 	}
 
-	void GenerateTask(List<MovingForwardDailyTasksObject.MoivngForwardDailyTask> taskList)
+	IEnumerator PlaceGeneratedTaskInContainer(List<MovingForwardDailyTasksObject.MoivngForwardDailyTask> tasks)
 	{
-		// generate a random number between 0 and the length of the task list
-		int randomNumber = Random.Range(0, taskList.Count);
+		// generate the tasks
+		foreach (MovingForwardDailyTasksObject.MoivngForwardDailyTask task in tasks)
+		{
+			GenerateTask(task);
 
-		// get the task at the random index
-		MovingForwardDailyTasksObject.MoivngForwardDailyTask task = taskList[randomNumber];
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
 
-		// add the task to the daily tasks array
-		dailyTaskSave.AddDailyTask(new DailyTask(task.name, task.points, task.priority));
-
+	void GenerateTask(MovingForwardDailyTasksObject.MoivngForwardDailyTask task)
+	{
 		// instantiate the task item prefab
 		GameObject taskItem = Instantiate(dailyTaskItemPrefab, dailyTaskContainer);
 
@@ -123,10 +140,17 @@ public class DailyTaskManager : MonoBehaviour
 			Destroy(child.gameObject);
 		}
 
+		StartCoroutine(PlaceLoadedTaskInContainer());
+	}
+
+	IEnumerator PlaceLoadedTaskInContainer()
+	{
 		// generate the tasks
 		foreach (DailyTask task in dailyTaskSave.GetDailyTasks())
 		{
 			GenerateTask(task);
+
+			yield return new WaitForSeconds(0.1f);
 		}
 	}
 

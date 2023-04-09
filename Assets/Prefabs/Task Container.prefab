@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 3083418922886980416}
   - component: {fileID: 3781342729921991800}
   m_Layer: 17
-  m_Name: Text (Legacy)
+  m_Name: Task Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 2193897598524461137}
   - component: {fileID: 87869284995621905}
   m_Layer: 17
-  m_Name: Text (Legacy)
+  m_Name: Task Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 164520643828639184}
   - component: {fileID: 2686379398847106387}
   - component: {fileID: 1353977903664457814}
+  - component: {fileID: 6449636086348384259}
   m_Layer: 17
   m_Name: Task Container
   m_TagString: Untagged
@@ -561,6 +562,26 @@ MonoBehaviour:
   taskName: 
   taskPoints: 0
   isCompleted: 0
+--- !u!95 &6449636086348384259
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035312414754672670}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98b1d146460146a41b8ec7e22cd27e39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6149103174810973660
 GameObject:
   m_ObjectHideFlags: 0
