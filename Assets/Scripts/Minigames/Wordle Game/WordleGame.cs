@@ -9,7 +9,9 @@ public class WordleGame : MonoBehaviour
 	public KeyboardInput keyboardInput;
 	public GameObject keyboardTogglerGameObject;
 	public KeyboardToggler keyboardToggler;
+	public GameObject wordleWinLosePanelGameObject;
 
+	private WordleWinLosePanel wordleWinLosePanel;
 	private MovingForwardWordleWordsObject.Word wordToGuess;
 	private int currentRow = 0;
 	private char[] wordToGuessCharArray = new char[5];
@@ -27,7 +29,9 @@ public class WordleGame : MonoBehaviour
 	}
 
 	void Start()
-	{	
+	{
+		wordleWinLosePanelGameObject.SetActive(false);
+		wordleWinLosePanel = wordleWinLosePanelGameObject.GetComponent<WordleWinLosePanel>();
 		keyboardInput.wordleGame = this;
 		PickWordToGuess();
 	}
@@ -68,7 +72,7 @@ public class WordleGame : MonoBehaviour
 			if (currentWord[i] != '\0')
 			{
 				// add to the letterStates but if it already exists, then replace it
-				if(letterStates.ContainsKey(currentWord[i].ToString().ToUpper()))
+				if (letterStates.ContainsKey(currentWord[i].ToString().ToUpper()))
 				{
 					letterStates[currentWord[i].ToString().ToUpper()] = state[i];
 				}
@@ -93,18 +97,47 @@ public class WordleGame : MonoBehaviour
 		yield return new WaitForSeconds(0.01f);
 		keyboardTogglerGameObject.SetActive(false);
 		yield return new WaitForSeconds(1.5f);
-		
-		if(state[0] == 3 && state[1] == 3 && state[2] == 3 && state[3] == 3 && state[4] == 3)
+
+		if (state[0] == 3 && state[1] == 3 && state[2] == 3 && state[3] == 3 && state[4] == 3)
 		{
 			// The word is correct
-			wordleLetterRows[currentRow].Win();
+			StartCoroutine(TotallyWin());
 			yield break;
 		}
 
 		keyboardTogglerGameObject.SetActive(true);
+
+		if(currentRow == 5)
+		{
+			wordleWinLosePanel.isWin = false;
+			wordleWinLosePanel.wordToGuess = wordToGuess;
+			wordleWinLosePanel.score = 0;
+			wordleWinLosePanelGameObject.SetActive(true);
+			yield break;
+		}
+		
 		currentRow++;
 		currentWord = new char[5];
 		Debug.Log("Entering New Line");
+	}
+
+	IEnumerator TotallyLose()
+	{
+		wordleWinLosePanel.isWin = false;
+		wordleWinLosePanel.wordToGuess = wordToGuess;
+		wordleWinLosePanel.score = 0;
+		wordleWinLosePanelGameObject.SetActive(true);
+		yield break;
+	}
+
+	IEnumerator TotallyWin()
+	{
+		wordleLetterRows[currentRow].Win();
+		yield return new WaitForSeconds(1.5f);
+		wordleWinLosePanel.isWin = true;
+		wordleWinLosePanel.wordToGuess = wordToGuess;
+		wordleWinLosePanel.score = 50;
+		wordleWinLosePanelGameObject.SetActive(true);
 	}
 
 	public Dictionary<string, int> GetAllLetterStates()

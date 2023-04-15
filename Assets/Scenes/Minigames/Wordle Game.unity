@@ -3302,7 +3302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 255, y: -98.123505}
+  m_AnchoredPosition: {x: 255, y: -145}
   m_SizeDelta: {x: 510, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &600063734
@@ -5424,8 +5424,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 254.99998, y: -48.123505}
-  m_SizeDelta: {x: 510, y: 50}
+  m_AnchoredPosition: {x: 255, y: -70}
+  m_SizeDelta: {x: 510, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920753415
 MonoBehaviour:
@@ -5502,7 +5502,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 510, y: 50}
+  m_SizeDelta: {x: 510, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &923061264
 MonoBehaviour:
@@ -5541,18 +5541,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e1fe05aedb5218b46af29f9fc73a71e9, type: 3}
-    m_FontSize: 46
+    m_FontSize: 25
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 50
+    m_BestFit: 1
+    m_MinSize: 25
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EASY DIFFUCULTY
+  m_Text: 
 --- !u!222 &923061266
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8117,7 +8117,7 @@ GameObject:
   - component: {fileID: 1320259496}
   - component: {fileID: 1320259499}
   - component: {fileID: 1320259498}
-  - component: {fileID: 1320259497}
+  - component: {fileID: 1320259500}
   m_Layer: 5
   m_Name: WinLose Menu
   m_TagString: Untagged
@@ -8143,37 +8143,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1320259497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320259495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26e5a9f09f465a469c0a9f38f8bd251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WinSprite: {fileID: 21300000, guid: 3a5217cb095845e48a2e61e3168d4d25, type: 3}
-  LoseSprite: {fileID: 21300000, guid: f7de4f0310de1d347a5192a3c0a72540, type: 3}
-  WinTextColor:
-    serializedVersion: 2
-    rgba: 4286175999
-  LoseTextColor:
-    serializedVersion: 2
-    rgba: 4288521898
-  TitleText: {fileID: 1580024143}
-  DifficultyText: {fileID: 923061265}
-  ScoreText: {fileID: 843783074}
-  CenterPiece: {fileID: 1331204669}
-  BackDrop: {fileID: 2057474076}
-  isWin: 0
-  difficulty: 0
-  score: 0
 --- !u!114 &1320259498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8212,6 +8184,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320259495}
   m_CullTransparentMesh: 1
+--- !u!114 &1320259500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320259495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af2911e436c8394592639827b9b20c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinSprite: {fileID: 21300000, guid: 3a5217cb095845e48a2e61e3168d4d25, type: 3}
+  LoseSprite: {fileID: 21300000, guid: f7de4f0310de1d347a5192a3c0a72540, type: 3}
+  WinTextColor:
+    serializedVersion: 2
+    rgba: 4286175999
+  LoseTextColor:
+    serializedVersion: 2
+    rgba: 4288521898
+  TitleText: {fileID: 1580024143}
+  DifficultyText: {fileID: 923061265}
+  ScoreText: {fileID: 843783074}
+  CenterPiece: {fileID: 1331204669}
+  BackDrop: {fileID: 2057474076}
+  wordToGuess:
+    word: 
+    definition: 
+  isWin: 0
+  score: 0
 --- !u!1 &1321576637
 GameObject:
   m_ObjectHideFlags: 0
@@ -8948,6 +8950,7 @@ MonoBehaviour:
   keyboardInput: {fileID: 161142633}
   keyboardTogglerGameObject: {fileID: 2103696132}
   keyboardToggler: {fileID: 2103696138}
+  wordleWinLosePanelGameObject: {fileID: 1320259495}
 --- !u!1 &1478191206
 GameObject:
   m_ObjectHideFlags: 0
@@ -9819,9 +9822,9 @@ RectTransform:
   m_Father: {fileID: 487591330}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 309.145, y: -47.67}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 170, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604222276
@@ -10609,7 +10612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 255, y: -173.1235}
+  m_AnchoredPosition: {x: 255, y: -220}
   m_SizeDelta: {x: 510, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1883126610
@@ -11516,7 +11519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1983802910
 RectTransform:
   m_ObjectHideFlags: 0
