@@ -46,6 +46,15 @@ MonoBehaviour:
   - name: MinigameLoseSfx
     clip: {fileID: 8300000, guid: ab0b3a10f2d968047885bae6196b25ff, type: 3}
     volume: 1
+  - name: KeyClickSfx
+    clip: {fileID: 8300000, guid: 245965889d0a183438ef3478b27122c0, type: 3}
+    volume: 1
+  - name: KeyClickSfx2
+    clip: {fileID: 8300000, guid: 7a4c4b5d7ffae4646b53e27c39ffc487, type: 3}
+    volume: 1
+  - name: KeyClickSfx3
+    clip: {fileID: 8300000, guid: 89dc6bbba2ae6c54a9e835dbe6fbf288, type: 3}
+    volume: 1
   MusicClips:
   - name: INoLongerNeedYou
     clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}

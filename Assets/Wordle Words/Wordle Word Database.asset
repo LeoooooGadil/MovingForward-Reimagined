@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d481eaf3051945e44b232ea13688b357, type: 3}
+  m_Name: Wordle Word Database
+  m_EditorClassIdentifier: 
+  Words:
+  - word: Agony
+    definition: intense physical or mental suffering
+  - word: Bliss
+    definition: perfect happiness or great joy
+  - word: Brave
+    definition: courageous or fearless
+  - word: Calms
+    definition: shout for joy or in praise or encouragement
+  - word: Dream
+    definition: a series of thoughts, images, and sensations occurring in a person's
+      mind during sleep
+  - word: Gloom
+    definition: partial or total darkness; a state of depression or despondency
+  - word: Happy
+    definition: feeling or showing pleasure or contentment
+  - word: Honor
+    definition: high respect or great esteem
+  - word: Laugh
+    definition: make the spontaneous sounds and movements of the face and body that
+      are the instinctive expressions of lively amusement and sometimes also of derision

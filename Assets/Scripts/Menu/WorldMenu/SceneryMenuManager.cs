@@ -40,8 +40,11 @@ public class SceneryMenuManager : MonoBehaviour
 		}
 	}
 
-	void SaveSceneryManager()
+	void OnDisable()
 	{
-		
+		foreach (Transform child in sceneryCardContainer.transform)
+		{
+			Destroy(child.gameObject);
+		}
 	}
 }

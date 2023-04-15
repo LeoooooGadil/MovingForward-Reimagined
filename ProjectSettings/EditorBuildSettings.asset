@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/NumberLocation Game.unity
     guid: 337f6c84bebe2314ca96ecb16b70a28b
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Wordle Game.unity
+    guid: ac1ccbe37ae53144ea97be8e9a2dbee8
   m_configObjects: {}

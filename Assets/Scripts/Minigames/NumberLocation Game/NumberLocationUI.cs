@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class NumberLocationUI : MonoBehaviour
 {
-    
     public GameObject TopPanel;
 	public GameObject BackDrop;
 
