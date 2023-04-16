@@ -40,12 +40,12 @@ public class LastActivityItem : MonoBehaviour
 		else if (timeDiff.TotalHours < 1)
 		{
 			int minutesAgo = (int)Math.Round(timeDiff.TotalMinutes);
-			activityTimestampText.text = minutesAgo + " minutes" + (minutesAgo != 1 ? "s" : "") + " ago";
+			activityTimestampText.text = minutesAgo + " minute" + (minutesAgo != 1 ? "s" : "") + " ago";
 		}
 		else if (timeDiff.TotalDays < 1)
 		{
 			int hoursAgo = (int)Math.Round(timeDiff.TotalHours);
-			activityTimestampText.text = hoursAgo + " hours" + (hoursAgo != 1 ? "s" : "") + " ago";
+			activityTimestampText.text = hoursAgo + " hour" + (hoursAgo != 1 ? "s" : "") + " ago";
 		}
 		else
 		{
