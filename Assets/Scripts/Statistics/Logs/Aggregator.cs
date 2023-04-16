@@ -10,8 +10,15 @@ public class Aggregator : MonoBehaviour
 	private List<string> keys = new List<string>();
 	private string saveFileName = "aggregatorSaveData";
 
+
+
+
 	private Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
 	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
+	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
+
+
+
 
 	void Awake()
 	{
@@ -64,6 +71,16 @@ public class Aggregator : MonoBehaviour
 		NumberLocationAggregate numberLocationAggregate = numberLocationCompletedEvent.GetData();
 		numberLocationLogs.Add(key, numberLocationAggregate);
 		DailyScoreCalculator.PublishNumberLocation(key, numberLocationAggregate);
+
+		SaveAggregator();
+	}
+
+	public void Publish(WordleCompletedEvent wordleCompletedEvent)
+	{
+		string key = generateKey();
+		WordleAggregate wordleAggregate = wordleCompletedEvent.GetData();
+		wordleLogs.Add(key, wordleAggregate);
+		DailyScoreCalculator.PublishWordle(key, wordleAggregate);
 
 		SaveAggregator();
 	}

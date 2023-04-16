@@ -107,7 +107,7 @@ public class WordleGame : MonoBehaviour
 
 		keyboardTogglerGameObject.SetActive(true);
 
-		if(currentRow == 5)
+		if (currentRow == 5)
 		{
 			wordleWinLosePanel.isWin = false;
 			wordleWinLosePanel.wordToGuess = wordToGuess;
@@ -115,7 +115,7 @@ public class WordleGame : MonoBehaviour
 			wordleWinLosePanelGameObject.SetActive(true);
 			yield break;
 		}
-		
+
 		currentRow++;
 		currentWord = new char[5];
 		Debug.Log("Entering New Line");
@@ -134,10 +134,27 @@ public class WordleGame : MonoBehaviour
 	{
 		wordleLetterRows[currentRow].Win();
 		yield return new WaitForSeconds(1.5f);
+		UpdateStatistics();
 		wordleWinLosePanel.isWin = true;
 		wordleWinLosePanel.wordToGuess = wordToGuess;
 		wordleWinLosePanel.score = 50;
 		wordleWinLosePanelGameObject.SetActive(true);
+	}
+
+	void UpdateStatistics()
+	{
+		float points = 50;
+
+		ExperienceManager.instance.AddExperience(points);
+		
+		WordleCompletedEvent wordleCompletedEvent = new WordleCompletedEvent(
+			"Wordle Completed",
+			currentRow,
+			wordToGuess,
+			points
+		);
+
+		Aggregator.instance.Publish(wordleCompletedEvent);
 	}
 
 	public Dictionary<string, int> GetAllLetterStates()
@@ -230,3 +247,5 @@ public class WordleGame : MonoBehaviour
 		return _letterBoxStates;
 	}
 }
+
+

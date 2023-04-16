@@ -299,6 +299,8 @@ public class NumberLocationGame : MonoBehaviour
 				break;
 		}
 
+		ExperienceManager.instance.AddExperience(points);
+
 
 		NumberLocationCompletedEvent numberLocationCompletedEvent = new NumberLocationCompletedEvent(
 			"Won Number Location Minigame",

@@ -56,6 +56,23 @@ public static class DailyScoreCalculator
         }
     }
 
+    public static void PublishWordle(string key, WordleAggregate wordleAggregate)
+    {
+        LoadDailyScore();
+
+        DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(wordleAggregate.timestamp);
+        DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+        if (dateTime.Day == DateTime.Now.Day)
+        {
+            dailyScoreSave.dailyScore += wordleAggregate.totalPoints;
+            dailyScoreSave.keys.Add(key);
+            DailyScoreStorage.Publish(key, wordleAggregate.taskName, wordleAggregate.totalPoints, wordleAggregate.timestamp, DailyScoreStorageType.Minigame);
+
+            SaveDailyScore();
+        }
+    }
+
     public static float GetDailyScore()
     {
         LoadDailyScore();
