@@ -29,6 +29,27 @@ public class LastActivityItem : MonoBehaviour
 	// use the DateTimeOffset.FromUnixTimeSeconds method to convert the timestamp to a DateTime object
 	void CalculateTimestamp()
 	{
-		activityTimestampText.text = "Just now"; // default value. Do not change this line
+		//activityTimestampText.text = "Just now"; default value. Do not change this line
+		DateTimeOffset now = DateTimeOffset.UtcNow;
+		TimeSpan timeDiff = now - DateTimeOffset.FromUnixTimeSeconds(activityTimestamp);
+		
+		if (timeDiff.TotalMinutes < 1)
+		{
+			activityTimestampText.text = "Just now";
+		}
+		else if (timeDiff.TotalHours < 1)
+		{
+			int minutesAgo = (int)Math.Round(timeDiff.TotalMinutes);
+			activityTimestampText.text = timeDiff.minutesAgo + " minutes" + (minutesAgo != 1 ? "s" : "") + " ago";
+		}
+		else if (timeDiff.TotalDays < 1)
+		{
+			int hoursAgo = (int)Math.Round(timeDiff.TotalHours);
+			activityTimestampText.text = timeDiff.hoursAgo + " hours" + (hoursAgo != 1 ? "s" : "") + " ago";
+		}
+		else
+		{
+			activityTimestampText.text = "More than a day ago";
+		}
 	}
 }
