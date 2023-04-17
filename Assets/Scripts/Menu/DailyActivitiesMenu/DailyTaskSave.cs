@@ -46,4 +46,8 @@ public class DailyTaskSave
     public int GetDailyTaskCount() {
         return dailyTasks.Count;
     }
+
+    public void ResetDailyTasks() {
+        dailyTasks.Clear();
+    }
 }

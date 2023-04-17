@@ -40,6 +40,7 @@ public class SceneryManager : MonoBehaviour
 
 	void UpdateScenery()
 	{
+		int startTime = System.DateTime.Now.Millisecond;
 		var scene = SceneManager.LoadSceneAsync(sceneryObject.sceneryList[sceneryManagerSave.currentSceneryIndex].sceneName, LoadSceneMode.Additive);
 		scene.completed += (AsyncOperation op) =>
 		{
@@ -61,6 +62,8 @@ public class SceneryManager : MonoBehaviour
 			SceneManager.SetActiveScene(_currentScenery);
 
 			currentScenery = _currentScenery;
+			int endTime = System.DateTime.Now.Millisecond;
+			Debug.Log("Time to load scenery: " + (endTime - startTime) + "ms");
 		};
 	}
 

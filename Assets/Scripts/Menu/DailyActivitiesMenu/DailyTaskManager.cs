@@ -178,4 +178,11 @@ public class DailyTaskManager : MonoBehaviour
 		DailyTaskSaveData saveData = new DailyTaskSaveData(dailyTaskSave);
 		SaveSystem.Save(saveFileName, saveData);
 	}
+
+	public void ResetDailyTasks()
+	{
+		dailyTaskSave.ResetDailyTasks();
+		SaveDailyTasks();
+		GenerateDailyTasks();
+	}
 }

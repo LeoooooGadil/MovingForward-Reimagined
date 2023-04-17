@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     IEnumerator LoadScene(string sceneName, bool unloadCurrentScene = true)
     {
         var sceneMode = unloadCurrentScene ? LoadSceneMode.Single : LoadSceneMode.Additive;
-        var sceneToBeLoaded = SceneManager.LoadSceneAsync(sceneName, sceneMode);
+        AsyncOperation sceneToBeLoaded = SceneManager.LoadSceneAsync(sceneName, sceneMode);
         sceneToBeLoaded.allowSceneActivation = false;
 
         while (!sceneToBeLoaded.isDone)
