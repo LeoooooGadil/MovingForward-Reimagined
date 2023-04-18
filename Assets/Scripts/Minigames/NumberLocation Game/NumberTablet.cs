@@ -29,7 +29,7 @@ public class NumberTablet : MonoBehaviour, IPointerClickHandler
 			Cover.SetActive(false);
 		}
 
-		if (numberLocationGame.state == 2 && isOccupied) isInteractable = true;
+		if (numberLocationGame.state == 2 && isOccupied && isCovered) isInteractable = true;
 		else isInteractable = false;
 	}
 
