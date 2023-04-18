@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 311516391}
   - component: {fileID: 311516390}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Difficulty Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6689,7 +6689,7 @@ GameObject:
   - component: {fileID: 1836446904}
   - component: {fileID: 1836446903}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Experience Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7243,7 +7243,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 254.99998, y: -48.123505}
+  m_AnchoredPosition: {x: 255, y: -48.123505}
   m_SizeDelta: {x: 510, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991134513

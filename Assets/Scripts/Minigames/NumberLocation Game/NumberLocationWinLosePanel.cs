@@ -18,7 +18,7 @@ public class NumberLocationWinLosePanel : MonoBehaviour
     public GameObject BackDrop;
 
 	public bool isWin = false;
-	public NumberLocationDifficulty.Difficulty difficulty = NumberLocationDifficulty.Difficulty.Easy;
+	public NumberLocationDifficulty.Difficulty difficulty;
 	public int score = 0;
 
 	void OnEnable()

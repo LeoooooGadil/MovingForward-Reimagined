@@ -423,6 +423,7 @@ public class NumberLocationGame : MonoBehaviour
 		state = 1;
 		numberLocationWinLosePanel.isWin = true;
 		numberLocationWinLosePanel.score = (int)points;
+		numberLocationWinLosePanel.difficulty = difficulty;
 		MinigameWinLosePanel.SetActive(true);
 		UpdateStatistics();
 		yield return null;
@@ -450,9 +451,9 @@ public class NumberLocationDifficulty
 	public float howLongToSeeAllNumbersMedium = 3f;
 	public float howLongToSeeAllNumbersHard = 5f;
 
-	public float howLongToSeeAllNumbersEasyMinus = 0.1f;
-	public float howLongToSeeAllNumbersMediumMinus = 0.2f;
-	public float howLongToSeeAllNumbersHardMinus = 0.3f;
+	public float howLongToSeeAllNumbersEasyMinus = 0.2f;
+	public float howLongToSeeAllNumbersMediumMinus = 0.3f;
+	public float howLongToSeeAllNumbersHardMinus = 0.4f;
 
 	public int lives = 3;
 
