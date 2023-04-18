@@ -48,55 +48,73 @@ public class LifeCycleManager : MonoBehaviour
 
 		Debug.Log("Checking Life Cycle");
 
-		foreach (KeyValuePair<string, LifeCycleItem> lifeCycleItem in lifeCycleSave.lifeCycleItems)
+		// convert dictionary to list
+		List<LifeCycleItem> _lifeCycleItems = new List<LifeCycleItem>();
+		foreach (var item in lifeCycleSave.lifeCycleItems)
 		{
-			LifeCycleItem item = lifeCycleItem.Value;
+			_lifeCycleItems.Add(item.Value);
+		}
 
-			if (item.startTime < DateTime.Now && !item.Envoke)
-			{
-				Debug.Log("Life Cycle Item: " + item.name + " Envoked");
-				item.Envoke = true;
-
-				if (item.isRepeatable)
-				{
-					switch (item.repeatType)
-					{
-						case LifeCycleRepeatType.Daily:
-							item.startTime = item.startTime.AddDays(1);
-							break;
-						case LifeCycleRepeatType.Weekly:
-							item.startTime = item.startTime.AddDays(7);
-							break;
-						case LifeCycleRepeatType.Monthly:
-							item.startTime = item.startTime.AddMonths(1);
-							break;
-						case LifeCycleRepeatType.Yearly:
-							item.startTime = item.startTime.AddYears(1);
-							break;
-						case LifeCycleRepeatType.Custom:
-							item.startTime = item.startTime.AddSeconds(item.customRepeatTime);
-							break;
-						default:
-							break;
-					}
-
-					item.repeatCount++;
-					if (item.repeatCount >= item.maxRepeatCount)
-					{
-						item.isRepeatable = false;
-					}
-				}
-
-				lifeCycleSave.lifeCycleItems[item.name] = item;
-			}
+		// check each item
+		for (int i = 0; i < _lifeCycleItems.Count; i++)
+		{
+			_lifeCycleItems[i] = CheckLifeCycle(_lifeCycleItems[i]);
 		}
 
 		SaveLifeCycle();
 	}
 
+	LifeCycleItem CheckLifeCycle(LifeCycleItem lifeCycleItem)
+	{
+		if (lifeCycleItem.startTime < DateTime.Now && !lifeCycleItem.Envoke)
+		{
+			Debug.Log("Life Cycle Item: " + lifeCycleItem.name + " Envoked");
+			lifeCycleItem.Envoke = true;
+
+			if (lifeCycleItem.isRepeatable)
+			{
+				switch (lifeCycleItem.repeatType)
+				{
+					case LifeCycleRepeatType.Daily:
+						lifeCycleItem.startTime = lifeCycleItem.startTime.AddDays(1);
+						break;
+					case LifeCycleRepeatType.Weekly:
+						lifeCycleItem.startTime = lifeCycleItem.startTime.AddDays(7);
+						break;
+					case LifeCycleRepeatType.Monthly:
+						lifeCycleItem.startTime = lifeCycleItem.startTime.AddMonths(1);
+						break;
+					case LifeCycleRepeatType.Yearly:
+						lifeCycleItem.startTime = lifeCycleItem.startTime.AddYears(1);
+						break;
+					case LifeCycleRepeatType.Custom:
+						lifeCycleItem.startTime = lifeCycleItem.startTime.AddSeconds(lifeCycleItem.customRepeatTime);
+						break;
+					default:
+						break;
+				}
+
+				lifeCycleItem.repeatCount++;
+				if (lifeCycleItem.maxRepeatCount != -1 && lifeCycleItem.repeatCount >= lifeCycleItem.maxRepeatCount)
+				{
+					lifeCycleItem.isRepeatable = false;
+				}
+			}
+		}
+
+		// if the item is not repeatable and has been envoked, remove it from the list
+		if (!lifeCycleItem.isRepeatable && lifeCycleItem.Envoke)
+		{
+			// remove the item from the list
+			RemoveLifeCycleItem(lifeCycleItem);
+		}
+
+		return lifeCycleItem;
+	}
+
 	void LoadLifeCycle()
 	{
-		LifeCycleSaveData lifeCycleSaveData = Resources.Load<LifeCycleSaveData>(savefilename);
+		LifeCycleSaveData lifeCycleSaveData = SaveSystem.Load(savefilename) as LifeCycleSaveData;
 
 		if (lifeCycleSaveData == null)
 		{
@@ -119,26 +137,53 @@ public class LifeCycleManager : MonoBehaviour
 		// check if the item already exists
 		if (lifeCycleSave.lifeCycleItems.ContainsKey(lifeCycleItem.name))
 		{
-			Debug.LogError("Life Cycle Item: " + lifeCycleItem.name + " already exists");
+			Debug.Log("Life Cycle Item: " + lifeCycleItem.name + " already exists");
 			return;
 		}
 
-		lifeCycleSave.lifeCycleItems.Add(lifeCycleItem.name, lifeCycleItem);
+		LifeCycleItem item = CheckLifeCycle(lifeCycleItem);
+		lifeCycleSave.lifeCycleItems.Add(item.name, item);
+
+		SaveLifeCycle();
+
+		Debug.Log("Life Cycle Item: " + lifeCycleItem.name + " added");
 	}
 
 	public void RemoveLifeCycleItem(string name)
 	{
 		lifeCycleSave.lifeCycleItems.Remove(name);
+
+		SaveLifeCycle();
 	}
 
 	public void RemoveLifeCycleItem(LifeCycleItem lifeCycleItem)
 	{
 		lifeCycleSave.lifeCycleItems.Remove(lifeCycleItem.name);
+
+		SaveLifeCycle();
 	}
 
 	public LifeCycleItem GetLifeCycleItem(string name)
 	{
-		return lifeCycleSave.lifeCycleItems[name];
+		if(lifeCycleSave.lifeCycleItems.ContainsKey(name))
+		{
+			return lifeCycleSave.lifeCycleItems[name];
+		} else
+		{
+			return null;
+		}
+	}
+
+	public void EnvokeLifeCycleItem(string name)
+	{
+		if (lifeCycleSave.lifeCycleItems.ContainsKey(name))
+		{
+			LifeCycleItem item = lifeCycleSave.lifeCycleItems[name];
+			item.Envoke = false;
+			lifeCycleSave.lifeCycleItems[name] = item;
+			SaveLifeCycle();
+			Debug.Log("Life Cycle Item: " + name + " envoked");
+		}
 	}
 
 	// a function that can be called from other scripts to get the time left until the item is envoked

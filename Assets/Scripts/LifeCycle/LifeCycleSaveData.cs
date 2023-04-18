@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class LifeCycleSaveData : ScriptableObject
+public class LifeCycleSaveData
 {
     public Dictionary<string, LifeCycleItem> lifeCycleItems;
 

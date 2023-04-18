@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public enum LifeCycleRepeatType
 {
     None,
@@ -13,7 +14,8 @@ public enum LifeCycleRepeatType
     Custom
 }
 
-public struct LifeCycleItem 
+[System.Serializable]
+public class LifeCycleItem 
 {
     public string name;
     public DateTime startTime;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Unity.Notifications.Android;
+using System;
 
 public class NotificationManager : MonoBehaviour
 {
@@ -67,6 +68,19 @@ public class NotificationManager : MonoBehaviour
 		notification.Text = text;
 		notification.SmallIcon = "default_icon";
 		notification.FireTime = System.DateTime.Parse(time);
+
+		AndroidNotificationCenter.SendNotification(notification, channelID);
+
+		Debug.Log("Notification sent");
+	}
+
+	public void SendNotification(string title, string text, DateTime time)
+	{
+		var notification = new AndroidNotification();
+		notification.Title = title;
+		notification.Text = text;
+		notification.SmallIcon = "default_icon";
+		notification.FireTime = time;
 
 		AndroidNotificationCenter.SendNotification(notification, channelID);
 

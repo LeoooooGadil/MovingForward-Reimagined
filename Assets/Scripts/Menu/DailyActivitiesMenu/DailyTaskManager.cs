@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DailyTaskManager : MonoBehaviour
 {
@@ -19,7 +20,10 @@ public class DailyTaskManager : MonoBehaviour
 	public int lowPercentage = 20;
 	public int mediumPercentage = 40;
 
+	public Text timerText;
+
 	private string saveFileName = "dailytask";
+	private LifeCycleItem lifeCycleItem;
 
 	void Awake()
 	{
@@ -37,6 +41,8 @@ public class DailyTaskManager : MonoBehaviour
 
 	void Start()
 	{
+		CheckLifeCycle();
+
 		if (dailyTaskSave.GetDailyTaskCount() == 0)
 		{
 			SeperateTasksBasedOnTheirPriority();
@@ -46,6 +52,38 @@ public class DailyTaskManager : MonoBehaviour
 		else
 		{
 			LoadDailyTasksFromMemory();
+		}
+	}
+
+	void CreateNewLifeCycle()
+	{
+		lifeCycleItem = new LifeCycleItem();
+		lifeCycleItem.name = "DailyTask";
+		lifeCycleItem.isRepeatable = true;
+		// startTime 8:00 AM today
+		lifeCycleItem.startTime = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 8, 0, 0);
+		lifeCycleItem.maxRepeatCount = -1;
+		lifeCycleItem.repeatType = LifeCycleRepeatType.Daily;
+
+		LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
+	}
+
+	void CheckLifeCycle()
+	{
+		LifeCycleItem thisLifeCycle = LifeCycleManager.instance.GetLifeCycleItem("DailyTask");
+
+		if (thisLifeCycle == null)
+		{
+			CreateNewLifeCycle();
+			return;
+		}
+
+		// check if Envoke is true
+		if (thisLifeCycle.Envoke)
+		{
+			LifeCycleManager.instance.EnvokeLifeCycleItem("DailyTask");
+			// generate new tasks
+			ResetDailyTasks();
 		}
 	}
 
@@ -182,7 +220,9 @@ public class DailyTaskManager : MonoBehaviour
 	public void ResetDailyTasks()
 	{
 		dailyTaskSave.ResetDailyTasks();
-		SaveDailyTasks();
-		GenerateDailyTasks();
+
+		// send a notification for the next day
+		System.DateTime tomorrow = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.AddDays(1).Day, 8, 0, 0);
+		NotificationManager.instance.SendNotification("Daily Tasks", "You have new tasks to complete", tomorrow);
 	}
 }
