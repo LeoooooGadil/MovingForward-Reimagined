@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Stats Menu.unity
     guid: 3483594adb8683c46b92717672760c5e
   - enabled: 1
+    path: Assets/Scenes/Journal.unity
+    guid: c8cf0908b63253a40b605b9408ba6df9
+  - enabled: 1
     path: Assets/Scenes/Minigames/Breathing Game.unity
     guid: 0f127735554df3044a5abd7a02c22654
   - enabled: 1

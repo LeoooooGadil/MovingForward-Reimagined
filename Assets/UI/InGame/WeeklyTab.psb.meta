@@ -91,6 +91,27 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
+  - name: Rectangle 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 126
+      width: 141
+      height: 22
+    spriteID: c079ca90363bca24e8604f2e29142064
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 100}
   - name: Rectangle 1 copy 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +132,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -21, y: -19}
+    uvTransform: {x: 4, y: 3}
   - name: Rectangle 1 copy 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +153,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -21, y: 43}
+    uvTransform: {x: 4, y: 65}
   characterData:
     bones: []
     parts: []
@@ -163,6 +184,26 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Black & White 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 68713d64ffaea1040b83e367f6234413
+    layerID: 20
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: Rectangle 2
+    spriteName: Rectangle 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c079ca90363bca24e8604f2e29142064
+    layerID: 18
+    mosaicPosition: {x: 4, y: 126}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Rectangle 1 copy 3
     spriteName: Rectangle 1 copy 3
     isGroup: 0

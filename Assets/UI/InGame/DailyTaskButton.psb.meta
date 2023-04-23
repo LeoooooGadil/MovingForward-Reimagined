@@ -120,7 +120,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 112
-      y: 4
+      y: 57
       width: 59
       height: 59
     spriteID: f9b4d035e7b01f042bf3cddbcfa2ed53
@@ -132,7 +132,28 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 92, y: -21}
+    uvTransform: {x: 92, y: 32}
+  - name: Rectangle 3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 4
+      width: 90
+      height: 45
+    spriteID: 7dd1626544f18ca4eaba091987c551bd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 107, y: -48}
   - name: Rectangle 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -200,6 +221,16 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: f9b4d035e7b01f042bf3cddbcfa2ed53
     layerID: 8
+    mosaicPosition: {x: 112, y: 57}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Rectangle 3
+    spriteName: Rectangle 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7dd1626544f18ca4eaba091987c551bd
+    layerID: 9
     mosaicPosition: {x: 112, y: 4}
     flatten: 0
     isImported: 1

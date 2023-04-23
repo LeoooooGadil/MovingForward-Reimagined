@@ -46,11 +46,11 @@ public class DailyScoreManager : MonoBehaviour
 	{
 		if(dailyScore == 0)
 		{
-			currentScoreText.text = "You haven't scored any points today.";
+			currentScoreText.text = "";
 			return;
 		}
 
-		currentScoreText.text = dailyScore + " Points";
+		currentScoreText.text = dailyScore + "pts";
 	}
 
 	float ConvertScoreToNormalized(float min, float max, float score)

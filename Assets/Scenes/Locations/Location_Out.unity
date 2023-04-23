@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 1215158073}
   m_Layer: 5
   m_Name: Go To Number Location
-  m_TagString: Untagged
+  m_TagString: DontSwipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

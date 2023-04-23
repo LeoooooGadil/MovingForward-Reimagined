@@ -55,6 +55,15 @@ MonoBehaviour:
   - name: KeyClickSfx3
     clip: {fileID: 8300000, guid: 89dc6bbba2ae6c54a9e835dbe6fbf288, type: 3}
     volume: 1
+  - name: WhooshSfx
+    clip: {fileID: 8300000, guid: 5a979786708e61641875fa7e8d4d2cad, type: 3}
+    volume: 1
+  - name: PaperCrumbleSfx
+    clip: {fileID: 8300000, guid: ff841a250d1095f4ca3ca7e5adbc0f90, type: 3}
+    volume: 0.5
+  - name: FlyAwaySfx
+    clip: {fileID: 8300000, guid: 3414ed025a0b4c149b722ec41ea89393, type: 3}
+    volume: 1
   MusicClips:
   - name: INoLongerNeedYou
     clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}

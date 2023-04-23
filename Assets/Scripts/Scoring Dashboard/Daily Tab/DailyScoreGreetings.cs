@@ -46,6 +46,9 @@ public class DailyScoreGreetings : MonoBehaviour
 		{
 			// do nothing
 		}
+		
+		greetingsText.text = greetingsText.text.ToUpper();
+
 	}
 
 }
