@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,10 +20,9 @@ public class WordleGame : MonoBehaviour
 	private int[] letterBoxStates = new int[5];
 
 	private Dictionary<string, int> allLetterStates = new Dictionary<string, int>();
-
 	void PickWordToGuess()
 	{
-		int randomWordIndex = Random.Range(0, movingForwardWordleWordsObject.Words.Count);
+		int randomWordIndex = UnityEngine.Random.Range(0, movingForwardWordleWordsObject.Words.Count);
 		wordToGuess = movingForwardWordleWordsObject.Words[randomWordIndex];
 
 		Debug.Log("Word to guess: " + wordToGuess.word);
@@ -135,18 +135,32 @@ public class WordleGame : MonoBehaviour
 		wordleLetterRows[currentRow].Win();
 		yield return new WaitForSeconds(1.5f);
 		UpdateStatistics();
+		CreateNewLifeCycle();
 		wordleWinLosePanel.isWin = true;
 		wordleWinLosePanel.wordToGuess = wordToGuess;
 		wordleWinLosePanel.score = 50;
 		wordleWinLosePanelGameObject.SetActive(true);
+		
 	}
+
+	void CreateNewLifeCycle()
+    {
+        LifeCycleItem lifeCycleItem = new LifeCycleItem();
+        lifeCycleItem.name = "Wordle";
+        lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(1.5f);
+        lifeCycleItem.maxRepeatCount = -1;
+        lifeCycleItem.repeatType = LifeCycleRepeatType.Custom;
+        lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(1.5f).Seconds;
+
+        LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
+    }
 
 	void UpdateStatistics()
 	{
 		float points = 50;
 
 		ExperienceManager.instance.AddExperience(points);
-		
+
 		WordleCompletedEvent wordleCompletedEvent = new WordleCompletedEvent(
 			"Wordle Completed",
 			currentRow,

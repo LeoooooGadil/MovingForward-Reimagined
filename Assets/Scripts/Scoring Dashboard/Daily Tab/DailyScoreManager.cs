@@ -8,6 +8,7 @@ public class DailyScoreManager : MonoBehaviour
 	public Text targetScoreText;
 	public Text currentScoreText;
 	public float dailyScore;
+	private float currentScore;
 	private float maxDailyScore = 2500;
 	public Image progressBar;
 
@@ -27,13 +28,14 @@ public class DailyScoreManager : MonoBehaviour
 	void OnDisable()
 	{
 		dailyScore = 0;
+		currentScore = 0;
 		progressBar.fillAmount = 0;
 	}
 
 	void Update()
 	{
 		UpdateProgressBar();
-		
+		UpdateCurrentScoreText();
 	}
 
 	void UpdateProgressBar()
@@ -44,13 +46,19 @@ public class DailyScoreManager : MonoBehaviour
 
 	void UpdateCurrentScoreText()
 	{
+		if(currentScore == dailyScore) return;
+
 		if(dailyScore == 0)
 		{
 			currentScoreText.text = "";
 			return;
 		}
 
-		currentScoreText.text = dailyScore + "pts";
+		if (currentScore < dailyScore)
+        {
+            currentScore = Mathf.Lerp(currentScore, dailyScore, Time.deltaTime * 5);
+            currentScoreText.text = currentScore.ToString("F0") + " pts";
+        }
 	}
 
 	float ConvertScoreToNormalized(float min, float max, float score)

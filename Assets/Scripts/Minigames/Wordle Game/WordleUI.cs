@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,13 +24,13 @@ public class WordleUI : MonoBehaviour
 
 	void OnEnable()
 	{
-        TopPanel.SetActive(false);
+		TopPanel.SetActive(false);
 	}
 
-    void OnDisable()
-    {
-        TopPanel.SetActive(true);
-    }
+	void OnDisable()
+	{
+		TopPanel.SetActive(true);
+	}
 
 	void PlayButtonClicked()
 	{

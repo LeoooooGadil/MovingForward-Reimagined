@@ -134,6 +134,8 @@ public class LifeCycleManager : MonoBehaviour
 
 	public void AddLifeCycleItem(LifeCycleItem lifeCycleItem)
 	{
+		Debug.Log("Adding Life Cycle Item: " + lifeCycleItem.name);
+
 		// check if the item already exists
 		if (lifeCycleSave.lifeCycleItems.ContainsKey(lifeCycleItem.name))
 		{

@@ -318,6 +318,18 @@ public class NumberLocationGame : MonoBehaviour
 		StartCoroutine(StartFlow());
 	}
 
+	void CreateNewLifeCycle()
+    {
+        LifeCycleItem lifeCycleItem = new LifeCycleItem();
+        lifeCycleItem.name = "NumberLocation";
+        lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(4f);
+        lifeCycleItem.maxRepeatCount = -1;
+        lifeCycleItem.repeatType = LifeCycleRepeatType.Custom;
+        lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(4f).Seconds;
+
+        LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
+    }
+
 	IEnumerator StartFlow()
 	{
 		livesLeft = DifficultyManager.GetDefaultLives();
@@ -426,6 +438,7 @@ public class NumberLocationGame : MonoBehaviour
 		numberLocationWinLosePanel.difficulty = difficulty;
 		MinigameWinLosePanel.SetActive(true);
 		UpdateStatistics();
+		CreateNewLifeCycle();
 		yield return null;
 	}
 

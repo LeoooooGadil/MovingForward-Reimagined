@@ -20,7 +20,7 @@ public class TasksTotalScorePanel : MonoBehaviour
         if (currentScore < totalScore)
         {
             currentScore = Mathf.Lerp(currentScore, totalScore, Time.deltaTime * 5);
-            ScoreText.text = currentScore.ToString("F0");
+            ScoreText.text = currentScore.ToString("F0") + " pts";;
         }
 	}
 
