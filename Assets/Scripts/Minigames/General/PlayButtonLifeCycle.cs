@@ -21,11 +21,6 @@ public class PlayButtonLifeCycle : MonoBehaviour
         timerText.SetActive(false);
     }
 
-    void PlayButtonClicked()
-    {
-        // start the game here
-    }
-
     void CheckLifeCycle()
 	{
 		LifeCycleItem thisLifeCycle = LifeCycleManager.instance.GetLifeCycleItem(lifeCycle);
@@ -61,11 +56,11 @@ public class PlayButtonLifeCycle : MonoBehaviour
             buttonAnimator.isActive = true;
         } else 
         {
-            CheckLifeCycle();
             playText.SetActive(false);
             timerText.SetActive(true);
             button.interactable = false;
             buttonAnimator.isActive = false;
+            CheckLifeCycle();
         }
     }
 }

@@ -140,20 +140,25 @@ public class WordleGame : MonoBehaviour
 		wordleWinLosePanel.wordToGuess = wordToGuess;
 		wordleWinLosePanel.score = 50;
 		wordleWinLosePanelGameObject.SetActive(true);
-		
+
 	}
 
 	void CreateNewLifeCycle()
-    {
-        LifeCycleItem lifeCycleItem = new LifeCycleItem();
-        lifeCycleItem.name = "Wordle";
-        lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(1.5f);
-        lifeCycleItem.maxRepeatCount = -1;
-        lifeCycleItem.repeatType = LifeCycleRepeatType.Custom;
-        lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(1.5f).Seconds;
+	{
+		LifeCycleItem lifeCycleItem = new LifeCycleItem();
+		lifeCycleItem.name = "Wordle";
+		lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(1.5f);
+		lifeCycleItem.maxRepeatCount = -1;
+		lifeCycleItem.repeatType = LifeCycleRepeatType.Custom;
+		lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(1.5f).Seconds;
 
-        LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
-    }
+		LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
+
+		NotificationManager.instance.SendNotification(
+			"Moving Forward",
+			"Wordle is ready to play again!",
+			System.DateTime.Now + System.TimeSpan.FromHours(1.5f));
+	}
 
 	void UpdateStatistics()
 	{

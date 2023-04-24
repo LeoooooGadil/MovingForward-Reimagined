@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class WordleUI : MonoBehaviour
 {
-	public GameObject TopPanel;
 	public Button PlayButton;
 	public GameObject BackDrop;
 
@@ -20,16 +19,6 @@ public class WordleUI : MonoBehaviour
 		dialogAnimator = GetComponent<DialogAnimator>();
 		backDropLifeCycle = BackDrop.GetComponent<BackDropLifeCycle>();
 		PlayButton.onClick.AddListener(PlayButtonClicked);
-	}
-
-	void OnEnable()
-	{
-		TopPanel.SetActive(false);
-	}
-
-	void OnDisable()
-	{
-		TopPanel.SetActive(true);
 	}
 
 	void PlayButtonClicked()

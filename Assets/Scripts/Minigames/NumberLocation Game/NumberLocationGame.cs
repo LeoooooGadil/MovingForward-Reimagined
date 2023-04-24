@@ -328,6 +328,11 @@ public class NumberLocationGame : MonoBehaviour
         lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(4f).Seconds;
 
         LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
+
+		NotificationManager.instance.SendNotification(
+			"Moving Forward",
+			"Number Location is ready to play again!",
+			System.DateTime.Now + System.TimeSpan.FromHours(4f));
     }
 
 	IEnumerator StartFlow()

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NumberLocationUI : MonoBehaviour
 {
-    public GameObject TopPanel;
+	public GameObject TopPanel;
 	public GameObject BackDrop;
 
 	public Button PlayButton;
@@ -25,18 +25,18 @@ public class NumberLocationUI : MonoBehaviour
 		dialogAnimator = GetComponent<DialogAnimator>();
 		backDropLifeCycle = BackDrop.GetComponent<BackDropLifeCycle>();
 		PlayButton.onClick.AddListener(PlayButtonClicked);
-        
+
 	}
 
-    void OnEnable()
-    {
-        TopPanel.SetActive(false);
-    } 
+	void OnEnable()
+	{
+		TopPanel.SetActive(false);
+	}
 
-    void OnDisable()
-    {
-        TopPanel.SetActive(true);
-    }
+	void OnDisable()
+	{
+		TopPanel.SetActive(true);
+	}
 
 	void Update()
 	{
@@ -67,6 +67,20 @@ public class NumberLocationUI : MonoBehaviour
 		}
 	}
 
+	public int GetDifficultyByInt()
+	{
+		switch (difficulty)
+		{
+			case NumberLocationDifficulty.Difficulty.Easy:
+				return 0;
+			case NumberLocationDifficulty.Difficulty.Medium:
+				return 1;
+			case NumberLocationDifficulty.Difficulty.Hard:
+				return 2;
+		}
+		return 0;
+	}
+
 	void setLookTimeText()
 	{
 		float lookTime = numberLocationDifficulty.GetDefaultHowLongToNumbersSee();
@@ -87,14 +101,14 @@ public class NumberLocationUI : MonoBehaviour
 
 	IEnumerator exitAnimation()
 	{
-        AudioManager.instance.PlaySFX("PopClick");
-        dialogAnimator.ExitDialog();
+		AudioManager.instance.PlaySFX("PopClick");
+		dialogAnimator.ExitDialog();
 		backDropLifeCycle.ExitAnimation();
-        yield return new WaitForSeconds(0.2f);
-        AudioManager.instance.PlaySFX("MinigameStartSfx");
+		yield return new WaitForSeconds(0.2f);
+		AudioManager.instance.PlaySFX("MinigameStartSfx");
 		numberLocationGame.difficulty = difficulty;
 		numberLocationGame.StartTheGame();
-        gameObject.SetActive(false);
+		gameObject.SetActive(false);
 		BackDrop.SetActive(false);
 	}
 

@@ -11,6 +11,7 @@ public class NumberLocationDifficultyTabManager : MonoBehaviour
 
 	void Start()
 	{
+        currentTab = numberLocationUI.GetDifficultyByInt();
         UpdateTabs();
 	}
 
