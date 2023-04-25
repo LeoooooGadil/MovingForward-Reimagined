@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         animate = GetComponent<Animator>();
-        moveSpeed = 1f;
+        moveSpeed = 2f;
     }
 
     // Update is called once per frame
