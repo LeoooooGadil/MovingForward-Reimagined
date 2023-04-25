@@ -22,7 +22,7 @@ public class GameFlow : MonoBehaviour
 
 	void Start()
 	{
-        InitializeCore();
+		InitializeCore();
 	}
 
 	public void InitializeCore()
@@ -30,8 +30,13 @@ public class GameFlow : MonoBehaviour
 		// check if core scene is loaded
 		if (!SceneManager.GetSceneByName("Core").isLoaded)
 		{
-            // load core scene
-            SceneManager.LoadScene("Core", LoadSceneMode.Additive);
+			// load core scene
+			SceneManager.LoadScene("Core", LoadSceneMode.Additive);
+			Debug.Log("Core scene is loaded");
+		}
+		else
+		{
+			Debug.Log("Core scene is already loaded");
 		}
 	}
 }

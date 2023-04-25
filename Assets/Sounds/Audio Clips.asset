@@ -64,6 +64,9 @@ MonoBehaviour:
   - name: FlyAwaySfx
     clip: {fileID: 8300000, guid: 3414ed025a0b4c149b722ec41ea89393, type: 3}
     volume: 1
+  - name: LevelUpSfx
+    clip: {fileID: 8300000, guid: 19bb8e47f13679449b07b8eb3e9392db, type: 3}
+    volume: 1
   MusicClips:
   - name: INoLongerNeedYou
     clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}

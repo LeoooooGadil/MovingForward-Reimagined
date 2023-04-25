@@ -4,18 +4,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class GameLetterBox : MonoBehaviour, IPointerClickHandler
+public class GameLetterBox : MonoBehaviour
 {
 	public Sprite normalSprite;
 	public Sprite letterNotInWordSprite;
 	public Sprite rightLetterWrongPositionSprite;
 	public Sprite rightLetterRightPositionSprite;
+	public Sprite emptySprite;
 
 	public int animateBox = 0;
     public int animateText = 0;
 
 	public int state = 0;
-	public string letter;
+	public char letter;
 	// 0 = normal
 	// 1 = letter not in word
 	// 2 = right letter wrong position
@@ -27,6 +28,8 @@ public class GameLetterBox : MonoBehaviour, IPointerClickHandler
 
 	public void Start()
 	{
+		// set the letter to empty
+		letter = '\0';
 		image = GetComponent<Image>();
 		animator = GetComponent<Animator>();
 		text = GetComponentInChildren<Text>();
@@ -40,7 +43,7 @@ public class GameLetterBox : MonoBehaviour, IPointerClickHandler
 
 	public void SetLetter(char letter)
 	{
-		this.letter = letter.ToString();
+		this.letter = letter;
         animator.SetTrigger("NewLetter");
 	}
 
@@ -53,13 +56,24 @@ public class GameLetterBox : MonoBehaviour, IPointerClickHandler
 	{
         if(animateText == 0) return;
 
-        text.text = letter;
+        text.text = letter.ToString();
 	}
 
 	public void UpdateLetterBox(int state)
 	{
 		this.state = state;
 		animator.SetTrigger("Animate");
+	}
+
+	public void ResetLetterBox()
+	{
+		this.state = 0;
+		animateBox = 1;
+	}
+
+	public void EmptyLetterBox()
+	{
+		StartCoroutine(AnimateEmptyLetterBox());
 	}
 
 	void UpdateSprite()
@@ -81,11 +95,18 @@ public class GameLetterBox : MonoBehaviour, IPointerClickHandler
 				image.sprite = rightLetterRightPositionSprite;
 				break;
 		}
+
+		animateBox = 0;
 	}
 
-	public void OnPointerClick(PointerEventData eventData)
+	IEnumerator AnimateEmptyLetterBox()
 	{
-		// this.state = Random.Range(0, 4);
-		// animator.SetTrigger("Animate");
+		image.sprite = emptySprite;
+		yield return new WaitForSeconds(0.1f);
+		image.sprite = normalSprite;
+		yield return new WaitForSeconds(0.1f);
+		image.sprite = emptySprite;
+		yield return new WaitForSeconds(0.1f);
+		image.sprite = normalSprite;
 	}
 }

@@ -11,6 +11,7 @@ public class WordleGame : MonoBehaviour
 	public GameObject keyboardTogglerGameObject;
 	public KeyboardToggler keyboardToggler;
 	public GameObject wordleWinLosePanelGameObject;
+	public GameObject topPanel;
 
 	private WordleWinLosePanel wordleWinLosePanel;
 	private MovingForwardWordleWordsObject.Word wordToGuess;
@@ -31,9 +32,41 @@ public class WordleGame : MonoBehaviour
 	void Start()
 	{
 		wordleWinLosePanelGameObject.SetActive(false);
+		keyboardTogglerGameObject.SetActive(false);
+		topPanel.SetActive(false);
 		wordleWinLosePanel = wordleWinLosePanelGameObject.GetComponent<WordleWinLosePanel>();
 		keyboardInput.wordleGame = this;
 		PickWordToGuess();
+	}
+
+	public void StartGame()
+	{
+		keyboardTogglerGameObject.SetActive(true);
+		topPanel.SetActive(true);
+	}
+
+	public void ResetGame()
+	{
+		keyboardTogglerGameObject.SetActive(false);
+		topPanel.SetActive(false);
+		wordleWinLosePanelGameObject.SetActive(false);
+		wordleWinLosePanel = wordleWinLosePanelGameObject.GetComponent<WordleWinLosePanel>();
+		keyboardInput.wordleGame = this;
+		PickWordToGuess();
+		currentRow = 0;
+		for (int i = 0; i < wordleLetterRows.Length; i++)
+		{
+			wordleLetterRows[i].ResetRow();
+		}
+		for (int i = 0; i < currentWord.Length; i++)
+		{
+			currentWord[i] = '\0';
+		}
+		for (int i = 0; i < letterBoxStates.Length; i++)
+		{
+			letterBoxStates[i] = 0;
+		}
+		allLetterStates.Clear();
 	}
 
 	public void KeyboardInputHandler(string key)
@@ -56,8 +89,27 @@ public class WordleGame : MonoBehaviour
 		}
 	}
 
+	public bool checkIfRowIsIncomplete()
+	{
+		for (int i = 0; i < currentWord.Length; i++)
+		{
+			if (currentWord[i] == '\0')
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	IEnumerator Enter()
 	{
+		if (checkIfRowIsIncomplete())
+		{
+			AudioManager.instance.PlaySFX("WrongSfx");
+			wordleLetterRows[currentRow].AnimateEmptyLetterBoxes();
+			yield break;
+		}
+
 		int[] state = CheckRow();
 		wordleLetterRows[currentRow].SetLetterBoxState(state);
 		Dictionary<string, int> letterStates = new Dictionary<string, int>();

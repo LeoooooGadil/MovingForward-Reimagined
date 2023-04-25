@@ -65,6 +65,7 @@ public class ExperienceManager : MonoBehaviour
 		if(experienceSave.GetLevel() >= experienceSave.GetMaxLevel())
 			return;
 
+		AudioManager.instance.PlaySFX("LevelUpSfx");
 		int level = experienceSave.GetLevel();
 		level++;
 		experienceSave.SetLevel(level);

@@ -13,6 +13,7 @@ public class WordleUI : MonoBehaviour
 	public DialogAnimator dialogAnimator;
 	[HideInInspector]
 	public BackDropLifeCycle backDropLifeCycle;
+	public WordleGame wordleGame;
 
 	void Start()
 	{
@@ -33,7 +34,7 @@ public class WordleUI : MonoBehaviour
 		backDropLifeCycle.ExitAnimation();
 		yield return new WaitForSeconds(0.2f);
 		// start the game here
-
+		wordleGame.StartGame();
 
 		AudioManager.instance.PlaySFX("MinigameStartSfx");
 		gameObject.SetActive(false);
