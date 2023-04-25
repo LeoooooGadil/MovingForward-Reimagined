@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour
     private float moveHorizontal;
     private bool facingRight = true;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         animate = GetComponent<Animator>();
