@@ -55,4 +55,35 @@ public class ProfileManager : MonoBehaviour
 
         return "Depressed";
 	}
+
+	public float GetMoney()
+	{
+		LoadProfile();
+
+		return profileManagerSave.money;
+	}
+
+	public void AddMoney(float money)
+	{
+		LoadProfile();
+
+		profileManagerSave.setMoney(profileManagerSave.money + money);
+
+		SaveProfile();
+	}
+
+	public void NegateMoney(float money)
+	{
+		LoadProfile();
+
+		profileManagerSave.setMoney(profileManagerSave.money - money);
+
+		SaveProfile();
+	}
+
+	public void SaveProfile()
+	{
+		ProfileManagerSaveData profileManagerSaveData = new ProfileManagerSaveData(this.profileManagerSave);
+		SaveSystem.Save(saveFileName, profileManagerSaveData);
+	}
 }
