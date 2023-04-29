@@ -68,26 +68,29 @@ public class LevelManager : MonoBehaviour
 		LoadSceneMode sceneMode = unloadCurrentScene ? LoadSceneMode.Single : LoadSceneMode.Additive;
 
 		sceneToBeLoaded = SceneManager.LoadSceneAsync(sceneName, sceneMode);
+		sceneToBeLoaded.allowSceneActivation = false;
 
 		if (unloadCurrentScene) transitionMode = SceneTransitionMode.Slide;
 
-		sceneToBeLoaded.allowSceneActivation = false;
-		
+		IsTransitioning = true;
 
 		if (transitionMode == SceneTransitionMode.None)
 		{
-			if(sceneToBeLoaded == null) yield break;
-
-			while (!sceneToBeLoaded.isDone)
+			try
 			{
-				if (sceneToBeLoaded.progress >= 0.9f)
+				while (!sceneToBeLoaded.isDone)
 				{
-					sceneToBeLoaded.allowSceneActivation = true;
-					sceneToBeLoaded = null;
-					IsTransitioning = false;
+					if (sceneToBeLoaded.progress >= 0.9f)
+					{
+						sceneToBeLoaded.allowSceneActivation = true;
+						sceneToBeLoaded = null;
+						IsTransitioning = false;
+					}
 				}
-
-				yield return null;
+			}
+			catch (Exception e)
+			{
+				// ignored null reference exception
 			}
 		}
 		else
@@ -96,7 +99,7 @@ public class LevelManager : MonoBehaviour
 
 			if (transition != null)
 			{
-				IsTransitioning = true;
+
 				transitionCanvas.enabled = true;
 				ActiveTransition = transition.AnimationSO;
 				StartCoroutine(Exit());
