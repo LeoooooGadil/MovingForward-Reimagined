@@ -67,6 +67,7 @@ public class ProfileManager : MonoBehaviour
 	{
 		LoadProfile();
 
+		OnScreenNotificationManager.instance.CreateNotification("+" + money.ToString("F0") + "₱");
 		profileManagerSave.setMoney(profileManagerSave.money + money);
 
 		SaveProfile();
