@@ -313,6 +313,11 @@ public class NumberLocationGame : MonoBehaviour
 		Aggregator.instance.Publish(numberLocationCompletedEvent);
 	}
 
+	void CompensatePlayer()
+	{
+		ProfileManager.instance.AddMoney(25);
+	}
+
 	public void StartTheGame()
 	{
 		StartCoroutine(StartFlow());
@@ -443,6 +448,7 @@ public class NumberLocationGame : MonoBehaviour
 		numberLocationWinLosePanel.difficulty = difficulty;
 		MinigameWinLosePanel.SetActive(true);
 		UpdateStatistics();
+		CompensatePlayer();
 		CreateNewLifeCycle();
 		yield return null;
 	}

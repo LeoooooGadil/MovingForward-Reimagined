@@ -299,6 +299,7 @@ public class WordleGame : MonoBehaviour
 		wordleLetterRows[currentRow].Win();
 		yield return new WaitForSeconds(1.5f);
 		UpdateStatistics();
+		CompensatePlayer();
 		CreateNewLifeCycle();
 		wordleWinLosePanel.isWin = true;
 		wordleWinLosePanel.wordToGuess = wordToGuess;
@@ -338,6 +339,11 @@ public class WordleGame : MonoBehaviour
 		);
 
 		Aggregator.instance.Publish(wordleCompletedEvent);
+	}
+
+	void CompensatePlayer()
+	{
+		ProfileManager.instance.AddMoney(25);
 	}
 
 	public Dictionary<string, int> GetAllLetterStates()
