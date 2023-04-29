@@ -457,6 +457,8 @@ public class NumberLocationGame : MonoBehaviour
 	{
 		state = 1;
 		numberLocationWinLosePanel.isWin = false;
+		numberLocationWinLosePanel.score = 0;
+		numberLocationWinLosePanel.difficulty = difficulty;
 		MinigameWinLosePanel.SetActive(true);
 		yield return null;
 	}
