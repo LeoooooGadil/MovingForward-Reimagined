@@ -259,7 +259,8 @@ public class WordleGame : MonoBehaviour
 
 		keyboardToggler.ToggleKeyboard();
 		yield return new WaitForSeconds(0.01f);
-		keyboardTogglerGameObject.SetActive(false);
+		// keyboardTogglerGameObject.SetActive(false);
+		topPanel.SetActive(false);
 		yield return new WaitForSeconds(1.5f);
 
 		if (state[0] == 3 && state[1] == 3 && state[2] == 3 && state[3] == 3 && state[4] == 3)
@@ -270,6 +271,7 @@ public class WordleGame : MonoBehaviour
 		}
 
 		keyboardTogglerGameObject.SetActive(true);
+		topPanel.SetActive(true);
 
 		if (currentRow == 5)
 		{
@@ -300,7 +302,11 @@ public class WordleGame : MonoBehaviour
 		yield return new WaitForSeconds(1.5f);
 		UpdateStatistics();
 		CompensatePlayer();
-		CreateNewLifeCycle();
+		
+		TicketAccess.RemoveOneFromTicket("Wordle");
+		int ticketCount = TicketAccess.GetTicketCount("Wordle");
+		if (ticketCount == 0) CreateNewLifeCycle();
+
 		wordleWinLosePanel.isWin = true;
 		wordleWinLosePanel.wordToGuess = wordToGuess;
 		wordleWinLosePanel.score = 50;

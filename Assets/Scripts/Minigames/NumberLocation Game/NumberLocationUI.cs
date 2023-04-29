@@ -12,6 +12,7 @@ public class NumberLocationUI : MonoBehaviour
 	public Text DifficultyText;
 	public Text LookTimeText;
 	public Text NumbersText;
+	public Text ExperienceText;
 
 	public NumberLocationGame numberLocationGame;
 	public NumberLocationDifficulty numberLocationDifficulty = new NumberLocationDifficulty();
@@ -43,6 +44,7 @@ public class NumberLocationUI : MonoBehaviour
 		setDifficultyText();
 		setLookTimeText();
 		setNumbersText();
+		setExperienceText();
 	}
 
 	void setDifficultyText()
@@ -64,7 +66,34 @@ public class NumberLocationUI : MonoBehaviour
 				DifficultyText.color = new Color(1f, 0.322f, 0.322f);
 				DifficultyText.text = "HARD";
 				break;
+			case NumberLocationDifficulty.Difficulty.Impossible:
+				// #b33939
+				DifficultyText.color = new Color(0.702f, 0.223f, 0.223f);
+				DifficultyText.text = "IMPOSSIBLE";
+				break;
 		}
+	}
+
+	void setExperienceText()
+	{
+		float points = 0;
+		switch (difficulty)
+		{
+			case NumberLocationDifficulty.Difficulty.Easy:
+				points = 75;
+				break;
+			case NumberLocationDifficulty.Difficulty.Medium:
+				points = 100;
+				break;
+			case NumberLocationDifficulty.Difficulty.Hard:
+				points = 150;
+				break;
+			case NumberLocationDifficulty.Difficulty.Impossible:
+				points = 200;
+				break;
+		}
+
+		ExperienceText.text = points.ToString() + " XP";
 	}
 
 	public int GetDifficultyByInt()
@@ -77,6 +106,8 @@ public class NumberLocationUI : MonoBehaviour
 				return 1;
 			case NumberLocationDifficulty.Difficulty.Hard:
 				return 2;
+			case NumberLocationDifficulty.Difficulty.Impossible:
+				return 3;
 		}
 		return 0;
 	}
@@ -84,14 +115,14 @@ public class NumberLocationUI : MonoBehaviour
 	void setLookTimeText()
 	{
 		float lookTime = numberLocationDifficulty.GetDefaultHowLongToNumbersSee();
-		LookTimeText.text = "Look Time: " + lookTime.ToString() + "s" + " (-" + numberLocationDifficulty.GetHowLongMinus().ToString() + "s)";
+		LookTimeText.text = lookTime.ToString() + "s" + " (-" + numberLocationDifficulty.GetHowLongMinus().ToString() + "s)";
 	}
 
 	void setNumbersText()
 	{
 		int[] numbers = numberLocationDifficulty.getNumbers();
 		int numbersCount = numbers.Length;
-		NumbersText.text = "Numbers: " + numbersCount.ToString();
+		NumbersText.text = numbersCount.ToString() + " Numbers";
 	}
 
 	public void PlayButtonClicked()
@@ -101,6 +132,7 @@ public class NumberLocationUI : MonoBehaviour
 
 	IEnumerator exitAnimation()
 	{
+		TopPanel.SetActive(true);
 		AudioManager.instance.PlaySFX("PopClick");
 		dialogAnimator.ExitDialog();
 		backDropLifeCycle.ExitAnimation();

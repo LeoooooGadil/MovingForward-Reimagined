@@ -31,7 +31,7 @@ public class WordleWinLosePanel : MonoBehaviour
 			TitleText.text = "YOU WIN";
 			TitleText.color = WinTextColor;
 			DifficultyText.text = wordToGuess.word + " - " + wordToGuess.definition;
-			ScoreText.text = "+" + score.ToString() + " POINTS";
+			ScoreText.text = "+" + score.ToString() + " pts";
 			AudioManager.instance.PlaySFX("MinigameWinSfx");
 		}
 		else

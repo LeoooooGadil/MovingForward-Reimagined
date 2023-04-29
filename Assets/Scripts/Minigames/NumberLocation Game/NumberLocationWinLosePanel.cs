@@ -31,7 +31,7 @@ public class NumberLocationWinLosePanel : MonoBehaviour
 			TitleText.text = "YOU WIN";
 			TitleText.color = WinTextColor;
 			DifficultyText.text = difficulty.ToString().ToUpper() + " MODE";
-			ScoreText.text = "+" + score.ToString() + " POINTS";
+			ScoreText.text = "+" + score.ToString() + " pts";
 			AudioManager.instance.PlaySFX("MinigameWinSfx");
 		}
 		else

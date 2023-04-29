@@ -112,6 +112,23 @@ public class LifeCycleManager : MonoBehaviour
 		return lifeCycleItem;
 	}
 
+	// a function that bypass the timer by making them envoked or removed if they are not repeatable
+	public void BypassLifeCycleItem(string lifeCycleItem)
+	{
+		if (lifeCycleSave.lifeCycleItems.ContainsKey(lifeCycleItem))
+		{
+			LifeCycleItem item = lifeCycleSave.lifeCycleItems[lifeCycleItem];
+			item.Envoke = true;
+			RemoveLifeCycleItem(item);
+			SaveLifeCycle();
+			Debug.Log("Life Cycle Item: " + lifeCycleItem + " envoked");
+		}
+		else
+		{
+			Debug.Log("Life Cycle Item: " + lifeCycleItem + " does not exist");
+		}
+	}
+
 	void LoadLifeCycle()
 	{
 		LifeCycleSaveData lifeCycleSaveData = SaveSystem.Load(savefilename) as LifeCycleSaveData;
@@ -167,10 +184,11 @@ public class LifeCycleManager : MonoBehaviour
 
 	public LifeCycleItem GetLifeCycleItem(string name)
 	{
-		if(lifeCycleSave.lifeCycleItems.ContainsKey(name))
+		if (lifeCycleSave.lifeCycleItems.ContainsKey(name))
 		{
 			return lifeCycleSave.lifeCycleItems[name];
-		} else
+		}
+		else
 		{
 			return null;
 		}

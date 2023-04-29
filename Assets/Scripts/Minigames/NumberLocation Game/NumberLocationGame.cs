@@ -10,9 +10,9 @@ public class NumberLocationGame : MonoBehaviour
 	public GameObject MinigameUI;
 	public GameObject MinigameWinLosePanel;
 
-	public TMP_Text lookTimeText;
-	public TMP_Text numberOfWinsText;
-	public TMP_Text numberOfLivesLeft;
+	public NumberLocationLookTimeManager lookTimeManager;
+	public NumberLocationRoundsManager roundsManager;
+	public NumberLocationLivesManager livesManager;
 	public TMP_Text difficultyText;
 
 	private NumberLocationWinLosePanel numberLocationWinLosePanel;
@@ -59,23 +59,17 @@ public class NumberLocationGame : MonoBehaviour
 		setDifficultyText();
 		setLookTimeText();
 		setWinText();
-		setLivesLeftText();
-	}
-
-	void setLivesLeftText()
-	{
-		numberOfLivesLeft.text = livesLeft + " Lives Left";
 	}
 
 	void setWinText()
 	{
-		int winsNeeded = DifficultyManager.howManyWinsToPass;
-		numberOfWinsText.text = numberOfTimesWon + "/" + winsNeeded + " Wins";
+		roundsManager.round = numberOfTimesWon;
+		roundsManager.maxRounds = DifficultyManager.howManyWinsToPass;
 	}
 
 	void setLookTimeText()
 	{
-		lookTimeText.text = howLongToSeeAllNumbers.ToString("F2") + "s";
+		lookTimeManager.lookTime = howLongToSeeAllNumbers;
 	}
 
 	void setDifficultyText()
@@ -155,6 +149,11 @@ public class NumberLocationGame : MonoBehaviour
 			tablet.SetNumber(Number[i]);
 			TabletContainingNumber.Add(tablet);
 		}
+
+		if (numberOfTimesWon > 5 && Random.Range(0, 100) < 75)
+		{
+			PlaceNuisanceTablets();
+		}
 	}
 
 	// this method is used to find a tablet that is not occupied and is not a neighbour of another occupied tablet (if the difficulty is easy)
@@ -171,7 +170,7 @@ public class NumberLocationGame : MonoBehaviour
 		// initialize the variables
 		bool isLeftNeighbourOccupied = false;
 		bool isRightNeighbourOccupied = false;
-	
+
 		// check if the tablet is occupied
 		if (tablet.isOccupied)
 		{
@@ -201,8 +200,22 @@ public class NumberLocationGame : MonoBehaviour
 		}
 		else
 		{
-		// if the difficulty is medium or hard, return the tablet
-		return tablet;
+			// if the difficulty is medium or hard, return the tablet
+			return tablet;
+		}
+	}
+
+	void PlaceNuisanceTablets()
+	{
+		// get the number of nuisance tablets to place
+		int numberOfNuisanceTablets = DifficultyManager.GetNumberOfNuisanceTablets();
+
+		// place the nuisance tablets
+		for (int i = 0; i < numberOfNuisanceTablets; i++)
+		{
+			NumberTablet tablet = FindAppropriateTablet();
+			tablet.SetNumber(0);
+			TabletContainingNumber.Add(tablet);
 		}
 	}
 
@@ -324,25 +337,27 @@ public class NumberLocationGame : MonoBehaviour
 	}
 
 	void CreateNewLifeCycle()
-    {
-        LifeCycleItem lifeCycleItem = new LifeCycleItem();
-        lifeCycleItem.name = "NumberLocation";
-        lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(4f);
-        lifeCycleItem.maxRepeatCount = -1;
-        lifeCycleItem.repeatType = LifeCycleRepeatType.Custom;
-        lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(4f).Seconds;
+	{
+		LifeCycleItem lifeCycleItem = new LifeCycleItem();
+		lifeCycleItem.name = "NumberLocation";
+		lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(4f);
+		lifeCycleItem.maxRepeatCount = -1;
+		lifeCycleItem.repeatType = LifeCycleRepeatType.Custom;
+		lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(4f).Seconds;
 
-        LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
+		LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
 
 		NotificationManager.instance.SendNotification(
 			"Moving Forward",
 			"Number Location is ready to play again!",
 			System.DateTime.Now + System.TimeSpan.FromHours(4f));
-    }
+	}
 
 	IEnumerator StartFlow()
 	{
 		livesLeft = DifficultyManager.GetDefaultLives();
+		livesManager.lives = livesLeft;
+		livesManager.maxLives = livesLeft;
 		DifficultyManager.SetDifficulty(difficulty);
 		howLongToSeeAllNumbers = DifficultyManager.GetDefaultHowLongToNumbersSee();
 		yield return new WaitForSeconds(1);
@@ -381,10 +396,7 @@ public class NumberLocationGame : MonoBehaviour
 		StartCoroutine(AnimateBorder(howLongToSeeAllNumbers));
 		yield return new WaitForSeconds(howLongToSeeAllNumbers);
 		HideAllOccupiedNumbers();
-		numberOfTimesPlayed++;
 		state = 2;
-		howLongToSeeAllNumbers = DifficultyManager.GetNewHowLongToNumbersSee(howLongToSeeAllNumbers);
-
 		yield return null;
 	}
 
@@ -393,6 +405,8 @@ public class NumberLocationGame : MonoBehaviour
 		state = 1;
 		yield return new WaitForSeconds(1);
 		ResetTablets();
+		howLongToSeeAllNumbers = DifficultyManager.GetNewHowLongToNumbersSee(howLongToSeeAllNumbers);
+		numberOfTimesPlayed++;
 		StartCoroutine(StartGame());
 	}
 
@@ -406,6 +420,7 @@ public class NumberLocationGame : MonoBehaviour
 			yield break;
 		}
 		ResetTablets();
+		livesManager.lives = livesLeft;
 		StartCoroutine(RestartGame());
 	}
 
@@ -440,6 +455,9 @@ public class NumberLocationGame : MonoBehaviour
 			case NumberLocationDifficulty.Difficulty.Hard:
 				points = 150;
 				break;
+			case NumberLocationDifficulty.Difficulty.Impossible:
+				points = 200;
+				break;
 		}
 
 		state = 1;
@@ -449,7 +467,11 @@ public class NumberLocationGame : MonoBehaviour
 		MinigameWinLosePanel.SetActive(true);
 		UpdateStatistics();
 		CompensatePlayer();
-		CreateNewLifeCycle();
+
+		TicketAccess.RemoveOneFromTicket("NumberLocation");
+		int ticketCount = TicketAccess.GetTicketCount("NumberLocation");
+		if (ticketCount == 0) CreateNewLifeCycle();
+
 		yield return null;
 	}
 
@@ -466,20 +488,23 @@ public class NumberLocationGame : MonoBehaviour
 
 public class NumberLocationDifficulty
 {
-	public enum Difficulty { Easy, Medium, Hard };
+	public enum Difficulty { Easy, Medium, Hard, Impossible };
 	public Difficulty difficulty;
 
 	private int[] EasyNumbers = { 1, 2, 3, 4, 5 };
 	private int[] MediumNumbers = { 1, 2, 3, 4, 5 };
 	private int[] HardNumbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
+	private int[] ImpossibleNumbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
 
 	public float howLongToSeeAllNumbersEasy = 3f;
 	public float howLongToSeeAllNumbersMedium = 3f;
 	public float howLongToSeeAllNumbersHard = 5f;
+	public float howLongToSeeAllNumbersImpossible = 5f;
 
 	public float howLongToSeeAllNumbersEasyMinus = 0.2f;
 	public float howLongToSeeAllNumbersMediumMinus = 0.3f;
 	public float howLongToSeeAllNumbersHardMinus = 0.4f;
+	public float howLongToSeeAllNumbersImpossibleMinus = 0.5f;
 
 	public int lives = 3;
 
@@ -495,6 +520,8 @@ public class NumberLocationDifficulty
 				return MediumNumbers;
 			case Difficulty.Hard:
 				return HardNumbers;
+			case Difficulty.Impossible:
+				return ImpossibleNumbers;
 			default:
 				return EasyNumbers;
 		}
@@ -516,6 +543,8 @@ public class NumberLocationDifficulty
 				return howLongToSeeAllNumbersMediumMinus;
 			case Difficulty.Hard:
 				return howLongToSeeAllNumbersHardMinus;
+			case Difficulty.Impossible:
+				return howLongToSeeAllNumbersImpossibleMinus;
 			default:
 				return howLongToSeeAllNumbersEasyMinus;
 		}
@@ -534,6 +563,8 @@ public class NumberLocationDifficulty
 				return value - howLongToSeeAllNumbersMediumMinus;
 			case Difficulty.Hard:
 				return value - howLongToSeeAllNumbersHardMinus;
+			case Difficulty.Impossible:
+				return value - howLongToSeeAllNumbersImpossibleMinus;
 			default:
 				return value - howLongToSeeAllNumbersEasyMinus;
 		}
@@ -549,8 +580,27 @@ public class NumberLocationDifficulty
 				return howLongToSeeAllNumbersMedium;
 			case Difficulty.Hard:
 				return howLongToSeeAllNumbersHard;
+			case Difficulty.Impossible:
+				return howLongToSeeAllNumbersImpossible;
 			default:
 				return howLongToSeeAllNumbersEasy;
+		}
+	}
+
+	public int GetNumberOfNuisanceTablets()
+	{
+		switch (difficulty)
+		{
+			case Difficulty.Easy:
+				return 0;
+			case Difficulty.Medium:
+				return 1;
+			case Difficulty.Hard:
+				return 2;
+			case Difficulty.Impossible:
+				return 0;
+			default:
+				return 0;
 		}
 	}
 

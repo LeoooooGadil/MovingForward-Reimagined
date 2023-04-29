@@ -35,10 +35,13 @@ public class NumberTablet : MonoBehaviour, IPointerClickHandler
 
 	public void SetNumber(int number)
 	{
-		if (isOccupied) return;
+		if (isOccupied) return;;
 
 		this.number = number;
-		NumberText.text = number.ToString();
+		if(number == 0)
+			NumberText.text = "";
+		else
+			NumberText.text = number.ToString();
 		isOccupied = true;
 	}
 
