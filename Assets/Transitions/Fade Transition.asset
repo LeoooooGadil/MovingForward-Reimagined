@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2730e4ffe44472489e73cdb97642616, type: 3}
   m_Name: Fade Transition
   m_EditorClassIdentifier: 
-  AnimationTime: 0.35
+  AnimationTime: 0.5
   maxColor: {r: 0.05882353, g: 0.05882353, b: 0.05882353, a: 1}
-  minColor: {r: 0.05882353, g: 0.05882353, b: 0.05882353, a: 0}

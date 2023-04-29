@@ -34,7 +34,7 @@ public class DailyTaskSave
                 Aggregator.instance.Publish(new DailyTaskCompletedEvent(dailyTask));
                 // use the experience manager to add the experience to the player
                 ExperienceManager.instance.AddExperience(dailyTask.points);
-                ProfileManager.instance.AddMoney(25);
+                ProfileManager.instance.AddMoney(15);
             }
 
         }

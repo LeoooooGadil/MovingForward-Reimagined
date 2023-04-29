@@ -21,9 +21,10 @@ public class SceneryMenuManager : MonoBehaviour
 		}
 
 		sceneryObject = sceneryManager.sceneryObject;
+		AddWorlds();
 	}
 
-	void OnEnable()
+	void AddWorlds()
 	{
 		for (int i = 0; i < sceneryObject.sceneryList.Count; i++)
 		{

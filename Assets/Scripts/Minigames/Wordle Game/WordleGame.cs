@@ -12,6 +12,7 @@ public class WordleGame : MonoBehaviour
 	public KeyboardToggler keyboardToggler;
 	public GameObject wordleWinLosePanelGameObject;
 	public GameObject topPanel;
+	public GameObject gamePanel;
 
 	private WordleWinLosePanel wordleWinLosePanel;
 	private MovingForwardWordleWordsObject.Word wordToGuess;
@@ -19,24 +20,88 @@ public class WordleGame : MonoBehaviour
 	private char[] wordToGuessCharArray = new char[5];
 	private char[] currentWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
 	private int[] letterBoxStates = new int[5];
+	private bool isKeyboardEnabled = false;
+	private bool isKeyboardEnabledOld = false;
+	private Vector3 currentGameYPosition = Vector3.zero;
+	private Vector3 newGameYPosition;
+	private Vector3 gamePanelStartPosition;
 
 	private Dictionary<string, int> allLetterStates = new Dictionary<string, int>();
+	private List<MovingForwardWordleWordsObject.WordListItem> wordList = new List<MovingForwardWordleWordsObject.WordListItem>();
 	void PickWordToGuess()
 	{
-		int randomWordIndex = UnityEngine.Random.Range(0, movingForwardWordleWordsObject.Words.Count);
-		wordToGuess = movingForwardWordleWordsObject.Words[randomWordIndex];
+		List<MovingForwardWordleWordsObject.Word> words = movingForwardWordleWordsObject.Words;
+		int randomWordIndex = UnityEngine.Random.Range(0, words.Count);
+		wordToGuess = words[randomWordIndex];
 
 		Debug.Log("Word to guess: " + wordToGuess.word);
 	}
 
 	void Start()
 	{
+		gamePanelStartPosition = gamePanel.transform.position;
+		currentGameYPosition = gamePanel.transform.position;
+		newGameYPosition = gamePanel.transform.position;
 		wordleWinLosePanelGameObject.SetActive(false);
 		keyboardTogglerGameObject.SetActive(false);
 		topPanel.SetActive(false);
 		wordleWinLosePanel = wordleWinLosePanelGameObject.GetComponent<WordleWinLosePanel>();
 		keyboardInput.wordleGame = this;
 		PickWordToGuess();
+		wordList = ReadWordList();
+	}
+
+	void Update()
+	{
+		if (isKeyboardEnabledOld != keyboardToggler.isActivated && currentRow > 2)
+		{
+			isKeyboardEnabledOld = isKeyboardEnabled;
+			isKeyboardEnabled = keyboardToggler.isActivated;
+
+
+			// working version
+
+			if (isKeyboardEnabled)
+			{
+				UpTheGame();
+			}
+			else
+			{
+				LowerTheGame();
+			}
+		}
+
+		UpdateGamePanelTransform();
+	}
+
+	// working version 
+
+	void UpdateGamePanelTransform()
+	{
+		if (currentGameYPosition == newGameYPosition) return;
+
+		currentGameYPosition = gamePanel.transform.position;
+		gamePanel.transform.position = new Vector3(
+			Mathf.Lerp(currentGameYPosition.x, newGameYPosition.x, Time.deltaTime * 5f),
+			Mathf.Lerp(currentGameYPosition.y, newGameYPosition.y, Time.deltaTime * 5f),
+			Mathf.Lerp(currentGameYPosition.z, newGameYPosition.z, Time.deltaTime * 5f)
+			);
+	}
+
+	void UpTheGame()
+	{
+		Debug.Log("UpTheGame");
+		Transform thisTransform = gamePanel.transform;
+		// keep in mind that the transform anchor preset is stretch stretch
+		Vector3 newYPosition = new Vector3(thisTransform.position.x, thisTransform.position.y + 400, thisTransform.position.z);
+		newGameYPosition = newYPosition;
+	}
+
+	void LowerTheGame()
+	{
+		Debug.Log("LowerTheGame");
+		// keep in mind that the transform anchor preset is stretch stretch
+		newGameYPosition = gamePanelStartPosition;
 	}
 
 	public void StartGame()
@@ -53,6 +118,8 @@ public class WordleGame : MonoBehaviour
 		wordleWinLosePanel = wordleWinLosePanelGameObject.GetComponent<WordleWinLosePanel>();
 		keyboardInput.wordleGame = this;
 		PickWordToGuess();
+
+		// do this later: reset the keyboard
 		currentRow = 0;
 		for (int i = 0; i < wordleLetterRows.Length; i++)
 		{
@@ -101,12 +168,57 @@ public class WordleGame : MonoBehaviour
 		return false;
 	}
 
+	public List<MovingForwardWordleWordsObject.WordListItem> ReadWordList()
+	{
+
+		string filePath = Application.streamingAssetsPath + "/WordList.txt";
+		List<MovingForwardWordleWordsObject.WordListItem> wordList = new List<MovingForwardWordleWordsObject.WordListItem>();
+
+		// string[] lines = System.IO.File.ReadAllLines(filePath);
+		// foreach (string line in lines)
+		// {
+		// 	MovingForwardWordleWordsObject.WordListItem wordListItem = new MovingForwardWordleWordsObject.WordListItem();
+		// 	wordListItem.word = line;
+		// 	wordList.Add(wordListItem);
+		// }
+
+		foreach (string line in Wordlist.words)
+		{
+			MovingForwardWordleWordsObject.WordListItem wordListItem = new MovingForwardWordleWordsObject.WordListItem();
+			wordListItem.word = line;
+			wordList.Add(wordListItem);
+		}
+
+		return wordList;
+	}
+
+	public bool checifWordIsInWordList()
+	{
+		for (int i = 0; i < wordList.Count; i++)
+		{
+			if (wordList[i].word.ToLower() == new string(currentWord).ToLower())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	IEnumerator Enter()
 	{
 		if (checkIfRowIsIncomplete())
 		{
 			AudioManager.instance.PlaySFX("WrongSfx");
 			wordleLetterRows[currentRow].AnimateEmptyLetterBoxes();
+			OnScreenNotificationManager.instance.CreateNotification("Word is incomplete", OnScreenNotificationType.Warning);
+			yield break;
+		}
+
+		if (!checifWordIsInWordList())
+		{
+			AudioManager.instance.PlaySFX("WrongSfx");
+			wordleLetterRows[currentRow].AnimateEmptyLetterBoxes();
+			OnScreenNotificationManager.instance.CreateNotification("Word is not in the list", OnScreenNotificationType.Warning);
 			yield break;
 		}
 

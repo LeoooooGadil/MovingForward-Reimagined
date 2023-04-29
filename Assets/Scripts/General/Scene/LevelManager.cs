@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
 	private AsyncOperation sceneToBeLoaded;
 	private MovingForwardAbstractSceneTransitionScriptableObject ActiveTransition;
 
+	public bool IsTransitioning { get; set; }
+
 	void Awake()
 	{
 		if (instance == null)
@@ -61,28 +63,32 @@ public class LevelManager : MonoBehaviour
 
 	IEnumerator LoadScene(string sceneName, bool unloadCurrentScene = true, SceneTransitionMode transitionMode = SceneTransitionMode.None)
 	{
+		if (sceneToBeLoaded != null) yield break;
+
 		LoadSceneMode sceneMode = unloadCurrentScene ? LoadSceneMode.Single : LoadSceneMode.Additive;
 
 		sceneToBeLoaded = SceneManager.LoadSceneAsync(sceneName, sceneMode);
 
-		if(unloadCurrentScene) transitionMode = SceneTransitionMode.Slide;
+		if (unloadCurrentScene) transitionMode = SceneTransitionMode.Slide;
 
 		sceneToBeLoaded.allowSceneActivation = false;
+		
 
 		if (transitionMode == SceneTransitionMode.None)
 		{
+			if(sceneToBeLoaded == null) yield break;
+
 			while (!sceneToBeLoaded.isDone)
 			{
 				if (sceneToBeLoaded.progress >= 0.9f)
 				{
 					sceneToBeLoaded.allowSceneActivation = true;
-
+					sceneToBeLoaded = null;
+					IsTransitioning = false;
 				}
 
 				yield return null;
 			}
-
-			GameFlow.instance.InitializeCore();
 		}
 		else
 		{
@@ -90,6 +96,7 @@ public class LevelManager : MonoBehaviour
 
 			if (transition != null)
 			{
+				IsTransitioning = true;
 				transitionCanvas.enabled = true;
 				ActiveTransition = transition.AnimationSO;
 				StartCoroutine(Exit());
@@ -106,16 +113,18 @@ public class LevelManager : MonoBehaviour
 	private IEnumerator Exit()
 	{
 		yield return StartCoroutine(ActiveTransition.Exit(transitionCanvas));
-		sceneToBeLoaded.allowSceneActivation = true;
-		yield return new WaitForSeconds(0.5f);
-		GameFlow.instance.InitializeCore();
+		if (sceneToBeLoaded != null)
+			sceneToBeLoaded.allowSceneActivation = true;
+		yield return new WaitForSeconds(0.1f);
 	}
 
 	private IEnumerator Enter()
 	{
 		yield return StartCoroutine(ActiveTransition.Enter(transitionCanvas));
+		yield return new WaitForSeconds(0.1f);
 		transitionCanvas.enabled = false;
 		sceneToBeLoaded = null;
 		ActiveTransition = null;
+		IsTransitioning = false;
 	}
 }

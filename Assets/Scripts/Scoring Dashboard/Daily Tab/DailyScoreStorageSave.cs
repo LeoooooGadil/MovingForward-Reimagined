@@ -1,14 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DailyScoreStorageSave
 {
-    public Dictionary<string, DailyScoreStorageItem> dailyScoreStorageItems = new Dictionary<string, DailyScoreStorageItem>();
+    public Dictionary<string, Dictionary<string, DailyScoreStorageItem>> dailyScoreStorageItems = new Dictionary<string, Dictionary<string, DailyScoreStorageItem>>();
 
     public DailyScoreStorageSave(DailyScoreStorageSaveData dailyScoreStorageSaveData)
     {
-        foreach (KeyValuePair<string, DailyScoreStorageItem> dailyScoreStorageItem in dailyScoreStorageSaveData.dailyScoreStorageItems)
+        foreach (KeyValuePair<string, Dictionary<string, DailyScoreStorageItem>> dailyScoreStorageItem in dailyScoreStorageSaveData.dailyScoreStorageItems)
         {
             dailyScoreStorageItems.Add(dailyScoreStorageItem.Key, dailyScoreStorageItem.Value);
         }
@@ -16,12 +17,37 @@ public class DailyScoreStorageSave
 
     public DailyScoreStorageSave()
     {
-        dailyScoreStorageItems = new Dictionary<string, DailyScoreStorageItem>();
+        dailyScoreStorageItems = new Dictionary<string, Dictionary<string, DailyScoreStorageItem>>();
     }
 
     public void AddDailyScoreStorageItem(string key, DailyScoreStorageItem dailyScoreStorageItem)
     {
-        dailyScoreStorageItems.Add(key, dailyScoreStorageItem);
+        DateTime today = DateTime.Today;
+        string todayString = today.ToString("dd/MM/yyyy");
+
+        if(!dailyScoreStorageItems.ContainsKey(todayString))
+        {
+            dailyScoreStorageItems.Add(todayString, new Dictionary<string, DailyScoreStorageItem>());
+        }
+
+        if(!dailyScoreStorageItems[todayString].ContainsKey(key))
+        {
+            dailyScoreStorageItems[todayString].Add(key, dailyScoreStorageItem);
+        }
+        else
+        {
+            dailyScoreStorageItems[todayString][key] = dailyScoreStorageItem;
+        }
+    }
+
+    public Dictionary<string, DailyScoreStorageItem> GetDailyScoreStorageItems(string date)
+    {
+        if(dailyScoreStorageItems.ContainsKey(date))
+        {
+            return dailyScoreStorageItems[date];
+        }
+
+        return new Dictionary<string, DailyScoreStorageItem>();
     }
 }
 

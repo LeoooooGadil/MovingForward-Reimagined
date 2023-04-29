@@ -15,12 +15,14 @@ public class MovingForwardFadeTransitionScriptableObject : MovingForwardAbstract
 
 		while (time < 1)
 		{
-            AnimatedObject.color = Color.Lerp(startColor, endColor, time);
-            time += Time.deltaTime / AnimationTime;
+            if(AnimatedObject != null)
+                AnimatedObject.color = Color.Lerp(startColor, endColor, time);
             yield return null;
+            time += Time.deltaTime / AnimationTime;
 		}
 
-        Destroy(AnimatedObject.gameObject);
+        if(AnimatedObject != null)
+            Destroy(AnimatedObject.gameObject);
 	}
 
 	public override IEnumerator Exit(Canvas Parent)
@@ -36,9 +38,10 @@ public class MovingForwardFadeTransitionScriptableObject : MovingForwardAbstract
 
         while (time < 1)
         {
-            AnimatedObject.color = Color.Lerp(startColor, endColor, time);
-            time += Time.deltaTime / AnimationTime;
+            if(AnimatedObject != null)
+                AnimatedObject.color = Color.Lerp(startColor, endColor, time);
             yield return null;
+            time += Time.deltaTime / AnimationTime;
         }
 	}
 }

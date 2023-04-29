@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,9 @@ public static class DailyScoreStorage
 
 		List<DailyScoreStorageItem> dailyScoreStorageItems = new List<DailyScoreStorageItem>();
 
-		foreach (KeyValuePair<string, DailyScoreStorageItem> dailyScoreStorageItem in dailyScoreStorageSave.dailyScoreStorageItems)
+		string todayString = DateTime.Today.ToString("dd/MM/yyyy");
+
+		foreach (KeyValuePair<string, DailyScoreStorageItem> dailyScoreStorageItem in dailyScoreStorageSave.GetDailyScoreStorageItems(todayString))
 		{
 			dailyScoreStorageItems.Add(dailyScoreStorageItem.Value);
 		}
@@ -65,10 +68,12 @@ public static class DailyScoreStorage
 
         List<DailyScoreStorageItem> dailyScoreStorageItems = new List<DailyScoreStorageItem>();
 
-        foreach (KeyValuePair<string, DailyScoreStorageItem> dailyScoreStorageItem in dailyScoreStorageSave.dailyScoreStorageItems)
-        {
-            dailyScoreStorageItems.Add(dailyScoreStorageItem.Value);
-        }
+        string todayString = DateTime.Today.ToString("dd/MM/yyyy");
+
+		foreach (KeyValuePair<string, DailyScoreStorageItem> dailyScoreStorageItem in dailyScoreStorageSave.GetDailyScoreStorageItems(todayString))
+		{
+			dailyScoreStorageItems.Add(dailyScoreStorageItem.Value);
+		}
 
         dailyScoreStorageItems.Sort((x, y) => y.timestamp.CompareTo(x.timestamp));
 

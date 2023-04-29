@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayButtonLifeCycle : MonoBehaviour
+public class PlayButtonLifeCycle : MonoBehaviour, IPointerUpHandler
 {
     public GameObject playText;
     public GameObject timerText;
@@ -23,6 +24,8 @@ public class PlayButtonLifeCycle : MonoBehaviour
 
     void CheckLifeCycle()
 	{
+        if (LifeCycleManager.instance == null) return;
+        
 		LifeCycleItem thisLifeCycle = LifeCycleManager.instance.GetLifeCycleItem(lifeCycle);
 
 		isReadyToPlay = false;
@@ -63,4 +66,12 @@ public class PlayButtonLifeCycle : MonoBehaviour
             CheckLifeCycle();
         }
     }
+
+	public void OnPointerUp(PointerEventData eventData)
+	{
+        if (isReadyToPlay) return;
+            
+        AudioManager.instance.PlaySFX("EhhEhhClick");
+		OnScreenNotificationManager.instance.CreateNotification("You can't play this yet.", OnScreenNotificationType.Warning);
+	}
 }

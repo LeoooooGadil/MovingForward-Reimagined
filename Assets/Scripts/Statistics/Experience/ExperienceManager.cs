@@ -70,6 +70,7 @@ public class ExperienceManager : MonoBehaviour
 		level++;
 		experienceSave.SetLevel(level);
 		CalcExpNeededToLevel();
+		OnScreenNotificationManager.instance.CreateNotification("Level Up! You are now level " + level + "!");
 
 		SaveExperience();
 	}

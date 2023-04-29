@@ -13,6 +13,22 @@ public class SafeArea : MonoBehaviour
 	public bool affectWidth = true;
 	public bool affectHeight = true;
 
+	void Awake()
+	{
+		rectTransform = GetComponent<RectTransform>();
+		safeArea = Screen.safeArea;
+		minAnchor = safeArea.position;
+		maxAnchor = safeArea.position + safeArea.size;
+
+		minAnchor.x /= Screen.width;
+		maxAnchor.x /= Screen.width;
+		minAnchor.y /= Screen.height;
+		maxAnchor.y /= Screen.height;
+
+		rectTransform.anchorMin = minAnchor;
+		rectTransform.anchorMax = maxAnchor;
+	}
+
 	void Update()
 	{
 		rectTransform = GetComponent<RectTransform>();

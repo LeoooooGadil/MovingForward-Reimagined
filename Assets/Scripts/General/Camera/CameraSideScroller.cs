@@ -33,12 +33,12 @@ public class CameraSideScroller : MonoBehaviour
 		if (isTouchingUI) return;
 
 
-		#if UNITY_EDITOR || UNITY_STANDALONE
-			OnDesktop();
-		#elif UNITY_ANDROID || UNITY_IOS
+#if UNITY_EDITOR || UNITY_STANDALONE
+		OnDesktop();
+#elif UNITY_ANDROID || UNITY_IOS
 			Touch touch = Input.GetTouch(0);
 			OnMobile(touch);
-		#endif
+#endif
 	}
 
 	void OnDesktop()
@@ -141,6 +141,10 @@ public class CameraSideScroller : MonoBehaviour
 		eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
 		List<RaycastResult> results = new List<RaycastResult>();
+
+		if (EventSystem.current == null)
+			return false;
+
 		EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
 
 		// only return true if there is the tag is Button
