@@ -40,7 +40,9 @@ public class NotificationManager : MonoBehaviour
 	{
 		var notification = new AndroidNotification();
 		notification.Title = title;
+		notification.ShowTimestamp = true;
 		notification.Text = text;
+		notification.SmallIcon = "default_icon";
 		notification.FireTime = System.DateTime.Now.AddSeconds(delay);
 
 		AndroidNotificationCenter.SendNotification(notification, channelID);
@@ -52,6 +54,7 @@ public class NotificationManager : MonoBehaviour
 	{
 		var notification = new AndroidNotification();
 		notification.Title = title;
+		notification.ShowTimestamp = true;
 		notification.Text = text;
 		notification.SmallIcon = "default_icon";
 		notification.FireTime = System.DateTime.Now.AddSeconds(5);

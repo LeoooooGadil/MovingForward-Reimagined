@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PopUpManager : MonoBehaviour
 {
-    public GameObject popUpBackground;
+	public static PopUpManager Instance;
+    public GameObject BackDrop;
+    public List<PopUps> PopUps = new();
 
-    void Start() {
-        Button backgroundButton = popUpBackground.AddComponent<Button>();
-        backgroundButton.transition = Selectable.Transition.None;
-        backgroundButton.onClick.AddListener(BackgroundIsClicked);
-    }
-
-    void BackgroundIsClicked() {
-        LevelManager.instance.RemoveScene("Tutorial PopUp");
-    }
+	void Awake()
+	{
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+	}
 }
