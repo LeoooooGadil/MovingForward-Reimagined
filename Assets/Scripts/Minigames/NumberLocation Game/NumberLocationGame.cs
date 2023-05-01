@@ -9,6 +9,7 @@ public class NumberLocationGame : MonoBehaviour
 {
 	public GameObject MinigameUI;
 	public GameObject MinigameWinLosePanel;
+	public GameObject MinigameHintPanel;
 
 	public NumberLocationLookTimeManager lookTimeManager;
 	public NumberLocationRoundsManager roundsManager;
@@ -34,6 +35,7 @@ public class NumberLocationGame : MonoBehaviour
 
 	public int[] NotFoundNumbers;
 	public List<NumberTablet> TabletContainingNumber = new List<NumberTablet>();
+	public List<NumberTablet> TabletRemaining = new List<NumberTablet>();
 
 	public float howLongToSeeAllNumbers = 3f;
 
@@ -148,6 +150,7 @@ public class NumberLocationGame : MonoBehaviour
 			NumberTablet tablet = FindAppropriateTablet();
 			tablet.SetNumber(Number[i]);
 			TabletContainingNumber.Add(tablet);
+			TabletRemaining.Add(tablet);
 		}
 
 		if (numberOfTimesWon > 5 && Random.Range(0, 100) < 75)
@@ -221,6 +224,7 @@ public class NumberLocationGame : MonoBehaviour
 
 	public bool OnTabletClicked(NumberTablet tablet)
 	{
+		Debug.Log("Clicked on tablet " + tablet.number);
 		// get the index of the tablet that was clicked
 		int index = Tablets.IndexOf(tablet);
 
@@ -229,6 +233,7 @@ public class NumberLocationGame : MonoBehaviour
 		{
 			// if it is, remove the number from the list
 			NotFoundNumbers = NotFoundNumbers[1..];
+			TabletRemaining.Remove(tablet);
 			// check if the list is empty
 			if (NotFoundNumbers.Length == 0)
 			{
@@ -279,6 +284,22 @@ public class NumberLocationGame : MonoBehaviour
 	void HideAllOccupiedNumbers()
 	{
 		foreach (var tablet in Tablets)
+		{
+			if (tablet.isOccupied)
+			{
+				tablet.Cover.SetActive(true);
+				tablet.isCovered = true;
+			}
+			else
+			{
+				tablet.isInteractable = false;
+			}
+		}
+	}
+
+	void HideAllRemainingNumbers()
+	{
+		foreach (var tablet in TabletRemaining)
 		{
 			if (tablet.isOccupied)
 			{
@@ -375,7 +396,7 @@ public class NumberLocationGame : MonoBehaviour
 			// every 1 second pass, play a sound
 			if (time % 1 < Time.deltaTime)
 			{
-				AudioManager.instance.PlaySFX("PopClick");
+				AudioManager.instance.PlaySFX("TimerTickSfx");
 			}
 			yield return null;
 		}
@@ -392,10 +413,12 @@ public class NumberLocationGame : MonoBehaviour
 		PlaceNumbers();
 		HideAllNumbers();
 		ShowAllNumbers();
-		AudioManager.instance.PlaySFX("PopClick");
+		MinigameHintPanel.SetActive(false);
+		AudioManager.instance.PlaySFX("TimerTickSfx");
 		StartCoroutine(AnimateBorder(howLongToSeeAllNumbers));
 		yield return new WaitForSeconds(howLongToSeeAllNumbers);
 		HideAllOccupiedNumbers();
+		MinigameHintPanel.SetActive(true);
 		state = 2;
 		yield return null;
 	}
@@ -413,6 +436,7 @@ public class NumberLocationGame : MonoBehaviour
 	IEnumerator LoseGame()
 	{
 		state = 1;
+		MinigameHintPanel.SetActive(false);
 		yield return new WaitForSeconds(2);
 		if (livesLeft <= 0)
 		{
@@ -426,6 +450,7 @@ public class NumberLocationGame : MonoBehaviour
 
 	IEnumerator WinGame()
 	{
+		MinigameHintPanel.SetActive(false);
 		state = 1;
 		foreach (var tablet in TabletContainingNumber)
 		{
@@ -484,7 +509,62 @@ public class NumberLocationGame : MonoBehaviour
 		MinigameWinLosePanel.SetActive(true);
 		yield return null;
 	}
+
+	IEnumerator LookAgainHint()
+	{
+		MinigameHintPanel.SetActive(false);
+		state = 1;
+		ShowAllNumbers();
+		AudioManager.instance.PlaySFX("PopClick");
+		StartCoroutine(AnimateBorder(howLongToSeeAllNumbers));
+		yield return new WaitForSeconds(howLongToSeeAllNumbers);
+		HideAllRemainingNumbers();
+		state = 2;
+		MinigameHintPanel.SetActive(true);
+	}
+
+	IEnumerator ShowMeTheNextNumber()
+	{
+		MinigameHintPanel.SetActive(false);
+		state = 1;
+		int nextNumber = NotFoundNumbers[0];
+		Debug.Log("ShowMeTheNextNumber: " + nextNumber);
+		foreach (var item in TabletContainingNumber)
+		{
+			if (item.number == nextNumber)
+			{
+				item.OnClick();
+				break;
+			}
+		}
+
+		AudioManager.instance.PlaySFX("PopClick");
+		yield return new WaitForSeconds(1);
+		state = 2;
+		MinigameHintPanel.SetActive(true);
+	}
+
+	internal bool ActivateHint(NumberLocationHints hintType)
+	{
+		Debug.Log("ActivateHint: " + hintType);
+
+		switch (hintType)
+		{
+			case NumberLocationHints.None:
+				return false;
+			case NumberLocationHints.ShowMeTheNextNumber:
+				StartCoroutine(ShowMeTheNextNumber());
+				return true;
+			case NumberLocationHints.LookAgain:
+				StartCoroutine(LookAgainHint());
+				return true;
+			default:
+				return false;
+		}
+	}
 }
+
+public enum NumberLocationHints { None, ShowMeTheNextNumber, LookAgain };
 
 public class NumberLocationDifficulty
 {

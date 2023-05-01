@@ -35,10 +35,10 @@ public class NumberTablet : MonoBehaviour, IPointerClickHandler
 
 	public void SetNumber(int number)
 	{
-		if (isOccupied) return;;
+		if (isOccupied) return; ;
 
 		this.number = number;
-		if(number == 0)
+		if (number == 0)
 			NumberText.text = "";
 		else
 			NumberText.text = number.ToString();
@@ -62,6 +62,11 @@ public class NumberTablet : MonoBehaviour, IPointerClickHandler
 	{
 		if (!isInteractable) return;
 
+		OnClick();
+	}
+
+	public void OnClick()
+	{
 		Cover.SetActive(false);
 		isCovered = false;
 		isInteractable = false;

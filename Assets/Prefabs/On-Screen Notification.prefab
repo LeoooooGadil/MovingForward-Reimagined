@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1245013387225279183}
   - component: {fileID: 2744364199183664849}
   - component: {fileID: 8165134879429614686}
-  - component: {fileID: 4647085204059786541}
   m_Layer: 0
   m_Name: On-Screen Notification
   m_TagString: Untagged
@@ -39,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 30}
+  m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1245013387225279183
 CanvasRenderer:
@@ -63,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -92,31 +91,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5219500324550024857}
+  outline: {fileID: 9160841721425147145}
   type: 0
   infoColor: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
   warningColor: {r: 1, g: 0.4745098, b: 0.24705882, a: 1}
   errorColor: {r: 1, g: 0.32156864, b: 0.32156864, a: 1}
   sucessColor: {r: 0.2, g: 0.8509804, b: 0.69803923, a: 1}
---- !u!95 &4647085204059786541
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907083555589316242}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a9174d6f75b5ec645b2210158a0c612b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  textTransform: {fileID: 7349761690788954414}
 --- !u!1 &8707584122406858840
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.94509804, g: 0.94509804, b: 0.94509804, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -186,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e1fe05aedb5218b46af29f9fc73a71e9, type: 3}
-    m_FontSize: 30
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

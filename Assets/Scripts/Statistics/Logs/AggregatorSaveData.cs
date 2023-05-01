@@ -7,17 +7,17 @@ public class AggregatorSaveData
 {
 	public List<string> keys = new List<string>();
 
-	public Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+	public Dictionary<string, DailyTaskAggregateV2> dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 
 	public AggregatorSaveData(List<string> _keys, AggregatorSave _aggregatorSave)
 	{
 		keys = _keys;
 
-		dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+		dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 		numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 
-		foreach (KeyValuePair<string, DailyTaskAggregate> dailyTaskLog in _aggregatorSave.dailyTaskLogs)
+		foreach (KeyValuePair<string, DailyTaskAggregateV2> dailyTaskLog in _aggregatorSave.dailyTaskLogs)
 		{
 			dailyTaskLogs.Add(dailyTaskLog.Key, dailyTaskLog.Value);
 		}

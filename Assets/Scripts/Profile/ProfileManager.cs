@@ -67,7 +67,7 @@ public class ProfileManager : MonoBehaviour
 	{
 		LoadProfile();
 
-		OnScreenNotificationManager.instance.CreateNotification("+" + money.ToString("F0") + "₱");
+		OnScreenNotificationManager.instance.CreateNotification("+₱" + money.ToString("F0"), OnScreenNotificationType.Sucess);
 		profileManagerSave.setMoney(profileManagerSave.money + money);
 
 		SaveProfile();
@@ -77,6 +77,7 @@ public class ProfileManager : MonoBehaviour
 	{
 		LoadProfile();
 
+		OnScreenNotificationManager.instance.CreateNotification("-₱" + money.ToString("F0"), OnScreenNotificationType.Warning);
 		profileManagerSave.setMoney(profileManagerSave.money - money);
 
 		SaveProfile();

@@ -6,8 +6,6 @@ public class TicketManagerSave
 {
 	public Dictionary<string, TicketItemSave> ticketItems = new Dictionary<string, TicketItemSave>();
 
-    public int maxTickets = 3;
-
 	public TicketManagerSave(TicketManagerSaveData ticketManagerSaveData)
 	{
 		ticketItems = ticketManagerSaveData.ticketItems;
@@ -23,11 +21,12 @@ public class TicketManagerSave
         ticketItems.Remove(ticketName);
     }
 
-	public void AddTicketItem(string ticketName, int currentTickets)
+	public void AddTicketItem(string ticketName, int currentTickets, int maxTickets)
 	{
 		TicketItemSave ticketItemSave = new TicketItemSave();
 		ticketItemSave.ticketName = ticketName;
 		ticketItemSave.currentTickets = currentTickets;
+        ticketItemSave.maxTickets = maxTickets;
 		ticketItems.Add(ticketName, ticketItemSave);
 	}
 
@@ -52,4 +51,5 @@ public class TicketItemSave
 {
 	public string ticketName;
 	public int currentTickets = 0;
+    public int maxTickets = 0;
 }

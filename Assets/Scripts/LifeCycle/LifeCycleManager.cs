@@ -24,11 +24,12 @@ public class LifeCycleManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+		LoadLifeCycle();
 	}
 
 	void Start()
 	{
-		LoadLifeCycle();
 		timer = checkInterval;
 	}
 

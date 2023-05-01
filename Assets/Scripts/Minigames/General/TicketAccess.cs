@@ -28,12 +28,10 @@ public static class TicketAccess
 
 		if (ticketItemSave != null)
 		{
-            Debug.Log("Ticket count for " + ticketName + " is " + ticketItemSave.currentTickets);
 			return ticketItemSave.currentTickets;
 		}
 		else
 		{
-            Debug.Log(ticketName + " not found in ticket manager save");
 			return 0;
 		}
 	}
@@ -65,7 +63,7 @@ public static class TicketAccess
 		if (ticketItemSave != null)
 		{
 			ticketManagerSave.RemoveTicketItem(ticketName);
-            ticketManagerSave.AddTicketItem(ticketName, ticketManagerSave.maxTickets);
+            ticketManagerSave.AddTicketItem(ticketName, ticketItemSave.maxTickets, ticketItemSave.maxTickets);
 		}
 
 		SaveTicketManager(ticketManagerSave);

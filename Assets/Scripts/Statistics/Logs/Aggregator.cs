@@ -13,7 +13,7 @@ public class Aggregator : MonoBehaviour
 
 
 
-	private Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+	private Dictionary<string, DailyTaskAggregateV2> dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
 
@@ -59,8 +59,18 @@ public class Aggregator : MonoBehaviour
 	{
 		string key = generateKey();
 		DailyTaskAggregate dailyTaskAggregate = dailyTaskCompletedEvent.GetData();
-		dailyTaskLogs.Add(key, dailyTaskAggregate);
+		// dailyTaskLogs.Add(key, dailyTaskAggregate);
 		DailyScoreCalculator.PublishDailyTask(key, dailyTaskAggregate);
+
+		SaveAggregator();
+	}
+
+	public void Publish(TaskCompletedEvent taskCompletedEvent)
+	{
+		string key = generateKey();
+		DailyTaskAggregateV2 dailyTaskAggregateV2 = taskCompletedEvent.GetData();
+		dailyTaskLogs.Add(key, dailyTaskAggregateV2);
+		DailyScoreCalculator.PublishDailyTaskV2(key, dailyTaskAggregateV2);
 
 		SaveAggregator();
 	}
@@ -123,11 +133,11 @@ public class Aggregator : MonoBehaviour
 		// Debug.Log("Saved CSV: " + path);
 	}
 
-	public Dictionary<string, DailyTaskAggregate> GetTodaysDailyTaskLogs()
+	public Dictionary<string, DailyTaskAggregateV2> GetTodaysDailyTaskLogs()
 	{
-		Dictionary<string, DailyTaskAggregate> todaysDailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+		Dictionary<string, DailyTaskAggregateV2> todaysDailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 
-		foreach (KeyValuePair<string, DailyTaskAggregate> entry in dailyTaskLogs)
+		foreach (KeyValuePair<string, DailyTaskAggregateV2> entry in dailyTaskLogs)
 		{
 			if (new System.DateTime(entry.Value.timestamp).Date == System.DateTime.Now.Date)
 			{

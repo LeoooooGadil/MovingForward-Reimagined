@@ -11,6 +11,7 @@ public class TicketManager : MonoBehaviour
 	public TicketManagerSave ticketManagerSave;
 
 	public string ticketName;
+	public int maxTickets;
 
 	private TicketItemSave ticketItemSave;
 
@@ -52,7 +53,7 @@ public class TicketManager : MonoBehaviour
 			timer = 0;
 		}
 
-		ticketText.text = ticketItemSave.currentTickets.ToString() + "/" + ticketManagerSave.maxTickets.ToString();
+		ticketText.text = ticketItemSave.currentTickets.ToString() + "/" + ticketItemSave.maxTickets.ToString();
 	}
 
 	void LoadTicketManagerSave()
@@ -85,7 +86,7 @@ public class TicketManager : MonoBehaviour
 
 	void CreateTicket()
 	{
-		ticketManagerSave.AddTicketItem(ticketName, ticketManagerSave.maxTickets);
+		ticketManagerSave.AddTicketItem(ticketName, maxTickets, maxTickets);
 		ticketItemSave = ticketManagerSave.GetTicketItem(ticketName);
 
 		SaveTicketManager();

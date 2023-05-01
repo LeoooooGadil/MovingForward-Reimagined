@@ -6,14 +6,14 @@ public class AggregatorSave
 {
     public List<string> keys = new List<string>();
 
-    public Dictionary<string, DailyTaskAggregate> dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+    public Dictionary<string, DailyTaskAggregateV2> dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
     public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 
     public AggregatorSave(AggregatorSaveData _aggregatorSaveData)
     {
-        dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+        dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 
-        foreach (KeyValuePair<string, DailyTaskAggregate> dailyTaskLog in _aggregatorSaveData.dailyTaskLogs)
+        foreach (KeyValuePair<string, DailyTaskAggregateV2> dailyTaskLog in _aggregatorSaveData.dailyTaskLogs)
         {
             dailyTaskLogs.Add(dailyTaskLog.Key, dailyTaskLog.Value);
         }
@@ -21,11 +21,11 @@ public class AggregatorSave
 
     public AggregatorSave()
     {
-        dailyTaskLogs = new Dictionary<string, DailyTaskAggregate>();
+        dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
         numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
     }
 
-    public void setDailyTaskLogs(Dictionary<string, DailyTaskAggregate> _dailyTaskLogs)
+    public void setDailyTaskLogs(Dictionary<string, DailyTaskAggregateV2> _dailyTaskLogs)
     {
         dailyTaskLogs = _dailyTaskLogs;
     }

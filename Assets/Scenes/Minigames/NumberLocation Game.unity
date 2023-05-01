@@ -849,8 +849,9 @@ GameObject:
   - component: {fileID: 191180928}
   - component: {fileID: 191180930}
   - component: {fileID: 191180929}
+  - component: {fileID: 191180931}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: Look Again Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -868,12 +869,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1348660289}
-  m_RootOrder: 3
+  m_Father: {fileID: 1111429169}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -62.93103, y: -172}
+  m_AnchoredPosition: {x: -62.93103, y: -269}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191180929
@@ -914,6 +915,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 191180927}
   m_CullTransparentMesh: 1
+--- !u!114 &191180931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191180927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f8903b31826244b8ff661392e8a7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberLocationGame: {fileID: 746039303}
+  hintType: 2
+  hintCost: 50
 --- !u!1001 &215833726
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3318,6 +3334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinigameUI: {fileID: 524063390}
   MinigameWinLosePanel: {fileID: 104932197}
+  MinigameHintPanel: {fileID: 1111429168}
   lookTimeManager: {fileID: 1100308609}
   roundsManager: {fileID: 2084113308}
   livesManager: {fileID: 1528853149}
@@ -3346,6 +3363,7 @@ MonoBehaviour:
   state: 0
   NotFoundNumbers: 
   TabletContainingNumber: []
+  TabletRemaining: []
   howLongToSeeAllNumbers: 3
   ContainerImage: {fileID: 584512719}
 --- !u!1 &793271936
@@ -4577,6 +4595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ticketName: NumberLocation
+  maxTickets: 3
   ticketText: {fileID: 1149983572}
 --- !u!1 &944070605
 GameObject:
@@ -5031,6 +5050,84 @@ MonoBehaviour:
   - {fileID: 824030510}
   currentTab: 0
   numberLocationUI: {fileID: 524063394}
+--- !u!1 &1111429168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111429169}
+  - component: {fileID: 1111429171}
+  - component: {fileID: 1111429170}
+  m_Layer: 16
+  m_Name: Hints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1111429169
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111429168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1911013084}
+  - {fileID: 191180928}
+  m_Father: {fileID: 1348660289}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1111429170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111429168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1111429171
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111429168}
+  m_CullTransparentMesh: 1
 --- !u!1 &1119588077
 GameObject:
   m_ObjectHideFlags: 0
@@ -6011,8 +6108,7 @@ RectTransform:
   m_Children:
   - {fileID: 1059661891}
   - {fileID: 2093487205}
-  - {fileID: 1911013084}
-  - {fileID: 191180928}
+  - {fileID: 1111429169}
   m_Father: {fileID: 1689136370}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9054,8 +9150,9 @@ GameObject:
   - component: {fileID: 1911013084}
   - component: {fileID: 1911013086}
   - component: {fileID: 1911013085}
+  - component: {fileID: 1911013087}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Show Next Number Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9073,12 +9170,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1348660289}
-  m_RootOrder: 2
+  m_Father: {fileID: 1111429169}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -62.931, y: -102}
+  m_AnchoredPosition: {x: -62.93091, y: -170}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911013085
@@ -9119,6 +9216,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911013083}
   m_CullTransparentMesh: 1
+--- !u!114 &1911013087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911013083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f8903b31826244b8ff661392e8a7a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberLocationGame: {fileID: 746039303}
+  hintType: 1
+  hintCost: 75
 --- !u!1 &1911434523
 GameObject:
   m_ObjectHideFlags: 0
