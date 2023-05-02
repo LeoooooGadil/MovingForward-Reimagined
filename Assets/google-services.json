@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "415837522268",
+    "project_id": "movingforward-reimagined",
+    "storage_bucket": "movingforward-reimagined.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415837522268:android:7ae6af332088c3a3325999",
+        "android_client_info": {
+          "package_name": "com.Olympian.MovingForward"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415837522268-s8mvu6fgobbrc41dikg32kgvebeod183.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzpHZMKJDE2b4kgcat27zhi_Df_F0IpKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415837522268-s8mvu6fgobbrc41dikg32kgvebeod183.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

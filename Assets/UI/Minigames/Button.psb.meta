@@ -91,27 +91,6 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Black & White 1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 171
-      y: 159
-      width: 0
-      height: 0
-    spriteID: 9cc2091fbef43a24cb189be076914759
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 1, y: 86}
   - name: Rectangle 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -213,8 +192,8 @@ ScriptedImporter:
     layerID: 6
     mosaicPosition: {x: 171, y: 159}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: Rectangle 2
     spriteName: Rectangle 2
     isGroup: 0

@@ -17,8 +17,11 @@ public class WordleGame : MonoBehaviour
 	private WordleWinLosePanel wordleWinLosePanel;
 	private MovingForwardWordleWordsObject.Word wordToGuess;
 	private int currentRow = 0;
+	private int maxRevealCount = 2;
 	private char[] wordToGuessCharArray = new char[5];
 	private char[] currentWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
+	private char[] allOverrideWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
+	private char[] overrideWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
 	private int[] letterBoxStates = new int[5];
 	private bool isKeyboardEnabled = false;
 	private bool isKeyboardEnabledOld = false;
@@ -119,8 +122,12 @@ public class WordleGame : MonoBehaviour
 		keyboardInput.wordleGame = this;
 		PickWordToGuess();
 
+		overrideWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
+		allOverrideWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
+
 		// do this later: reset the keyboard
 		currentRow = 0;
+		maxRevealCount = 2;
 		for (int i = 0; i < wordleLetterRows.Length; i++)
 		{
 			wordleLetterRows[i].ResetRow();
@@ -141,7 +148,7 @@ public class WordleGame : MonoBehaviour
 		if (key == "Backspace")
 		{
 			RemoveLetterFromRow();
-			wordleLetterRows[currentRow].RemoveLetterFromRow();
+			wordleLetterRows[currentRow].RemoveLetterFromRow(overrideWord);
 		}
 		else if (key == "Enter")
 		{
@@ -153,6 +160,21 @@ public class WordleGame : MonoBehaviour
 			letter = char.ToUpper(letter);
 			AddLetterToCurrentWord(letter);
 			wordleLetterRows[currentRow].AddLetterToRow(letter);
+		}
+
+		OverrideCurrentWord();
+		Debug.Log("Current word: " + new string(currentWord));
+	}
+
+	void OverrideCurrentWord()
+	{
+		for (int i = 0; i < currentWord.Length; i++)
+		{
+			// dont override index if its empty
+			if (overrideWord[i] != '\0')
+			{
+				currentWord[i] = overrideWord[i];
+			}
 		}
 	}
 
@@ -223,6 +245,8 @@ public class WordleGame : MonoBehaviour
 		}
 
 		int[] state = CheckRow();
+		allOverrideWord = new char[currentWord.Length];
+		overrideWord = new char[currentWord.Length];
 		wordleLetterRows[currentRow].SetLetterBoxState(state);
 		Dictionary<string, int> letterStates = new Dictionary<string, int>();
 		// add allLettersStates to letterStates
@@ -302,7 +326,7 @@ public class WordleGame : MonoBehaviour
 		yield return new WaitForSeconds(1.5f);
 		UpdateStatistics();
 		CompensatePlayer();
-		
+
 		TicketAccess.RemoveOneFromTicket("Wordle");
 		int ticketCount = TicketAccess.GetTicketCount("Wordle");
 		if (ticketCount == 0) CreateNewLifeCycle();
@@ -363,7 +387,6 @@ public class WordleGame : MonoBehaviour
 		{
 			if (currentWord[i] == '\0')
 			{
-				Debug.Log("Adding letter to current word");
 				currentWord[i] = letter;
 				break;
 			}
@@ -374,8 +397,11 @@ public class WordleGame : MonoBehaviour
 	{
 		for (int i = currentWord.Length - 1; i >= 0; i--)
 		{
+
 			if (currentWord[i] != '\0')
 			{
+				if (overrideWord[i] != '\0') continue;
+
 				currentWord[i] = '\0';
 				break;
 			}
@@ -441,6 +467,72 @@ public class WordleGame : MonoBehaviour
 		letterBoxStates = _letterBoxStates;
 		return _letterBoxStates;
 	}
+
+	void RevealDefinition()
+	{
+		WordlePopUpController wordlePopUpController = PopUpManager.instance.ShowWordleHintPopUp();
+		wordlePopUpController.SetWordleDefinition(wordToGuess.definition);
+	}
+
+	IEnumerator RevealRandomLetter()
+	{
+		int index = PickHintLetter();
+		wordleLetterRows[currentRow].SetLetter(index, overrideWord[index]);
+		yield return new WaitForSeconds(0.5f);
+		currentWord[index] = overrideWord[index].ToString().ToUpper()[0];
+		wordleLetterRows[currentRow].SetLetterState(index, 3);
+		maxRevealCount--;
+
+		if (maxRevealCount >= 0)
+		{
+			OnScreenNotificationManager.instance.CreateNotification(maxRevealCount + " Reveal Left", OnScreenNotificationType.Info);
+		}
+		else
+		{
+			OnScreenNotificationManager.instance.CreateNotification("No Reveal Left", OnScreenNotificationType.Info);
+		}
+	}
+
+	int PickHintLetter()
+	{
+		string word = wordToGuess.word;
+		int randomIndex = UnityEngine.Random.Range(0, word.Length);
+
+		while (allOverrideWord[randomIndex] != '\0' && currentWord[randomIndex] != '\0')
+		{
+			randomIndex = UnityEngine.Random.Range(0, word.Length);
+		}
+
+		overrideWord[randomIndex] = word[randomIndex].ToString().ToUpper()[0];
+		allOverrideWord[randomIndex] = word[randomIndex].ToString().ToUpper()[0];
+		return randomIndex;
+	}
+
+	internal bool ActivateHint(WordleHints hintType)
+	{
+		Debug.Log("Activating Hint: " + hintType.ToString());
+
+		switch (hintType)
+		{
+			case WordleHints.None:
+				return false;
+			case WordleHints.RevealRandomLetter:
+				if (maxRevealCount <= 0)
+				{
+					OnScreenNotificationManager.instance.CreateNotification("No more hints left!", OnScreenNotificationType.Error);
+					return false;
+				}
+				StartCoroutine(RevealRandomLetter());
+				return false;
+			case WordleHints.RevealDefinition:
+				RevealDefinition();
+				return true;
+			default:
+				return false;
+		}
+	}
 }
+
+public enum WordleHints { None, RevealRandomLetter, RevealDefinition }
 
 

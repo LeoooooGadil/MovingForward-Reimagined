@@ -82,6 +82,7 @@ public class OnScreenNotificationItem : MonoBehaviour
 			yield return null;
 		}
 		
+		yield return new WaitForSeconds(3f);
 		StartCoroutine(FadeOut());
 	}
 
@@ -92,7 +93,7 @@ public class OnScreenNotificationItem : MonoBehaviour
 		// after that destroy the notification
 
 		float t = 0f;
-		float fadeTime = 0.5f;
+		float fadeTime = 2.5f;
 
 		while (t < 1f)
 		{

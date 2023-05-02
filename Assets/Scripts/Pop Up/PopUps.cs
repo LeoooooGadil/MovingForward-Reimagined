@@ -9,20 +9,8 @@ public class PopUps
 	public GameObject PopUpPrefab;
 }
 
-public enum PopUpResult
-{
-	None,
-	Yes,
-	No,
-	Ok,
-}
-
 public enum PopUpType
 {
 	None,
-	YesNo,
-	Ok,
-	OkCancel,
-	Info,
-	Sequence,
+	WordleHint,
 }

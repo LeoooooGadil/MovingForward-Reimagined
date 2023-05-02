@@ -22,12 +22,26 @@ public class WordleLetterRows : MonoBehaviour
 		}
 	}
 
-	public void RemoveLetterFromRow()
+	public void SetLetter(int index, char letter)
+	{
+		letterBoxes[index].SetLetter(letter.ToString().ToUpper().ToCharArray()[0]);
+		word[index] = letter;
+	}
+
+	public void SetLetterState(int index, int state)
+	{
+		letterBoxes[index].UpdateLetterBox(state);
+	}
+
+	public void RemoveLetterFromRow(char[] _override)
 	{
 		for (int i = word.Length - 1; i >= 0; i--)
 		{
 			if (word[i] != '\0')
 			{
+				// if the override is not null, then skip the letter and go to the next one
+				if (_override[i] != '\0') continue;
+
 				word[i] = '\0';
 				letterBoxes[i].SetLetter('\0');
 				break;

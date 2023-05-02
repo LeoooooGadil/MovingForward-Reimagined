@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PopUpManager : MonoBehaviour
 {
-	public static PopUpManager Instance;
+	public static PopUpManager instance;
     public GameObject BackDrop;
     public List<PopUps> PopUps = new();
 
+    private GameObject activePopUp;
+
 	void Awake()
 	{
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -20,4 +22,19 @@ public class PopUpManager : MonoBehaviour
             Destroy(gameObject);
         }
 	}
+
+    public WordlePopUpController ShowWordleHintPopUp()
+    {
+        BackDrop.SetActive(true);
+        activePopUp = Instantiate(PopUps.Find(x => x.Type == PopUpType.WordleHint).PopUpPrefab, GetComponentInChildren<Canvas>().transform);
+        activePopUp.GetComponent<WordlePopUpController>().closingAction = () => ClosingPopUp();
+        return activePopUp.GetComponent<WordlePopUpController>();
+    }
+
+    internal void ClosingPopUp()
+    {
+        BackDrop.SetActive(false);
+        Destroy(activePopUp);
+        AudioManager.instance.PlaySFX("CloseClick");
+    }
 }
