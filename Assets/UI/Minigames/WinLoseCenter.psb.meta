@@ -47,6 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -89,6 +90,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
   - name: Layer 1
@@ -98,8 +100,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 275
+      x: 302
+      y: 4
       width: 106
       height: 119
     spriteID: a25984e731cbd7b49906744315eec9fb
@@ -111,7 +113,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -197, y: 192}
+    uvTransform: {x: 302, y: 4}
+    spritePosition: {x: 201, y: 82}
   - name: Hue/Saturation 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -119,8 +122,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 464
-      y: 4
+      x: 416
+      y: 116
       width: 0
       height: 0
     spriteID: df7191b9885a18149910fea4fb99edea
@@ -132,7 +135,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -46, y: -202}
+    uvTransform: {x: 416, y: 116}
+    spritePosition: {x: 0, y: 206}
   - name: Layer 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -153,7 +157,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 0, y: 170}
+    uvTransform: {x: 4, y: 180}
+    spritePosition: {x: 4, y: 10}
   - name: Layer 4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -161,7 +166,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 302
+      x: 416
       y: 4
       width: 154
       height: 117
@@ -174,7 +179,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 125, y: -52}
+    uvTransform: {x: 239, y: -58}
+    spritePosition: {x: 309, y: 62}
   - name: Layer 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -195,7 +201,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -105, y: -30}
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 109, y: 34}
   characterData:
     bones: []
     parts: []
@@ -232,7 +239,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: a25984e731cbd7b49906744315eec9fb
     layerID: 11
-    mosaicPosition: {x: 4, y: 275}
+    mosaicPosition: {x: 302, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -242,7 +249,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: df7191b9885a18149910fea4fb99edea
     layerID: 18
-    mosaicPosition: {x: 464, y: 4}
+    mosaicPosition: {x: 416, y: 116}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -262,7 +269,7 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 3645f06351991f64a9abb6f62af7fe44
     layerID: 19
-    mosaicPosition: {x: 302, y: 4}
+    mosaicPosition: {x: 416, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1

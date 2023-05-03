@@ -47,6 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
+    cookieMode: 0
     filterMode: 1
     aniso: 1
     mipBias: 0
@@ -89,6 +90,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
   - name: R arm
@@ -490,7 +492,8 @@ ScriptedImporter:
     - {x: 30, y: 31}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -186, y: -444}
+    uvTransform: {x: 379, y: 578}
+    spritePosition: {x: 565, y: 1022}
   - name: body
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -877,7 +880,8 @@ ScriptedImporter:
     - {x: 28, y: 29}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -392, y: -562}
+    uvTransform: {x: 222, y: 578}
+    spritePosition: {x: 614, y: 1140}
   - name: 'Head '
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1246,7 +1250,8 @@ ScriptedImporter:
     - {x: 28, y: 29}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -415, y: -524}
+    uvTransform: {x: 222, y: 854}
+    spritePosition: {x: 637, y: 1378}
   - name: R leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -1666,7 +1671,8 @@ ScriptedImporter:
     - {x: 31, y: 32}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -346, y: -621}
+    uvTransform: {x: 222, y: 4}
+    spritePosition: {x: 568, y: 625}
   - name: L leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2065,7 +2071,8 @@ ScriptedImporter:
     - {x: 29, y: 30}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -662, y: -621}
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 666, y: 625}
   - name: L arm
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -2477,7 +2484,8 @@ ScriptedImporter:
     - {x: 31, y: 32}
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -711, y: -434}
+    uvTransform: {x: 4, y: 589}
+    spritePosition: {x: 715, y: 1023}
   characterData:
     bones:
     - name: bone_1

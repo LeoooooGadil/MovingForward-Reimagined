@@ -31,6 +31,14 @@ public class PopUpManager : MonoBehaviour
         return activePopUp.GetComponent<WordlePopUpController>();
     }
 
+    public DailyMoodTrackerPopUpController ShowDailyMoodTrackerPopUp()
+    {
+        BackDrop.SetActive(true);
+        activePopUp = Instantiate(PopUps.Find(x => x.Type == PopUpType.DailyMoodTracker).PopUpPrefab, GetComponentInChildren<Canvas>().transform);
+        activePopUp.GetComponent<DailyMoodTrackerPopUpController>().closingAction = () => ClosingPopUp();
+        return activePopUp.GetComponent<DailyMoodTrackerPopUpController>();
+    }
+
     internal void ClosingPopUp()
     {
         BackDrop.SetActive(false);

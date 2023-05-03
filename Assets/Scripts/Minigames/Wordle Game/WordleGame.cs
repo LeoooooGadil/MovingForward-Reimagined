@@ -96,7 +96,8 @@ public class WordleGame : MonoBehaviour
 		Debug.Log("UpTheGame");
 		Transform thisTransform = gamePanel.transform;
 		// keep in mind that the transform anchor preset is stretch stretch
-		Vector3 newYPosition = new Vector3(thisTransform.position.x, thisTransform.position.y + 400, thisTransform.position.z);
+		float PercentOfScreenHeight = Screen.height * 0.35f;
+		Vector3 newYPosition = new Vector3(thisTransform.position.x, thisTransform.position.y + PercentOfScreenHeight, thisTransform.position.z);
 		newGameYPosition = newYPosition;
 	}
 
@@ -340,19 +341,21 @@ public class WordleGame : MonoBehaviour
 
 	void CreateNewLifeCycle()
 	{
+		float hours = 0.005f;
+
 		LifeCycleItem lifeCycleItem = new LifeCycleItem();
 		lifeCycleItem.name = "Wordle";
-		lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(1.5f);
+		lifeCycleItem.startTime = System.DateTime.Now + System.TimeSpan.FromHours(hours);
 		lifeCycleItem.maxRepeatCount = -1;
 		lifeCycleItem.repeatType = LifeCycleRepeatType.Custom;
-		lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(1.5f).Seconds;
+		lifeCycleItem.customRepeatTime = System.TimeSpan.FromHours(hours).Seconds;
 
 		LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
 
 		NotificationManager.instance.SendNotification(
 			"Moving Forward",
 			"Wordle is ready to play again!",
-			System.DateTime.Now + System.TimeSpan.FromHours(1.5f));
+			System.DateTime.Now + System.TimeSpan.FromHours(hours));
 	}
 
 	void UpdateStatistics()

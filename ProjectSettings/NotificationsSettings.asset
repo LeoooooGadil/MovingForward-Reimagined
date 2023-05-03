@@ -29,12 +29,14 @@
             "m_Keys": [
                 "UnityNotificationAndroidRescheduleOnDeviceRestart",
                 "UnityNotificationAndroidUseCustomActivity",
-                "UnityNotificationAndroidCustomActivityString"
+                "UnityNotificationAndroidCustomActivityString",
+                "UnityNotificationAndroidScheduleExactAlarms"
             ],
             "m_Values": [
                 "True",
-                "False",
-                "com.unity3d.player.UnityPlayerActivity"
+                "True",
+                "com.Olympian.MovingForward",
+                "-1"
             ]
         },
         "DrawableResources": [

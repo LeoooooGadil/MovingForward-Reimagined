@@ -124,6 +124,8 @@ MonoBehaviour:
   BackDrop: {fileID: 4037302112622211674}
   PopUps:
   - Type: 1
+    PopUpPrefab: {fileID: 8207093556211011974, guid: e791e05710f0f8a4b9abb93c69690f20, type: 3}
+  - Type: 2
     PopUpPrefab: {fileID: 8207093556211011974, guid: 87235bc9b2455f14c928290d08e8cef1, type: 3}
 --- !u!1 &4037302114180140198
 GameObject:

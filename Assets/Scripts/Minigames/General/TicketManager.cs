@@ -20,7 +20,7 @@ public class TicketManager : MonoBehaviour
 	public Text ticketText;
 
 	private float timer = 0;
-	private float maxTimer = 1f;
+	private float maxTimer = 0.5f;
 
 	void Awake()
 	{

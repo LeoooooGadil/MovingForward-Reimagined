@@ -17,6 +17,8 @@ public class PlayButtonLifeCycle : MonoBehaviour, IPointerUpHandler, IPointerDow
 	private float holdTime = 1.5f;
 	private bool isHolding = false;
 
+	private float checkingTimer = 0;
+
 	private void Start()
 	{
 		CheckLifeCycle();
@@ -36,16 +38,17 @@ public class PlayButtonLifeCycle : MonoBehaviour, IPointerUpHandler, IPointerDow
 		if (thisLifeCycle == null)
 		{
 			isReadyToPlay = true;
+			TicketAccess.ResetTicket(lifeCycle);
 			return;
 		}
 
 		if (thisLifeCycle.Envoke)
 		{
 			LifeCycleManager.instance.EnvokeLifeCycleItem(lifeCycle);
+			TicketAccess.ResetTicket(lifeCycle);
 
 			// make the game active
 			isReadyToPlay = true;
-			TicketAccess.RemoveTicket(lifeCycle);
 		}
 	}
 
@@ -54,6 +57,15 @@ public class PlayButtonLifeCycle : MonoBehaviour, IPointerUpHandler, IPointerDow
 
 		button = GetComponent<Button>();
 		buttonAnimator = GetComponent<ButtonAnimator>();
+
+		// using checkingTimer to check every .5 seconds
+		checkingTimer += Time.deltaTime;
+
+		if (checkingTimer >= .5f)
+		{
+			CheckLifeCycle();
+			checkingTimer = 0;
+		}
 
 		if (isReadyToPlay)
 		{
@@ -79,7 +91,7 @@ public class PlayButtonLifeCycle : MonoBehaviour, IPointerUpHandler, IPointerDow
 			{
 				AudioManager.instance.PlaySFX("EhhEhhClick");
 				OnScreenNotificationManager.instance.CreateNotification("Dev Mode: Hello There!", OnScreenNotificationType.Warning);
-				OnScreenNotificationManager.instance.CreateNotification("Timer Bypassed", OnScreenNotificationType.Warning);
+				OnScreenNotificationManager.instance.CreateNotification("Timer Bypassed", OnScreenNotificationType.Sucess);
 				LifeCycleManager.instance.BypassLifeCycleItem(lifeCycle);
 				TicketAccess.RemoveTicket(lifeCycle);
 				timer = 0;

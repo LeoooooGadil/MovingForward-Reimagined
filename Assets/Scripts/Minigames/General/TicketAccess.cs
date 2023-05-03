@@ -36,6 +36,15 @@ public static class TicketAccess
 		}
 	}
 
+	public static void CreateTicket(string ticketName, int maxTickets)
+	{
+		TicketManagerSave ticketManagerSave = LoadTicketManagerSave();
+
+		ticketManagerSave.AddTicketItem(ticketName, maxTickets, maxTickets);
+
+		SaveTicketManager(ticketManagerSave);
+	}
+
 	public static void RemoveOneFromTicket(string ticketName)
 	{
 		TicketManagerSave ticketManagerSave = LoadTicketManagerSave();
@@ -63,7 +72,28 @@ public static class TicketAccess
 		if (ticketItemSave != null)
 		{
 			ticketManagerSave.RemoveTicketItem(ticketName);
-            ticketManagerSave.AddTicketItem(ticketName, ticketItemSave.maxTickets, ticketItemSave.maxTickets);
+		}
+		else
+		{
+			Debug.Log("Ticket " + ticketName + " does not exist.");
+		}
+
+		SaveTicketManager(ticketManagerSave);
+	}
+
+	public static void ResetTicket(string ticketName)
+	{
+		TicketManagerSave ticketManagerSave = LoadTicketManagerSave();
+
+		TicketItemSave ticketItemSave = ticketManagerSave.GetTicketItem(ticketName);
+
+		if (ticketItemSave != null)
+		{
+			ticketItemSave.currentTickets = ticketItemSave.maxTickets;
+		}
+		else
+		{
+			Debug.Log("Ticket " + ticketName + " does not exist.");
 		}
 
 		SaveTicketManager(ticketManagerSave);
