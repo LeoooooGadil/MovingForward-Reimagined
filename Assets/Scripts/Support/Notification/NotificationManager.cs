@@ -44,8 +44,6 @@ public class NotificationManager : MonoBehaviour
 		notification.Text = text;
 		notification.SmallIcon = "default_icon";
 		notification.FireTime = System.DateTime.Now.AddSeconds(delay);
-		// open the app when the notification is tapped
-		notification.IntentData = "app://wordle";
 
 		AndroidNotificationCenter.SendNotification(notification, channelID);
 
