@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class EmojiButton : MonoBehaviour
+public class EmojiButton : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool isActivated = false;
+
+	// Start is called before the first frame update
+	void Start()
     {
         
     }
@@ -15,4 +18,9 @@ public class EmojiButton : MonoBehaviour
     {
         
     }
+
+    public void OnPointerClick(PointerEventData eventData)
+	{
+        isActivated = !isActivated;
+	}
 }
