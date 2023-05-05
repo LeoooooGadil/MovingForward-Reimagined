@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveHorizontal = Input.GetAxisRaw("Horizontal");
-
         animate.SetFloat("Speed", Mathf.Abs(moveHorizontal));
 
         if (moveHorizontal > 0 && !facingRight)
@@ -33,6 +31,13 @@ public class PlayerController : MonoBehaviour
         {
             Flip();
         }
+    }
+
+    public void Move(float move)
+    {
+        // make the move float is either -1, 0, or 1
+        move = Mathf.Clamp(move, -1f, 1f);
+        moveHorizontal = move;
     }
 
     // FixedUpdate is called every fixed frame-rate frame

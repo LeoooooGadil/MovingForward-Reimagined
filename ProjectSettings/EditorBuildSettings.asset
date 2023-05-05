@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Locations/Location_Home.unity
     guid: 38c7a5ff939b0884b8cf348d0718fc05
   - enabled: 1
+    path: Assets/Scenes/Locations/Location_Bedroom.unity
+    guid: 117e84ac78c528c4492895fb85f7c3ce
+  - enabled: 1
     path: Assets/Scenes/Locations/Location_Out.unity
     guid: 3bd8704710b23d44292559b3eb5758db
   - enabled: 1

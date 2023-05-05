@@ -19,3 +19,6 @@ MonoBehaviour:
   - label: Out
     sceneName: Location_Out
     thumbnail: {fileID: 2800000, guid: e6c76b8ae13f17f408e2f2bf01f6b331, type: 3}
+  - label: Bedroom
+    sceneName: Location_Bedroom
+    thumbnail: {fileID: 2800000, guid: e6c76b8ae13f17f408e2f2bf01f6b331, type: 3}
