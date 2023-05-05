@@ -44,6 +44,7 @@ public class NumberLocationGame : MonoBehaviour
 	private int numberOfTimesPlayed = 0;
 
 	private int livesLeft = 0;
+	private int maxShowNumberHint = 3;
 
 	public Image ContainerImage;
 
@@ -219,6 +220,7 @@ public class NumberLocationGame : MonoBehaviour
 			NumberTablet tablet = FindAppropriateTablet();
 			tablet.SetNumber(0);
 			TabletContainingNumber.Add(tablet);
+			TabletRemaining.Add(tablet);
 		}
 	}
 
@@ -525,6 +527,18 @@ public class NumberLocationGame : MonoBehaviour
 
 	IEnumerator ShowMeTheNextNumber()
 	{
+		maxShowNumberHint--;
+
+
+		if (maxShowNumberHint >= 0)
+		{
+			OnScreenNotificationManager.instance.CreateNotification(maxShowNumberHint + " Reveal Left", OnScreenNotificationType.Info);
+		}
+		else
+		{
+			OnScreenNotificationManager.instance.CreateNotification("No Reveal Left", OnScreenNotificationType.Info);
+		}
+
 		MinigameHintPanel.SetActive(false);
 		state = 1;
 		int nextNumber = NotFoundNumbers[0];
@@ -534,6 +548,7 @@ public class NumberLocationGame : MonoBehaviour
 			if (item.number == nextNumber)
 			{
 				item.OnClick();
+				TabletRemaining.Remove(item);
 				break;
 			}
 		}
@@ -553,6 +568,12 @@ public class NumberLocationGame : MonoBehaviour
 			case NumberLocationHints.None:
 				return false;
 			case NumberLocationHints.ShowMeTheNextNumber:
+				if (maxShowNumberHint <= 0)
+				{
+					OnScreenNotificationManager.instance.CreateNotification("No more hints left!", OnScreenNotificationType.Error);
+					return false;
+				}
+
 				StartCoroutine(ShowMeTheNextNumber());
 				return true;
 			case NumberLocationHints.LookAgain:

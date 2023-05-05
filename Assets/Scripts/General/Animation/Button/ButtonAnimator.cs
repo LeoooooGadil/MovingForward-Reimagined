@@ -13,8 +13,6 @@ public class ButtonAnimator : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public bool isActive = true;
     private Button button;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         if (animatorController == null)

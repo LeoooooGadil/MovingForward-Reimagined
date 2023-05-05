@@ -102,6 +102,7 @@ public class LevelManager : MonoBehaviour
 
 				transitionCanvas.enabled = true;
 				ActiveTransition = transition.AnimationSO;
+				AudioManager.instance.PlaySFX("WhooshSfx", 0.5f);
 				StartCoroutine(Exit());
 			}
 			else
@@ -123,6 +124,8 @@ public class LevelManager : MonoBehaviour
 
 	private IEnumerator Enter()
 	{
+		AudioManager.instance.PlaySFX("WhooshSfx", 0.5f);
+		yield return new WaitForSeconds(0.2f);
 		yield return StartCoroutine(ActiveTransition.Enter(transitionCanvas));
 		yield return new WaitForSeconds(0.1f);
 		transitionCanvas.enabled = false;

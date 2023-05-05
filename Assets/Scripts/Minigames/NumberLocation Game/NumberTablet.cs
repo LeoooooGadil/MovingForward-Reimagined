@@ -56,6 +56,7 @@ public class NumberTablet : MonoBehaviour, IPointerClickHandler
 		Image image = GetComponent<Image>();
 		// no color and transparent
 		image.color = new Color(0f, 0f, 0f, 0f);
+		StopAllCoroutines();
 	}
 
 	public void OnPointerClick(PointerEventData eventData)

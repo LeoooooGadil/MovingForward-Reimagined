@@ -34,11 +34,6 @@ public class NumberLocationUI : MonoBehaviour
 		TopPanel.SetActive(false);
 	}
 
-	void OnDisable()
-	{
-		TopPanel.SetActive(true);
-	}
-
 	void Update()
 	{
 		setDifficultyText();

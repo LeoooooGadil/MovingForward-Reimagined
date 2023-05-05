@@ -8,12 +8,21 @@ public class HowToPlayExitButton : MonoBehaviour, IPointerClickHandler
 	public GameObject howToPlayPanel;
 	public GameObject BackDrop;
 	public GameObject howToPlayButton;
+	public GameObject MinigameMenu;
+	public bool isMinigameMenuActive = false;
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-        howToPlayPanel.SetActive(false);
-        BackDrop.SetActive(false);
+		howToPlayPanel.SetActive(false);
+		BackDrop.SetActive(false);
 		howToPlayButton.SetActive(true);
-        AudioManager.instance.PlaySFX("PopClick");
+
+		if (isMinigameMenuActive)
+		{	
+			MinigameMenu.SetActive(true);
+			isMinigameMenuActive = false;
+		}
+
+		AudioManager.instance.PlaySFX("PopClick");
 	}
 }

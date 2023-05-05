@@ -18,6 +18,7 @@ public class WordleGame : MonoBehaviour
 	private MovingForwardWordleWordsObject.Word wordToGuess;
 	private int currentRow = 0;
 	private int maxRevealCount = 2;
+	private bool isShownDefinition = false;
 	private char[] wordToGuessCharArray = new char[5];
 	private char[] currentWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
 	private char[] allOverrideWord = new char[5] { '\0', '\0', '\0', '\0', '\0' };
@@ -341,7 +342,7 @@ public class WordleGame : MonoBehaviour
 
 	void CreateNewLifeCycle()
 	{
-		float hours = 0.005f;
+		float hours = 1.5f;
 
 		LifeCycleItem lifeCycleItem = new LifeCycleItem();
 		lifeCycleItem.name = "Wordle";
@@ -479,11 +480,6 @@ public class WordleGame : MonoBehaviour
 
 	IEnumerator RevealRandomLetter()
 	{
-		int index = PickHintLetter();
-		wordleLetterRows[currentRow].SetLetter(index, overrideWord[index]);
-		yield return new WaitForSeconds(0.5f);
-		currentWord[index] = overrideWord[index].ToString().ToUpper()[0];
-		wordleLetterRows[currentRow].SetLetterState(index, 3);
 		maxRevealCount--;
 
 		if (maxRevealCount >= 0)
@@ -494,6 +490,12 @@ public class WordleGame : MonoBehaviour
 		{
 			OnScreenNotificationManager.instance.CreateNotification("No Reveal Left", OnScreenNotificationType.Info);
 		}
+
+		int index = PickHintLetter();
+		wordleLetterRows[currentRow].SetLetter(index, overrideWord[index]);
+		yield return new WaitForSeconds(0.5f);
+		currentWord[index] = overrideWord[index].ToString().ToUpper()[0];
+		wordleLetterRows[currentRow].SetLetterState(index, 3);
 	}
 
 	int PickHintLetter()
@@ -511,27 +513,43 @@ public class WordleGame : MonoBehaviour
 		return randomIndex;
 	}
 
-	internal bool ActivateHint(WordleHints hintType)
+	internal int ActivateHint(WordleHints hintType)
 	{
 		Debug.Log("Activating Hint: " + hintType.ToString());
+
+		// isAcceptedStates
+		// 0 = is not accepted
+		// 1 = is accepted and cost money
+		// 2 = is accepted and cost no money
 
 		switch (hintType)
 		{
 			case WordleHints.None:
-				return false;
+				return 0;
 			case WordleHints.RevealRandomLetter:
 				if (maxRevealCount <= 0)
 				{
 					OnScreenNotificationManager.instance.CreateNotification("No more hints left!", OnScreenNotificationType.Error);
-					return false;
+					return 0;
 				}
 				StartCoroutine(RevealRandomLetter());
-				return false;
+
+				return 1;
 			case WordleHints.RevealDefinition:
 				RevealDefinition();
-				return true;
+
+				if (isShownDefinition)
+				{
+					return 2;
+				}
+				else
+				{
+					isShownDefinition = true;
+				}
+
+				return 1;
 			default:
-				return false;
+				return 0;
 		}
 	}
 }

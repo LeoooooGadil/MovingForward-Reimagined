@@ -56,7 +56,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 89dc6bbba2ae6c54a9e835dbe6fbf288, type: 3}
     volume: 1
   - name: WhooshSfx
-    clip: {fileID: 8300000, guid: 5a979786708e61641875fa7e8d4d2cad, type: 3}
+    clip: {fileID: 8300000, guid: 3acefbe25601d90468133c281e377938, type: 3}
     volume: 1
   - name: PaperCrumbleSfx
     clip: {fileID: 8300000, guid: ff841a250d1095f4ca3ca7e5adbc0f90, type: 3}
