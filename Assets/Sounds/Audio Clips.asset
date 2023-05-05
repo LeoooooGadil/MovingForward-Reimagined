@@ -71,11 +71,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2ec14d07946c7fe429f08fc058e5b2f8, type: 3}
     volume: 1
   MusicClips:
-  - name: INoLongerNeedYou
-    clip: {fileID: 8300000, guid: fcb7bd0f27907b848a417c8d5b0fd06f, type: 3}
-    volume: 1
-  - name: SolBeach
-    clip: {fileID: 8300000, guid: f51cdc1151bcf474884dbb01ce0fcc32, type: 3}
+  - name: Caketown
+    clip: {fileID: 8300000, guid: 11de737f68fdf7b43b9a7118adf22fae, type: 3}
     volume: 1
   - name: LunarLounnging
     clip: {fileID: 8300000, guid: eed4a5ce624221044b0ac50bd7baf341, type: 3}
