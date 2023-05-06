@@ -8,6 +8,7 @@ TagManager:
   - Button
   - DontSwipe
   - WordleGameView
+  - Trash Item
   layers:
   - Default
   - TransparentFX

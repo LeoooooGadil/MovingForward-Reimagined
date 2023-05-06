@@ -13,7 +13,7 @@ public class WorldManager : MonoBehaviour
 
 		try
 		{
-			currentWorld = SceneryManager.instance.sceneryManagerSave.currentSceneryIndex ;
+			currentWorld = SceneryManager.instance.sceneryManagerSave.currentSceneryIndex;
 		}
 		catch
 		{

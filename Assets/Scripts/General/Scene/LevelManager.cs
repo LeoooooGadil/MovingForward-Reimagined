@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				// ignored null reference exception
 			}

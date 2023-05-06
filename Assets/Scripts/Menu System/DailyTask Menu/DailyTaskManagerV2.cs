@@ -215,10 +215,8 @@ public class DailyTaskManagerV2 : MonoBehaviour
 	public Dictionary<string, List<Task>> GetTasks()
 	{
 		Dictionary<string, List<Task>> allTasks = new Dictionary<string, List<Task>>();
-
 		allTasks.Add("unfinished", dailyTaskSaveV2.dailyTasks);
 		allTasks.Add("finished", dailyTaskSaveV2.completedTasks);
-
 		return allTasks;
 	}
 
