@@ -63,13 +63,20 @@ public class DustMeOffGame : MonoBehaviour
 	{
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore != null)
+		if (chore.dailyChoreType == DailyChoreType.DustMeOff)
 		{
-			if (chore.dailyChoreType == DailyChoreType.DustMeOff)
+			ChoresManager.instance.CompleteChore(chore);
+		}
+		else
+		{
+			chore = ChoresManager.instance.FindChore(DailyChoreRoom.None, DailyChoreType.DustMeOff);
+
+			if (chore != null)
 			{
 				ChoresManager.instance.CompleteChore(chore);
 			}
 		}
+
 	}
 
 	void StopTheGame()

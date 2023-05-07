@@ -424,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dustBar: {fileID: 218212301283869622}
+  dustParticle: {fileID: 120410, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
   whereDidSpawn: 0
   dustAmount: 100
   negativeDustAmount: 10
@@ -431,6 +432,8 @@ MonoBehaviour:
   dustMeOffGame: {fileID: 0}
   dustedOffColor: {r: 1, g: 1, b: 1, a: 1}
   dustedOnColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  isStopMoving: 0
+  isActive: 1
 --- !u!114 &6397871250747707937
 MonoBehaviour:
   m_ObjectHideFlags: 0

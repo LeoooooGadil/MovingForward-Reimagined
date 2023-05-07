@@ -11,7 +11,7 @@ public class ChoresManager : MonoBehaviour
 
 	private string saveFileName = "ChoresManager";
 
-	public Chore activeChore = null;
+	public Chore activeChore;
 
 	void Awake()
 	{
@@ -203,6 +203,14 @@ public class ChoresManager : MonoBehaviour
 
 	public Chore GetActiveChore()
 	{
+		// check if there is an active chore
+		if (activeChore == null)
+		{
+			// if there is no active chore, return null
+			return null;
+		}
+
+		// if there is an active chore, check if it is completed
 		return activeChore;
 	}
 

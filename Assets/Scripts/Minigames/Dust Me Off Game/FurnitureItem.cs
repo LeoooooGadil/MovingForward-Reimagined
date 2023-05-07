@@ -5,6 +5,7 @@ using UnityEngine;
 public class FurnitureItem : MonoBehaviour
 {
 	public FurnitureDustBar dustBar;
+	public GameObject dustParticle;
 
 	// 0 = spawn from left
 	// 1 = spawn from Top
@@ -71,13 +72,25 @@ public class FurnitureItem : MonoBehaviour
 		dustBar.UpdateDustAmount(negativeDustAmount);
 		spriteRenderer.color = Color.Lerp(dustedOffColor, dustedOnColor, dustBar.slider.value / dustBar.slider.maxValue);
 
+		// spawn dust particle
+
+
 		if (dustBar.slider.value <= 0)
 		{
 			Debug.Log("Dust Bar is empty");
 			AudioManager.instance.PlaySFX("WinSfx");
 			dustMeOffGame.CleanedFurniture(transform.position, points);
 			dustMeOffGame.NegateSpawnRate();
+			GameObject dust = Instantiate(dustParticle, transform.position, Quaternion.identity);
+			Destroy(dust, 1f);
 			Destroy(gameObject);
+		}
+		else
+		{
+			GameObject dust = Instantiate(dustParticle, transform.position, Quaternion.identity);
+			// set parent to this object
+			dust.transform.SetParent(transform);
+			Destroy(dust, 1f);
 		}
 	}
 
@@ -150,7 +163,8 @@ public class FurnitureItem : MonoBehaviour
 		}
 	}
 
-	private void OnDestroy() {
+	private void OnDestroy()
+	{
 		dustMeOffGame.RemoveFurnitureItem(this);
 	}
 }

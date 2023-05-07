@@ -353,16 +353,12 @@ public class NumberLocationGame : MonoBehaviour
 	{
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore != null)
+		if (chore.dailyChoreType == DailyChoreType.NumberPlacement)
 		{
-			if (chore.dailyChoreType == DailyChoreType.NumberPlacement)
-			{
-				ChoresManager.instance.CompleteChore(chore);
-			}
+			ChoresManager.instance.CompleteChore(chore);
 		}
 		else
 		{
-			// find if choreType.JournalEntry exists
 			chore = ChoresManager.instance.FindChore(DailyChoreRoom.None, DailyChoreType.NumberPlacement);
 
 			if (chore != null)
@@ -370,6 +366,7 @@ public class NumberLocationGame : MonoBehaviour
 				ChoresManager.instance.CompleteChore(chore);
 			}
 		}
+
 	}
 
 	void CompensatePlayer()

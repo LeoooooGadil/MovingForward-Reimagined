@@ -101,22 +101,16 @@ public class BreathingExerciseV2 : MonoBehaviour
 
 	void CheckChoreStatus()
 	{
-		if (isChoreCompleted)
-		{
-			return;
-		}
+		if (isChoreCompleted) return;
 
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if(chore != null)
+		if (chore.dailyChoreType == DailyChoreType.Breathe)
 		{
-			if (chore.dailyChoreType == DailyChoreType.Breathe)
+			if (chore.minScore <= exhaleCount)
 			{
-				if(chore.minScore <= exhaleCount)
-				{
-					ChoresManager.instance.CompleteChore(chore);
-					isChoreCompleted = true;
-				} 
+				ChoresManager.instance.CompleteChore(chore);
+				isChoreCompleted = true;
 			}
 		}
 	}

@@ -220,16 +220,12 @@ public class JournalManager : MonoBehaviour
 	{
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore != null)
+		if (chore.dailyChoreType == DailyChoreType.JournalEntry)
 		{
-			if (chore.dailyChoreType == DailyChoreType.JournalEntry)
-			{
-				ChoresManager.instance.CompleteChore(chore);
-			}
+			ChoresManager.instance.CompleteChore(chore);
 		}
 		else
 		{
-			// find if choreType.JournalEntry exists
 			chore = ChoresManager.instance.FindChore(DailyChoreRoom.None, DailyChoreType.JournalEntry);
 
 			if (chore != null)
@@ -237,6 +233,7 @@ public class JournalManager : MonoBehaviour
 				ChoresManager.instance.CompleteChore(chore);
 			}
 		}
+
 	}
 
 	IEnumerator SendPaperAirplane()
@@ -249,6 +246,7 @@ public class JournalManager : MonoBehaviour
 		AudioManager.instance.PlaySFX("WhooshSfx");
 		PaperAnimator.SetTrigger("isFinished");
 		yield return new WaitForSeconds(0.3f);
+		UpdateChoreManager();
 		AudioManager.instance.PlaySFX("PaperCrumbleSfx");
 		yield return new WaitForSeconds(1f);
 		AudioManager.instance.PlaySFX("WhooshSfx");

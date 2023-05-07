@@ -381,16 +381,12 @@ public class WordleGame : MonoBehaviour
 	{
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore != null)
+		if (chore.dailyChoreType == DailyChoreType.Wordle)
 		{
-			if (chore.dailyChoreType == DailyChoreType.Wordle)
-			{
-				ChoresManager.instance.CompleteChore(chore);
-			}
+			ChoresManager.instance.CompleteChore(chore);
 		}
 		else
 		{
-			// find if choreType.JournalEntry exists
 			chore = ChoresManager.instance.FindChore(DailyChoreRoom.None, DailyChoreType.Wordle);
 
 			if (chore != null)
@@ -398,6 +394,7 @@ public class WordleGame : MonoBehaviour
 				ChoresManager.instance.CompleteChore(chore);
 			}
 		}
+
 	}
 
 	void CompensatePlayer()
