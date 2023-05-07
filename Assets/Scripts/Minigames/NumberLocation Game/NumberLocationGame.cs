@@ -360,6 +360,16 @@ public class NumberLocationGame : MonoBehaviour
 				ChoresManager.instance.CompleteChore(chore);
 			}
 		}
+		else
+		{
+			// find if choreType.JournalEntry exists
+			chore = ChoresManager.instance.FindChore(DailyChoreRoom.None, DailyChoreType.NumberPlacement);
+
+			if (chore != null)
+			{
+				ChoresManager.instance.CompleteChore(chore);
+			}
+		}
 	}
 
 	void CompensatePlayer()

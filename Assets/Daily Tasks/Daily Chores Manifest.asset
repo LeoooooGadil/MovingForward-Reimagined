@@ -43,3 +43,9 @@ MonoBehaviour:
     sceneName: NumberLocation Game
     isMandatory: 0
     minScore: 0
+  - name: Write A Journal
+    room: 0
+    type: 4
+    sceneName: Journal
+    isMandatory: 0
+    minScore: 0

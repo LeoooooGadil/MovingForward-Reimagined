@@ -51,7 +51,7 @@ public class DustMeOffGame : MonoBehaviour
 			{
 				isGameRunning = false;
 				StopTheGame();
-				UpdateStatistics();
+				UpdateChoreManager();
 				ShowWinLosePanel();
 			}
 			currentTimer = 1f;
@@ -59,11 +59,17 @@ public class DustMeOffGame : MonoBehaviour
 
 	}
 
-	private void UpdateStatistics()
+	void UpdateChoreManager()
 	{
-		DailyChoreType dailyChoreType = DailyChoreType.DustMeOff;
+		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		ChoresManager.instance.CompleteChore(dailyChoreType);
+		if (chore != null)
+		{
+			if (chore.dailyChoreType == DailyChoreType.DustMeOff)
+			{
+				ChoresManager.instance.CompleteChore(chore);
+			}
+		}
 	}
 
 	void StopTheGame()
