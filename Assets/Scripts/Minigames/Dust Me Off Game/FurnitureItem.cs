@@ -22,8 +22,12 @@ public class FurnitureItem : MonoBehaviour
 
 	private float speed = 1.5f;
 
+	public bool isStopMoving = false;
+	public bool isActive = true;
+
 	void Start()
 	{
+		AudioManager.instance.PlaySFX("ButtonClick");
 		int maxDust = Random.Range(100, 500);
 		int negateDust = Random.Range(10, 50) * (maxDust / 100);
 		dustBar.UpdateDustAmountMax(maxDust);
@@ -57,6 +61,11 @@ public class FurnitureItem : MonoBehaviour
 
 	private void OnMouseDown()
 	{
+		if (isActive == false)
+		{
+			return;
+		}
+
 		Debug.Log("Dusting Off");
 		AudioManager.instance.PlaySFX("PloukSfx");
 		dustBar.UpdateDustAmount(negativeDustAmount);
@@ -67,8 +76,15 @@ public class FurnitureItem : MonoBehaviour
 			Debug.Log("Dust Bar is empty");
 			AudioManager.instance.PlaySFX("WinSfx");
 			dustMeOffGame.CleanedFurniture(transform.position, points);
+			dustMeOffGame.NegateSpawnRate();
 			Destroy(gameObject);
 		}
+	}
+
+	public void StopThisObject()
+	{
+		isStopMoving = true;
+		isActive = false;
 	}
 
 
@@ -78,50 +94,58 @@ public class FurnitureItem : MonoBehaviour
 
 	void Update()
 	{
-		if (whereDidSpawn == 0)
+		if (whereDidSpawn == 0 && isStopMoving == false)
 		{
 			transform.Translate(Vector3.right * Time.deltaTime * speed);
 		}
-		else if (whereDidSpawn == 1)
+		else if (whereDidSpawn == 1 && isStopMoving == false)
 		{
 			transform.Translate(Vector3.down * Time.deltaTime * speed);
 
 		}
-		else if (whereDidSpawn == 2)
+		else if (whereDidSpawn == 2 && isStopMoving == false)
 		{
 			transform.Translate(Vector3.left * Time.deltaTime * speed);
 		}
-		else if (whereDidSpawn == 3)
+		else if (whereDidSpawn == 3 && isStopMoving == false)
 		{
 			transform.Translate(Vector3.up * Time.deltaTime * speed);
 		}
 
 		// destroy object if it goes offscreen (left, right, top, bottom)
 		// check if object comes from left then destroy if it goes offscreen to the right
-		if (whereDidSpawn == 0 && transform.position.x > 10)
+		if (whereDidSpawn == 0 && transform.position.x > 12)
 		{
 			AudioManager.instance.PlaySFX("WrongSfx");
+			dustMeOffGame.NegateSpawnRate();
+			dustMeOffGame.UncleanedFurniture(transform.position, points);
 			Destroy(gameObject);
 		}
 
 		// check if object comes from top then destroy if it goes offscreen to the bottom
-		if (whereDidSpawn == 1 && transform.position.y < -6)
+		if (whereDidSpawn == 1 && transform.position.y < -7)
 		{
 			AudioManager.instance.PlaySFX("WrongSfx");
+			dustMeOffGame.NegateSpawnRate();
+			dustMeOffGame.UncleanedFurniture(transform.position, points);
 			Destroy(gameObject);
 		}
 
 		// check if object comes from right then destroy if it goes offscreen to the left
-		if (whereDidSpawn == 2 && transform.position.x < -10)
+		if (whereDidSpawn == 2 && transform.position.x < -12)
 		{
 			AudioManager.instance.PlaySFX("WrongSfx");
+			dustMeOffGame.NegateSpawnRate();
+			dustMeOffGame.UncleanedFurniture(transform.position, points);
 			Destroy(gameObject);
 		}
 
 		// check if object comes from bottom then destroy if it goes offscreen to the top
-		if (whereDidSpawn == 3 && transform.position.y > 0)
+		if (whereDidSpawn == 3 && transform.position.y > 7)
 		{
 			AudioManager.instance.PlaySFX("WrongSfx");
+			dustMeOffGame.NegateSpawnRate();
+			dustMeOffGame.UncleanedFurniture(transform.position, points);
 			Destroy(gameObject);
 		}
 	}

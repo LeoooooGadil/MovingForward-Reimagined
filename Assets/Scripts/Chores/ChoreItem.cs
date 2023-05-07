@@ -91,7 +91,7 @@ public class ChoreItem : MonoBehaviour
 
 	public void PlayChore()
 	{
+		choreMenuManager.PlayChore(chore);
 		AudioManager.instance.PlaySFX("AcceptClick");
-		// play chore
 	}
 }

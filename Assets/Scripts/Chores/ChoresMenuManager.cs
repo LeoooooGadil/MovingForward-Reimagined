@@ -83,6 +83,7 @@ public class ChoresMenuManager : MonoBehaviour
 		foreach (Chore chore in unfinishedChores)
 		{
 			GameObject choreObject = Instantiate(chorePrefab, choreContainer);
+			choreObject.GetComponent<ChoreItem>().choreMenuManager = this;
 			choreObject.GetComponent<ChoreItem>().SetChore(chore);
 			choreObject.GetComponent<ChoreItem>().SetIndex(index);
 			index++;
@@ -92,6 +93,7 @@ public class ChoresMenuManager : MonoBehaviour
 		foreach (Chore chore in finishedChores)
 		{
 			GameObject choreObject = Instantiate(chorePrefab, choreContainer);
+			choreObject.GetComponent<ChoreItem>().choreMenuManager = this;
 			choreObject.GetComponent<ChoreItem>().SetChore(chore);
 			choreObject.GetComponent<ChoreItem>().SetIndex(index);
 			index++;
@@ -111,5 +113,11 @@ public class ChoresMenuManager : MonoBehaviour
 	{
         if(chore == null) return;
         ChoresManager.instance.CompleteChore(chore);
+	}
+
+	public void PlayChore(Chore chore)
+	{
+		if (chore == null) return;
+		ChoresManager.instance.PlayChore(chore);
 	}
 }

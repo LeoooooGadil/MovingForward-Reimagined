@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Game
+    uniqueID: 2502825699
+    locked: 0
   - name: PopUp
     uniqueID: 1841741869
     locked: 0

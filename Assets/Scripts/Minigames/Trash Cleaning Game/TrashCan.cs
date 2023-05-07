@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrashCan : MonoBehaviour
 {
 	public BoxCollider2D boxCollider;
+    public Vector3 offset;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -20,13 +21,20 @@ public class TrashCan : MonoBehaviour
         collision.GetComponent<TrashItem>().isBeingThrown = true;
         AudioManager.instance.PlaySFX("TrashCrumpleSfx");
 
-        // position the trash item in the top center of the trash can
-        Vector3 TrashCanCenter = new Vector3(transform.position.x, transform.position.y + boxCollider.size.y / 2, transform.position.z);
+        // position the trash item in the top of the trash can
+        Vector3 TrashCanCenter = new Vector3(transform.position.x, transform.position.y, transform.position.z) + offset;
 
         // move the trash item to the center of the trash can
         while (collision.transform.position != TrashCanCenter)
         {
-            collision.transform.position = Vector3.MoveTowards(collision.transform.position, TrashCanCenter, 0.1f);
+            collision.transform.position = Vector3.MoveTowards(collision.transform.position, TrashCanCenter, 0.07f);
+            yield return null;
+        }
+
+        // move the trash item to the bottom of the trash can
+        while (collision.transform.position != transform.position)
+        {
+            collision.transform.position = Vector3.MoveTowards(collision.transform.position, transform.position, 0.07f);
             yield return null;
         }
 

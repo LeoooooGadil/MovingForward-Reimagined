@@ -3565,13 +3565,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuTabs:
   - {fileID: 96542684}
-  - {fileID: 1751781912}
   - {fileID: 1976295158}
   - {fileID: 372550048}
   - {fileID: 1084888121}
   menuTabContents:
   - {fileID: 524902620}
-  - {fileID: 220738369}
   - {fileID: 1272821602}
   - {fileID: 315715209}
   - {fileID: 1989629745}
@@ -6065,7 +6063,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DAILY CHORES
+  m_Text: DAILY TASKS
 --- !u!222 &1346824289
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7090,7 +7088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a8cb09f988c1543b6df209a09909b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeCycleTimer: DailyTask
+  lifeCycleTimer: DailyChore
 --- !u!114 &1582105112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7856,7 +7854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1751781911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7873,10 +7871,10 @@ RectTransform:
   m_Father: {fileID: 704994442}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 383.94965, y: -65}
+  m_SizeDelta: {x: 100, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751781912
 MonoBehaviour:
@@ -9206,7 +9204,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DAILY CHORES
+  m_Text: DAILY TASKS
 --- !u!222 &2052526478
 CanvasRenderer:
   m_ObjectHideFlags: 0

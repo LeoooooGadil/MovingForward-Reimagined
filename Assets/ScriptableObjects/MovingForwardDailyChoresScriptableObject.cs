@@ -26,6 +26,8 @@ public class Chores
 	[SerializeField]
 	public string sceneName;
 	public bool isMandatory;
+	[SerializeField]
+	public int minScore;
 }
 
 [System.Serializable]

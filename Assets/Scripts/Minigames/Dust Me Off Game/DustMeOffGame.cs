@@ -7,9 +7,14 @@ public class DustMeOffGame : MonoBehaviour
 {
 	public GameObject furnitureItemPrefab;
 	public GameObject pointsAfterDeathPrefab;
+	public GameObject pointsAtScore;
 	public List<SpawnArea> spawnAreas;
 	public Text pointsText;
 	public Text timerText;
+
+	public GameObject winLosePanelGameObject;
+	public GameObject startingSceneGameObject;
+	public GameObject topPanelGameObject;
 
 	public float spawnRate = 5f;
 
@@ -19,29 +24,22 @@ public class DustMeOffGame : MonoBehaviour
 	public int TotalSeconds = 60;
 	public float currentTimer = 1f;
 
-    private bool isGameRunning = true;
+	private bool isGameRunning = true;
+
+	private float spawnRateNegative = 0.05f;
+	public GameObject scoreLocation;
 
 	private List<FurnitureItem> spawnedFurnitureItems = new List<FurnitureItem>();
 
-
-	void Start()
-	{
-        isGameRunning = true;
-		TotalFurniture = 0;
-		TotalPoints = 0;
-		TotalSeconds = 60;
-		StartCoroutine(SpawnFurniture());
-	}
-
 	void Update()
 	{
-        pointsText.text = Mathf.Lerp(float.Parse(pointsText.text), TotalPoints, Time.deltaTime).ToString("F0");
+		pointsText.text = TotalPoints.ToString("F0");
 		timerText.text = TotalSeconds.ToString("F0") + "s";
 
-        if (!isGameRunning)
-        {
-            return;
-        }
+		if (!isGameRunning)
+		{
+			return;
+		}
 
 		currentTimer -= Time.deltaTime;
 
@@ -49,24 +47,65 @@ public class DustMeOffGame : MonoBehaviour
 		{
 			TotalSeconds--;
 
-            if (TotalSeconds <= 0)
-            {
-                isGameRunning = false;
-                StopTheGame();
-            }
+			if (TotalSeconds <= 0)
+			{
+				isGameRunning = false;
+				StopTheGame();
+				UpdateStatistics();
+				ShowWinLosePanel();
+			}
 			currentTimer = 1f;
 		}
 
 	}
 
+	private void UpdateStatistics()
+	{
+		DailyChoreType dailyChoreType = DailyChoreType.DustMeOff;
+
+		ChoresManager.instance.CompleteChore(dailyChoreType);
+	}
+
 	void StopTheGame()
 	{
-        StopAllCoroutines();
-        foreach (FurnitureItem furnitureItem in spawnedFurnitureItems)
-        {
-            Destroy(furnitureItem.gameObject);
-        }
-        spawnedFurnitureItems.Clear();
+		StopAllCoroutines();
+		foreach (FurnitureItem furnitureItem in spawnedFurnitureItems)
+		{
+			furnitureItem.StopThisObject();
+		}
+		spawnedFurnitureItems.Clear();
+
+		HighScoreStorage.SaveHighScore("DustMeOffHighScore", (long)TotalPoints);
+	}
+
+	public void ResetTheGame()
+	{
+		StopAllCoroutines();
+		foreach (FurnitureItem furnitureItem in spawnedFurnitureItems)
+		{
+			Destroy(furnitureItem.gameObject);
+		}
+		spawnedFurnitureItems.Clear();
+		topPanelGameObject.SetActive(false);
+		isGameRunning = false;
+		TotalFurniture = 0;
+		TotalPoints = 0;
+		TotalSeconds = 60;
+	}
+
+	void ShowWinLosePanel()
+	{
+		StartCoroutine(ShowWinLosePanelWithDelay());
+	}
+
+	IEnumerator ShowWinLosePanelWithDelay()
+	{
+		yield return new WaitForSeconds(2);
+		DustMeOffWinLosePanel winLosePanel = winLosePanelGameObject.GetComponent<DustMeOffWinLosePanel>();
+		winLosePanel.isWin = TotalPoints == 0 ? false : true;
+		winLosePanel.score = (int)TotalPoints;
+		winLosePanel.highscore = (int)HighScoreStorage.GetHighScore("DustMeOffHighScore");
+		winLosePanelGameObject.SetActive(true);
 	}
 
 	public void CleanedFurniture(Vector3 position, float points)
@@ -75,11 +114,26 @@ public class DustMeOffGame : MonoBehaviour
 		TotalPoints += points;
 		TotalFurniture++;
 		SpawnPointsAfterDeath(position, points);
+		SpawnAtScore(points);
+	}
+
+	public void UncleanedFurniture(Vector3 position, float points)
+	{
+		Debug.Log("Uncleaned Furniture");
+		TotalPoints -= points;
+		SpawnPointsAfterDeath(position, -points);
+		SpawnAtScore(-points);
 	}
 
 	public void SpawnPointsAfterDeath(Vector3 position, float points)
 	{
 		GameObject pointsAfterDeath = Instantiate(pointsAfterDeathPrefab, position, Quaternion.identity);
+		pointsAfterDeath.GetComponent<PointsAfterDeath>().points = points;
+	}
+
+	public void SpawnAtScore(float points)
+	{
+		GameObject pointsAfterDeath = Instantiate(pointsAtScore, scoreLocation.transform.position, Quaternion.identity);
 		pointsAfterDeath.GetComponent<PointsAfterDeath>().points = points;
 	}
 
@@ -105,5 +159,51 @@ public class DustMeOffGame : MonoBehaviour
 			spawnedFurnitureItem.whereDidSpawn = area;
 			yield return new WaitForSeconds(spawnRate);
 		}
+	}
+
+	IEnumerator StartGameWithStartingScene()
+	{
+		startingSceneGameObject.SetActive(true);
+		StartingScene startingScene = startingSceneGameObject.GetComponent<StartingScene>();
+		startingScene.TotalSeconds = 3;
+		startingScene.OnTimerEnd = StartGame;
+		yield return new WaitForSeconds(3);
+		startingSceneGameObject.SetActive(false);
+		StartGame();
+	}
+
+	public void NegateSpawnRate()
+	{
+		// if the TotalSeconds is less than 30, then the spawn rate will be decreased by 0.1f
+		if (TotalSeconds > 30)
+		{
+			spawnRate -= spawnRateNegative;
+		}
+		else
+		{
+			spawnRate -= spawnRateNegative * 2;
+		}
+	}
+
+	internal void StartTheGame()
+	{
+		StartCoroutine(StartGameWithStartingScene());
+	}
+
+	internal void StartGame()
+	{
+		topPanelGameObject.SetActive(true);
+		isGameRunning = true;
+		TotalFurniture = 0;
+		TotalPoints = 0;
+		TotalSeconds = 60;
+		StartCoroutine(SpawnFurniture());
+	}
+
+	internal void StopGame()
+	{
+		isGameRunning = false;
+		StopTheGame();
+		StopAllCoroutines();
 	}
 }

@@ -97,14 +97,16 @@ public class Chore
 {
 	public string choreName;
 	public float choreComponensation;
+	public float minScore;
 	public DailyChoreRoom dailyChoreRoom;
 	public DailyChoreType dailyChoreType;
 	public bool isCompleted;
 
-	public Chore(string _choreName, float _chorePoints, float _choreComponensation, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType, bool _isCompleted)
+	public Chore(string _choreName, float _chorePoints, float _choreComponensation, float _minScore, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType, bool _isCompleted)
 	{
 		choreName = _choreName;
 		choreComponensation = _choreComponensation;
+		minScore = _minScore;
 		dailyChoreRoom = _dailyChoreRoom;
 		dailyChoreType = _dailyChoreType;
 		isCompleted = _isCompleted;
@@ -115,13 +117,15 @@ public class Chore
 		choreName = _chores.name;
 		dailyChoreRoom = _chores.room;
 		dailyChoreType = _chores.type;
+		minScore = _chores.minScore;
 		isCompleted = false;
 	}
 
-	public Chore(string _choreName, float _choreComponensation, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType)
+	public Chore(string _choreName, float _choreComponensation, int _minScore, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType)
 	{
 		choreName = _choreName;
 		choreComponensation = _choreComponensation;
+		minScore = _minScore;
 		dailyChoreRoom = _dailyChoreRoom;
 		dailyChoreType = _dailyChoreType;
 		isCompleted = false;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,13 +54,6 @@ public class AudioManager : MonoBehaviour
 	{
 		SFXAudioSources = new List<AudioSource>();
 		MusicAudioSource = gameObject.AddComponent<AudioSource>();
-
-        // if current scene is the game scene
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Game")
-        {
-            // play the game music
-            PlayMusic("Caketown");
-        }
 	}
 
 	public void PlaySFX(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f)
@@ -101,7 +95,7 @@ public class AudioManager : MonoBehaviour
 		PlaySFX(clip);
 	}
 
-	public void PlayMusic(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f)
+	public void PlayMusic(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f, bool fade = false)
 	{
 		// set the clip
 		MusicAudioSource.clip = clip.clip;
@@ -110,32 +104,44 @@ public class AudioManager : MonoBehaviour
 		MusicAudioSource.outputAudioMixerGroup = GetAudioMixerGroup();
 
 		// set the volume
-		MusicAudioSource.volume = clip.volume * volume;
+		MusicAudioSource.volume = 0;
 
 		// play the clip
 		MusicAudioSource.Play();
+
+		if (fade)
+		{
+			StartCoroutine(FadeInMusic(volume));
+		}
+		else
+		{
+			MusicAudioSource.volume = volume;
+		}
 	}
 
-    IEnumerator FadeInMusic(float volume = 1.0f)
-    {
-        while (MusicAudioSource.volume < 1)
-        {
-            MusicAudioSource.volume += 0.1f;
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
+	IEnumerator FadeInMusic(float volume = 1.0f)
+	{
+		while (MusicAudioSource.volume < 1)
+		{
+			MusicAudioSource.volume += 0.1f;
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
 
-    IEnumerator FadeOutMusic()
-    {
-        while (MusicAudioSource.volume > 0)
-        {
-            MusicAudioSource.volume -= 0.1f;
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
+	IEnumerator FadeOutMusic()
+	{
+		while (MusicAudioSource.volume > 0)
+		{
+			MusicAudioSource.volume -= 0.1f;
+			yield return new WaitForSeconds(0.1f);
+		}
+		MusicAudioSource.Stop();
+	}
 
 	public void ChangeMusic(string clipName, float volume = 1.0f)
 	{
+
+
 		// find the clip
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.MusicClips.Find(x => x.name == clipName);
 
@@ -143,19 +149,24 @@ public class AudioManager : MonoBehaviour
 		PlayMusic(clip);
 	}
 
-    IEnumerator ChangeMusicCoroutine(string clipName, float volume = 1.0f)
-    {
-        yield return FadeOutMusic();
-        PlayMusic(clipName, 0);
-        yield return FadeInMusic(volume);
-    }
+	IEnumerator ChangeMusicCoroutine(string clipName, float volume = 1.0f)
+	{
+		StartCoroutine(FadeOutMusic());
+		yield return new WaitForSeconds(0.5f);
+		PlayMusic(clipName, 0, true);
+	}
 
-	public void PlayMusic(string clipName, float volume = 1.0f)
+	public void PlayMusic(string clipName, float volume = 1.0f, bool fade = false)
 	{
 		// find the clip
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.MusicClips.Find(x => x.name == clipName);
 
 		// play the clip
-		PlayMusic(clip);
+		PlayMusic(clip, volume, fade);
+	}
+
+	internal void StopMusic()
+	{
+		StartCoroutine(FadeOutMusic());
 	}
 }

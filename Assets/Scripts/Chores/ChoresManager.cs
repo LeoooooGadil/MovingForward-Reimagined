@@ -11,6 +11,8 @@ public class ChoresManager : MonoBehaviour
 
 	private string saveFileName = "ChoresManager";
 
+	public Chore activeChore = null;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -101,6 +103,8 @@ public class ChoresManager : MonoBehaviour
 		choresSave.chores.Clear();
 		choresSave.completedChores.Clear();
 
+		int choreCount = dailyChoreCount;
+
 		List<Chore> dailyChores = new List<Chore>();
 
 		if (dailyChoresObject.chores.Count < dailyChoreCount)
@@ -119,15 +123,45 @@ public class ChoresManager : MonoBehaviour
 
 		for (int i = 0; i < dailyChoresObject.chores.Count; i++)
 		{
+			if (dailyChoresObject.chores[i].isMandatory == true)
+			{
+				Chore chore = GenerateOneChore(i);
+				dailyChores.Add(chore);
+				choreCount--;
+			}
+		}
+
+		while (choreCount > 0)
+		{
 			int randomChore = Random.Range(0, dailyChoresObject.chores.Count);
+
+			while (dailyChoresObject.chores[randomChore].isMandatory == true || CheckIfChoreIsAlreadyInTheList(dailyChoresObject.chores[randomChore], dailyChores))
+			{
+				randomChore = Random.Range(0, dailyChoresObject.chores.Count);
+			}
+
 			Chore chore = GenerateOneChore(randomChore);
 			dailyChores.Add(chore);
+			choreCount--;
 		}
 
 		choresSave.chores = dailyChores;
 		choresSave.date = System.DateTime.Now.Date;
 		SaveDailyChores();
 		return;
+	}
+
+	public bool CheckIfChoreIsAlreadyInTheList(Chores chores, List<Chore> alreadyChores)
+	{
+		foreach (Chore chore in alreadyChores)
+		{
+			if (chore.choreName == chores.name)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	Chore GenerateOneChore(int _index = -1)
@@ -137,6 +171,7 @@ public class ChoresManager : MonoBehaviour
 		Chore pickedChore = new Chore(
 			chore.name,
 			compensation,
+			chore.minScore,
 			chore.room,
 			chore.type
 		);
@@ -158,9 +193,36 @@ public class ChoresManager : MonoBehaviour
 
 	public void CompleteChore(Chore _chore)
 	{
-		choresSave.CompleteChore(_chore);
+		OnScreenNotificationManager.instance.CreateNotification("Chore completed!", OnScreenNotificationType.Sucess);
+		OnScreenNotificationManager.instance.CreateNotification("You earned " + _chore.choreComponensation + " coins!", OnScreenNotificationType.Info);
 		ProfileManager.instance.AddMoney(_chore.choreComponensation);
+		choresSave.CompleteChore(_chore);
+		AudioManager.instance.PlaySFX("ChoreCompleteSfx");
 		SaveDailyChores();
+	}
+
+	public Chore GetActiveChore()
+	{
+		return activeChore;
+	}
+
+	public void CompleteChore(DailyChoreType _type)
+	{
+		if (activeChore == null)
+		{
+			Debug.Log("No active chore");
+			return;
+		}
+
+		if (activeChore.dailyChoreType == _type)
+		{
+			CompleteChore(activeChore);
+			activeChore = null;
+		}
+		else
+		{
+			Debug.Log("Wrong chore type");
+		}
 	}
 
 	public Dictionary<string, List<Chore>> GetChores()
@@ -169,6 +231,11 @@ public class ChoresManager : MonoBehaviour
 		chores.Add("unfinished", choresSave.chores);
 		chores.Add("finished", choresSave.completedChores);
 		return chores;
+	}
+
+	public List<Chore> GetUnfinishedChores()
+	{
+		return choresSave.chores;
 	}
 
 	public Chore FindChore(DailyChoreRoom room, DailyChoreType type)
@@ -183,5 +250,47 @@ public class ChoresManager : MonoBehaviour
 			Debug.Log("No chore found");
 			return null;
 		}
+	}
+
+	public void PlayChore(Chore chore)
+	{
+		StartCoroutine(PlayTheChore(chore));
+	}
+
+	public void ChangeScene(DailyChoreRoom room)
+	{
+		SceneryManager.instance.SetScenery(room);
+	}
+
+	public void LoadLevel(DailyChoreType type)
+	{
+		string sceneName = "";
+
+		// find the scene name from the dailyChoresObject
+		for (int i = 0; i < dailyChoresObject.chores.Count; i++)
+		{
+			if (dailyChoresObject.chores[i].type == type)
+			{
+				sceneName = dailyChoresObject.chores[i].sceneName;
+				break;
+			}
+		}
+
+
+		if (sceneName != "")
+			LevelManager.instance.ChangeScene(sceneName);
+		else
+			OnScreenNotificationManager.instance.CreateNotification("No scene found", OnScreenNotificationType.Error);
+		Debug.Log("No scene found");
+	}
+
+	IEnumerator PlayTheChore(Chore chore)
+	{
+		MenuManager.Instance.CloseMenu();
+		yield return new WaitForSeconds(0.5f);
+		ChangeScene(chore.dailyChoreRoom);
+		yield return new WaitForSeconds(0.5f);
+		LoadLevel(chore.dailyChoreType);
+		activeChore = chore;
 	}
 }

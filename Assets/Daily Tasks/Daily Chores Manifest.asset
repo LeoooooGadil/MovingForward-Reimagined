@@ -18,18 +18,28 @@ MonoBehaviour:
     type: 0
     sceneName: Dust Me Off Game
     isMandatory: 1
+    minScore: 0
   - name: Living room needs a little cleaning
     room: 1
     type: 0
     sceneName: Dust Me Off Game
     isMandatory: 1
-  - name: Huminga ka muna
+    minScore: 0
+  - name: Deprived me of air, Daddy! 10 times
     room: 0
     type: 5
-    sceneName: Dust Me Off Game
-    isMandatory: 1
-  - name: Linisan mo labas ng bahay mo
-    room: 3
-    type: 0
-    sceneName: Dust Me Off Game
+    sceneName: Old Breathing Game
     isMandatory: 0
+    minScore: 10
+  - name: Wordle Me This
+    room: 0
+    type: 2
+    sceneName: Wordle Game
+    isMandatory: 0
+    minScore: 0
+  - name: Let's Test Your Memory
+    room: 0
+    type: 3
+    sceneName: NumberLocation Game
+    isMandatory: 0
+    minScore: 0

@@ -358,13 +358,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1544019808800689571, guid: 8da348df79828764cad96535eb937a6d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7263098595030184353, guid: 8da348df79828764cad96535eb937a6d, type: 3}
       propertyPath: m_Name
       value: Scene Manager
       objectReference: {fileID: 0}
     - target: {fileID: 7263098595030184367, guid: 8da348df79828764cad96535eb937a6d, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7263098595030184367, guid: 8da348df79828764cad96535eb937a6d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -483,17 +487,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5352572354771930785, guid: cef81fe051301344c880f03d16168154, type: 3}
-      propertyPath: dailyChoresObject
-      value: 
-      objectReference: {fileID: 11400000, guid: 12c9b27782cc2114f8d2bbb2c850e4e2, type: 2}
     - target: {fileID: 8110027540769311846, guid: cef81fe051301344c880f03d16168154, type: 3}
       propertyPath: m_Name
       value: Chores Manager
       objectReference: {fileID: 0}
     - target: {fileID: 9132365458862267596, guid: cef81fe051301344c880f03d16168154, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9132365458862267596, guid: cef81fe051301344c880f03d16168154, type: 3}
       propertyPath: m_LocalPosition.x
@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3305871714352273692, guid: 4ead87bba5f7e4d4a9fc4176277460aa, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3305871714352273692, guid: 4ead87bba5f7e4d4a9fc4176277460aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -688,6 +688,10 @@ PrefabInstance:
     - target: {fileID: 5234638282197719346, guid: 4ead87bba5f7e4d4a9fc4176277460aa, type: 3}
       propertyPath: m_Name
       value: Screen Notification Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5840464270135240336, guid: 4ead87bba5f7e4d4a9fc4176277460aa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ead87bba5f7e4d4a9fc4176277460aa, type: 3}
@@ -757,7 +761,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4037302113939317562, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4037302113939317562, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}
       propertyPath: m_LocalPosition.x
@@ -805,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4037302114180140202, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}

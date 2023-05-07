@@ -349,6 +349,19 @@ public class NumberLocationGame : MonoBehaviour
 		Aggregator.instance.Publish(numberLocationCompletedEvent);
 	}
 
+	void UpdateChoreManager()
+	{
+		Chore chore = ChoresManager.instance.GetActiveChore();
+
+		if (chore != null)
+		{
+			if (chore.dailyChoreType == DailyChoreType.NumberPlacement)
+			{
+				ChoresManager.instance.CompleteChore(chore);
+			}
+		}
+	}
+
 	void CompensatePlayer()
 	{
 		ProfileManager.instance.AddMoney(25);
@@ -492,6 +505,8 @@ public class NumberLocationGame : MonoBehaviour
 		numberLocationWinLosePanel.score = (int)points;
 		numberLocationWinLosePanel.difficulty = difficulty;
 		MinigameWinLosePanel.SetActive(true);
+		UpdateChoreManager();
+		yield return new WaitForSeconds(1);
 		UpdateStatistics();
 		CompensatePlayer();
 
