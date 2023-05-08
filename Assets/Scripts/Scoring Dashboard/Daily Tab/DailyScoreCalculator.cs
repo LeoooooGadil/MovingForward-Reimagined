@@ -90,6 +90,23 @@ public static class DailyScoreCalculator
         }
     }
 
+    public static void PublishDustMeOff(string key, DustMeOffAggregate dustMeOffAggregate)
+    {
+        LoadDailyScore();
+
+        DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(dustMeOffAggregate.timestamp);
+        DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+        if (dateTime.Day == DateTime.Now.Day)
+        {
+            dailyScoreSave.dailyScore += dustMeOffAggregate.totalScore;
+            dailyScoreSave.keys.Add(key);
+            DailyScoreStorage.Publish(key, dustMeOffAggregate.taskName, dustMeOffAggregate.totalScore, dustMeOffAggregate.timestamp, DailyScoreStorageType.Minigame);
+
+            SaveDailyScore();
+        }
+    }
+
     public static float GetDailyScore()
     {
         LoadDailyScore();

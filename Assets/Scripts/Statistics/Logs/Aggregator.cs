@@ -16,8 +16,7 @@ public class Aggregator : MonoBehaviour
 	private Dictionary<string, DailyTaskAggregateV2> dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
-
-
+	public Dictionary<string, DustMeOffAggregate> dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
 
 
 	void Awake()
@@ -41,7 +40,7 @@ public class Aggregator : MonoBehaviour
 	public void LoadAggregator()
 	{
 		AggregatorSaveData aggregatorSaveData = SaveSystem.Load(saveFileName) as AggregatorSaveData;
-		
+
 		if (aggregatorSaveData == null)
 		{
 			return;
@@ -53,6 +52,7 @@ public class Aggregator : MonoBehaviour
 
 		dailyTaskLogs = aggregatorSave.dailyTaskLogs;
 		numberLocationLogs = aggregatorSave.numberLocationLogs;
+		wordleLogs = aggregatorSave.wordleLogs;
 	}
 
 	public void Publish(DailyTaskCompletedEvent dailyTaskCompletedEvent)
@@ -95,16 +95,24 @@ public class Aggregator : MonoBehaviour
 		SaveAggregator();
 	}
 
+	public void Publish(DustMeOffCompletedEvent dustMeOffCompleted)
+	{
+		string key = generateKey();
+		DustMeOffAggregate dustMeOffAggregate = dustMeOffCompleted.GetData();
+		dustMeOffLogs.Add(key, dustMeOffAggregate);
+
+		SaveAggregator();
+
+	}
+
 	public void SaveAggregator()
 	{
 		AggregatorSave aggregatorSave = new AggregatorSave();
 		aggregatorSave.setDailyTaskLogs(dailyTaskLogs);
 		aggregatorSave.setNumberLocationLogs(numberLocationLogs);
+		aggregatorSave.setWordleLogs(wordleLogs);
 
-		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys,aggregatorSave);
-
-		SaveCSV(dailyTaskLogs, "dailyTaskLogs");
-		SaveCSV(numberLocationLogs, "numberLocationLogs");
+		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys, aggregatorSave);
 
 		SaveSystem.Save(saveFileName, aggregatorSaveData);
 	}

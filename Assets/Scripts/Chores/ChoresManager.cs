@@ -214,6 +214,13 @@ public class ChoresManager : MonoBehaviour
 		return activeChore;
 	}
 
+	public void RemoveChore()
+	{
+		if (activeChore == null) return;
+
+		activeChore = null;
+	}
+
 	public void CompleteChore(DailyChoreType _type)
 	{
 		if (activeChore == null)

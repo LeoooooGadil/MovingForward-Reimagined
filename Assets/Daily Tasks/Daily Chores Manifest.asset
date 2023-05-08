@@ -25,7 +25,7 @@ MonoBehaviour:
     sceneName: Dust Me Off Game
     isMandatory: 1
     minScore: 0
-  - name: Exercise Your Breathinig For Me
+  - name: Let's Meditate
     room: 0
     type: 5
     sceneName: Old Breathing Game

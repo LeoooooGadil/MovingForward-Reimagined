@@ -52,6 +52,7 @@ public class DustMeOffGame : MonoBehaviour
 				isGameRunning = false;
 				StopTheGame();
 				UpdateChoreManager();
+				UpdateStatistics();
 				ShowWinLosePanel();
 			}
 			currentTimer = 1f;
@@ -59,8 +60,23 @@ public class DustMeOffGame : MonoBehaviour
 
 	}
 
+	void UpdateStatistics()
+	{
+		DustMeOffCompletedEvent dustMeOffCompletedEvent = new DustMeOffCompletedEvent(
+			"Won Dust Me Off Game",
+			(int)TotalPoints
+		);
+
+		Aggregator.instance.Publish(dustMeOffCompletedEvent);
+	}
+
 	void UpdateChoreManager()
 	{
+		if (TotalPoints <= 0)
+		{
+			ChoresManager.instance.RemoveChore();
+		}
+
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
 		if (chore.dailyChoreType == DailyChoreType.DustMeOff)

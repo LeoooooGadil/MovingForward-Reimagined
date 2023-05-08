@@ -55,6 +55,9 @@ TagManager:
   - name: Notification
     uniqueID: 1622358949
     locked: 0
+  - name: Tutorial
+    uniqueID: 4061926515
+    locked: 0
   - name: Transition
     uniqueID: 3749093947
     locked: 0
