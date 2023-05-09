@@ -14,6 +14,7 @@ public class MovingForwardTutorialSequenceScriptableObject : ScriptableObject
 [IncludeInSettings(true)]
 public class Sequence
 {
+    public string Title;
 	public string Text;
 	public SequencePosition Position;
     public SequenceMood Mood;

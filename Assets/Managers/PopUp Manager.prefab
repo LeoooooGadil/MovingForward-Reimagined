@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4037302112622211672}
   m_Layer: 0
   m_Name: BackDrop
-  m_TagString: Untagged
+  m_TagString: DontSwipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4037302113939317563}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1213.6636, y: 562.5486, z: -4.893835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
     PopUpPrefab: {fileID: 8207093556211011974, guid: e791e05710f0f8a4b9abb93c69690f20, type: 3}
   - Type: 2
     PopUpPrefab: {fileID: 8207093556211011974, guid: 87235bc9b2455f14c928290d08e8cef1, type: 3}
+  - Type: 3
+    PopUpPrefab: {fileID: 6138405046500347228, guid: db4108f78b28e6645a47905af6925b7f, type: 3}
 --- !u!1 &4037302114180140198
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +188,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &4037302114180140203
 MonoBehaviour:

@@ -13,7 +13,23 @@ MonoBehaviour:
   m_Name: Test Sequence
   m_EditorClassIdentifier: 
   Sequences:
-  - Text: 
+  - Title: title 1
+    Text: This is a test
     Position: 0
-    Mood: 0
+    Mood: 3
+    HighlightObject: []
+  - Title: title 2
+    Text: This should work
+    Position: 1
+    Mood: 1
+    HighlightObject: []
+  - Title: title 3
+    Text: if it doesnt
+    Position: 2
+    Mood: 2
+    HighlightObject: []
+  - Title: title 4
+    Text: Fuck you
+    Position: 0
+    Mood: 6
     HighlightObject: []
