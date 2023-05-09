@@ -1,54 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DragComponent : MonoBehaviour
 {
-    private Vector3 offset;
-    private bool dragging = false;
+	private Vector3 screenPoint;
+	private Vector3 offset;
+	private bool dragging = false;
 
-    public bool isActve = false;
+	public bool isActive = true;
 
-    void OnMouseDown()
-    {
-        offset = transform.position - GetInputPosition();
-        dragging = true;
-    }
+	private void OnMouseDown()
+	{
+		Debug.Log("OnMouseDown");
+		if (!isActive) return;
 
-    void OnMouseUp()
-    {
-        dragging = false;
-    }
+		screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+		offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+		dragging = true;
+	}
 
-    void Update()
-    {
-        if (dragging && isActve)
-        {
-            Vector3 newPosition = GetInputPosition() + offset;
-            transform.position = new Vector3(newPosition.x, newPosition.y, transform.position.z);
-        }
-    }
+	private void OnMouseDrag()
+	{
+		if (!isActive || !dragging) return;
 
-    private Vector3 GetInputPosition()
-    {
-        Vector3 inputPos;
+		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+		transform.position = curPosition;
+	}
 
-        // Check for touch input
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            inputPos = touch.position;
-        }
-        // Otherwise, use mouse input
-        else
-        {
-            inputPos = Input.mousePosition;
-        }
-
-        // Convert input position to world position
-        inputPos = Camera.main.ScreenToWorldPoint(inputPos);
-        inputPos.z = 0;
-
-        return inputPos;
-    }
+	private void OnMouseUp()
+	{
+		dragging = false;
+	}
 }

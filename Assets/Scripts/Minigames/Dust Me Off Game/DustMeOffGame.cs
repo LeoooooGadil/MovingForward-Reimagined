@@ -24,7 +24,7 @@ public class DustMeOffGame : MonoBehaviour
 	public int TotalSeconds = 60;
 	public float currentTimer = 1f;
 
-	private bool isGameRunning = true;
+	private bool isGameRunning = false;
 
 	private float spawnRateNegative = 0.05f;
 	public GameObject scoreLocation;
@@ -36,10 +36,7 @@ public class DustMeOffGame : MonoBehaviour
 		pointsText.text = TotalPoints.ToString("F0");
 		timerText.text = TotalSeconds.ToString("F0") + "s";
 
-		if (!isGameRunning)
-		{
-			return;
-		}
+		if (!isGameRunning) return;
 
 		currentTimer -= Time.deltaTime;
 
