@@ -10,7 +10,8 @@ public class AggregatorSaveData
 	public Dictionary<string, DailyTaskAggregateV2> dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
-
+	public Dictionary<string, DustMeOffAggregate> dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
+	public Dictionary<string, TakeMeOutAggregate> takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 
 	public AggregatorSaveData(List<string> _keys, AggregatorSave _aggregatorSave)
 	{
@@ -19,6 +20,8 @@ public class AggregatorSaveData
 		dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 		numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 		wordleLogs = new Dictionary<string, WordleAggregate>();
+		dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
+		takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 
 		foreach (KeyValuePair<string, DailyTaskAggregateV2> dailyTaskLog in _aggregatorSave.dailyTaskLogs)
 		{
@@ -33,6 +36,16 @@ public class AggregatorSaveData
 		foreach (KeyValuePair<string, WordleAggregate> wordleLog in _aggregatorSave.wordleLogs)
 		{
 			wordleLogs.Add(wordleLog.Key, wordleLog.Value);
+		}
+
+		foreach (KeyValuePair<string, DustMeOffAggregate> dustMeOffLog in _aggregatorSave.dustMeOffLogs)
+		{
+			dustMeOffLogs.Add(dustMeOffLog.Key, dustMeOffLog.Value);
+		}
+
+		foreach (KeyValuePair<string, TakeMeOutAggregate> takeMeOutLog in _aggregatorSave.takeMeOutLogs)
+		{
+			takeMeOutLogs.Add(takeMeOutLog.Key, takeMeOutLog.Value);
 		}
 	}
 }

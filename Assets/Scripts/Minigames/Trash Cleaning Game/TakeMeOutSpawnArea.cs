@@ -25,4 +25,13 @@ public class TakeMeOutSpawnArea : MonoBehaviour
 
 		return spawnedObject.GetComponent<TrashItem>();
 	}
+
+	internal Vector3 GetRandomPosition()
+	{
+		return new Vector3(
+			Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
+			Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y),
+			0
+		);
+	}
 }

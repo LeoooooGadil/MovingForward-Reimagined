@@ -1576,6 +1576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70182fbe946c8cb40b434b5ca0b1771c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicName: Caketown
 --- !u!4 &815443849
 Transform:
   m_ObjectHideFlags: 0

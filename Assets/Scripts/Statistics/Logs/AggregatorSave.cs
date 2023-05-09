@@ -9,12 +9,16 @@ public class AggregatorSave
 	public Dictionary<string, DailyTaskAggregateV2> dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
+	public Dictionary<string, DustMeOffAggregate> dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
+	public Dictionary<string, TakeMeOutAggregate> takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 
 	public AggregatorSave(AggregatorSaveData _aggregatorSaveData)
 	{
 		dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 		numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 		wordleLogs = new Dictionary<string, WordleAggregate>();
+		dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
+		takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 
 		foreach (KeyValuePair<string, DailyTaskAggregateV2> dailyTaskLog in _aggregatorSaveData.dailyTaskLogs)
 		{
@@ -30,6 +34,16 @@ public class AggregatorSave
         {
             wordleLogs.Add(wordleLog.Key, wordleLog.Value);
         }
+
+		foreach (KeyValuePair<string, DustMeOffAggregate> dustMeOffLog in _aggregatorSaveData.dustMeOffLogs)
+		{
+			dustMeOffLogs.Add(dustMeOffLog.Key, dustMeOffLog.Value);
+		}
+
+		foreach (KeyValuePair<string, TakeMeOutAggregate> takeMeOutLog in _aggregatorSaveData.takeMeOutLogs)
+		{
+			takeMeOutLogs.Add(takeMeOutLog.Key, takeMeOutLog.Value);
+		}
 	}
 
 	public AggregatorSave()
@@ -37,6 +51,8 @@ public class AggregatorSave
 		dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 		numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
         wordleLogs = new Dictionary<string, WordleAggregate>();
+		dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
+		takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 	}
 
 	public void setDailyTaskLogs(Dictionary<string, DailyTaskAggregateV2> _dailyTaskLogs)
@@ -53,4 +69,14 @@ public class AggregatorSave
     {
         wordleLogs = _wordleLogs;
     }
+
+	public void setDustMeOffLogs(Dictionary<string, DustMeOffAggregate> _dustMeOffLogs)
+	{
+		dustMeOffLogs = _dustMeOffLogs;
+	}
+
+	public void setTakeMeOutLogs(Dictionary<string, TakeMeOutAggregate> _takeMeOutLogs)
+	{
+		takeMeOutLogs = _takeMeOutLogs;
+	}
 }

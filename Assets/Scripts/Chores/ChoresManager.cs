@@ -7,7 +7,7 @@ public class ChoresManager : MonoBehaviour
 	public static ChoresManager instance;
 	public ChoresSave choresSave;
 	public MovingForwardDailyChoresScriptableObject dailyChoresObject;
-	public int dailyChoreCount = 3;
+	public int dailyChoreCount = 6;
 
 	private string saveFileName = "ChoresManager";
 
@@ -98,6 +98,38 @@ public class ChoresManager : MonoBehaviour
 		LifeCycleManager.instance.AddLifeCycleItem(lifeCycleItem);
 	}
 
+	List<Chore> GenerateMandatoryChores()
+	{
+		// get the half oc the daily chore count and round it up
+		int half = Mathf.CeilToInt(dailyChoreCount / 2);
+
+		List<Chore> dailyChores = new List<Chore>();
+		List<Chores> mandatoryChores = new List<Chores>();
+
+		for (int i = 0; i < dailyChoresObject.chores.Count; i++)
+		{
+			if(dailyChoresObject.chores[i].isMandatory == true)
+				mandatoryChores.Add(dailyChoresObject.chores[i]);
+		}
+
+		while(half > 0)
+		{
+			int randomChore = Random.Range(0, mandatoryChores.Count);
+
+			while (CheckIfChoreIsAlreadyInTheList(mandatoryChores[randomChore], dailyChores))
+			{
+				randomChore = Random.Range(0, mandatoryChores.Count);
+			}
+
+			Chore chore = GenerateOneChore(randomChore);
+			dailyChores.Add(chore);
+			mandatoryChores.RemoveAt(randomChore);
+			half--;
+		}
+
+		return dailyChores;
+	}
+
 	void GenerateDailyChores()
 	{
 		choresSave.chores.Clear();
@@ -121,14 +153,12 @@ public class ChoresManager : MonoBehaviour
 			return;
 		}
 
-		for (int i = 0; i < dailyChoresObject.chores.Count; i++)
+		List<Chore> mandatoryChores = GenerateMandatoryChores();
+
+		foreach (Chore chore in mandatoryChores)
 		{
-			if (dailyChoresObject.chores[i].isMandatory == true)
-			{
-				Chore chore = GenerateOneChore(i);
-				dailyChores.Add(chore);
-				choreCount--;
-			}
+			dailyChores.Add(chore);
+			choreCount--;
 		}
 
 		while (choreCount > 0)

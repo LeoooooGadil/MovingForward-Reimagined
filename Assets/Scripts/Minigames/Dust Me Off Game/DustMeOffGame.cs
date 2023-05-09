@@ -16,7 +16,7 @@ public class DustMeOffGame : MonoBehaviour
 	public GameObject startingSceneGameObject;
 	public GameObject topPanelGameObject;
 
-	public float spawnRate = 5f;
+	public float spawnRate = 3f;
 
 	public float TotalPoints = 0;
 	public int TotalFurniture = 0;
@@ -223,6 +223,7 @@ public class DustMeOffGame : MonoBehaviour
 		TotalFurniture = 0;
 		TotalPoints = 0;
 		TotalSeconds = 60;
+		spawnRate = 3f;
 		StartCoroutine(SpawnFurniture());
 	}
 

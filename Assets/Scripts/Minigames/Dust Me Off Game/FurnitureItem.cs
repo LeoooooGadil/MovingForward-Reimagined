@@ -30,7 +30,7 @@ public class FurnitureItem : MonoBehaviour
 	{
 		AudioManager.instance.PlaySFX("ButtonClick");
 		int maxDust = Random.Range(100, 500);
-		int negateDust = Random.Range(10, 50) * (maxDust / 100);
+		int negateDust = Random.Range(10, 25) * (maxDust / 100);
 		dustBar.UpdateDustAmountMax(maxDust);
 		negativeDustAmount = negateDust;
 		spriteRenderer = GetComponent<SpriteRenderer>();

@@ -48,4 +48,5 @@ public enum DailyChoreRoom
     LivingRoom,
     Bedroom,
     Out,
+	Kitchen,
 }

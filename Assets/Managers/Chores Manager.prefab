@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dailyChoresObject: {fileID: 11400000, guid: 12c9b27782cc2114f8d2bbb2c850e4e2, type: 2}
-  dailyChoreCount: 5
+  dailyChoreCount: 6
   activeChore:
     choreName: 
     choreComponensation: 0
+    minScore: 0
     dailyChoreRoom: 0
     dailyChoreType: 0
     isCompleted: 0
