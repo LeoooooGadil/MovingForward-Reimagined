@@ -101,6 +101,7 @@ public class TutorialPopUpController : MonoBehaviour
 		{
 			PlayerPrefs.SetInt(movingForwardTutorialSequenceScriptableObject.SequenceName, 1);
 			closingAction?.Invoke();
+			PlayerPrefs.Save();
 		}
 	}
 
