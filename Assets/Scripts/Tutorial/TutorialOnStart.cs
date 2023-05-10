@@ -6,9 +6,9 @@ public class TutorialOnStart : MonoBehaviour
 {
     public MovingForwardTutorialSequenceScriptableObject movingForwardTutorialSequenceScriptableObject;
 
-    void Start()
+    void OnEnable()
     {
-        // if(PlayerPrefs.HasKey(movingForwardTutorialSequenceScriptableObject.SequenceName)) return;
+        if(PlayerPrefs.HasKey(movingForwardTutorialSequenceScriptableObject.SequenceName)) return;
 
         StartCoroutine(StartTutorial());
     }
