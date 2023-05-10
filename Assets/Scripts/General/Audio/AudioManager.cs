@@ -14,6 +14,12 @@ public class AudioManager : MonoBehaviour
 	public AudioMixerGroup[] MusicAudioMixerGroups;
 	public MovingForwardAudioClipsObject audioClips;
 
+	private float SFXVolume;
+	private float MusicVolume;
+
+	private int timesSfxHasBeenSame = 0;
+	private bool played = true;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -56,6 +62,38 @@ public class AudioManager : MonoBehaviour
 		MusicAudioSource = gameObject.AddComponent<AudioSource>();
 	}
 
+	void Update()
+	{
+		float _SfxVolume = PlayerPrefs.GetFloat("sfxVolume", 1.0f);
+		float _MusicVolume = PlayerPrefs.GetFloat("musicVolume", 1.0f);
+
+		if (SFXVolume != _SfxVolume)
+		{
+			timesSfxHasBeenSame = 0;
+			played = false;
+			SFXVolume = _SfxVolume;
+			foreach (AudioSource audioSource in SFXAudioSources)
+			{
+				audioSource.volume = SFXVolume;
+			}
+		}
+		else
+		{
+			timesSfxHasBeenSame++;
+			if (timesSfxHasBeenSame > 5 && !played)
+			{
+				PlaySFX("ButtonClick");
+				played = true;
+			}
+		}
+
+		if (MusicVolume != _MusicVolume)
+		{
+			MusicVolume = _MusicVolume;
+			MusicAudioSource.volume = MusicVolume;
+		}
+	}
+
 	public void PlaySFX(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f)
 	{
 		// create a new audio source
@@ -66,7 +104,7 @@ public class AudioManager : MonoBehaviour
 		newAudioSource.outputAudioMixerGroup = GetAudioMixerGroup();
 
 		// set the volume
-		newAudioSource.volume = clip.volume * volume;
+		newAudioSource.volume = clip.volume * volume * SFXVolume;
 
 		// add the audio source to the list
 		SFXAudioSources.Add(newAudioSource);
@@ -111,7 +149,7 @@ public class AudioManager : MonoBehaviour
 
 		if (fade)
 		{
-			StartCoroutine(FadeInMusic(volume));
+			StartCoroutine(FadeInMusic(volume * MusicVolume));
 		}
 		else
 		{

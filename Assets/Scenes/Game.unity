@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 604711871}
   - component: {fileID: 604711870}
   m_Layer: 5
-  m_Name: SettingsButton
+  m_Name: Settings Button
   m_TagString: DontSwipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

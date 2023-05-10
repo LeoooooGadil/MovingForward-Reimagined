@@ -93,12 +93,14 @@ public class TutorialPopUpController : MonoBehaviour
 		currentStep++;
 		if (currentStep < totalSteps)
 		{
+			
 			sequenceState = 0;
 			RemoveCurrentStep();
 			ShowCurrentStep();
 		}
 		else
 		{
+			currentTutorialBar.CleanUp();
 			PlayerPrefs.SetInt(movingForwardTutorialSequenceScriptableObject.SequenceName, 1);
 			closingAction?.Invoke();
 			PlayerPrefs.Save();

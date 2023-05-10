@@ -13,18 +13,8 @@ public class BackgroundMusic : MonoBehaviour
 
 	IEnumerator Start()
 	{
-		while (AudioManager.instance == null)
-		{
-			try
-			{
-				AudioManager.instance.PlayMusic(musicName, 1, true);
-			} catch
-			{
-				Debug.Log("AudioManager not found");
-			}
-			
-			yield return new WaitForSeconds(0.1f);
-		}
+		yield return new WaitForSeconds(0.5f);
+		AudioManager.instance.PlayMusic(musicName);
 	}
 
 	void OnDisable()

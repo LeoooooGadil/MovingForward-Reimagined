@@ -40,13 +40,13 @@ public class SettingsVolumeSlider : MonoBehaviour
 
         if (currentSFXVolume != GetSFXVolume())
         {
-            SetSFXVolume(sfxVolume);
+            SetSFXVolume(currentSFXVolume);
             SaveVolumes();
         }
 
         if (currentMusicVolume != GetMusicVolume())
         {
-            SetMusicVolume(musicVolume);
+            SetMusicVolume(currentMusicVolume);
             SaveVolumes();
         }
     }
