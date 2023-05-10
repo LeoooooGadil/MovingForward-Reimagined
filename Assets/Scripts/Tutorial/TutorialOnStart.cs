@@ -8,12 +8,14 @@ public class TutorialOnStart : MonoBehaviour
 
     void Start()
     {
+        // if(PlayerPrefs.HasKey(movingForwardTutorialSequenceScriptableObject.SequenceName)) return;
+
         StartCoroutine(StartTutorial());
     }
 
     IEnumerator StartTutorial()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
         PopUpManager.instance.ShowTutorial(movingForwardTutorialSequenceScriptableObject);
     }
 }

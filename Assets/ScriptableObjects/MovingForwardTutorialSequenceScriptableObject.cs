@@ -7,6 +7,7 @@ using UnityEngine;
 public class MovingForwardTutorialSequenceScriptableObject : ScriptableObject
 {
     [SerializeField]
+    public string SequenceName;
     public List<Sequence> Sequences;
 }
 

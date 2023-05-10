@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248a86ee436c7e6479168a79927cc765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialPopUpController: {fileID: 0}
   faces: {fileID: 11400000, guid: 720480748fa10604da9cc049b09ccd15, type: 2}
   title: 
   body: 
@@ -99,6 +100,9 @@ MonoBehaviour:
   titleText: {fileID: 2008907101545694083}
   bodyText: {fileID: 7737049633409680785}
   highlightObjects: []
+  highlightSprite: {fileID: 21300000, guid: 6295011851bcbab4786bad226dec2b25, type: 3}
+  highlightAnimatorController: {fileID: 9100000, guid: 8c91029717083794a8f8fde115762f61, type: 2}
+  highlightedObjects: []
 --- !u!95 &6503330095709484607
 Animator:
   serializedVersion: 5
@@ -279,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -332,7 +336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 57.450195, y: 64.9668}
+  m_AnchoredPosition: {x: 67, y: 64.967}
   m_SizeDelta: {x: 115, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4161637327814999565

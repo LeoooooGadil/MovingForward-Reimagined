@@ -63,9 +63,6 @@ public class ChoresMenuManager : MonoBehaviour
 
 		if (unfinishedChores == null || finishedChores == null) return;
 
-		Debug.Log("Unfinished Chores: " + unfinishedChores.Count);
-		Debug.Log("Finished Chores: " + finishedChores.Count);
-
 		unfinishedChores = loadedunfinishedChores;
 		finishedChores = loadedfinishedChores;
 	}

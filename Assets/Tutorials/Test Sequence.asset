@@ -12,20 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
   m_Name: Test Sequence
   m_EditorClassIdentifier: 
+  SequenceName: InGameTutorial
   Sequences:
   - Title: title 1
     Text: This is a test
-    Position: 0
+    Position: 1
     Mood: 3
     HighlightObject:
     - Level Indicator
-    disableBackdrop: 0
+    - Money Indicator
+    disableBackdrop: 1
   - Title: title 2
     Text: This should work
     Position: 1
     Mood: 1
     HighlightObject: []
-    disableBackdrop: 1
+    disableBackdrop: 0
   - Title: title 3
     Text: if it doesnt
     Position: 2
@@ -37,4 +39,4 @@ MonoBehaviour:
     Position: 0
     Mood: 6
     HighlightObject: []
-    disableBackdrop: 1
+    disableBackdrop: 0

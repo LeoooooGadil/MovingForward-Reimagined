@@ -121,7 +121,7 @@ public class ChoresManager : MonoBehaviour
 				randomChore = Random.Range(0, mandatoryChores.Count);
 			}
 
-			Chore chore = GenerateOneChore(randomChore);
+			Chore chore = GenerateOneChore(randomChore, mandatoryChores);
 			dailyChores.Add(chore);
 			mandatoryChores.RemoveAt(randomChore);
 			half--;
@@ -197,6 +197,20 @@ public class ChoresManager : MonoBehaviour
 	Chore GenerateOneChore(int _index = -1)
 	{
 		Chores chore = dailyChoresObject.chores[_index];
+		float compensation = GetCompensation(chore);
+		Chore pickedChore = new Chore(
+			chore.name,
+			compensation,
+			chore.minScore,
+			chore.room,
+			chore.type
+		);
+		return pickedChore;
+	}
+
+	Chore GenerateOneChore(int _index = -1, List<Chores> _chore = null)
+	{
+		Chores chore = _chore[_index];
 		float compensation = GetCompensation(chore);
 		Chore pickedChore = new Chore(
 			chore.name,

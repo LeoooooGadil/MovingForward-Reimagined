@@ -41,6 +41,11 @@ public class TutorialPopUpController : MonoBehaviour
 
 	void RemoveCurrentStep()
 	{
+		if (currentTutorialBar)
+		{
+			currentTutorialBar.CleanUp();
+		}
+
 		foreach (Transform child in Container.transform)
 		{
 			Destroy(child.gameObject);
@@ -94,6 +99,7 @@ public class TutorialPopUpController : MonoBehaviour
 		}
 		else
 		{
+			PlayerPrefs.SetInt(movingForwardTutorialSequenceScriptableObject.SequenceName, 1);
 			closingAction?.Invoke();
 		}
 	}
