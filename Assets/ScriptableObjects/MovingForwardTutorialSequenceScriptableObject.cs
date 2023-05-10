@@ -18,7 +18,8 @@ public class Sequence
 	public string Text;
 	public SequencePosition Position;
     public SequenceMood Mood;
-    public GameObject[] HighlightObject;
+    public string[] HighlightObject;
+    public bool disableBackdrop = false;
 }
 
 [System.Serializable]

@@ -15,7 +15,7 @@ public class TutorialBar : MonoBehaviour
 	public RawImage faceImage;
 	public Text titleText;
 	public Text bodyText;
-	public GameObject[] highlightObjects;
+	public string[] highlightObjects;
 
 	void Start()
 	{
@@ -93,7 +93,7 @@ public class TutorialBar : MonoBehaviour
 		tutorialPopUpController.setState(2);
 	}
 
-	public void SetHighlightObjects(GameObject[] highlightObjects)
+	public void SetHighlightObjects(string[] highlightObjects)
 	{
 		this.highlightObjects = highlightObjects;
 	}

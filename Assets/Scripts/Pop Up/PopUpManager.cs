@@ -45,6 +45,7 @@ public class PopUpManager : MonoBehaviour
         activePopUp = Instantiate(PopUps.Find(x => x.Type == PopUpType.Tutorial).PopUpPrefab, GetComponentInChildren<Canvas>().transform);
         activePopUp.GetComponent<TutorialPopUpController>().closingAction = () => ClosingPopUp();
         activePopUp.GetComponent<TutorialPopUpController>().movingForwardTutorialSequenceScriptableObject = sequence;
+		activePopUp.GetComponent<TutorialPopUpController>().SetBackDrop(BackDrop);
         return activePopUp.GetComponent<TutorialPopUpController>();
 	}
 

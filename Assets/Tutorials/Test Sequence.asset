@@ -17,19 +17,24 @@ MonoBehaviour:
     Text: This is a test
     Position: 0
     Mood: 3
-    HighlightObject: []
+    HighlightObject:
+    - Level Indicator
+    disableBackdrop: 0
   - Title: title 2
     Text: This should work
     Position: 1
     Mood: 1
     HighlightObject: []
+    disableBackdrop: 1
   - Title: title 3
     Text: if it doesnt
     Position: 2
     Mood: 2
     HighlightObject: []
+    disableBackdrop: 0
   - Title: title 4
     Text: Fuck you
     Position: 0
     Mood: 6
     HighlightObject: []
+    disableBackdrop: 1

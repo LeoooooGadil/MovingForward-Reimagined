@@ -8,6 +8,7 @@ public class TutorialPopUpController : MonoBehaviour
 {
 	public GameObject tutorialPopUpPrefab;
 	public GameObject Container;
+	public GameObject BackDrop;
 
 	[HideInInspector]
 	public MovingForwardTutorialSequenceScriptableObject movingForwardTutorialSequenceScriptableObject;
@@ -33,11 +34,24 @@ public class TutorialPopUpController : MonoBehaviour
 		ShowCurrentStep();
 	}
 
+	public void SetBackDrop(GameObject backdrop)
+	{
+		BackDrop = backdrop;
+	}
+
 	void RemoveCurrentStep()
 	{
 		foreach (Transform child in Container.transform)
 		{
 			Destroy(child.gameObject);
+		}
+	}
+
+	void setBackDropActive(bool active)
+	{
+		if (BackDrop != null)
+		{
+			BackDrop.SetActive(active);
 		}
 	}
 
@@ -51,6 +65,7 @@ public class TutorialPopUpController : MonoBehaviour
 		TutorialBar tutorialBar = tutorialPopUp.GetComponent<TutorialBar>();
 		tutorialBar.tutorialPopUpController = this;
 		tutorialBar.SetSequence(sequence);
+		setBackDropActive(!sequence.disableBackdrop);
 
 		currentTutorialBar = tutorialBar;
 
