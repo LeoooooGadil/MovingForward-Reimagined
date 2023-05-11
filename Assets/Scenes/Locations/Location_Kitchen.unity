@@ -1613,7 +1613,7 @@ GameObject:
   - component: {fileID: 2147000986}
   - component: {fileID: 2147000987}
   m_Layer: 0
-  m_Name: StartIntroTutorial
+  m_Name: Kitchen Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1646,4 +1646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a6089adee1d1e4d8b4c1d638cd55ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phases: []
+  phases:
+  - phaseState: 0
+    Sequences:
+    - {fileID: 11400000, guid: a47c7af4ef0cbc5498c96efd66e09ec4, type: 2}

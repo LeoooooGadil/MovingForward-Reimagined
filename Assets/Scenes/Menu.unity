@@ -5330,7 +5330,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a6089adee1d1e4d8b4c1d638cd55ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phases: []
+  phases:
+  - phaseState: 0
+    Sequences:
+    - {fileID: 11400000, guid: 10b8a6cb01243f44fa28aaf2550c4f64, type: 2}
+    - {fileID: 11400000, guid: 57c3b605bf4d21d49a7bdbc67be6bcd8, type: 2}
+    - {fileID: 11400000, guid: f3dac51ff93380949ba7cb200fd49851, type: 2}
 --- !u!4 &943018220
 Transform:
   m_ObjectHideFlags: 0
@@ -7523,7 +7528,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 709307704}
   m_HandleRect: {fileID: 709307703}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
