@@ -8,6 +8,8 @@ public class MenuManager : MonoBehaviour
 
 	private int currentTab = 0;
 
+	private bool isMenuOpen = false;
+
 	void Awake()
 	{
 		if (Instance == null)
@@ -20,21 +22,28 @@ public class MenuManager : MonoBehaviour
 		}
 	}
 
+	public bool GetIsMenuOpen()
+	{
+		return isMenuOpen;
+	}
+
 	public void OpenMenu(int tabIndex = 0)
 	{
 		LevelManager.instance.ChangeScene("Menu", false);
-        currentTab = tabIndex;
+		isMenuOpen = true;
+		currentTab = tabIndex;
 	}
 
 	public void CloseMenu()
 	{
 		LevelManager.instance.RemoveScene("Menu");
-        currentTab = 0;
+		isMenuOpen = false;
+		currentTab = 0;
 	}
 
-    public int GetCurrentTab()
-    {
-        return currentTab;
-    }
+	public int GetCurrentTab()
+	{
+		return currentTab;
+	}
 
 }
