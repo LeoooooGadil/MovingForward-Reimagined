@@ -16,6 +16,6 @@ public class BreathingGameEscapeHandler : MonoBehaviour
     void ChangeBackToGame()
     {
         AudioManager.instance.PlaySFX("CloseClick");
-        LevelManager.instance.ChangeScene("Game");
+        LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
     }
 }

@@ -14,6 +14,17 @@ public class OverlayManager : MonoBehaviour
 	void Update()
 	{
 		CheckChores();
+
+		if (TutorialManager.instance.isTutorialActive && TutorialManager.instance.GetPhaseState() != 0)
+		{
+			HideAllOverlays();
+		}
+	}
+
+	void HideAllOverlays()
+	{
+		HideDirtOverlay();
+		HideTrashOverlay();
 	}
 
 	void CheckChores()

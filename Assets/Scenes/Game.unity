@@ -2472,6 +2472,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingForwardTutorialSequenceScriptableObject: {fileID: 11400000, guid: 33ce259a30c459849aac4ec6d65dbfb8, type: 2}
+  phases:
+  - phaseState: 0
+    Sequences: []
 --- !u!4 &1428442456
 Transform:
   m_ObjectHideFlags: 0

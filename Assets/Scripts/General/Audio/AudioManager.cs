@@ -60,6 +60,12 @@ public class AudioManager : MonoBehaviour
 	{
 		SFXAudioSources = new List<AudioSource>();
 		MusicAudioSource = gameObject.AddComponent<AudioSource>();
+
+		SFXVolume = PlayerPrefs.GetFloat("sfxVolume", 1.0f);
+		MusicVolume = PlayerPrefs.GetFloat("musicVolume", 1.0f);
+
+		Debug.Log("SFX Volume: " + SFXVolume);
+		Debug.Log("Music Volume: " + MusicVolume);
 	}
 
 	void Update()
@@ -153,7 +159,7 @@ public class AudioManager : MonoBehaviour
 		}
 		else
 		{
-			MusicAudioSource.volume = volume;
+			MusicAudioSource.volume = volume * MusicVolume;
 		}
 	}
 

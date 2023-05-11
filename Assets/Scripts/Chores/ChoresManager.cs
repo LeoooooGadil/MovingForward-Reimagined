@@ -81,7 +81,7 @@ public class ChoresManager : MonoBehaviour
 
 	void SendNotification()
 	{
-		System.DateTime tomorrow = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.AddDays(1).Day, 1, 2, 0);
+		System.DateTime tomorrow = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.AddDays(1).Day, 8, 0, 0);
 		NotificationManager.instance.SendNotification("Daily Chores", "New chores are waiting for you!", tomorrow);
 	}
 
@@ -91,7 +91,7 @@ public class ChoresManager : MonoBehaviour
 		lifeCycleItem.name = "DailyChore";
 		lifeCycleItem.isRepeatable = true;
 
-		lifeCycleItem.startTime = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 1, 2, 0);
+		lifeCycleItem.startTime = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 8, 0, 0);
 		lifeCycleItem.maxRepeatCount = -1;
 		lifeCycleItem.repeatType = LifeCycleRepeatType.Daily;
 

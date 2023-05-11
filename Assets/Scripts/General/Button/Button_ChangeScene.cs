@@ -25,7 +25,7 @@ public class Button_ChangeScene : MonoBehaviour
         }
 
         AudioManager.instance.PlaySFX("PopClick");
-        LevelManager.instance.ChangeScene(sceneName);
+        LevelManager.instance.ChangeScene(sceneName, true, SceneTransitionMode.Slide, false);
     }
 
     IEnumerator WaitAndChangeScene()
@@ -33,6 +33,6 @@ public class Button_ChangeScene : MonoBehaviour
         dialogAnimator.ExitDialog();
         AudioManager.instance.PlaySFX("PopClick");
         yield return new WaitForSeconds(0.1f);
-        LevelManager.instance.ChangeScene(sceneName);
+        LevelManager.instance.ChangeScene(sceneName, true, SceneTransitionMode.Slide, false);
     }
 }

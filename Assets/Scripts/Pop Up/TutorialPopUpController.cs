@@ -27,6 +27,7 @@ public class TutorialPopUpController : MonoBehaviour
 
 	void Start()
 	{
+		TutorialManager.instance.SetTutorialActive(true);
 		verticalLayoutGroup = Container.GetComponent<VerticalLayoutGroup>();
 		totalSteps = movingForwardTutorialSequenceScriptableObject.Sequences.Count;
 		setState(0);
@@ -106,6 +107,7 @@ public class TutorialPopUpController : MonoBehaviour
 				currentTutorialBar.CleanUp();
 			}
 
+			TutorialManager.instance.SetTutorialActive(false);
 			PlayerPrefs.SetInt(movingForwardTutorialSequenceScriptableObject.SequenceName, 1);
 			closingAction?.Invoke();
 			PlayerPrefs.Save();
