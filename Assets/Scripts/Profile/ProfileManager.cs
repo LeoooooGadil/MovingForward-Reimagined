@@ -49,6 +49,13 @@ public class ProfileManager : MonoBehaviour
 		return profileManagerSave.username;
 	}
 
+	public string GetAge()
+	{
+		LoadProfile();
+
+		return profileManagerSave.age;
+	}
+
 	public string GetStatus()
 	{
 		LoadProfile();
