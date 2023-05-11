@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6722807990883586652}
   m_Layer: 0
   m_Name: Next
-  m_TagString: Untagged
+  m_TagString: Trash Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,6 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialPopUpPrefab: {fileID: 3858194951793176515, guid: 235d49caca8026a478a7210534292ccb, type: 3}
   Container: {fileID: 3802568591972530070}
+  BackDrop: {fileID: 0}
   movingForwardTutorialSequenceScriptableObject: {fileID: 0}
 --- !u!1 &7189610915633525675
 GameObject:
