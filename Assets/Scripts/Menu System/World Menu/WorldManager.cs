@@ -40,8 +40,6 @@ public class WorldManager : MonoBehaviour
 	// scroll to the current world
 	public void ScrollToCurrentWorld()
 	{
-		Vector3 objectPosition = worldItems[currentWorld].GetComponent<RectTransform>().anchoredPosition;
-		RectTransform objectRectTransform = objectToScrollTo.GetComponent<RectTransform>();
-		Vector2 objectPosition = objectRectTransform.anchoredPosition;
+
 	}
 }
