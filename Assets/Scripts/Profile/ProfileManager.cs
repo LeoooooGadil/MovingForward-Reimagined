@@ -38,13 +38,23 @@ public class ProfileManager : MonoBehaviour
 		}
 		else
 		{
-			profileManagerSave = new ProfileManagerSave();
+			profileManagerSave = null;
 		}
+	}
+
+	public bool CheckIfNoPlayer()
+	{
+		LoadProfile();
+
+		if(profileManagerSave == null) return true;
+		else return false;
 	}
 
 	public string GetUserName()
 	{
 		LoadProfile();
+
+		if (profileManagerSave == null) return null;
 
 		return profileManagerSave.username;
 	}
@@ -53,6 +63,8 @@ public class ProfileManager : MonoBehaviour
 	{
 		LoadProfile();
 
+		if (profileManagerSave == null) return null;
+
 		return profileManagerSave.age;
 	}
 
@@ -60,12 +72,16 @@ public class ProfileManager : MonoBehaviour
 	{
 		LoadProfile();
 
-        return "You are doing great!";
+		if (profileManagerSave == null) return null;
+
+		return "You are doing great!";
 	}
 
 	public float GetMoney()
 	{
 		LoadProfile();
+
+		if (profileManagerSave == null) return 0;
 
 		return profileManagerSave.money;
 	}

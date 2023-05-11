@@ -96,6 +96,7 @@ public class TutorialBar : MonoBehaviour
 		StopAllCoroutines();
 		bodyText.text = body;
 		tutorialPopUpController.setState(2);
+		AudioManager.instance.PlaySFX("ButtonClick");
 	}
 
 	public void SetHighlightObjects(string[] highlightObjects)
