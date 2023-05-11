@@ -12,6 +12,7 @@ public class CreateProfileManager : MonoBehaviour
 	public Sprite createProfileButtonDisabled;
 
 	public TMP_InputField usernameInputField;
+	public TMP_InputField ageInputField;
     public GameObject createProfileButtonGameObject;
 
 	ProfileManagerSave profileManagerSave;
@@ -44,12 +45,13 @@ public class CreateProfileManager : MonoBehaviour
 
 	void Update()
 	{
-        if (usernameInputField.text != "")
+        if ((usernameInputField.text != "") && (ageInputField.text != ""))
         {
             createProfileButton.interactable = true;
             createProfileButtonImage.sprite = createProfileButtonEnabled;
             
         }
+
         else
         {
             createProfileButton.interactable = false;
@@ -65,6 +67,7 @@ public class CreateProfileManager : MonoBehaviour
 		{
 			profileManagerSave = new ProfileManagerSave(profileManagerSaveData);
             usernameInputField.text = profileManagerSave.username;
+			ageInputField.text = profileManagerSave.age;
 		}
 		else
 		{
@@ -74,18 +77,30 @@ public class CreateProfileManager : MonoBehaviour
 
 	public void OnCreateProfileButtonClicked()
 	{
-		if (usernameInputField.text != "")
+		if ((usernameInputField.text != "") && ageInputField.text != "")
 		{
 			CreateProfile(usernameInputField.text);
+			CreateProfileAge(ageInputField.text);
 		}
 	}
 
 	public void CreateProfile(string username)
 	{
+		
 		profileManagerSave.setUsername(username);
 		SaveProfile();
 
         LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
+	}
+
+	public void CreateProfileAge(string age)
+	{
+
+		profileManagerSave.setAge(age);
+		SaveProfile();
+
+        LevelManager.instance.ChangeScene("Game");
+
 	}
 
 	void SaveProfile()
