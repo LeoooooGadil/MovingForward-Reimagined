@@ -105,10 +105,13 @@ public class TutorialPopUpController : MonoBehaviour
 			// get actions from the sequence
 			string[] actions = movingForwardTutorialSequenceScriptableObject.Sequences[currentStep - 1].actions;
 
-			// perform actions
-			foreach (string action in actions)
+			if (actions != null)
 			{
-				TutorialManager.instance.RunAction(action);
+				// perform actions
+				foreach (string action in actions)
+				{
+					TutorialManager.instance.RunAction(action);
+				}
 			}
 
 			if (currentTutorialBar)
@@ -116,7 +119,7 @@ public class TutorialPopUpController : MonoBehaviour
 				currentTutorialBar.CleanUp();
 			}
 
-			if(movingForwardTutorialSequenceScriptableObject.GoToNextPhase)
+			if (movingForwardTutorialSequenceScriptableObject.GoToNextPhase)
 			{
 				TutorialManager.instance.GoToNextPhase();
 			}
