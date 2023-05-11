@@ -107,6 +107,11 @@ public class TutorialPopUpController : MonoBehaviour
 				currentTutorialBar.CleanUp();
 			}
 
+			if(movingForwardTutorialSequenceScriptableObject.GoToNextPhase)
+			{
+				TutorialManager.instance.GoToNextPhase();
+			}
+
 			TutorialManager.instance.SetTutorialActive(false);
 			PlayerPrefs.SetInt(movingForwardTutorialSequenceScriptableObject.SequenceName, 1);
 			closingAction?.Invoke();

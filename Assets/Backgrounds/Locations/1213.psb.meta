@@ -93,50 +93,6 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Layer 3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 12816
-      width: 2622
-      height: 2486
-    spriteID: f37da8e0fd78c8e4f81849e5329a2e29
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 12816}
-    spritePosition: {x: 969, y: 0}
-  - name: Levels 1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 7887
-      y: 4403
-      width: 0
-      height: 0
-    spriteID: b6f0abe3c222a2a4bba47b1ba4014de5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4403}
-    spritePosition: {x: 0, y: 2925}
   - name: Chair
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -144,11 +100,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 6805
-      y: 4185
-      width: 1074
-      height: 754
-    spriteID: c16ae89247663574583955a83478f4d7
+      x: 6512
+      y: 4
+      width: 1052
+      height: 744
+    spriteID: 0303ff40b7b0dfd48ba5ba396b215dd0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -157,52 +113,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 6805, y: 4185}
-    spritePosition: {x: 1799, y: 372}
-  - name: Layer 4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 10325
-      width: 2693
-      height: 2483
-    spriteID: 5a9c88351d5adf9468490bc1716836dc
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 10325}
-    spritePosition: {x: 1865, y: 163}
-  - name: Levels 1 copy
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 7887
-      y: 4411
-      width: 0
-      height: 0
-    spriteID: f6bf5d02e49ec0149a137fe59fe8e524
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4411}
-    spritePosition: {x: 0, y: 2925}
+    uvTransform: {x: 6512, y: 4}
+    spritePosition: {x: 1805, y: 382}
   - name: Vase
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -210,11 +122,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 7887
-      y: 4185
-      width: 114
-      height: 210
-    spriteID: 0ad49f7291173e84c92978586f20d84a
+      x: 7987
+      y: 4
+      width: 113
+      height: 209
+    spriteID: 6baad360acd605e42b6e645b4d3a6c64
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -223,9 +135,53 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4185}
-    spritePosition: {x: 3319, y: 1284}
-  - name: Layer 5
+    uvTransform: {x: 7987, y: 4}
+    spritePosition: {x: 3319, y: 1285}
+  - name: Lights
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7572
+      y: 4
+      width: 407
+      height: 255
+    spriteID: 72f1c380fb9f794498fe16eb4b5c2403
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 7572, y: 4}
+    spritePosition: {x: 3969, y: 1301}
+  - name: Paintings
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6512
+      y: 756
+      width: 1044
+      height: 720
+    spriteID: b5ffa062e1db311458faf2e772707318
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 6512, y: 756}
+    spritePosition: {x: 4705, y: 1490}
+  - name: Curtains
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -234,9 +190,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 2937
-      width: 2971
-      height: 2925
-    spriteID: f4d0bf4d597cdbd40a393f1f58c40bf9
+      width: 2805
+      height: 2727
+    spriteID: b63d7c94e71415e46bdb20886f1f25f5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -246,19 +202,19 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 2937}
-    spritePosition: {x: 2715, y: 0}
-  - name: Levels 1 copy 2
+    spritePosition: {x: 0, y: 198}
+  - name: Carpet
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 7887
-      y: 4419
-      width: 0
-      height: 0
-    spriteID: 44c50edb5211ae64d8fbc62d8195c95c
+      x: 2817
+      y: 2937
+      width: 3158
+      height: 162
+    spriteID: d0afcb98239286741b186a2d7c2ee46a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -267,97 +223,9 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4419}
-    spritePosition: {x: 0, y: 2925}
-  - name: Light Post
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 6721
-      y: 2330
-      width: 416
-      height: 274
-    spriteID: 43bba7f4a1d3ac740bc335c608a84c37
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 6721, y: 2330}
-    spritePosition: {x: 3961, y: 1300}
-  - name: Painting Dirt
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4391
-      y: 4185
-      width: 2406
-      height: 1586
-    spriteID: ff8afc46ae9d7c9479c276635f6c6f07
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4391, y: 4185}
-    spritePosition: {x: 3998, y: 908}
-  - name: Levels 1 copy 3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 7887
-      y: 4427
-      width: 0
-      height: 0
-    spriteID: a60710cd8d7e8084eb6da790750adc78
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4427}
-    spritePosition: {x: 0, y: 2925}
-  - name: Painting
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 6805
-      y: 4947
-      width: 1074
-      height: 724
-    spriteID: 15d935d421c759c40a3aa56f864bf2da
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 6805, y: 4947}
-    spritePosition: {x: 4695, y: 1490}
-  - name: Layer 2
+    uvTransform: {x: 2817, y: 2937}
+    spritePosition: {x: 1389, y: 148}
+  - name: Layer 0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -366,9 +234,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 4379
+      width: 6500
       height: 2925
-    spriteID: 461f87e09b318b840b0f840f02118d60
+    spriteID: 59d9c8a417d258e40b17e118005fa411
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -379,204 +247,6 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 0, y: 0}
-  - name: Levels 1 copy 4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 7887
-      y: 4435
-      width: 0
-      height: 0
-    spriteID: d15a8d61655633242b4119474403ff96
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4435}
-    spritePosition: {x: 0, y: 2925}
-  - name: Layer 1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 5870
-      width: 2857
-      height: 2776
-    spriteID: f4eb873bb79f6d6468c9365ec4f647f8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 5870}
-    spritePosition: {x: 0, y: 149}
-  - name: Layer 7
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 8654
-      width: 4099
-      height: 1663
-    spriteID: 3730785af9eb44942ae610c4de95c8e8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 8654}
-    spritePosition: {x: 1174, y: 0}
-  - name: Levels 1 copy 5
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 7887
-      y: 4443
-      width: 0
-      height: 0
-    spriteID: bac30112f23e41f4e93a0b05c1a81c7d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4443}
-    spritePosition: {x: 0, y: 2925}
-  - name: Layer 6
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 15310
-      width: 3396
-      height: 162
-    spriteID: 78aac783344ec074689caf50030f7cd9
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 15310}
-    spritePosition: {x: 1191, y: 148}
-  - name: Layer 9
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4391
-      y: 2330
-      width: 2322
-      height: 1847
-    spriteID: 528f4d4ee48fa6b498e27d1d42482664
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4391, y: 2330}
-    spritePosition: {x: 3496, y: 0}
-  - name: Levels 1 copy 6
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 7887
-      y: 4451
-      width: 0
-      height: 0
-    spriteID: e8c9c954e0cd45646a6b26aae44e408f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 7887, y: 4451}
-    spritePosition: {x: 0, y: 2925}
-  - name: Layer 8
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4391
-      y: 5779
-      width: 1970
-      height: 1074
-    spriteID: 372e155a2cdcbb84eac9a566aff68dfa
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4391, y: 5779}
-    spritePosition: {x: 3863, y: 308}
-  - name: Layer 10
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4391
-      y: 4
-      width: 2694
-      height: 2318
-    spriteID: 4a184b790edbd154db29a634de8f9ad8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4391, y: 4}
-    spritePosition: {x: 3806, y: 0}
   characterData:
     bones: []
     parts: []
@@ -607,53 +277,13 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Layer 3
-    spriteName: Layer 3
-    isGroup: 0
-    parentIndex: -1
-    spriteID: f37da8e0fd78c8e4f81849e5329a2e29
-    layerID: 22
-    mosaicPosition: {x: 4, y: 12816}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Levels 1
-    spriteName: Levels 1
-    isGroup: 0
-    parentIndex: -1
-    spriteID: b6f0abe3c222a2a4bba47b1ba4014de5
-    layerID: 17
-    mosaicPosition: {x: 7887, y: 4403}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: Chair
     spriteName: Chair
     isGroup: 0
     parentIndex: -1
-    spriteID: c16ae89247663574583955a83478f4d7
-    layerID: 3
-    mosaicPosition: {x: 6805, y: 4185}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 4
-    spriteName: Layer 4
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 5a9c88351d5adf9468490bc1716836dc
-    layerID: 23
-    mosaicPosition: {x: 4, y: 10325}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Levels 1 copy
-    spriteName: Levels 1 copy
-    isGroup: 0
-    parentIndex: -1
-    spriteID: f6bf5d02e49ec0149a137fe59fe8e524
-    layerID: 18
-    mosaicPosition: {x: 7887, y: 4411}
+    spriteID: 0303ff40b7b0dfd48ba5ba396b215dd0
+    layerID: 32
+    mosaicPosition: {x: 6512, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -661,182 +291,62 @@ ScriptedImporter:
     spriteName: Vase
     isGroup: 0
     parentIndex: -1
-    spriteID: 0ad49f7291173e84c92978586f20d84a
-    layerID: 6
-    mosaicPosition: {x: 7887, y: 4185}
+    spriteID: 6baad360acd605e42b6e645b4d3a6c64
+    layerID: 33
+    mosaicPosition: {x: 7987, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 5
-    spriteName: Layer 5
+  - name: Lights
+    spriteName: Lights
     isGroup: 0
     parentIndex: -1
-    spriteID: f4d0bf4d597cdbd40a393f1f58c40bf9
-    layerID: 24
+    spriteID: 72f1c380fb9f794498fe16eb4b5c2403
+    layerID: 34
+    mosaicPosition: {x: 7572, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paintings
+    spriteName: Paintings
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b5ffa062e1db311458faf2e772707318
+    layerID: 35
+    mosaicPosition: {x: 6512, y: 756}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Curtains
+    spriteName: Curtains
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b63d7c94e71415e46bdb20886f1f25f5
+    layerID: 36
     mosaicPosition: {x: 4, y: 2937}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Levels 1 copy 2
-    spriteName: Levels 1 copy 2
+  - name: Carpet
+    spriteName: Carpet
     isGroup: 0
     parentIndex: -1
-    spriteID: 44c50edb5211ae64d8fbc62d8195c95c
-    layerID: 19
-    mosaicPosition: {x: 7887, y: 4419}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Light Post
-    spriteName: Light Post
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 43bba7f4a1d3ac740bc335c608a84c37
-    layerID: 8
-    mosaicPosition: {x: 6721, y: 2330}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Painting Dirt
-    spriteName: Painting Dirt
-    isGroup: 0
-    parentIndex: -1
-    spriteID: ff8afc46ae9d7c9479c276635f6c6f07
-    layerID: 12
-    mosaicPosition: {x: 4391, y: 4185}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Levels 1 copy 3
-    spriteName: Levels 1 copy 3
-    isGroup: 0
-    parentIndex: -1
-    spriteID: a60710cd8d7e8084eb6da790750adc78
-    layerID: 20
-    mosaicPosition: {x: 7887, y: 4427}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Painting
-    spriteName: Painting
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 15d935d421c759c40a3aa56f864bf2da
-    layerID: 11
-    mosaicPosition: {x: 6805, y: 4947}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 2
-    spriteName: Layer 2
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 461f87e09b318b840b0f840f02118d60
-    layerID: 14
-    mosaicPosition: {x: 4, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Levels 1 copy 4
-    spriteName: Levels 1 copy 4
-    isGroup: 0
-    parentIndex: -1
-    spriteID: d15a8d61655633242b4119474403ff96
-    layerID: 21
-    mosaicPosition: {x: 7887, y: 4435}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 1
-    spriteName: Layer 1
-    isGroup: 0
-    parentIndex: -1
-    spriteID: f4eb873bb79f6d6468c9365ec4f647f8
-    layerID: 13
-    mosaicPosition: {x: 4, y: 5870}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 7
-    spriteName: Layer 7
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 3730785af9eb44942ae610c4de95c8e8
-    layerID: 27
-    mosaicPosition: {x: 4, y: 8654}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Levels 1 copy 5
-    spriteName: Levels 1 copy 5
-    isGroup: 0
-    parentIndex: -1
-    spriteID: bac30112f23e41f4e93a0b05c1a81c7d
-    layerID: 26
-    mosaicPosition: {x: 7887, y: 4443}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 6
-    spriteName: Layer 6
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 78aac783344ec074689caf50030f7cd9
-    layerID: 25
-    mosaicPosition: {x: 4, y: 15310}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 9
-    spriteName: Layer 9
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 528f4d4ee48fa6b498e27d1d42482664
-    layerID: 30
-    mosaicPosition: {x: 4391, y: 2330}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Levels 1 copy 6
-    spriteName: Levels 1 copy 6
-    isGroup: 0
-    parentIndex: -1
-    spriteID: e8c9c954e0cd45646a6b26aae44e408f
-    layerID: 29
-    mosaicPosition: {x: 7887, y: 4451}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 8
-    spriteName: Layer 8
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 372e155a2cdcbb84eac9a566aff68dfa
-    layerID: 28
-    mosaicPosition: {x: 4391, y: 5779}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Layer 10
-    spriteName: Layer 10
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 4a184b790edbd154db29a634de8f9ad8
-    layerID: 31
-    mosaicPosition: {x: 4391, y: 4}
+    spriteID: d0afcb98239286741b186a2d7c2ee46a
+    layerID: 37
+    mosaicPosition: {x: 2817, y: 2937}
     flatten: 0
     isImported: 1
     isVisible: 1
   - name: Layer 0
-    spriteName: 
+    spriteName: Layer 0
     isGroup: 0
     parentIndex: -1
     spriteID: 59d9c8a417d258e40b17e118005fa411
     layerID: 2
-    mosaicPosition: {x: 0, y: 0}
+    mosaicPosition: {x: 4, y: 4}
     flatten: 0
-    isImported: 0
-    isVisible: 0
+    isImported: 1
+    isVisible: 1
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   generateGOHierarchy: 0
