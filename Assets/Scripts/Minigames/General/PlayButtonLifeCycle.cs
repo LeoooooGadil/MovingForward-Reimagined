@@ -38,7 +38,7 @@ public class PlayButtonLifeCycle : MonoBehaviour, IPointerUpHandler, IPointerDow
 		if (thisLifeCycle == null)
 		{
 			isReadyToPlay = true;
-			TicketAccess.ResetTicket(lifeCycle);
+			// TicketAccess.ResetTicket(lifeCycle);
 			return;
 		}
 

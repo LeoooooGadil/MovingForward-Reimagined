@@ -333,6 +333,7 @@ public class WordleGame : MonoBehaviour
 
 		TicketAccess.RemoveOneFromTicket("Wordle");
 		int ticketCount = TicketAccess.GetTicketCount("Wordle");
+		Debug.Log("Ticket Count: " + ticketCount);
 		if (ticketCount == 0) CreateNewLifeCycle();
 
 		wordleWinLosePanel.isWin = true;
