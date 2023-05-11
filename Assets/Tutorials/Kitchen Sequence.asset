@@ -10,39 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: Intro Sequence
+  m_Name: Kitchen Sequence
   m_EditorClassIdentifier: 
-  SequenceName: Living Room Introduction Phase 1
+  SequenceName: Kitchen Introduction Phase 1
   GoToNextPhase: 0
   Sequences:
   - Title: 
-    Text: Hello!
-    Position: 1
-    Mood: 3
-    HighlightObject:
-    - 
-    - 
-    disableBackdrop: 0
-  - Title: 
-    Text: Happy to see you here for the first time!
-    Position: 1
+    Text: Welcome to the kitchen!
+    Position: 0
     Mood: 0
     HighlightObject: []
     disableBackdrop: 0
   - Title: 
-    Text: I'll show you around!
+    Text: Doesn't the kitchen look good?
+    Position: 1
+    Mood: 1
+    HighlightObject: []
+    disableBackdrop: 1
+  - Title: 
+    Text: You can look around the house anytime! Just remember to maintain and clean
+      every nook and cranny of this house.
     Position: 2
     Mood: 1
     HighlightObject: []
-    disableBackdrop: 0
+    disableBackdrop: 1
   - Title: 
-    Text: This is the living room.
+    Text: Now how about we go outside and have some fresh air?
     Position: 2
-    Mood: 1
+    Mood: 0
     HighlightObject: []
-    disableBackdrop: 0
+    disableBackdrop: 1
   - Title: 
-    Text: 'Let''s head to the bedroom. Click the World Menu Button. '
+    Text: Click the world button again to navigate.
     Position: 2
     Mood: 0
     HighlightObject:

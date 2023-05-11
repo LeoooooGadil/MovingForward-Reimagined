@@ -10,33 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: Bedroom Sequence
+  m_Name: Outside Sequence
   m_EditorClassIdentifier: 
-  SequenceName: Bedroom Introduction Phase 1
-  GoToNextPhase: 0
+  SequenceName: Outside Introduction Phase 1
+  GoToNextPhase: 1
   Sequences:
   - Title: 
-    Text: Here is our bedroom!
+    Text: Do you feel that breathe of fresh air?
     Position: 0
     Mood: 0
     HighlightObject: []
-    disableBackdrop: 0
+    disableBackdrop: 1
   - Title: 
-    Text: Very cozy am i right?
+    Text: Remember to always take some time to unwind and go outside for a bit.
     Position: 1
     Mood: 1
     HighlightObject: []
     disableBackdrop: 1
   - Title: 
-    Text: You can go back here anytime! Now let me show you the kitchen.
+    Text: How about let's do some breathing exercise while we're here! It will be
+      helpful.
     Position: 2
-    Mood: 1
+    Mood: 0
     HighlightObject: []
-    disableBackdrop: 1
-  - Title: 
-    Text: 'Click the world button again. '
-    Position: 2
-    Mood: 1
-    HighlightObject:
-    - World Button
     disableBackdrop: 1

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: To Bedroom Sequence
+  m_Name: To Kitchen Sequence
   m_EditorClassIdentifier: 
-  SequenceName: World Menu Phase 1
+  SequenceName: World Menu Pt 2 Phase 1
   GoToNextPhase: 0
   Sequences:
   - Title: 
-    Text: Click the bedroom button to see the room.
+    Text: Click the kitchen button and let's see what's in there.
     Position: 0
-    Mood: 1
+    Mood: 0
     HighlightObject:
-    - Bedroom Card
+    - Kitchen Card
     disableBackdrop: 1
