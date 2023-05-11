@@ -69,6 +69,12 @@ public class SceneryManager : MonoBehaviour
 
 	public void SetScenery(int index)
 	{
+		// check if the index is valid and is not the current scenery
+		if (index < 0 || index >= sceneryObject.sceneryList.Count || index == sceneryManagerSave.currentSceneryIndex)
+		{
+			return;
+		}
+
 		sceneryManagerSave.SetScenery(index);
 		UpdateScenery();
 		SaveSceneryManager();
@@ -76,9 +82,22 @@ public class SceneryManager : MonoBehaviour
 
 	public void SetScenery(string sceneName)
 	{
+		
 		for (int i = 0; i < sceneryObject.sceneryList.Count; i++)
 		{
 			if (sceneryObject.sceneryList[i].sceneName == sceneName)
+			{
+				SetScenery(i);
+				return;
+			}
+		}
+	}
+
+	public void SetScenery(DailyChoreRoom dailyChoreRoom)
+	{
+		for (int i = 0; i < sceneryObject.sceneryList.Count; i++)
+		{
+			if (sceneryObject.sceneryList[i].dailyChoreRoom == dailyChoreRoom)
 			{
 				SetScenery(i);
 				return;

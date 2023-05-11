@@ -16,7 +16,7 @@ public class ProfileInformationIndicator : MonoBehaviour
             statusText.text = ProfileManager.instance.GetStatus();
         } catch (System.Exception) {
             usernameText.text = "Player";
-            statusText.text = "Depressed";
+            statusText.text = "You are doing great!";
         }
     }
 }

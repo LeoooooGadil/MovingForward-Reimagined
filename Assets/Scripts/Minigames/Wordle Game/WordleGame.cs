@@ -326,6 +326,8 @@ public class WordleGame : MonoBehaviour
 	{
 		wordleLetterRows[currentRow].Win();
 		yield return new WaitForSeconds(1.5f);
+		UpdateChoreManager();
+		yield return new WaitForSeconds(1f);
 		UpdateStatistics();
 		CompensatePlayer();
 
@@ -373,6 +375,26 @@ public class WordleGame : MonoBehaviour
 		);
 
 		Aggregator.instance.Publish(wordleCompletedEvent);
+	}
+
+	void UpdateChoreManager()
+	{
+		Chore chore = ChoresManager.instance.GetActiveChore();
+
+		if (chore.dailyChoreType == DailyChoreType.Wordle)
+		{
+			ChoresManager.instance.CompleteChore(chore);
+		}
+		else
+		{
+			chore = ChoresManager.instance.FindChore(DailyChoreRoom.None, DailyChoreType.Wordle);
+
+			if (chore != null)
+			{
+				ChoresManager.instance.CompleteChore(chore);
+			}
+		}
+
 	}
 
 	void CompensatePlayer()

@@ -1,0 +1,357 @@
+fileFormatVersion: 2
+guid: f70eebf42a80fa5458e2049a3207b531
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Chair
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6512
+      y: 4
+      width: 1052
+      height: 744
+    spriteID: 0303ff40b7b0dfd48ba5ba396b215dd0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 6512, y: 4}
+    spritePosition: {x: 1805, y: 382}
+  - name: Vase
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7987
+      y: 4
+      width: 113
+      height: 209
+    spriteID: 6baad360acd605e42b6e645b4d3a6c64
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 7987, y: 4}
+    spritePosition: {x: 3319, y: 1285}
+  - name: Lights
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 7572
+      y: 4
+      width: 407
+      height: 255
+    spriteID: 72f1c380fb9f794498fe16eb4b5c2403
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 7572, y: 4}
+    spritePosition: {x: 3969, y: 1301}
+  - name: Paintings
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6512
+      y: 756
+      width: 1044
+      height: 720
+    spriteID: b5ffa062e1db311458faf2e772707318
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 6512, y: 756}
+    spritePosition: {x: 4705, y: 1490}
+  - name: Curtains
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2937
+      width: 2805
+      height: 2727
+    spriteID: b63d7c94e71415e46bdb20886f1f25f5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 2937}
+    spritePosition: {x: 0, y: 198}
+  - name: Carpet
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2817
+      y: 2937
+      width: 3158
+      height: 162
+    spriteID: d0afcb98239286741b186a2d7c2ee46a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 2817, y: 2937}
+    spritePosition: {x: 1389, y: 148}
+  - name: Layer 0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 6500
+      height: 2925
+    spriteID: 59d9c8a417d258e40b17e118005fa411
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Chair
+    spriteName: Chair
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0303ff40b7b0dfd48ba5ba396b215dd0
+    layerID: 32
+    mosaicPosition: {x: 6512, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Vase
+    spriteName: Vase
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6baad360acd605e42b6e645b4d3a6c64
+    layerID: 33
+    mosaicPosition: {x: 7987, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lights
+    spriteName: Lights
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 72f1c380fb9f794498fe16eb4b5c2403
+    layerID: 34
+    mosaicPosition: {x: 7572, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Paintings
+    spriteName: Paintings
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b5ffa062e1db311458faf2e772707318
+    layerID: 35
+    mosaicPosition: {x: 6512, y: 756}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Curtains
+    spriteName: Curtains
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b63d7c94e71415e46bdb20886f1f25f5
+    layerID: 36
+    mosaicPosition: {x: 4, y: 2937}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Carpet
+    spriteName: Carpet
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d0afcb98239286741b186a2d7c2ee46a
+    layerID: 37
+    mosaicPosition: {x: 2817, y: 2937}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 0
+    spriteName: Layer 0
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 59d9c8a417d258e40b17e118005fa411
+    layerID: 2
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []

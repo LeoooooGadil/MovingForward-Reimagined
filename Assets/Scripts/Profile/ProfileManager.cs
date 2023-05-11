@@ -60,7 +60,7 @@ public class ProfileManager : MonoBehaviour
 	{
 		LoadProfile();
 
-        return "Depressed";
+        return "You are doing great!";
 	}
 
 	public float GetMoney()

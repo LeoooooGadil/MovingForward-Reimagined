@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
+  m_Name: Bedroom Sequence
+  m_EditorClassIdentifier: 
+  SequenceName: BedRoom Sequence Phase 1
+  Sequences:
+  - Title: 
+    Text: Here is our bedroom!
+    Position: 0
+    Mood: 0
+    HighlightObject: []
+    disableBackdrop: 0
+  - Title: 
+    Text: Very cozy am i right?
+    Position: 1
+    Mood: 2
+    HighlightObject: []
+    disableBackdrop: 0
+  - Title: 
+    Text: You can go back here anytime! Now let me show you the kitchen.
+    Position: 2
+    Mood: 2
+    HighlightObject: []
+    disableBackdrop: 1
+  - Title: 
+    Text: 'Click the world icon again. '
+    Position: 2
+    Mood: 2
+    HighlightObject:
+    - World Button
+    disableBackdrop: 1

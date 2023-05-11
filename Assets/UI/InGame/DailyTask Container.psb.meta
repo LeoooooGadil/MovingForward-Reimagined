@@ -135,7 +135,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 3, y: 114}
+    uvTransform: {x: 2, y: 114}
     spritePosition: {x: 4, y: 10}
   characterData:
     bones: []

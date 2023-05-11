@@ -70,6 +70,15 @@ MonoBehaviour:
   - name: TimerTickSfx
     clip: {fileID: 8300000, guid: 2ec14d07946c7fe429f08fc058e5b2f8, type: 3}
     volume: 1
+  - name: TrashCrumpleSfx
+    clip: {fileID: 8300000, guid: 25b27e204ee5ace4b9ef386245420eab, type: 3}
+    volume: 1
+  - name: ChoreCompleteSfx
+    clip: {fileID: 8300000, guid: 9f297195a5f0d134aae4469a277a486a, type: 3}
+    volume: 1
+  - name: LetterSfx
+    clip: {fileID: 8300000, guid: b6c37a87a1e05c0418ce0605b46401d8, type: 3}
+    volume: 1
   MusicClips:
   - name: Caketown
     clip: {fileID: 8300000, guid: 11de737f68fdf7b43b9a7118adf22fae, type: 3}

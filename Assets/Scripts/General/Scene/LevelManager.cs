@@ -40,9 +40,9 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
-	public void ChangeScene(string sceneName, bool unloadCurrentScene = true, SceneTransitionMode transitionMode = SceneTransitionMode.None)
+	public void ChangeScene(string sceneName, bool unloadCurrentScene = true, SceneTransitionMode transitionMode = SceneTransitionMode.None, bool overrideDefaultTransition = true)
 	{
-		StartCoroutine(LoadScene(sceneName, unloadCurrentScene, transitionMode));
+		StartCoroutine(LoadScene(sceneName, unloadCurrentScene, transitionMode, overrideDefaultTransition));
 	}
 
 	public void RemoveScene(string sceneName)
@@ -61,7 +61,7 @@ public class LevelManager : MonoBehaviour
 		}
 	}
 
-	IEnumerator LoadScene(string sceneName, bool unloadCurrentScene = true, SceneTransitionMode transitionMode = SceneTransitionMode.None)
+	IEnumerator LoadScene(string sceneName, bool unloadCurrentScene = true, SceneTransitionMode transitionMode = SceneTransitionMode.None, bool overrideDefaultTransition = true)
 	{
 		if (sceneToBeLoaded != null) yield break;
 
@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
 		sceneToBeLoaded = SceneManager.LoadSceneAsync(sceneName, sceneMode);
 		sceneToBeLoaded.allowSceneActivation = false;
 
-		if (unloadCurrentScene) transitionMode = SceneTransitionMode.Slide;
+		if (unloadCurrentScene && !overrideDefaultTransition) transitionMode = SceneTransitionMode.Slide;
 
 		IsTransitioning = true;
 
@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				// ignored null reference exception
 			}

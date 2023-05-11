@@ -10,15 +10,11 @@ public class Aggregator : MonoBehaviour
 	private List<string> keys = new List<string>();
 	private string saveFileName = "aggregatorSaveData";
 
-
-
-
 	private Dictionary<string, DailyTaskAggregateV2> dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 	public Dictionary<string, NumberLocationAggregate> numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
 	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
-
-
-
+	public Dictionary<string, DustMeOffAggregate> dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
+	public Dictionary<string, TakeMeOutAggregate> takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 
 	void Awake()
 	{
@@ -41,7 +37,7 @@ public class Aggregator : MonoBehaviour
 	public void LoadAggregator()
 	{
 		AggregatorSaveData aggregatorSaveData = SaveSystem.Load(saveFileName) as AggregatorSaveData;
-		
+
 		if (aggregatorSaveData == null)
 		{
 			return;
@@ -53,6 +49,9 @@ public class Aggregator : MonoBehaviour
 
 		dailyTaskLogs = aggregatorSave.dailyTaskLogs;
 		numberLocationLogs = aggregatorSave.numberLocationLogs;
+		wordleLogs = aggregatorSave.wordleLogs;
+		dustMeOffLogs = aggregatorSave.dustMeOffLogs;
+		takeMeOutLogs = aggregatorSave.takeMeOutLogs;
 	}
 
 	public void Publish(DailyTaskCompletedEvent dailyTaskCompletedEvent)
@@ -95,16 +94,35 @@ public class Aggregator : MonoBehaviour
 		SaveAggregator();
 	}
 
+	public void Publish(DustMeOffCompletedEvent dustMeOffCompleted)
+	{
+		string key = generateKey();
+		DustMeOffAggregate dustMeOffAggregate = dustMeOffCompleted.GetData();
+		dustMeOffLogs.Add(key, dustMeOffAggregate);
+
+		SaveAggregator();
+
+	}
+
+	public void Publish(TakeMeOutCompletedEvent takeMeOutCompleted)
+	{
+		string key = generateKey();
+		TakeMeOutAggregate takeMeOutAggregate = takeMeOutCompleted.GetData();
+		takeMeOutLogs.Add(key, takeMeOutAggregate);
+
+		SaveAggregator();
+	}
+
 	public void SaveAggregator()
 	{
 		AggregatorSave aggregatorSave = new AggregatorSave();
 		aggregatorSave.setDailyTaskLogs(dailyTaskLogs);
 		aggregatorSave.setNumberLocationLogs(numberLocationLogs);
+		aggregatorSave.setWordleLogs(wordleLogs);
+		aggregatorSave.setDustMeOffLogs(dustMeOffLogs);
+		aggregatorSave.setTakeMeOutLogs(takeMeOutLogs);
 
-		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys,aggregatorSave);
-
-		SaveCSV(dailyTaskLogs, "dailyTaskLogs");
-		SaveCSV(numberLocationLogs, "numberLocationLogs");
+		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys, aggregatorSave);
 
 		SaveSystem.Save(saveFileName, aggregatorSaveData);
 	}

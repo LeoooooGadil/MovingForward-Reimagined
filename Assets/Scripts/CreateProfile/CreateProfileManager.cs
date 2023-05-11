@@ -90,7 +90,7 @@ public class CreateProfileManager : MonoBehaviour
 		profileManagerSave.setUsername(username);
 		SaveProfile();
 
-        LevelManager.instance.ChangeScene("Game");
+        LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
 	}
 
 	public void CreateProfileAge(string age)

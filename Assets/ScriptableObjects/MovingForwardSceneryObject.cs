@@ -22,5 +22,8 @@ public class MovingForwardSceneryObject : ScriptableObject
         
         [SerializeField]
         public Texture2D thumbnail;
+
+        [SerializeField]
+        public DailyChoreRoom dailyChoreRoom;
     }
 }

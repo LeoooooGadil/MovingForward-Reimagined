@@ -58,6 +58,8 @@ public class DailyTaskSaveV2
         lowPriorityTasks = new List<MovingForwardDailyTasksObject.MoivngForwardDailyTask>();
         mediumPriorityTasks = new List<MovingForwardDailyTasksObject.MoivngForwardDailyTask>();
         highPriorityTasks = new List<MovingForwardDailyTasksObject.MoivngForwardDailyTask>();
+
+		date = DateTime.Now;
 	}
 
 	public string GetDate()

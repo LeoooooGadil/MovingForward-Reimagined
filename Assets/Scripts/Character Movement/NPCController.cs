@@ -15,7 +15,7 @@ public class NPCController : MonoBehaviour
 	public NPCState npcState = NPCState.Idle;
 
 	public float currentTimer = 0f;
-	public float idleMaxTime = 7f;
+	public float idleMaxTime = 5f;
 	public float walkMaxTime = 5f;
 
 	void Start()

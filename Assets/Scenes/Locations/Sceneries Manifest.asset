@@ -16,9 +16,16 @@ MonoBehaviour:
   - label: Home
     sceneName: Location_Home
     thumbnail: {fileID: 2800000, guid: f5e69917d7c85974e925866b8b3b4608, type: 3}
-  - label: Out
-    sceneName: Location_Out
-    thumbnail: {fileID: 2800000, guid: e6c76b8ae13f17f408e2f2bf01f6b331, type: 3}
+    dailyChoreRoom: 1
   - label: Bedroom
     sceneName: Location_Bedroom
     thumbnail: {fileID: 2800000, guid: e6c76b8ae13f17f408e2f2bf01f6b331, type: 3}
+    dailyChoreRoom: 2
+  - label: Kitchen
+    sceneName: Location_Kitchen
+    thumbnail: {fileID: 2800000, guid: 895bd3b9708c626498c6950529c0054a, type: 3}
+    dailyChoreRoom: 3
+  - label: Out
+    sceneName: Location_Out
+    thumbnail: {fileID: 2800000, guid: e6c76b8ae13f17f408e2f2bf01f6b331, type: 3}
+    dailyChoreRoom: 4

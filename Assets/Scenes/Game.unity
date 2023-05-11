@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 604711871}
   - component: {fileID: 604711870}
   m_Layer: 5
-  m_Name: SettingsButton
+  m_Name: Settings Button
   m_TagString: DontSwipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1104,10 +1104,10 @@ RectTransform:
   m_Father: {fileID: 1345522813}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.039916992, y: -14.981979}
-  m_SizeDelta: {x: 160, y: 22.6786}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 149.68683, y: -14.981979}
+  m_SizeDelta: {x: 299.4535, y: 22.6786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624720618
 MonoBehaviour:
@@ -1152,12 +1152,12 @@ MonoBehaviour:
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Status
+  m_Text: Are you happy?
 --- !u!222 &624720620
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1248,7 +1248,7 @@ MonoBehaviour:
     m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 6
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -1547,6 +1547,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768639396}
   m_CullTransparentMesh: 1
+--- !u!1 &815443847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 815443849}
+  - component: {fileID: 815443848}
+  m_Layer: 0
+  m_Name: Background Music Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &815443848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815443847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70182fbe946c8cb40b434b5ca0b1771c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicName: Caketown
+--- !u!4 &815443849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815443847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.9192576, y: 2.3248742, z: 0.5573211}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871494144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,7 +1611,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &871494145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2397,6 +2442,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affectWidth: 1
   affectHeight: 1
+--- !u!1 &1428442454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1428442456}
+  - component: {fileID: 1428442455}
+  m_Layer: 0
+  m_Name: StartTutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1428442455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428442454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a6089adee1d1e4d8b4c1d638cd55ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phases:
+  - phaseState: 0
+    Sequences:
+    - {fileID: 11400000, guid: 33ce259a30c459849aac4ec6d65dbfb8, type: 2}
+--- !u!4 &1428442456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428442454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 380.39505, y: 236.8139, z: 0.3509004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1429363317
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,6 +3086,7 @@ GameObject:
   - component: {fileID: 2071529856}
   - component: {fileID: 2071529857}
   - component: {fileID: 2071529858}
+  - component: {fileID: 2071529859}
   m_Layer: 5
   m_Name: Level Indicator
   m_TagString: DontSwipe
@@ -3099,6 +3193,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e705a1729b10e9240925cd11f8f223da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2071529859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071529852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb652ce14b2b2814bb3d1848ab413159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2082944840

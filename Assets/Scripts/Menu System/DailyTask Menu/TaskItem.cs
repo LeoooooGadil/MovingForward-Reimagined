@@ -22,7 +22,6 @@ public class TaskItem : MonoBehaviour, IPointerClickHandler
 	private Image image;
 	private Animator animator;
 	private float animSpeed = 15f;
-	private bool isResetEnabled = true;
 
 	void Start()
 	{
@@ -55,10 +54,8 @@ public class TaskItem : MonoBehaviour, IPointerClickHandler
 	{
 		int ticketCount = TicketAccess.GetTicketCount("DailyTask");
 		if (ticketCount == 0) {
-			isResetEnabled = false;
 			taskResetButton.interactable = false;
 		} else {
-			isResetEnabled = true;
 			taskResetButton.interactable = true;
 		}
 	}
@@ -96,7 +93,6 @@ public class TaskItem : MonoBehaviour, IPointerClickHandler
 
 		TicketAccess.RemoveOneFromTicket("DailyTask");
 		int ticketCount = TicketAccess.GetTicketCount("DailyTask");
-		if (ticketCount == 0) isResetEnabled = false;
 
 		Task reloadedTask = dailyTaskMenuManager.ResetTask(index, task);
 		task = reloadedTask;

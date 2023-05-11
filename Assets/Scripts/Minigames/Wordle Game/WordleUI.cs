@@ -24,10 +24,10 @@ public class WordleUI : MonoBehaviour
 
 	void PlayButtonClicked()
 	{
-		StartCoroutine(exitAnimation());
+		StartCoroutine(ExitAnimation());
 	}
 
-	IEnumerator exitAnimation()
+	IEnumerator ExitAnimation()
 	{
 		AudioManager.instance.PlaySFX("PopClick");
 		dialogAnimator.ExitDialog();

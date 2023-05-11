@@ -9,8 +9,6 @@ public class MoneyIndicator : MonoBehaviour, IPointerDownHandler
 	public Text moneyText;
 
 	private float currentMoney = 0;
-
-	private float devHoldTime = 3f;
 	private int devHoldCount = 3;
 	private int devHoldCountNeeded = 5;
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,12 @@ public class AudioManager : MonoBehaviour
 	public AudioMixerGroup[] SFXAudioMixerGroups;
 	public AudioMixerGroup[] MusicAudioMixerGroups;
 	public MovingForwardAudioClipsObject audioClips;
+
+	private float SFXVolume;
+	private float MusicVolume;
+
+	private int timesSfxHasBeenSame = 0;
+	private bool played = true;
 
 	void Awake()
 	{
@@ -54,12 +61,43 @@ public class AudioManager : MonoBehaviour
 		SFXAudioSources = new List<AudioSource>();
 		MusicAudioSource = gameObject.AddComponent<AudioSource>();
 
-        // if current scene is the game scene
-        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Game")
-        {
-            // play the game music
-            PlayMusic("Caketown");
-        }
+		SFXVolume = PlayerPrefs.GetFloat("sfxVolume", 1.0f);
+		MusicVolume = PlayerPrefs.GetFloat("musicVolume", 1.0f);
+
+		Debug.Log("SFX Volume: " + SFXVolume);
+		Debug.Log("Music Volume: " + MusicVolume);
+	}
+
+	void Update()
+	{
+		float _SfxVolume = PlayerPrefs.GetFloat("sfxVolume", 1.0f);
+		float _MusicVolume = PlayerPrefs.GetFloat("musicVolume", 1.0f);
+
+		if (SFXVolume != _SfxVolume)
+		{
+			timesSfxHasBeenSame = 0;
+			played = false;
+			SFXVolume = _SfxVolume;
+			foreach (AudioSource audioSource in SFXAudioSources)
+			{
+				audioSource.volume = SFXVolume;
+			}
+		}
+		else
+		{
+			timesSfxHasBeenSame++;
+			if (timesSfxHasBeenSame > 5 && !played)
+			{
+				PlaySFX("ButtonClick");
+				played = true;
+			}
+		}
+
+		if (MusicVolume != _MusicVolume)
+		{
+			MusicVolume = _MusicVolume;
+			MusicAudioSource.volume = MusicVolume;
+		}
 	}
 
 	public void PlaySFX(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f)
@@ -72,7 +110,7 @@ public class AudioManager : MonoBehaviour
 		newAudioSource.outputAudioMixerGroup = GetAudioMixerGroup();
 
 		// set the volume
-		newAudioSource.volume = clip.volume * volume;
+		newAudioSource.volume = clip.volume * volume * SFXVolume;
 
 		// add the audio source to the list
 		SFXAudioSources.Add(newAudioSource);
@@ -98,10 +136,10 @@ public class AudioManager : MonoBehaviour
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.SFXClips.Find(x => x.name == clipName);
 
 		// play the clip
-		PlaySFX(clip);
+		PlaySFX(clip, volume);
 	}
 
-	public void PlayMusic(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f)
+	public void PlayMusic(MovingForwardAudioClipsObject.MovingForwardAudioClip clip, float volume = 1.0f, bool fade = false)
 	{
 		// set the clip
 		MusicAudioSource.clip = clip.clip;
@@ -110,32 +148,44 @@ public class AudioManager : MonoBehaviour
 		MusicAudioSource.outputAudioMixerGroup = GetAudioMixerGroup();
 
 		// set the volume
-		MusicAudioSource.volume = clip.volume * volume;
+		MusicAudioSource.volume = 0;
 
 		// play the clip
 		MusicAudioSource.Play();
+
+		if (fade)
+		{
+			StartCoroutine(FadeInMusic(volume * MusicVolume));
+		}
+		else
+		{
+			MusicAudioSource.volume = volume * MusicVolume;
+		}
 	}
 
-    IEnumerator FadeInMusic(float volume = 1.0f)
-    {
-        while (MusicAudioSource.volume < 1)
-        {
-            MusicAudioSource.volume += 0.1f;
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
+	IEnumerator FadeInMusic(float volume = 1.0f)
+	{
+		while (MusicAudioSource.volume < 1)
+		{
+			MusicAudioSource.volume += 0.1f;
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
 
-    IEnumerator FadeOutMusic()
-    {
-        while (MusicAudioSource.volume > 0)
-        {
-            MusicAudioSource.volume -= 0.1f;
-            yield return new WaitForSeconds(0.1f);
-        }
-    }
+	IEnumerator FadeOutMusic()
+	{
+		while (MusicAudioSource.volume > 0)
+		{
+			MusicAudioSource.volume -= 0.1f;
+			yield return new WaitForSeconds(0.1f);
+		}
+		MusicAudioSource.Stop();
+	}
 
 	public void ChangeMusic(string clipName, float volume = 1.0f)
 	{
+
+
 		// find the clip
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.MusicClips.Find(x => x.name == clipName);
 
@@ -143,19 +193,24 @@ public class AudioManager : MonoBehaviour
 		PlayMusic(clip);
 	}
 
-    IEnumerator ChangeMusicCoroutine(string clipName, float volume = 1.0f)
-    {
-        yield return FadeOutMusic();
-        PlayMusic(clipName, 0);
-        yield return FadeInMusic(volume);
-    }
+	IEnumerator ChangeMusicCoroutine(string clipName, float volume = 1.0f)
+	{
+		StartCoroutine(FadeOutMusic());
+		yield return new WaitForSeconds(0.5f);
+		PlayMusic(clipName, 0, true);
+	}
 
-	public void PlayMusic(string clipName, float volume = 1.0f)
+	public void PlayMusic(string clipName, float volume = 1.0f, bool fade = false)
 	{
 		// find the clip
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.MusicClips.Find(x => x.name == clipName);
 
 		// play the clip
-		PlayMusic(clip);
+		PlayMusic(clip, volume, fade);
+	}
+
+	internal void StopMusic()
+	{
+		StartCoroutine(FadeOutMusic());
 	}
 }

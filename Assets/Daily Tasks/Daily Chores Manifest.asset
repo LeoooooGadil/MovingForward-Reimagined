@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb15e637cf5bed499141b9d7822be1f, type: 3}
+  m_Name: Daily Chores Manifest
+  m_EditorClassIdentifier: 
+  chores:
+  - name: Clean up your bedroom
+    room: 2
+    type: 0
+    sceneName: Dust Me Off Game
+    isMandatory: 1
+    minScore: 0
+  - name: Tidy up your bedroom
+    room: 2
+    type: 1
+    sceneName: Trash Cleaning Game
+    isMandatory: 1
+    minScore: 0
+  - name: Living room needs a little cleaning
+    room: 1
+    type: 0
+    sceneName: Dust Me Off Game
+    isMandatory: 1
+    minScore: 0
+  - name: There's a lot of garbage in the living room
+    room: 2
+    type: 1
+    sceneName: Trash Cleaning Game
+    isMandatory: 1
+    minScore: 0
+  - name: Make the kitchen sqeaky clean.
+    room: 4
+    type: 0
+    sceneName: Dust Me Off Game
+    isMandatory: 1
+    minScore: 0
+  - name: Take out the trash in the kitchen
+    room: 4
+    type: 1
+    sceneName: Trash Cleaning Game
+    isMandatory: 1
+    minScore: 0
+  - name: Write A Journal
+    room: 0
+    type: 4
+    sceneName: Journal
+    isMandatory: 0
+    minScore: 0
+  - name: Wordle Me This
+    room: 0
+    type: 2
+    sceneName: Wordle Game
+    isMandatory: 0
+    minScore: 0
+  - name: Let's Meditate
+    room: 0
+    type: 5
+    sceneName: Old Breathing Game
+    isMandatory: 0
+    minScore: 10
+  - name: Let's Test Your Memory
+    room: 0
+    type: 3
+    sceneName: NumberLocation Game
+    isMandatory: 0
+    minScore: 0

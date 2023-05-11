@@ -90,12 +90,12 @@ public class JournalManager : MonoBehaviour
 	{
 		if (panelState! < 1) return;
 		AudioManager.instance.PlaySFX("PopClick");
-		
-		if(panelState == 1)
+
+		if (panelState == 1)
 		{
 			panelState = 0;
 		}
-		else if(panelState == 2)
+		else if (panelState == 2)
 		{
 			panelState = 0;
 		}
@@ -110,7 +110,7 @@ public class JournalManager : MonoBehaviour
 
 	void UpdatePanels()
 	{
-		if(panelState == panelStatePrevious) return;
+		if (panelState == panelStatePrevious) return;
 
 		switch (panelState)
 		{
@@ -123,7 +123,7 @@ public class JournalManager : MonoBehaviour
 				journalSendButton.gameObject.SetActive(true);
 				EscapeButton.SetActive(true);
 
-				if(journalSave.journalEntries.Count > 0) JournalEntriesButton.gameObject.SetActive(true); 
+				if (journalSave.journalEntries.Count > 0) JournalEntriesButton.gameObject.SetActive(true);
 				else JournalEntriesButton.gameObject.SetActive(false);
 				break;
 			case 1:
@@ -135,7 +135,7 @@ public class JournalManager : MonoBehaviour
 				journalSendButton.gameObject.SetActive(false);
 				EscapeButton.SetActive(false);
 
-				if(journalSave.journalEntries.Count > 0) JournalEntriesButton.gameObject.SetActive(true); 
+				if (journalSave.journalEntries.Count > 0) JournalEntriesButton.gameObject.SetActive(true);
 				else JournalEntriesButton.gameObject.SetActive(false);
 				break;
 			case 2:
@@ -149,11 +149,11 @@ public class JournalManager : MonoBehaviour
 				journalSendButton.gameObject.SetActive(false);
 				JournalEntriesButton.gameObject.SetActive(false);
 				break;
-			// case 2:
-			// 	JournalMainPanel.SetActive(false);
-			// 	JournalEntriesPanel.SetActive(false);
-			// 	JournalResultsPanel.SetActive(true);
-			// 	break;
+				// case 2:
+				// 	JournalMainPanel.SetActive(false);
+				// 	JournalEntriesPanel.SetActive(false);
+				// 	JournalResultsPanel.SetActive(true);
+				// 	break;
 		}
 
 		panelStatePrevious = panelState;
@@ -216,6 +216,26 @@ public class JournalManager : MonoBehaviour
 		SaveJournal();
 	}
 
+	void UpdateChoreManager()
+	{
+		Chore chore = ChoresManager.instance.GetActiveChore();
+
+		if (chore.dailyChoreType == DailyChoreType.JournalEntry)
+		{
+			ChoresManager.instance.CompleteChore(chore);
+		}
+		else
+		{
+			chore = ChoresManager.instance.FindChore(DailyChoreRoom.None, DailyChoreType.JournalEntry);
+
+			if (chore != null)
+			{
+				ChoresManager.instance.CompleteChore(chore);
+			}
+		}
+
+	}
+
 	IEnumerator SendPaperAirplane()
 	{
 		JournalSendButton.gameObject.SetActive(false);
@@ -226,11 +246,12 @@ public class JournalManager : MonoBehaviour
 		AudioManager.instance.PlaySFX("WhooshSfx");
 		PaperAnimator.SetTrigger("isFinished");
 		yield return new WaitForSeconds(0.3f);
+		UpdateChoreManager();
 		AudioManager.instance.PlaySFX("PaperCrumbleSfx");
 		yield return new WaitForSeconds(1f);
 		AudioManager.instance.PlaySFX("WhooshSfx");
 
-		
+
 
 
 		yield return new WaitForSeconds(0.2f);
