@@ -22,7 +22,16 @@ public class TutorialOnStart : MonoBehaviour
 		int phase = TutorialManager.instance.GetPhaseState();
 		Debug.Log("Phase: " + phase);
 		if (phase >= phases.Count) yield break;
-		phases[phase].Run();
+		
+		// find the phase that matches the current phase
+		foreach (var p in phases)
+		{
+			if (p.phaseState == phase)
+			{
+				p.Run();
+				break;
+			}
+		}
 	}
 }
 
