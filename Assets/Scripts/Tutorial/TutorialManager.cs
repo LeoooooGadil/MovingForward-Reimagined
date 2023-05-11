@@ -38,6 +38,13 @@ public class TutorialManager : MonoBehaviour
         PlayerPrefs.Save();
 	}
 
+	public void GoToNextPhase()
+	{
+		PhaseState++;
+		PlayerPrefs.SetInt("TutorialPhaseState", PhaseState);
+		PlayerPrefs.Save();
+	}
+
 	public int GetPhaseState()
 	{
 		return PhaseState;

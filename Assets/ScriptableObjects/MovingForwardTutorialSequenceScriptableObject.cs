@@ -8,7 +8,9 @@ public class MovingForwardTutorialSequenceScriptableObject : ScriptableObject
 {
     [SerializeField]
     public string SequenceName;
+    public bool GoToNextPhase = false;
     public List<Sequence> Sequences;
+
 }
 
 [System.Serializable]

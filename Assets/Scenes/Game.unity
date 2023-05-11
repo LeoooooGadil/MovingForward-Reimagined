@@ -2471,10 +2471,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a6089adee1d1e4d8b4c1d638cd55ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingForwardTutorialSequenceScriptableObject: {fileID: 11400000, guid: 33ce259a30c459849aac4ec6d65dbfb8, type: 2}
   phases:
-  - phaseState: 0
-    Sequences: []
+  - phaseState: 1
+    Sequences:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - phaseState: 2
+    Sequences:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  - phaseState: 3
+    Sequences:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!4 &1428442456
 Transform:
   m_ObjectHideFlags: 0
