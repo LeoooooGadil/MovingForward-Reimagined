@@ -21,7 +21,6 @@ public class TutorialOnStart : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		int phase = TutorialManager.instance.GetPhaseState();
 		Debug.Log("Phase: " + phase);
-		if (phase >= phases.Count) yield break;
 		
 		// find the phase that matches the current phase
 		foreach (var p in phases)
