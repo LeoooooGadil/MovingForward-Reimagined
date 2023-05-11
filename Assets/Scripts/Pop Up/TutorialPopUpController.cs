@@ -101,8 +101,9 @@ public class TutorialPopUpController : MonoBehaviour
 		}
 		else
 		{
+			// get actions from the last sequence
 			// get actions from the sequence
-			string[] actions = movingForwardTutorialSequenceScriptableObject.Sequences[currentStep].actions;
+			string[] actions = movingForwardTutorialSequenceScriptableObject.Sequences[currentStep - 1].actions;
 
 			// perform actions
 			foreach (string action in actions)
