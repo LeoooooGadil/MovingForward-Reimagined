@@ -15,7 +15,7 @@ public class OverlayManager : MonoBehaviour
 	{
 		CheckChores();
 
-		if (TutorialManager.instance.isTutorialActive && TutorialManager.instance.GetPhaseState() != 0)
+		if (TutorialManager.instance.GetPhaseState() == 0)
 		{
 			HideAllOverlays();
 		}
