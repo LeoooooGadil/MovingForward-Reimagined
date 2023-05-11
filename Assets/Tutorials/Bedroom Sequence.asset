@@ -10,33 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: Test Sequence
+  m_Name: Bedroom Sequence
   m_EditorClassIdentifier: 
-  SequenceName: InGameTutorial
+  SequenceName: BedRoom Sequence Phase 1
   Sequences:
-  - Title: title 1
-    Text: This is a test
-    Position: 1
-    Mood: 3
-    HighlightObject:
-    - Level Indicator
-    - Money Indicator
-    disableBackdrop: 1
-  - Title: title 2
-    Text: This should work
-    Position: 1
-    Mood: 1
+  - Title: 
+    Text: Here is our bedroom!
+    Position: 0
+    Mood: 0
     HighlightObject: []
     disableBackdrop: 0
-  - Title: title 3
-    Text: if it doesnt
-    Position: 2
+  - Title: 
+    Text: Very cozy am i right?
+    Position: 1
     Mood: 2
     HighlightObject: []
     disableBackdrop: 0
-  - Title: title 4
-    Text: Fuck you
-    Position: 0
-    Mood: 6
+  - Title: 
+    Text: You can go back here anytime! Now let me show you the kitchen.
+    Position: 2
+    Mood: 2
     HighlightObject: []
-    disableBackdrop: 0
+    disableBackdrop: 1
+  - Title: 
+    Text: 'Click the world icon again. '
+    Position: 2
+    Mood: 2
+    HighlightObject:
+    - World Button
+    disableBackdrop: 1
