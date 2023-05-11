@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
   m_Name: Bedroom Sequence
   m_EditorClassIdentifier: 
-  SequenceName: 
+  SequenceName: BedRoom Sequence Phase 1
   Sequences:
   - Title: 
     Text: Here is our bedroom!

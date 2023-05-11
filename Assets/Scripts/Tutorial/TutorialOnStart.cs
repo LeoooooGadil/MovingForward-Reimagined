@@ -8,6 +8,8 @@ public class TutorialOnStart : MonoBehaviour
 
     void OnEnable()
     {
+        Debug.Log("Tutorial " + movingForwardTutorialSequenceScriptableObject.SequenceName + " is enabled");
+
         if(PlayerPrefs.HasKey(movingForwardTutorialSequenceScriptableObject.SequenceName)) return;
 
         StartCoroutine(StartTutorial());
