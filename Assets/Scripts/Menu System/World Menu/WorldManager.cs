@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class WorldManager : MonoBehaviour
 {
 	public List<WorldItem> worldItems = new List<WorldItem>();
 	public int currentWorld = 0;
+
+	public ScrollRect scrollRect;
 
 	void Start()
 	{
@@ -20,6 +24,8 @@ public class WorldManager : MonoBehaviour
 			currentWorld = 0;
 		}
 		Debug.Log("Current World: " + currentWorld);
+
+		ScrollToCurrentWorld();
 	}
 
 	void InitializeWorlds()
@@ -29,5 +35,13 @@ public class WorldManager : MonoBehaviour
 			worldItems[i].worldIndex = i;
 			worldItems[i].worldManager = this;
 		}
+	}
+
+	// scroll to the current world
+	public void ScrollToCurrentWorld()
+	{
+		Vector3 objectPosition = worldItems[currentWorld].GetComponent<RectTransform>().anchoredPosition;
+		RectTransform objectRectTransform = objectToScrollTo.GetComponent<RectTransform>();
+		Vector2 objectPosition = objectRectTransform.anchoredPosition;
 	}
 }

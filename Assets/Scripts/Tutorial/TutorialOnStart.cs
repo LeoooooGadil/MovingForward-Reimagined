@@ -21,6 +21,7 @@ public class TutorialOnStart : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		int phase = TutorialManager.instance.GetPhaseState();
 		Debug.Log("Phase: " + phase);
+		if (phase >= phases.Count) yield break;
 		phases[phase].Run();
 	}
 }

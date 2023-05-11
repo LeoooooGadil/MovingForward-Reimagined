@@ -21,12 +21,14 @@ MonoBehaviour:
     Mood: 0
     HighlightObject: []
     disableBackdrop: 1
+    actions: []
   - Title: 
     Text: Remember to always take some time to unwind and go outside for a bit.
     Position: 1
     Mood: 1
     HighlightObject: []
     disableBackdrop: 1
+    actions: []
   - Title: 
     Text: How about let's do some breathing exercise while we're here! It will be
       helpful.
@@ -34,3 +36,5 @@ MonoBehaviour:
     Mood: 0
     HighlightObject: []
     disableBackdrop: 1
+    actions:
+    - Open Breathing Game
