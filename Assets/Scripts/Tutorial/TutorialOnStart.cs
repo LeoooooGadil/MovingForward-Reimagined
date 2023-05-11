@@ -10,10 +10,16 @@ public class TutorialOnStart : MonoBehaviour
 
 	void OnEnable()
 	{
+		// log the name of the gameobject this script is attached to
+		Debug.Log("TutorialOnStart: " + gameObject.name);
+		StartCoroutine(Start());
+	}
+
+	IEnumerator Start()
+	{
+		yield return new WaitForSeconds(0.5f);
 		int phase = TutorialManager.instance.GetPhaseState();
-
-		if (phase >= phases.Count) return;
-
+		Debug.Log("Phase: " + phase);
 		phases[phase].Run();
 	}
 }
@@ -27,25 +33,17 @@ public class Phase
 
 	public void Run()
 	{
-		// check each sequences if they are completed
-		// if not continue to next sequence
-		// if completed, check if there is a next sequence
-		// if there is, continue to next sequence
-
+		
 		foreach (var sequence in Sequences)
 		{
+			Debug.Log("Checking Tutorial Sequence: " + sequence.SequenceName);
 			bool isCompleted = PlayerPrefs.GetInt(sequence.SequenceName, 0) == 1;
 
 			if(isCompleted) continue;
 
-			StartTutorial(sequence);
+			Debug.Log("Running Tutorial Sequence: " + sequence.SequenceName);
+			PopUpManager.instance.ShowTutorial(sequence);
 			break;
 		}
-	}
-
-	IEnumerator StartTutorial(MovingForwardTutorialSequenceScriptableObject sequence)
-	{
-		yield return new WaitForSeconds(0.7f);
-		PopUpManager.instance.ShowTutorial(sequence);
 	}
 }

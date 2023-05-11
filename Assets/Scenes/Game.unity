@@ -2472,21 +2472,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phases:
-  - phaseState: 1
+  - phaseState: 0
     Sequences:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - phaseState: 2
-    Sequences:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  - phaseState: 3
-    Sequences:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 33ce259a30c459849aac4ec6d65dbfb8, type: 2}
 --- !u!4 &1428442456
 Transform:
   m_ObjectHideFlags: 0
