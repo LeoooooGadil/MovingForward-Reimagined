@@ -10,23 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: To Outside Sequence
+  m_Name: Living Room Second Phase
   m_EditorClassIdentifier: 
-  SequenceName: World Menu Pt 3 Phase 1
+  SequenceName: Living Room Phase 2
   GoToNextPhase: 0
   Sequences:
   - Title: 
-    Text: 'Click the Outside button to leave your home for a bit. '
+    Text: Uh-oh! Looks like the rooms got dirty.
     Position: 0
-    Mood: 0
-    HighlightObject:
-    - Out Card
-    disableBackdrop: 1
-    actions: []
-  - Title: 
-    Text: You can use the scroll to navigate between the scenes.
-    Position: 2
-    Mood: 2
+    Mood: 3
     HighlightObject: []
-    disableBackdrop: 1
+    disableBackdrop: 0
     actions: []

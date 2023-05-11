@@ -10,34 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: Bedroom Sequence
+  m_Name: StartSecondPhaseFromOutside
   m_EditorClassIdentifier: 
-  SequenceName: Bedroom Introduction Phase 1
+  SequenceName: Outside Phase 2
   GoToNextPhase: 0
   Sequences:
   - Title: 
-    Text: Here is the bedroom!
-    Position: 0
+    Text: Feeling any better? It is always good for your health to do meditation
+      every now and then.
+    Position: 2
     Mood: 0
     HighlightObject: []
-    disableBackdrop: 0
-    actions: []
-  - Title: 
-    Text: Very cozy am i right?
-    Position: 1
-    Mood: 1
-    HighlightObject: []
     disableBackdrop: 1
     actions: []
   - Title: 
-    Text: You can go back here anytime! Now let me show you the kitchen.
-    Position: 2
-    Mood: 1
-    HighlightObject: []
-    disableBackdrop: 1
-    actions: []
-  - Title: 
-    Text: 'Click the world button again. '
+    Text: You're ready to go back home! But feel free to navigate anywhere! Just
+      click the world button anytime.
     Position: 2
     Mood: 1
     HighlightObject:
