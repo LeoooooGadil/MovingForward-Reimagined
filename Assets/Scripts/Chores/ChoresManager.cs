@@ -12,6 +12,7 @@ public class ChoresManager : MonoBehaviour
 	private string saveFileName = "ChoresManager";
 
 	public Chore activeChore;
+	private bool isFirstLaunch = true;
 
 	void Awake()
 	{
@@ -49,6 +50,7 @@ public class ChoresManager : MonoBehaviour
 		if (loadedData != null)
 		{
 			choresSave = new ChoresSave(loadedData);
+			isFirstLaunch = false;
 		}
 		else
 		{
@@ -106,13 +108,33 @@ public class ChoresManager : MonoBehaviour
 		List<Chore> dailyChores = new List<Chore>();
 		List<Chores> mandatoryChores = new List<Chores>();
 
+
+
 		for (int i = 0; i < dailyChoresObject.chores.Count; i++)
 		{
-			if(dailyChoresObject.chores[i].isMandatory == true)
+			if (dailyChoresObject.chores[i].isMandatory == true)
 				mandatoryChores.Add(dailyChoresObject.chores[i]);
 		}
 
-		while(half > 0)
+		if (isFirstLaunch)
+		{
+			Debug.Log("First Launch");
+
+			foreach (Chores _chore in mandatoryChores)
+			{
+				if (_chore.room == DailyChoreRoom.LivingRoom && _chore.type == DailyChoreType.DustMeOff)
+				{
+					int TheTutorialChore = mandatoryChores.IndexOf(_chore);
+					Chore chore = GenerateOneChore(TheTutorialChore, mandatoryChores);
+					dailyChores.Add(chore);
+					mandatoryChores.Remove(_chore);
+					half--;
+					break;
+				}
+			}
+		}
+
+		while (half > 0)
 		{
 			int randomChore = Random.Range(0, mandatoryChores.Count);
 

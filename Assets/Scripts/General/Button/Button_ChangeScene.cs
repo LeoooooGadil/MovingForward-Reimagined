@@ -16,7 +16,7 @@ public class Button_ChangeScene : MonoBehaviour
         button.onClick.AddListener(ChangeScene);
 	}
 
-    void ChangeScene()
+    public void ChangeScene()
     {
         if (dialogAnimator != null)
         {

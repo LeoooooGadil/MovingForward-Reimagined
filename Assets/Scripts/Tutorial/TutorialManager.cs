@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class TutorialManager : MonoBehaviour
 	public bool isTutorialActive = false;
 
 	public static TutorialManager instance;
+
+	public List<Actions> actions;
 
 	void Awake()
 	{
@@ -59,4 +63,26 @@ public class TutorialManager : MonoBehaviour
 	{
 		return isTutorialActive;
 	}
+
+	public void RunAction(string name)
+	{
+		foreach (var action in actions)
+		{
+			if (action.name == name)
+			{
+				action.function.Invoke();
+				Debug.Log("Running Action: " + name);
+				break;
+			}
+		}
+	}
 }
+
+[System.Serializable]
+[IncludeInSettings(true)]
+public class Actions
+{
+	public string name;
+	public UnityEvent function;
+}
+

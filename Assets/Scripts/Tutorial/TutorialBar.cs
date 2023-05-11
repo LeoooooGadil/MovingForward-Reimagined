@@ -81,11 +81,11 @@ public class TutorialBar : MonoBehaviour
 
 			if (isSpace)
 			{
-				yield return new WaitForSeconds(0.1f);
+				yield return new WaitForSeconds(0.03f);
 			}
 
 			i++;
-			yield return new WaitForSeconds(0.05f);
+			yield return new WaitForSeconds(0.02f);
 		}
 
 		tutorialPopUpController.setState(2);

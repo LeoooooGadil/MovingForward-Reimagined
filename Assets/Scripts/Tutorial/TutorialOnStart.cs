@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class TutorialOnStart : MonoBehaviour
@@ -33,13 +34,13 @@ public class Phase
 
 	public void Run()
 	{
-		
+
 		foreach (var sequence in Sequences)
 		{
 			Debug.Log("Checking Tutorial Sequence: " + sequence.SequenceName);
 			bool isCompleted = PlayerPrefs.GetInt(sequence.SequenceName, 0) == 1;
 
-			if(isCompleted) continue;
+			if (isCompleted) continue;
 
 			Debug.Log("Running Tutorial Sequence: " + sequence.SequenceName);
 			PopUpManager.instance.ShowTutorial(sequence);

@@ -23,6 +23,8 @@ public class Sequence
     public SequenceMood Mood;
     public string[] HighlightObject;
     public bool disableBackdrop = false;
+
+    public string[] actions;
 }
 
 [System.Serializable]
