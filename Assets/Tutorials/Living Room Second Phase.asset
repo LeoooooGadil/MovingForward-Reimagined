@@ -20,5 +20,28 @@ MonoBehaviour:
     Position: 0
     Mood: 3
     HighlightObject: []
+    disableBackdrop: 1
+    actions: []
+  - Title: 
+    Text: This mess is kinda annoying
+    Position: 1
+    Mood: 5
+    HighlightObject: []
     disableBackdrop: 0
+    actions: []
+  - Title: 
+    Text: But dont worry, Cleaning is fun! Let's do some cleaning!
+    Position: 1
+    Mood: 1
+    HighlightObject: []
+    disableBackdrop: 0
+    actions: []
+  - Title: 
+    Text: First navigate to the daily tasks! Just click the Daily Task Button on
+      the Left.
+    Position: 2
+    Mood: 1
+    HighlightObject:
+    - Daily Task Button
+    disableBackdrop: 1
     actions: []

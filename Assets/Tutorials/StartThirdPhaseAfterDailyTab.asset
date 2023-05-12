@@ -10,46 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: Intro Sequence
+  m_Name: StartThirdPhaseAfterDailyTab
   m_EditorClassIdentifier: 
-  SequenceName: Living Room Introduction Phase 1
+  SequenceName: Living Room Phase 2
   GoToNextPhase: 0
   Sequences:
   - Title: 
-    Text: Hello!
-    Position: 1
-    Mood: 3
-    HighlightObject:
-    - 
-    - 
-    disableBackdrop: 0
-    actions: []
-  - Title: 
-    Text: Happy to see you here for the first time!
-    Position: 1
+    Text: So, did you managed to clean up some rooms?
+    Position: 0
     Mood: 0
     HighlightObject: []
     disableBackdrop: 0
     actions: []
   - Title: 
-    Text: I'll show you around!
-    Position: 2
-    Mood: 1
+    Text: Or did you got distracted? or chose to rest and meditate?
+    Position: 0
+    Mood: 0
     HighlightObject: []
     disableBackdrop: 0
     actions: []
   - Title: 
-    Text: This is the living room.
-    Position: 2
-    Mood: 1
+    Text: Dont worry! Choosing what tasks you felt doing is alright and is healthy
+      for your wellbeing.
+    Position: 0
+    Mood: 0
     HighlightObject: []
-    disableBackdrop: 1
+    disableBackdrop: 0
     actions: []
   - Title: 
-    Text: 'Let''s head to the bedroom. Click the World Menu Button. '
-    Position: 2
+    Text: Every task present and seen visually are yours to control! Accomplishing
+      these tasks will give you points and rewards!
+    Position: 0
     Mood: 0
-    HighlightObject:
-    - World Button
-    disableBackdrop: 1
+    HighlightObject: []
+    disableBackdrop: 0
     actions: []

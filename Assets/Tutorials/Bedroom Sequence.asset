@@ -24,7 +24,7 @@ MonoBehaviour:
     actions: []
   - Title: 
     Text: Very cozy am i right?
-    Position: 1
+    Position: 0
     Mood: 1
     HighlightObject: []
     disableBackdrop: 1
