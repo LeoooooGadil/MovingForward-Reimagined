@@ -25,8 +25,8 @@ MonoBehaviour:
     actions: []
   - Title: 
     Text: You can use the scroll to navigate between the scenes.
-    Position: 1
+    Position: 2
     Mood: 2
     HighlightObject: []
-    disableBackdrop: 0
+    disableBackdrop: 1
     actions: []
