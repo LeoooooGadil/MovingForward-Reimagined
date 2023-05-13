@@ -6887,7 +6887,7 @@ MonoBehaviour:
   phases:
   - phaseState: 1
     Sequences:
-    - {fileID: 11400000, guid: bc05301714359d0479cc496de0a04a2b, type: 2}
+    - {fileID: 11400000, guid: 536e13042975795409ad707dce408ff0, type: 2}
 --- !u!1 &1292525983
 GameObject:
   m_ObjectHideFlags: 0
@@ -7561,8 +7561,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 709307704}
   m_HandleRect: {fileID: 709307703}
   m_Direction: 0
-  m_Value: -0.00000038129932
-  m_Size: 0.7154284
+  m_Value: -0.00000019064959
+  m_Size: 0.71542835
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -2475,6 +2475,9 @@ MonoBehaviour:
   - phaseState: 0
     Sequences:
     - {fileID: 11400000, guid: 33ce259a30c459849aac4ec6d65dbfb8, type: 2}
+  - phaseState: 2
+    Sequences:
+    - {fileID: 11400000, guid: bc05301714359d0479cc496de0a04a2b, type: 2}
 --- !u!4 &1428442456
 Transform:
   m_ObjectHideFlags: 0

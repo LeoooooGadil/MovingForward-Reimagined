@@ -76,7 +76,8 @@ public class DustMeOffGame : MonoBehaviour
 
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore.dailyChoreType == DailyChoreType.DustMeOff)
+
+		if (chore != null && chore.dailyChoreType == DailyChoreType.DustMeOff)
 		{
 			ChoresManager.instance.CompleteChore(chore);
 		}
