@@ -8,6 +8,7 @@ public class WorldManager : MonoBehaviour
 {
 	public List<WorldItem> worldItems = new List<WorldItem>();
 	public int currentWorld = 0;
+	public WorldItem currentWorldItem;
 
 	public ScrollRect scrollRect;
 
@@ -18,6 +19,7 @@ public class WorldManager : MonoBehaviour
 		try
 		{
 			currentWorld = SceneryManager.instance.sceneryManagerSave.currentSceneryIndex;
+			currentWorldItem = worldItems[currentWorld];
 		}
 		catch
 		{
@@ -40,6 +42,13 @@ public class WorldManager : MonoBehaviour
 	// scroll to the current world
 	public void ScrollToCurrentWorld()
 	{
+		float scrollValue = 0;
 
+		for (int i = 0; i < currentWorld; i++)
+		{
+			scrollValue += 0.35f;
+		}
+
+		scrollRect.horizontalNormalizedPosition = scrollValue;
 	}
 }
