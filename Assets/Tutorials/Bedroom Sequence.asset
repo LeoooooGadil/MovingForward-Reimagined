@@ -27,14 +27,14 @@ MonoBehaviour:
     Position: 0
     Mood: 1
     HighlightObject: []
-    disableBackdrop: 1
+    disableBackdrop: 0
     actions: []
   - Title: 
     Text: You can go back here anytime! Now let me show you the kitchen.
     Position: 2
     Mood: 1
     HighlightObject: []
-    disableBackdrop: 1
+    disableBackdrop: 0
     actions: []
   - Title: 
     Text: 'Click the world button again. '
@@ -42,5 +42,5 @@ MonoBehaviour:
     Mood: 1
     HighlightObject:
     - World Button
-    disableBackdrop: 1
+    disableBackdrop: 0
     actions: []
