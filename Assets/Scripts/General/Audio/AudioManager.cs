@@ -149,6 +149,9 @@ public class AudioManager : MonoBehaviour
 
 		// set the volume
 		MusicAudioSource.volume = 0;
+		
+		// set the loop
+		MusicAudioSource.loop = true;
 
 		// play the clip
 		MusicAudioSource.Play();

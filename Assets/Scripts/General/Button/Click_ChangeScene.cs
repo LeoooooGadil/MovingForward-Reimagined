@@ -24,7 +24,7 @@ public class Click_ChangeScene : MonoBehaviour
 
 	public void ChangeScene()
 	{
-		if (MenuManager.Instance.GetIsMenuOpen()) return;
+		if (LevelManager.instance.isMainMenuLoaded() || LevelManager.instance.isStatsMenuLoaded()) return;
 
 		AudioManager.instance.PlaySFX("PopClick");
 		LevelManager.instance.ChangeScene(sceneName, true, SceneTransitionMode.Slide, false);

@@ -27,10 +27,13 @@ public class CameraSideScroller : MonoBehaviour
 
 	void Update()
 	{
+		
+
 		// Check if the touch is over a button UI element
 		bool isTouchingUI = IsPointerOverUIObject();
 		// If the touch is over a button UI element, don't move the camera
 		if (isTouchingUI) return;
+		if (LevelManager.instance.isMainMenuLoaded() || LevelManager.instance.isStatsMenuLoaded()) return;
 
 
 #if UNITY_EDITOR || UNITY_STANDALONE

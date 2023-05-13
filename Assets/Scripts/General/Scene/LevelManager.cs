@@ -50,6 +50,21 @@ public class LevelManager : MonoBehaviour
 		StartCoroutine(UnloadScene(sceneName));
 	}
 
+	public bool isSceneLoaded(string sceneName)
+	{
+		return SceneManager.GetSceneByName(sceneName).isLoaded;
+	}
+
+	public bool isStatsMenuLoaded()
+	{
+		return SceneManager.GetSceneByName("Stats Menu").isLoaded;
+	}
+
+	public bool isMainMenuLoaded()
+	{
+		return SceneManager.GetSceneByName("Menu").isLoaded;
+	}
+
 	IEnumerator UnloadScene(string sceneName)
 	{
 		var sceneToBeUnloaded = SceneManager.GetSceneByName(sceneName);

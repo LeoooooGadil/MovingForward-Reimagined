@@ -10,6 +10,7 @@ public class SceneryManager : MonoBehaviour
 	public MovingForwardSceneryObject sceneryObject;
 	public SceneryManagerSave sceneryManagerSave;
 	public Scene currentScenery;
+	public bool isCurrentlyChangingScenery = false;
 
 	private string saveFileName = "SceneryManager";
 
@@ -56,6 +57,7 @@ public class SceneryManager : MonoBehaviour
 				{
 					// unload the previous scenery
 					SceneManager.UnloadSceneAsync(previousScenery);
+					isCurrentlyChangingScenery = false;
 				}
 			}
 
@@ -70,11 +72,11 @@ public class SceneryManager : MonoBehaviour
 	public void SetScenery(int index)
 	{
 		// check if the index is valid and is not the current scenery
-		if (index < 0 || index >= sceneryObject.sceneryList.Count || index == sceneryManagerSave.currentSceneryIndex)
+		if (index < 0 || index >= sceneryObject.sceneryList.Count || index == sceneryManagerSave.currentSceneryIndex || isCurrentlyChangingScenery)
 		{
 			return;
 		}
-
+		isCurrentlyChangingScenery = true;
 		sceneryManagerSave.SetScenery(index);
 		UpdateScenery();
 		SaveSceneryManager();
