@@ -24,7 +24,7 @@ public class Click_ChangeScene : MonoBehaviour
 
 	public void ChangeScene()
 	{
-		if(MenuManager.Instance.GetIsMenuOpen()) return;
+		if (MenuManager.Instance.GetIsMenuOpen()) return;
 
 		AudioManager.instance.PlaySFX("PopClick");
 		LevelManager.instance.ChangeScene(sceneName, true, SceneTransitionMode.Slide, false);
@@ -34,8 +34,12 @@ public class Click_ChangeScene : MonoBehaviour
 	{
 		if (!isActive) return;
 
-		Animator animator = GetComponent<Animator>();
-		animator.SetBool(boolParameterName, true);
+
+		if (GetComponent<Animator>() != null)
+		{
+			Animator animator = GetComponent<Animator>();
+			animator.SetBool(boolParameterName, true);
+		}
 		ChangeScene();
 	}
 
@@ -43,8 +47,11 @@ public class Click_ChangeScene : MonoBehaviour
 	{
 		if (!isActive) return;
 
-		Animator animator = GetComponent<Animator>();
-		animator.SetBool(boolParameterName, false);
+		if (GetComponent<Animator>() != null)
+		{
+			Animator animator = GetComponent<Animator>();
+			animator.SetBool(boolParameterName, false);
+		}
 	}
 
 

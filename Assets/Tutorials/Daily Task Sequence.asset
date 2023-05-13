@@ -10,38 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a63d78891cbfc43a1b3d23d8991a02, type: 3}
-  m_Name: StartThirdPhaseAfterDailyTab
+  m_Name: Daily Task Sequence
   m_EditorClassIdentifier: 
-  SequenceName: After Daily Task Phase 3
-  GoToNextPhase: 0
+  SequenceName: Daily Task Phase 2
+  GoToNextPhase: 1
   Sequences:
   - Title: 
-    Text: So, did you managed to clean up some rooms?
+    Text: This is the Daily Task Section
     Position: 0
     Mood: 0
     HighlightObject: []
     disableBackdrop: 0
     actions: []
   - Title: 
-    Text: Or did you got distracted? or chose to rest and meditate?
+    Text: This is where you can accomplish tasks!
     Position: 0
-    Mood: 0
+    Mood: 1
     HighlightObject: []
     disableBackdrop: 0
     actions: []
   - Title: 
-    Text: Dont worry! Choosing what tasks you felt doing is alright and is healthy
-      for your wellbeing.
-    Position: 0
-    Mood: 0
+    Text: You can choose any tasks you want.
+    Position: 1
+    Mood: 1
     HighlightObject: []
     disableBackdrop: 0
     actions: []
   - Title: 
-    Text: Every task present and seen visually are yours to control! Accomplishing
-      these tasks will give you points and rewards!
-    Position: 0
+    Text: But as you saw earlier, Let's start by doing some cleaning!
+    Position: 2
     Mood: 0
     HighlightObject: []
-    disableBackdrop: 0
+    disableBackdrop: 1
+    actions: []
+  - Title: 
+    Text: You can start any Cleaning Tasks listed here by clicking the PLAY button.
+    Position: 2
+    Mood: 1
+    HighlightObject: []
+    disableBackdrop: 1
     actions: []

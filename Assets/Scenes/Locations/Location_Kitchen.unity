@@ -1094,7 +1094,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 33.030003, y: 34.868786}
+    oldSize: {x: 34.45, y: 36.46181}
     newSize: {x: 6.62, y: 3.89}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2924fa7ba29eebf4f973a9267f7f2cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: eabe20cad7803ce4c8f6c0fd79b2d597, type: 2}
+  animatorController: {fileID: 0}
   boolParameterName: isPushed
   isActive: 1
   sceneName: NumberLocation Game
