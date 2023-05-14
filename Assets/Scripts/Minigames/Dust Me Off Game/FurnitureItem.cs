@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FurnitureItem : MonoBehaviour
 {
+	public List<Sprite> furnitureSprites = new List<Sprite>();
 	public FurnitureDustBar dustBar;
 	public GameObject dustParticle;
 
@@ -34,6 +35,7 @@ public class FurnitureItem : MonoBehaviour
 		dustBar.UpdateDustAmountMax(maxDust);
 		negativeDustAmount = negateDust;
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderer.sprite = furnitureSprites[Random.Range(0, furnitureSprites.Count)];
 		spriteRenderer.color = dustedOnColor;
 
 		points = CalculatePoints(maxDust);
@@ -71,9 +73,6 @@ public class FurnitureItem : MonoBehaviour
 		AudioManager.instance.PlaySFX("PloukSfx");
 		dustBar.UpdateDustAmount(negativeDustAmount);
 		spriteRenderer.color = Color.Lerp(dustedOffColor, dustedOnColor, dustBar.slider.value / dustBar.slider.maxValue);
-
-		// spawn dust particle
-
 
 		if (dustBar.slider.value <= 0)
 		{

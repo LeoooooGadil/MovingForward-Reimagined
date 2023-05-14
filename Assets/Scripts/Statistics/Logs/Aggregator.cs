@@ -64,6 +64,16 @@ public class Aggregator : MonoBehaviour
 		SaveAggregator();
 	}
 
+	public void Publish(ChoreCompletedEvent choreCompletedEvent)
+	{
+		string key = generateKey();
+		ChoresAggregate choreAggregate = choreCompletedEvent.GetData();
+		// dailyTaskLogs.Add(key, dailyTaskAggregate);
+		DailyScoreCalculator.PublishDailyChore(key, choreAggregate);
+
+		SaveAggregator();
+	}
+
 	public void Publish(TaskCompletedEvent taskCompletedEvent)
 	{
 		string key = generateKey();

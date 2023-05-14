@@ -100,15 +100,17 @@ public class Chore
 	public float minScore;
 	public DailyChoreRoom dailyChoreRoom;
 	public DailyChoreType dailyChoreType;
+	public bool isMandatory;
 	public bool isCompleted;
 
-	public Chore(string _choreName, float _chorePoints, float _choreComponensation, float _minScore, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType, bool _isCompleted)
+	public Chore(string _choreName, float _chorePoints, float _choreComponensation, float _minScore, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType, bool _isMandatory, bool _isCompleted)
 	{
 		choreName = _choreName;
 		choreComponensation = _choreComponensation;
 		minScore = _minScore;
 		dailyChoreRoom = _dailyChoreRoom;
 		dailyChoreType = _dailyChoreType;
+		isMandatory = _isMandatory;
 		isCompleted = _isCompleted;
 	}
 
@@ -118,16 +120,18 @@ public class Chore
 		dailyChoreRoom = _chores.room;
 		dailyChoreType = _chores.type;
 		minScore = _chores.minScore;
+		isMandatory = _chores.isMandatory;
 		isCompleted = false;
 	}
 
-	public Chore(string _choreName, float _choreComponensation, int _minScore, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType)
+	public Chore(string _choreName, float _choreComponensation, int _minScore, DailyChoreRoom _dailyChoreRoom, DailyChoreType _dailyChoreType, bool _isMandatory)
 	{
 		choreName = _choreName;
 		choreComponensation = _choreComponensation;
 		minScore = _minScore;
 		dailyChoreRoom = _dailyChoreRoom;
 		dailyChoreType = _dailyChoreType;
+		isMandatory = _isMandatory;
 		isCompleted = false;
 	}
 

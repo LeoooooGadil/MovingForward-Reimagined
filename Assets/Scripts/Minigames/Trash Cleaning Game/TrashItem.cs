@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class TrashItem : MonoBehaviour
 {
+    public List<Sprite> furnitureSprites = new List<Sprite>();
+    
 	public bool isBeingThrown = false;
 	public ItemType itemType;
 	public TakeMeOutGame game;

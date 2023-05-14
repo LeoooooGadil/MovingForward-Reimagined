@@ -319,7 +319,6 @@ GameObject:
   - component: {fileID: 218212301859321844}
   - component: {fileID: 218212301859321845}
   - component: {fileID: 218212301859321847}
-  - component: {fileID: 6397871250747707937}
   m_Layer: 0
   m_Name: Furniture
   m_TagString: Untagged
@@ -337,7 +336,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.515, y: -0.3, z: 0}
   m_LocalScale: {x: 2.561, y: 2.561, z: 2.561}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 218212301309400395}
   m_Father: {fileID: 0}
@@ -384,7 +383,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f3005204c1ad3314cb23025c75e34c3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -423,6 +422,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827386f5176b88248b180700c3775e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  furnitureSprites:
+  - {fileID: 21300000, guid: 0cc22fb35e50107429de58862a5cc30b, type: 3}
+  - {fileID: 21300000, guid: 9d759b36b577384499b43259a4924570, type: 3}
+  - {fileID: 21300000, guid: 5320f71d1cd277546ae2efea1b4ba3d6, type: 3}
+  - {fileID: 21300000, guid: 426601c48b5a61143aa310303f9d201c, type: 3}
+  - {fileID: 21300000, guid: f3005204c1ad3314cb23025c75e34c3d, type: 3}
+  - {fileID: 21300000, guid: c92d8e6726a50e74e867dc369f83e7e4, type: 3}
+  - {fileID: 21300000, guid: 95cc6828a182b3f4699bd3760b21471c, type: 3}
+  - {fileID: 21300000, guid: fda06dcffd5ac614abbb53ae94aaa527, type: 3}
   dustBar: {fileID: 218212301283869622}
   dustParticle: {fileID: 120410, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
   whereDidSpawn: 0
@@ -434,19 +442,6 @@ MonoBehaviour:
   dustedOnColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   isStopMoving: 0
   isActive: 1
---- !u!114 &6397871250747707937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 218212301859321739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a397c090ce28e4da7816048cff7c49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActve: 0
 --- !u!1 &218212302286005314
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &470494561684495342
 RectTransform:
   m_ObjectHideFlags: 0

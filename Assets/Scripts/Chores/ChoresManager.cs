@@ -225,7 +225,8 @@ public class ChoresManager : MonoBehaviour
 			compensation,
 			chore.minScore,
 			chore.room,
-			chore.type
+			chore.type,
+			chore.isMandatory
 		);
 		return pickedChore;
 	}
@@ -239,7 +240,8 @@ public class ChoresManager : MonoBehaviour
 			compensation,
 			chore.minScore,
 			chore.room,
-			chore.type
+			chore.type,
+			chore.isMandatory
 		);
 		return pickedChore;
 	}
@@ -262,6 +264,7 @@ public class ChoresManager : MonoBehaviour
 		OnScreenNotificationManager.instance.CreateNotification("Chore completed!", OnScreenNotificationType.Sucess);
 		OnScreenNotificationManager.instance.CreateNotification("You earned " + _chore.choreComponensation + " coins!", OnScreenNotificationType.Info);
 		ProfileManager.instance.AddMoney(_chore.choreComponensation);
+		Aggregator.instance.Publish(new ChoreCompletedEvent(_chore));
 		choresSave.CompleteChore(_chore);
 		AudioManager.instance.PlaySFX("ChoreCompleteSfx");
 		SaveDailyChores();

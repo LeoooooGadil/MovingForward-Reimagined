@@ -82,6 +82,7 @@ public class WordleLetterRows : MonoBehaviour
 
 	IEnumerator AnimateEmptyLetterBoxesCoroutine()
 	{
+		Handheld.Vibrate();
 		for (int i = 0; i < letterBoxes.Length; i++)
 		{
 			// get the letter variable from the letterbox

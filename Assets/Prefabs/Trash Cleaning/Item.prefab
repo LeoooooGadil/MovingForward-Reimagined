@@ -100,9 +100,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748802f30c56f9a4dadb18e73971e990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  furnitureSprites:
+  - {fileID: 21300000, guid: 0cc22fb35e50107429de58862a5cc30b, type: 3}
+  - {fileID: 21300000, guid: 9d759b36b577384499b43259a4924570, type: 3}
+  - {fileID: 21300000, guid: 5320f71d1cd277546ae2efea1b4ba3d6, type: 3}
+  - {fileID: 21300000, guid: 426601c48b5a61143aa310303f9d201c, type: 3}
+  - {fileID: 21300000, guid: f3005204c1ad3314cb23025c75e34c3d, type: 3}
+  - {fileID: 21300000, guid: c92d8e6726a50e74e867dc369f83e7e4, type: 3}
+  - {fileID: 21300000, guid: 95cc6828a182b3f4699bd3760b21471c, type: 3}
+  - {fileID: 21300000, guid: fda06dcffd5ac614abbb53ae94aaa527, type: 3}
   isBeingThrown: 0
   itemType: 0
   game: {fileID: 0}
+  points: 0
 --- !u!61 &8566245814270284765
 BoxCollider2D:
   m_ObjectHideFlags: 0
