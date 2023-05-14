@@ -192,15 +192,15 @@ public class AudioManager : MonoBehaviour
 		// find the clip
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.MusicClips.Find(x => x.name == clipName);
 
-		// play the clip
-		PlayMusic(clip);
+		StartCoroutine(ChangeMusicCoroutine(clipName, volume));
 	}
 
 	IEnumerator ChangeMusicCoroutine(string clipName, float volume = 1.0f)
 	{
-		StartCoroutine(FadeOutMusic());
-		yield return new WaitForSeconds(0.5f);
-		PlayMusic(clipName, 0, true);
+		if(MusicAudioSource.isPlaying)
+			StartCoroutine(FadeOutMusic());
+			yield return new WaitForSeconds(0.5f);
+		PlayMusic(clipName, 0, MusicAudioSource.isPlaying);
 	}
 
 	public void PlayMusic(string clipName, float volume = 1.0f, bool fade = false)

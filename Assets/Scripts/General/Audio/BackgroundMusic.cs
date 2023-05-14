@@ -14,7 +14,7 @@ public class BackgroundMusic : MonoBehaviour
 	IEnumerator Start()
 	{
 		yield return new WaitForSeconds(0.5f);
-		AudioManager.instance.PlayMusic(musicName);
+		AudioManager.instance.ChangeMusic(musicName);
 	}
 
 	void OnDisable()

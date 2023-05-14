@@ -22,7 +22,7 @@ public class LoadingManager : MonoBehaviour
 			LoadingBar.fillAmount = fakeloading;
 			yield return new WaitForSeconds(0.1f);
 		}
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(1f);
 
 		if(ProfileManager.instance.CheckIfNoPlayer())
 			LevelManager.instance.ChangeScene("Profile Creator", true, SceneTransitionMode.None, true);

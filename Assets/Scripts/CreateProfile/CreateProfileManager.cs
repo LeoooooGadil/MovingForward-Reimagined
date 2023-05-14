@@ -90,6 +90,8 @@ public class CreateProfileManager : MonoBehaviour
 		profileManagerSave.setUsername(username);
 		SaveProfile();
 
+		AudioManager.instance.PlaySFX("ButtonClick");
+
         LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
 	}
 

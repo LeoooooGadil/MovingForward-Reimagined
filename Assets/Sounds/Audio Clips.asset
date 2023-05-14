@@ -83,6 +83,9 @@ MonoBehaviour:
   - name: Caketown
     clip: {fileID: 8300000, guid: 11de737f68fdf7b43b9a7118adf22fae, type: 3}
     volume: 1
-  - name: LunarLounnging
-    clip: {fileID: 8300000, guid: eed4a5ce624221044b0ac50bd7baf341, type: 3}
+  - name: FurryFriends
+    clip: {fileID: 8300000, guid: 533a02445dd862740a2e94fff3b4ca7f, type: 3}
+    volume: 1
+  - name: InsideOut
+    clip: {fileID: 8300000, guid: 7b9ec7764e481e94788e656d6e08656c, type: 3}
     volume: 1
