@@ -62,7 +62,14 @@ public class TutorialBar : MonoBehaviour
 
 	public void setBody(string _body)
 	{
-		body = _body;
+		body = TutorialFormatter.Format(_body, key =>
+		{
+			switch (key)
+			{
+				case "NAME": return ProfileManager.instance.GetUserName();
+				default: return null;
+			}
+		}); ;
 		bodyText.text = "";
 		StartCoroutine(PrintBody());
 	}

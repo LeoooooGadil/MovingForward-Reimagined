@@ -16,7 +16,7 @@ MonoBehaviour:
   GoToNextPhase: 0
   Sequences:
   - Title: 
-    Text: Hello!
+    Text: Hello, {{NAME}}!
     Position: 1
     Mood: 3
     HighlightObject:
