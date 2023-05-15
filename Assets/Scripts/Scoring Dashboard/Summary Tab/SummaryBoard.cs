@@ -11,7 +11,7 @@ using UnityEngine.UI;
     // shows how many times the player did the activity inside 7 days
 public class SummaryBoard : MonoBehaviour
 {
-    public Text summaryText;
+    public Text SummaryText;
 
     private Dictionary<string, int> activityCount = new Dictionary<string, int>();
 
@@ -40,7 +40,7 @@ public class SummaryBoard : MonoBehaviour
 
         summary += "Last played at: " + System.DateTime.Now.ToString("hh:mm:ss tt");
 
-        summaryText.text = summary;
+        SummaryText.text = summary;
     }
 
 
