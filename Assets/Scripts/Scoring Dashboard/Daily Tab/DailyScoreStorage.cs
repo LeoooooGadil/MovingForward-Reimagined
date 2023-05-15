@@ -21,7 +21,7 @@ public static class DailyScoreStorage
 		dailyScoreStorageSave = new DailyScoreStorageSave(dailyScoreStorageSaveData);
 	}
 
-	public static void Publish(string key, string name, float score, long timestamp, DailyScoreStorageType dailyScoreStorageType)
+	public static void Publish(string key, string name, float score, long timestamp, DailyScoreStorageType dailyScoreStorageType, string description = "")
 	{
 		LoadDailyScoreStorage();
 
@@ -30,6 +30,7 @@ public static class DailyScoreStorage
 		dailyScoreStorageItem.name = name;
 		dailyScoreStorageItem.score = score;
 		dailyScoreStorageItem.timestamp = timestamp;
+		dailyScoreStorageItem.description = description;
 		dailyScoreStorageItem.dailyScoreStorageType = dailyScoreStorageType;
 
 		dailyScoreStorageSave.AddDailyScoreStorageItem(key, dailyScoreStorageItem);
@@ -64,20 +65,20 @@ public static class DailyScoreStorage
 
 	public static List<DailyScoreStorageItem> GetDailyScoreStorageItems()
 	{
-        LoadDailyScoreStorage();
+		LoadDailyScoreStorage();
 
-        List<DailyScoreStorageItem> dailyScoreStorageItems = new List<DailyScoreStorageItem>();
+		List<DailyScoreStorageItem> dailyScoreStorageItems = new List<DailyScoreStorageItem>();
 
-        string todayString = DateTime.Today.ToString("dd/MM/yyyy");
+		string todayString = DateTime.Today.ToString("dd/MM/yyyy");
 
 		foreach (KeyValuePair<string, DailyScoreStorageItem> dailyScoreStorageItem in dailyScoreStorageSave.GetDailyScoreStorageItems(todayString))
 		{
 			dailyScoreStorageItems.Add(dailyScoreStorageItem.Value);
 		}
 
-        dailyScoreStorageItems.Sort((x, y) => y.timestamp.CompareTo(x.timestamp));
+		dailyScoreStorageItems.Sort((x, y) => y.timestamp.CompareTo(x.timestamp));
 
-        return dailyScoreStorageItems;
+		return dailyScoreStorageItems;
 	}
 
 	public static void SaveDailyScoreStorage()

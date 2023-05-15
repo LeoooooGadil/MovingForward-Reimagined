@@ -21,7 +21,7 @@ public class DailyScoreManager : MonoBehaviour
 	void OnEnable()
 	{
 		dailyScore = DailyScoreCalculator.GetDailyScore();
-		targetScoreText.text = "Target: " + maxDailyScore;
+		targetScoreText.text = "Target: " + NumberFormatter.FormatNumberWithThousandsSeparator(maxDailyScore);
         UpdateCurrentScoreText();
 	}
 
@@ -57,7 +57,7 @@ public class DailyScoreManager : MonoBehaviour
 		if (currentScore < dailyScore)
         {
             currentScore = Mathf.Lerp(currentScore, dailyScore, Time.deltaTime * 5);
-            currentScoreText.text = currentScore.ToString("F0") + " pts";
+            currentScoreText.text = NumberFormatter.FormatNumberWithThousandsSeparator(currentScore) + " pts";
         }
 	}
 

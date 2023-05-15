@@ -5,12 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class DailyScoreSaveData
 {
-    public float dailyScore;
-    public List<string> keys;
+    public Dictionary<string, DailyScoreItem> dailyScores = new Dictionary<string, DailyScoreItem>();
 
     public DailyScoreSaveData(DailyScoreSave dailyScoreSave)
     {
-        dailyScore = dailyScoreSave.dailyScore;
-        keys = dailyScoreSave.keys;
+        dailyScores = new Dictionary<string, DailyScoreItem>();
+
+        foreach (KeyValuePair<string, DailyScoreItem> dailyScoreItem in dailyScoreSave.dailyScores)
+        {
+            dailyScores.Add(dailyScoreItem.Key, dailyScoreItem.Value);
+        }
     }
 }

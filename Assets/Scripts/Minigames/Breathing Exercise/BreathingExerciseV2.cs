@@ -9,7 +9,6 @@ public class BreathingExerciseV2 : MonoBehaviour
 
 	public Text centerText;
 	public Text upperText;
-	public Text testText;
 	public Transform[] outerCircles = new Transform[4];
 	float currentTimer = 0f;
 	int currentCountdown = 3;
@@ -46,15 +45,13 @@ public class BreathingExerciseV2 : MonoBehaviour
 	void Start()
 	{
 		SetCenterText("Ready");
-		SetUpperText("Place your two thumbs on the screen to begin");
+		SetUpperText("Complete " + howManyTimesToBreath + " cycles of breathing to complete a session.\nPlace your two thumbs on the screen to begin");
 		outerCircleFade();
 	}
 
 	void Update()
 	{
 		checkFingers();
-
-		testText.text = Input.touchCount.ToString() + " " + state.ToString();
 
 		switch (state)
 		{
@@ -110,9 +107,20 @@ public class BreathingExerciseV2 : MonoBehaviour
 			if (chore.minScore <= exhaleCount)
 			{
 				ChoresManager.instance.CompleteChore(chore);
+				UpdateStatistics();
 				isChoreCompleted = true;
 			}
 		}
+	}
+
+	void UpdateStatistics()
+	{
+		BreathingExerciseV2CompletedEvent completedEvent = new BreathingExerciseV2CompletedEvent(
+			"Completed Breathing Exercise Session",
+			(int)exhaleCount
+		);
+
+		Aggregator.instance.Publish(completedEvent);
 	}
 
 	// a coroutine that counts down from 3 to 0

@@ -86,7 +86,7 @@ public class TakeMeOutGame : MonoBehaviour
 
 	void Update()
 	{
-		scorePoints.text = TotalPoints.ToString("F0");
+		scorePoints.text = NumberFormatter.FormatNumberWithThousandsSeparator(TotalPoints);
 		timerText.text = TotalSeconds.ToString("F0") + "s";
 
 		if (!isGameRunning) return;

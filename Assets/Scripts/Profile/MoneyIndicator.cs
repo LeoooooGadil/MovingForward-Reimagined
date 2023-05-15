@@ -46,6 +46,6 @@ public class MoneyIndicator : MonoBehaviour, IPointerDownHandler
 	void UpdateMoney()
 	{
 		currentMoney = Mathf.Lerp(currentMoney, currentMoney, Time.deltaTime * 5);
-		moneyText.text = currentMoney.ToString("F0");
+		moneyText.text = NumberFormatter.FormatNumberWithThousandsSeparator(currentMoney);
 	}
 }

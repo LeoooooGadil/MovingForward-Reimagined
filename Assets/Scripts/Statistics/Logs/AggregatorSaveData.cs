@@ -12,6 +12,9 @@ public class AggregatorSaveData
 	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
 	public Dictionary<string, DustMeOffAggregate> dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
 	public Dictionary<string, TakeMeOutAggregate> takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
+	public Dictionary<string, BreathingExerciseV2Aggregate> breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
+	public Dictionary<string, ChoresAggregate> choresLogs = new Dictionary<string, ChoresAggregate>();
+	public Dictionary<string, JournalAggregate> journalLogs = new Dictionary<string, JournalAggregate>();
 
 	public AggregatorSaveData(List<string> _keys, AggregatorSave _aggregatorSave)
 	{
@@ -22,6 +25,8 @@ public class AggregatorSaveData
 		wordleLogs = new Dictionary<string, WordleAggregate>();
 		dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
 		takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
+		breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
+		choresLogs = new Dictionary<string, ChoresAggregate>();
 
 		foreach (KeyValuePair<string, DailyTaskAggregateV2> dailyTaskLog in _aggregatorSave.dailyTaskLogs)
 		{
@@ -46,6 +51,21 @@ public class AggregatorSaveData
 		foreach (KeyValuePair<string, TakeMeOutAggregate> takeMeOutLog in _aggregatorSave.takeMeOutLogs)
 		{
 			takeMeOutLogs.Add(takeMeOutLog.Key, takeMeOutLog.Value);
+		}
+
+		foreach (KeyValuePair<string, BreathingExerciseV2Aggregate> breathingExerciseLog in _aggregatorSave.breathingExerciseLogs)
+		{
+			breathingExerciseLogs.Add(breathingExerciseLog.Key, breathingExerciseLog.Value);
+		}
+
+		foreach (KeyValuePair<string, ChoresAggregate> choresLog in _aggregatorSave.choresLogs)
+		{
+			choresLogs.Add(choresLog.Key, choresLog.Value);
+		}
+
+		foreach (KeyValuePair<string, JournalAggregate> journalLog in _aggregatorSave.journalLogs)
+		{
+			journalLogs.Add(journalLog.Key, journalLog.Value);
 		}
 	}
 }

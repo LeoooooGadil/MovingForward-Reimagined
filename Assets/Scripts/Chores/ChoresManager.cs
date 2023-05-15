@@ -39,6 +39,7 @@ public class ChoresManager : MonoBehaviour
 	{
 		if (choresSave.chores.Count == 0 && choresSave.completedChores.Count == 0)
 		{
+			Debug.Log("No chores found, generating new chores");
 			GenerateDailyChores();
 		}
 	}
@@ -267,6 +268,7 @@ public class ChoresManager : MonoBehaviour
 		Aggregator.instance.Publish(new ChoreCompletedEvent(_chore));
 		choresSave.CompleteChore(_chore);
 		AudioManager.instance.PlaySFX("ChoreCompleteSfx");
+		activeChore = null;
 		SaveDailyChores();
 	}
 
@@ -301,7 +303,6 @@ public class ChoresManager : MonoBehaviour
 		if (activeChore.dailyChoreType == _type)
 		{
 			CompleteChore(activeChore);
-			activeChore = null;
 		}
 		else
 		{

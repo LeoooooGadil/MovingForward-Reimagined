@@ -12,12 +12,18 @@ public class LastActivityItem : MonoBehaviour
 
 	public string activityName;
 	public float activityScore;
+	public string activityDescription;
 	public long activityTimestamp;
 
 	void Start()
 	{
 		activityNameText.text = activityName;
-		activityScoreText.text = "+" + activityScore.ToString() + "Points";
+		if(activityScore > 0)
+			activityScoreText.text = "+" + activityScore.ToString() + "Points";
+		else if(activityDescription != null)
+			activityScoreText.text = activityDescription.ToString();
+		else
+			activityScoreText.text = "";
 		CalculateTimestamp();
 	}
 

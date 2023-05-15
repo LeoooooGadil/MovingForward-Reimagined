@@ -210,6 +210,7 @@ public class JournalManager : MonoBehaviour
 		newEntry.entryIsAnonymous = true;
 
 		journalSave.AddEntry(newEntry);
+		UpdateStatistics(newEntry);
 		Debug.Log("Journal Entry #" + entryNumber + " added to the Journal.");
 
 		StartCoroutine(SendPaperAirplane());
@@ -219,6 +220,8 @@ public class JournalManager : MonoBehaviour
 	void UpdateChoreManager()
 	{
 		Chore chore = ChoresManager.instance.GetActiveChore();
+
+		if (chore == null) return;
 
 		if (chore.dailyChoreType == DailyChoreType.JournalEntry)
 		{
@@ -233,7 +236,12 @@ public class JournalManager : MonoBehaviour
 				ChoresManager.instance.CompleteChore(chore);
 			}
 		}
+	}
 
+	void UpdateStatistics(JournalEntry entry)
+	{
+		JournalCompletedEvent completedEvent = new JournalCompletedEvent(entry.entryTitle, entry.entryId);
+		Aggregator.instance.Publish(completedEvent);
 	}
 
 	IEnumerator SendPaperAirplane()

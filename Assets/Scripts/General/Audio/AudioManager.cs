@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
 
 	private int timesSfxHasBeenSame = 0;
 	private bool played = true;
+	private bool isFading = false;
 
 	void Awake()
 	{
@@ -61,8 +62,8 @@ public class AudioManager : MonoBehaviour
 		SFXAudioSources = new List<AudioSource>();
 		MusicAudioSource = gameObject.AddComponent<AudioSource>();
 
-		SFXVolume = PlayerPrefs.GetFloat("sfxVolume", 1.0f);
-		MusicVolume = PlayerPrefs.GetFloat("musicVolume", 1.0f);
+		SFXVolume = PlayerPrefs.HasKey("sfxVolume") ? PlayerPrefs.GetFloat("sfxVolume") : 1f;
+		MusicVolume = PlayerPrefs.HasKey("musicVolume") ? PlayerPrefs.GetFloat("musicVolume") : 1f;
 
 		Debug.Log("SFX Volume: " + SFXVolume);
 		Debug.Log("Music Volume: " + MusicVolume);
@@ -70,8 +71,8 @@ public class AudioManager : MonoBehaviour
 
 	void Update()
 	{
-		float _SfxVolume = PlayerPrefs.GetFloat("sfxVolume", 1.0f);
-		float _MusicVolume = PlayerPrefs.GetFloat("musicVolume", 1.0f);
+		float _SfxVolume = PlayerPrefs.HasKey("sfxVolume") ? PlayerPrefs.GetFloat("sfxVolume") : 1f;
+		float _MusicVolume = PlayerPrefs.HasKey("musicVolume") ? PlayerPrefs.GetFloat("musicVolume") : 1f;
 
 		if (SFXVolume != _SfxVolume)
 		{
@@ -86,7 +87,7 @@ public class AudioManager : MonoBehaviour
 		else
 		{
 			timesSfxHasBeenSame++;
-			if (timesSfxHasBeenSame > 5 && !played)
+			if (timesSfxHasBeenSame > 2 && !played)
 			{
 				PlaySFX("ButtonClick");
 				played = true;
@@ -147,9 +148,6 @@ public class AudioManager : MonoBehaviour
 		// set the audio mixer group
 		MusicAudioSource.outputAudioMixerGroup = GetAudioMixerGroup();
 
-		// set the volume
-		MusicAudioSource.volume = 0;
-		
 		// set the loop
 		MusicAudioSource.loop = true;
 
@@ -158,49 +156,56 @@ public class AudioManager : MonoBehaviour
 
 		if (fade)
 		{
-			StartCoroutine(FadeInMusic(volume * MusicVolume));
+			StartCoroutine(FadeInMusic(volume));
 		}
 		else
 		{
-			MusicAudioSource.volume = volume * MusicVolume;
+			MusicAudioSource.volume = volume;
 		}
 	}
 
 	IEnumerator FadeInMusic(float volume = 1.0f)
 	{
+		isFading = true;
 		while (MusicAudioSource.volume < 1)
 		{
 			MusicAudioSource.volume += 0.1f;
 			yield return new WaitForSeconds(0.1f);
 		}
+		MusicAudioSource.volume = volume;
+		isFading = false;
 	}
 
 	IEnumerator FadeOutMusic()
 	{
+		isFading = true;
 		while (MusicAudioSource.volume > 0)
 		{
 			MusicAudioSource.volume -= 0.1f;
 			yield return new WaitForSeconds(0.1f);
 		}
 		MusicAudioSource.Stop();
+		isFading = false;
 	}
 
 	public void ChangeMusic(string clipName, float volume = 1.0f)
 	{
-
-
-		// find the clip
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.MusicClips.Find(x => x.name == clipName);
 
-		StartCoroutine(ChangeMusicCoroutine(clipName, volume));
+		if (MusicAudioSource.clip != clip.clip || !MusicAudioSource.isPlaying)
+		{
+			StartCoroutine(ChangeMusicCoroutine(clipName, volume));
+		}
 	}
 
 	IEnumerator ChangeMusicCoroutine(string clipName, float volume = 1.0f)
 	{
-		if(MusicAudioSource.isPlaying)
+		if (MusicAudioSource.isPlaying)
+		{
 			StartCoroutine(FadeOutMusic());
 			yield return new WaitForSeconds(0.5f);
-		PlayMusic(clipName, 0, MusicAudioSource.isPlaying);
+		}
+		PlayMusic(clipName, volume * MusicVolume, MusicAudioSource.isPlaying);
 	}
 
 	public void PlayMusic(string clipName, float volume = 1.0f, bool fade = false)

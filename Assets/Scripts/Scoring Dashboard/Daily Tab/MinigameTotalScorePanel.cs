@@ -7,36 +7,53 @@ public class MinigameTotalScorePanel : MonoBehaviour
 {
 	public Text ScoreText;
 
-	private float totalScore;
-    private float currentScore;
+	public float currentTimer = 0;
 
 	void OnEnable()
 	{
-		GetTotalScore();
+        ScoreText.text = "Loading...";
+        UpdateData();
 	}
 
 	void Update()
 	{
-        if (currentScore < totalScore)
-        {
-            currentScore = Mathf.Lerp(currentScore, totalScore, Time.deltaTime * 5);
-            ScoreText.text = currentScore.ToString("F0") + " pts";;
-        }
+		if (currentTimer < 0.5)
+		{
+			currentTimer += Time.deltaTime;
+		}
+		else
+		{
+			currentTimer = 0;
+			UpdateData();
+		}
 	}
 
-	void GetTotalScore()
+	void UpdateData()
 	{
-        currentScore = 0;
-		totalScore = 0;
+		if (Aggregator.instance == null) return;
 
-		List<DailyScoreStorageItem> dailyScoreStorageItems = DailyScoreStorage.GetDailyScoreStorageItems();
+		Dictionary<string, WordleAggregate> loadedTodaysWordle = Aggregator.instance.GetTodaysWordleLogs();
+		Dictionary<string, NumberLocationAggregate> loadedTodaysNumberLocation = Aggregator.instance.GetTodaysNumberLocationLogs();
 
-		foreach (DailyScoreStorageItem dailyScoreStorageItem in dailyScoreStorageItems)
+		float score = 0;
+
+		foreach (KeyValuePair<string, WordleAggregate> entry in loadedTodaysWordle)
 		{
-			if (dailyScoreStorageItem.dailyScoreStorageType == DailyScoreStorageType.Minigame)
-			{
-				totalScore += dailyScoreStorageItem.score;
-			}
+			score += entry.Value.totalPoints;
+		}
+
+		foreach (KeyValuePair<string, NumberLocationAggregate> entry in loadedTodaysNumberLocation)
+		{
+			score += entry.Value.totalPoints;
+		}
+
+		if (score == 0)
+		{
+			ScoreText.text = "No points";
+		}
+		else
+		{
+			ScoreText.text = score + " points";
 		}
 	}
 }

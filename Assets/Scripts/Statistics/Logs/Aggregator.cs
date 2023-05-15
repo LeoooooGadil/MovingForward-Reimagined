@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,9 @@ public class Aggregator : MonoBehaviour
 	public Dictionary<string, WordleAggregate> wordleLogs = new Dictionary<string, WordleAggregate>();
 	public Dictionary<string, DustMeOffAggregate> dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
 	public Dictionary<string, TakeMeOutAggregate> takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
+	public Dictionary<string, BreathingExerciseV2Aggregate> breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
+	public Dictionary<string, ChoresAggregate> choresLogs = new Dictionary<string, ChoresAggregate>();
+	public Dictionary<string, JournalAggregate> journalLogs = new Dictionary<string, JournalAggregate>();
 
 	void Awake()
 	{
@@ -52,6 +56,9 @@ public class Aggregator : MonoBehaviour
 		wordleLogs = aggregatorSave.wordleLogs;
 		dustMeOffLogs = aggregatorSave.dustMeOffLogs;
 		takeMeOutLogs = aggregatorSave.takeMeOutLogs;
+		breathingExerciseLogs = aggregatorSave.breathingExerciseLogs;
+		choresLogs = aggregatorSave.choresLogs;
+		journalLogs = aggregatorSave.journalLogs;
 	}
 
 	public void Publish(DailyTaskCompletedEvent dailyTaskCompletedEvent)
@@ -109,6 +116,7 @@ public class Aggregator : MonoBehaviour
 		string key = generateKey();
 		DustMeOffAggregate dustMeOffAggregate = dustMeOffCompleted.GetData();
 		dustMeOffLogs.Add(key, dustMeOffAggregate);
+		DailyScoreCalculator.PublishDustMeOff(key, dustMeOffAggregate);
 
 		SaveAggregator();
 
@@ -119,6 +127,27 @@ public class Aggregator : MonoBehaviour
 		string key = generateKey();
 		TakeMeOutAggregate takeMeOutAggregate = takeMeOutCompleted.GetData();
 		takeMeOutLogs.Add(key, takeMeOutAggregate);
+		DailyScoreCalculator.PublishTakeMeOut(key, takeMeOutAggregate);
+
+		SaveAggregator();
+	}
+
+	public void Publish(BreathingExerciseV2CompletedEvent breathingExerciseV2CompletedEvent)
+	{
+		string key = generateKey();
+		BreathingExerciseV2Aggregate breathingExerciseV2Aggregate = breathingExerciseV2CompletedEvent.GetData();
+		breathingExerciseLogs.Add(key, breathingExerciseV2Aggregate);
+		DailyScoreCalculator.PublishBreathingExerciseV2(key, breathingExerciseV2Aggregate);
+
+		SaveAggregator();
+	}
+
+	public void Publish(JournalCompletedEvent journalCompletedEvent)
+	{
+		string key = generateKey();
+		JournalAggregate journalAggregate = journalCompletedEvent.GetData();
+		journalLogs.Add(key, journalAggregate);
+		DailyScoreCalculator.PublishJournal(key, journalAggregate);
 
 		SaveAggregator();
 	}
@@ -131,6 +160,9 @@ public class Aggregator : MonoBehaviour
 		aggregatorSave.setWordleLogs(wordleLogs);
 		aggregatorSave.setDustMeOffLogs(dustMeOffLogs);
 		aggregatorSave.setTakeMeOutLogs(takeMeOutLogs);
+		aggregatorSave.setBreathingExerciseLogs(breathingExerciseLogs);
+		aggregatorSave.setChoresLogs(choresLogs);
+		aggregatorSave.setJournalLogs(journalLogs);
 
 		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys, aggregatorSave);
 
@@ -167,13 +199,209 @@ public class Aggregator : MonoBehaviour
 
 		foreach (KeyValuePair<string, DailyTaskAggregateV2> entry in dailyTaskLogs)
 		{
-			if (new System.DateTime(entry.Value.timestamp).Date == System.DateTime.Now.Date)
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
 			{
 				todaysDailyTaskLogs.Add(entry.Key, entry.Value);
 			}
 		}
 
 		return todaysDailyTaskLogs;
+	}
+
+	public Dictionary<string, NumberLocationAggregate> GetTodaysNumberLocationLogs()
+	{
+		Dictionary<string, NumberLocationAggregate> todaysNumberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
+
+		foreach (KeyValuePair<string, NumberLocationAggregate> entry in numberLocationLogs)
+		{
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
+			{
+				todaysNumberLocationLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysNumberLocationLogs;
+	}
+
+	public Dictionary<string, WordleAggregate> GetTodaysWordleLogs()
+	{
+		Dictionary<string, WordleAggregate> todaysWordleLogs = new Dictionary<string, WordleAggregate>();
+
+		foreach (KeyValuePair<string, WordleAggregate> entry in wordleLogs)
+		{
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
+			{
+				todaysWordleLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysWordleLogs;
+	}
+
+	public Dictionary<string, DustMeOffAggregate> GetTodaysDustMeOffLogs()
+	{
+		Dictionary<string, DustMeOffAggregate> todaysDustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
+
+		foreach (KeyValuePair<string, DustMeOffAggregate> entry in dustMeOffLogs)
+		{
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
+			{
+				todaysDustMeOffLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysDustMeOffLogs;
+	}
+
+	public Dictionary<string, TakeMeOutAggregate> GetTodaysTakeMeOutLogs()
+	{
+		Dictionary<string, TakeMeOutAggregate> todaysTakeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
+
+		foreach (KeyValuePair<string, TakeMeOutAggregate> entry in takeMeOutLogs)
+		{
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
+			{
+				todaysTakeMeOutLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysTakeMeOutLogs;
+	}
+
+	public Dictionary<string, BreathingExerciseV2Aggregate> GetTodaysBreathingExerciseLogs()
+	{
+		Dictionary<string, BreathingExerciseV2Aggregate> todaysBreathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
+
+		foreach (KeyValuePair<string, BreathingExerciseV2Aggregate> entry in breathingExerciseLogs)
+		{
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
+			{
+				todaysBreathingExerciseLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysBreathingExerciseLogs;
+	}
+
+	public Dictionary<string, ChoresAggregate> GetTodaysChoresLogs()
+	{
+		Dictionary<string, ChoresAggregate> todaysChoresLogs = new Dictionary<string, ChoresAggregate>();
+
+		foreach (KeyValuePair<string, ChoresAggregate> entry in choresLogs)
+		{
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
+			{
+				todaysChoresLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysChoresLogs;
+	}
+
+	public Dictionary<string, JournalAggregate> GetTodaysJournalLogs()
+	{
+		Dictionary<string, JournalAggregate> todaysJournalLogs = new Dictionary<string, JournalAggregate>();
+
+
+		foreach (KeyValuePair<string, JournalAggregate> entry in journalLogs)
+		{
+			DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(entry.Value.timestamp);
+			DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+			if (dateTime.Day == DateTime.Now.Day)
+			{
+				todaysJournalLogs.Add(entry.Key, entry.Value);
+			}
+		}
+
+		return todaysJournalLogs;
+	}
+
+
+
+	// get all logs
+
+	public Dictionary<string, DailyTaskAggregateV2> GetDailyTaskLogs()
+	{
+		return dailyTaskLogs;
+	}
+
+	public Dictionary<string, NumberLocationAggregate> GetNumberLocationLogs()
+	{
+		return numberLocationLogs;
+	}
+
+	public Dictionary<string, WordleAggregate> GetWordleLogs()
+	{
+		return wordleLogs;
+	}
+
+	public Dictionary<string, DustMeOffAggregate> GetDustMeOffLogs()
+	{
+		return dustMeOffLogs;
+	}
+
+	public Dictionary<string, TakeMeOutAggregate> GetTakeMeOutLogs()
+	{
+		return takeMeOutLogs;
+	}
+
+	public Dictionary<string, BreathingExerciseV2Aggregate> GetBreathingExerciseLogs()
+	{
+		return breathingExerciseLogs;
+	}
+
+	public Dictionary<string, ChoresAggregate> GetChoresLogs()
+	{
+		return choresLogs;
+	}
+
+	public Dictionary<string, JournalAggregate> GetJournalLogs()
+	{
+		return journalLogs;
+	}
+
+	public List<string> GetKeys()
+	{
+		return keys;
+	}
+
+
+
+	public void Clear()
+	{
+		dailyTaskLogs.Clear();
+		numberLocationLogs.Clear();
+		wordleLogs.Clear();
+		dustMeOffLogs.Clear();
+		takeMeOutLogs.Clear();
+		breathingExerciseLogs.Clear();
+		keys.Clear();
+
+		AudioManager.instance.PlaySFX("PaperCrumbleSfx");
+
+		SaveAggregator();
 	}
 
 	public string generateKey()

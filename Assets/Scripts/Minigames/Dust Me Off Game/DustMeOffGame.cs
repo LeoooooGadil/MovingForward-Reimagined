@@ -33,7 +33,7 @@ public class DustMeOffGame : MonoBehaviour
 
 	void Update()
 	{
-		pointsText.text = TotalPoints.ToString("F0");
+		pointsText.text = NumberFormatter.FormatNumberWithThousandsSeparator(TotalPoints);
 		timerText.text = TotalSeconds.ToString("F0") + "s";
 
 		if (!isGameRunning) return;
@@ -160,8 +160,8 @@ public class DustMeOffGame : MonoBehaviour
 
 	public void SpawnAtScore(float points)
 	{
-		GameObject pointsAfterDeath = Instantiate(pointsAtScore, scoreLocation.transform.position, Quaternion.identity);
-		pointsAfterDeath.GetComponent<PointsAfterDeath>().points = points;
+		// GameObject pointsAfterDeath = Instantiate(pointsAtScore, scoreLocation.transform.position, Quaternion.identity);
+		// pointsAfterDeath.GetComponent<PointsAfterDeath>().points = points;
 	}
 
 	public void AddFurnitureItem(FurnitureItem furnitureItem)
