@@ -27,6 +27,16 @@ public class IntroductionManager : MonoBehaviour
 
 	void Start()
 	{
+		if(ProfileManager.instance.CheckIfNoPlayer())
+		{
+			currentPanel = 0;
+		}
+		else
+		{
+			currentPanel = 1;
+			backButton.gameObject.SetActive(false);
+		}
+
 		AudioManager.instance.PlaySFX("ButtonClick");
 		UpdatePanels();
         nextButton.onClick.AddListener(NextPanel);

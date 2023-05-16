@@ -154,7 +154,7 @@ public class TakeMeOutGame : MonoBehaviour
 
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore.dailyChoreType == DailyChoreType.ThrowMeOut)
+		if (chore != null && chore.dailyChoreType == DailyChoreType.ThrowMeOut)
 		{
 			ChoresManager.instance.CompleteChore(chore);
 		}

@@ -102,7 +102,7 @@ public class BreathingExerciseV2 : MonoBehaviour
 
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore.dailyChoreType == DailyChoreType.Breathe)
+		if (chore != null && chore.dailyChoreType == DailyChoreType.Breathe)
 		{
 			if (chore.minScore <= exhaleCount)
 			{

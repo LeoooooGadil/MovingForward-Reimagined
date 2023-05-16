@@ -133,6 +133,7 @@ public class AudioManager : MonoBehaviour
 
 	public void PlaySFX(string clipName, float volume = 1.0f)
 	{
+
 		// find the clip
 		MovingForwardAudioClipsObject.MovingForwardAudioClip clip = audioClips.SFXClips.Find(x => x.name == clipName);
 

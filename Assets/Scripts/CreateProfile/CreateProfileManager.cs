@@ -7,18 +7,18 @@ using UnityEngine.UI;
 public class CreateProfileManager : MonoBehaviour
 {
 	public static CreateProfileManager instance;
-    
-    public Sprite createProfileButtonEnabled;
+
+	public Sprite createProfileButtonEnabled;
 	public Sprite createProfileButtonDisabled;
 
 	public TMP_InputField usernameInputField;
 	public TMP_InputField ageInputField;
-    public GameObject createProfileButtonGameObject;
+	public GameObject createProfileButtonGameObject;
 
 	ProfileManagerSave profileManagerSave;
 
 	private Button createProfileButton;
-    private Image createProfileButtonImage;
+	private Image createProfileButtonImage;
 	private string saveFileName = "profileManagerSave";
 
 	private void Awake()
@@ -35,8 +35,8 @@ public class CreateProfileManager : MonoBehaviour
 
 	void Start()
 	{
-        createProfileButton = createProfileButtonGameObject.GetComponent<Button>();
-        createProfileButtonImage = createProfileButtonGameObject.GetComponent<Image>();
+		createProfileButton = createProfileButtonGameObject.GetComponent<Button>();
+		createProfileButtonImage = createProfileButtonGameObject.GetComponent<Image>();
 
 		LoadProfile();
 
@@ -45,18 +45,42 @@ public class CreateProfileManager : MonoBehaviour
 
 	void Update()
 	{
-        if ((usernameInputField.text != "") && (ageInputField.text != ""))
-        {
-            createProfileButton.interactable = true;
-            createProfileButtonImage.sprite = createProfileButtonEnabled;
-            
-        }
+		if ((usernameInputField.text != "") && (ageInputField.text != "") && CheckIfAgeIsNumber(ageInputField.text) == true)
+		{
+			createProfileButton.interactable = true;
+			createProfileButtonImage.sprite = createProfileButtonEnabled;
 
-        else
-        {
-            createProfileButton.interactable = false;
-            createProfileButtonImage.sprite = createProfileButtonDisabled;
-        }
+		}
+		else
+		{
+			createProfileButton.interactable = false;
+			createProfileButtonImage.sprite = createProfileButtonDisabled;
+		}
+
+		if (ProfileManager.instance.CheckIfNoPlayer())
+		{
+			createProfileButtonGameObject.GetComponentInChildren<Text>().text = "START";
+		}
+		else
+		{
+			createProfileButtonGameObject.GetComponentInChildren<Text>().text = "UPDATE";
+		}
+	}
+
+	bool CheckIfAgeIsNumber(string age)
+	{
+		int ageInt;
+		bool isNumber = int.TryParse(age, out ageInt);
+
+		if (isNumber)
+		{
+			if (ageInt < 0)
+			{
+				isNumber = false;
+			}
+		}
+
+		return isNumber;
 	}
 
 	void LoadProfile()
@@ -66,7 +90,7 @@ public class CreateProfileManager : MonoBehaviour
 		if (profileManagerSaveData != null)
 		{
 			profileManagerSave = new ProfileManagerSave(profileManagerSaveData);
-            usernameInputField.text = profileManagerSave.username;
+			usernameInputField.text = profileManagerSave.username;
 			ageInputField.text = profileManagerSave.age;
 		}
 		else
@@ -86,13 +110,13 @@ public class CreateProfileManager : MonoBehaviour
 
 	public void CreateProfile(string username)
 	{
-		
+
 		profileManagerSave.setUsername(username);
 		SaveProfile();
 
 		AudioManager.instance.PlaySFX("ButtonClick");
 
-        LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
+		LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
 	}
 
 	public void CreateProfileAge(string age)
@@ -101,7 +125,7 @@ public class CreateProfileManager : MonoBehaviour
 		profileManagerSave.setAge(age);
 		SaveProfile();
 
-        LevelManager.instance.ChangeScene("Game");
+		LevelManager.instance.ChangeScene("Game");
 
 	}
 

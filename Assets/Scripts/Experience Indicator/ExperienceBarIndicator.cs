@@ -5,61 +5,88 @@ using UnityEngine.UI;
 
 public class ExperienceBarIndicator : MonoBehaviour
 {
-	public Image ExperienceBar;
-	public Text ExperienceText;
+    public Image ExperienceBar;
+    public Text ExperienceText;
 
-	private float experienceNormalized = 0;
+    private float experienceNormalized = 0;
+    private float currentExperience = 0;
 
-	void Update()
-	{
-		// Get the experience save data from the ExperienceManager singleton class
-		try
-		{
-			ExperienceSave experienceSave = ExperienceManager.instance.GetExperienceSave();
+    private Coroutine updateCoroutine;
 
-			float maxExperienceNeededToLevelUp = experienceSave.GetExperienceToNextLevel();
-			float currentExperience = experienceSave.GetExperience();
+    void Start()
+    {
+        // Start the coroutine to update the experience text and bar
+        updateCoroutine = StartCoroutine(UpdateExperience());
+    }
 
-			SetExperienceText(currentExperience);
-			SetExperienceBar(maxExperienceNeededToLevelUp, currentExperience);
-		}
-		catch (System.Exception)
-		{
-			return;
-		}
-	}
+    IEnumerator UpdateExperience()
+    {
+        while (true)
+        {
+            try
+            {
+                ExperienceSave experienceSave = ExperienceManager.instance.GetExperienceSave();
 
-	public void SetExperienceText(float currentExperience)
-	{
-		// lerp the text to the current experience and remove the decimal places
-		ExperienceText.text = Mathf.Lerp(float.Parse(ExperienceText.text), currentExperience, Time.deltaTime * 5).ToString("F0");
-	}
+                float maxExperienceNeededToLevelUp = experienceSave.GetExperienceToNextLevel();
+                float newExperience = experienceSave.GetExperience();
 
-	public void SetExperienceBar(float maxExperienceNeededToLevelUp, float currentExperience)
-	{
-		float minExperience = 0;
-		float maxExperience = maxExperienceNeededToLevelUp;
-		float currentValue = currentExperience;
+                if (newExperience != currentExperience)
+                {
+                    currentExperience = newExperience;
 
+                    StartCoroutine(UpdateExperienceText());
+                    StartCoroutine(UpdateExperienceBar(maxExperienceNeededToLevelUp));
+                }
+            }
+            catch (System.Exception)
+            {
+                // Handle exception
+                yield break;
+            }
 
-		experienceNormalized = ConvertExperienceToNormalized(minExperience, maxExperienceNeededToLevelUp, currentExperience);
-		ExperienceBar.fillAmount = Mathf.Lerp(ExperienceBar.fillAmount, experienceNormalized, Time.deltaTime * 5);
-	}
+            yield return null;
+        }
+    }
 
+    IEnumerator UpdateExperienceText()
+    {
+        float targetExperience = currentExperience;
+        float startingExperience = float.Parse(ExperienceText.text);
 
-	// This method is to convert the current value of experience to a normalized value between 0 and 1
-	// This is to be used with the SetExperienceBar method
-	// The min and max values are the minimum and maximum values of the experience bar
-	// return the normalized value of the experience
-	float ConvertExperienceToNormalized(float min, float max, float experience)
-	{
-		float fromMin = 0;
-		float fromMax = max;
-		float toMin = 0;
-		float toMax = 1;
+        float timer = 0f;
+        while (timer < 1f)
+        {
+            timer += Time.deltaTime * 5;
+            float currentValue = Mathf.Lerp(startingExperience, targetExperience, timer);
+            ExperienceText.text = Mathf.Round(currentValue).ToString("F0");
+            yield return null;
+        }
+    }
 
-		float experienceNormalized = (experience - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin;
+    IEnumerator UpdateExperienceBar(float maxExperienceNeededToLevelUp)
+    {
+        float targetNormalizedValue = ConvertExperienceToNormalized(0f, maxExperienceNeededToLevelUp, currentExperience);
+        float startingNormalizedValue = experienceNormalized;
 
-		return Mathf.Round(experienceNormalized * 100) / 100;
-	}
+        float timer = 0f;
+        while (timer < 1f)
+        {
+            timer += Time.deltaTime * 5;
+            experienceNormalized = Mathf.Lerp(startingNormalizedValue, targetNormalizedValue, timer);
+            ExperienceBar.fillAmount = experienceNormalized;
+            yield return null;
+        }
+    }
+
+    float ConvertExperienceToNormalized(float min, float max, float experience)
+    {
+        float fromMin = min;
+        float fromMax = max;
+        float toMin = 0f;
+        float toMax = 1f;
+
+        float experienceNormalized = (experience - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin;
+
+        return Mathf.Round(experienceNormalized * 100) / 100;
+    }
 }

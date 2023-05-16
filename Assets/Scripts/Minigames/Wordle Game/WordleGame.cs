@@ -382,7 +382,7 @@ public class WordleGame : MonoBehaviour
 	{
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore.dailyChoreType == DailyChoreType.Wordle)
+		if (chore != null && chore.dailyChoreType == DailyChoreType.Wordle)
 		{
 			ChoresManager.instance.CompleteChore(chore);
 		}

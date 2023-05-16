@@ -353,7 +353,7 @@ public class NumberLocationGame : MonoBehaviour
 	{
 		Chore chore = ChoresManager.instance.GetActiveChore();
 
-		if (chore.dailyChoreType == DailyChoreType.NumberPlacement)
+		if (chore != null && chore.dailyChoreType == DailyChoreType.NumberPlacement)
 		{
 			ChoresManager.instance.CompleteChore(chore);
 		}
