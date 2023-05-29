@@ -19,7 +19,6 @@ public class AudioManager : MonoBehaviour
 
 	private int timesSfxHasBeenSame = 0;
 	private bool played = true;
-	private bool isFading = false;
 
 	void Awake()
 	{
@@ -167,26 +166,22 @@ public class AudioManager : MonoBehaviour
 
 	IEnumerator FadeInMusic(float volume = 1.0f)
 	{
-		isFading = true;
 		while (MusicAudioSource.volume < 1)
 		{
 			MusicAudioSource.volume += 0.1f;
 			yield return new WaitForSeconds(0.1f);
 		}
 		MusicAudioSource.volume = volume;
-		isFading = false;
 	}
 
 	IEnumerator FadeOutMusic()
 	{
-		isFading = true;
 		while (MusicAudioSource.volume > 0)
 		{
 			MusicAudioSource.volume -= 0.1f;
 			yield return new WaitForSeconds(0.1f);
 		}
 		MusicAudioSource.Stop();
-		isFading = false;
 	}
 
 	public void ChangeMusic(string clipName, float volume = 1.0f)

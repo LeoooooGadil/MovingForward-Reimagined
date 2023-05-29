@@ -20,6 +20,15 @@ public static class TicketAccess
 		}
 	}
 
+	public static void ResetAllTickts()
+	{
+		TicketManagerSave ticketManagerSave = LoadTicketManagerSave();
+
+		ticketManagerSave.ResetAllTickets();
+
+		SaveTicketManager(ticketManagerSave);
+	}
+
 	public static int GetTicketCount(string ticketName)
 	{
 		TicketManagerSave ticketManagerSave = LoadTicketManagerSave();

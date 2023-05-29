@@ -330,6 +330,7 @@ public class WordleGame : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		UpdateStatistics();
 		CompensatePlayer();
+		AffirmationManager.instance.ScheduleRandomAffirmation();
 
 		TicketAccess.RemoveOneFromTicket("Wordle");
 		int ticketCount = TicketAccess.GetTicketCount("Wordle");

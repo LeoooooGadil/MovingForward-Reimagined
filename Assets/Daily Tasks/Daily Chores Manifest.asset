@@ -22,7 +22,7 @@ MonoBehaviour:
   - name: Tidy up your bedroom
     room: 2
     type: 1
-    sceneName: Trash Cleaning Game
+    sceneName: Throw Me Out Game
     isMandatory: 1
     minScore: 0
   - name: Living room needs a little cleaning
@@ -34,7 +34,7 @@ MonoBehaviour:
   - name: There's a lot of garbage in the living room
     room: 2
     type: 1
-    sceneName: Trash Cleaning Game
+    sceneName: Throw Me Out Game
     isMandatory: 1
     minScore: 0
   - name: Make the kitchen sqeaky clean.
@@ -46,7 +46,7 @@ MonoBehaviour:
   - name: Take out the trash in the kitchen
     room: 4
     type: 1
-    sceneName: Trash Cleaning Game
+    sceneName: Throw Me Out Game
     isMandatory: 1
     minScore: 0
   - name: Write A Journal
@@ -61,7 +61,7 @@ MonoBehaviour:
     sceneName: Wordle Game
     isMandatory: 0
     minScore: 0
-  - name: Let's Meditate
+  - name: Let's Meditate. Complete 10 cycles
     room: 0
     type: 5
     sceneName: Old Breathing Game

@@ -52,4 +52,7 @@ MonoBehaviour:
     minScore: 0
     dailyChoreRoom: 0
     dailyChoreType: 0
+    isMandatory: 0
     isCompleted: 0
+  affirmationSequence:
+  - {fileID: 11400000, guid: 5d558dff291462c4990eafda7f9d94ff, type: 2}

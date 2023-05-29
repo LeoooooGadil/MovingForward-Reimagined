@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,11 @@ public class TicketManagerSave
 
         return ticketItems[ticketName];
     }
+
+	internal void ResetAllTickets()
+	{
+		ticketItems.Clear();
+	}
 }
 
 [System.Serializable]

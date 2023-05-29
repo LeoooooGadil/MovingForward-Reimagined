@@ -172,6 +172,21 @@ public static class DailyScoreCalculator
 		return dailyScoreSave.GetToday().GetTotalScore();
 	}
 
+	public static float GetTotalScore()
+	{
+		LoadDailyScore();
+		float totalScore = 0;
+
+		Dictionary<string, DailyScoreItem> dailyScoreItems = dailyScoreSave.dailyScores;
+
+		foreach (KeyValuePair<string, DailyScoreItem> dailyScoreItem in dailyScoreItems)
+		{
+			totalScore += dailyScoreItem.Value.GetTotalScore();
+		}
+
+		return totalScore;
+	}
+
 	public static void SaveDailyScore()
 	{
 		DailyScoreSaveData dailyScoreSaveData = new DailyScoreSaveData(dailyScoreSave);
@@ -182,20 +197,20 @@ public static class DailyScoreCalculator
 	{
 		switch (type)
 		{
-            case DailyChoreType.Breathe:
-                return "Breathing";
-            case DailyChoreType.DustMeOff:
-                return "Dust Me Off";
-            case DailyChoreType.ThrowMeOut:
-                return "Take Out The Trash";
-            case DailyChoreType.Wordle:
-                return "Wordle";
-            case DailyChoreType.NumberPlacement:
-                return "Number Location";
+			case DailyChoreType.Breathe:
+				return "Breathing";
+			case DailyChoreType.DustMeOff:
+				return "Dust Me Off";
+			case DailyChoreType.ThrowMeOut:
+				return "Take Out The Trash";
+			case DailyChoreType.Wordle:
+				return "Wordle";
+			case DailyChoreType.NumberPlacement:
+				return "Number Location";
 			case DailyChoreType.JournalEntry:
 				return "Journal";
-            default:
-                return "Unknown";
+			default:
+				return "Unknown";
 
 		}
 	}

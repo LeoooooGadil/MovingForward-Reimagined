@@ -26,16 +26,21 @@ public class DailyMoodManager : MonoBehaviour
 
 	public void loadSaveDailyMoodManager()
 	{
-        DailyMoodManagerSaveData dailyMoodManagerSaveData = SaveSystem.Load(saveFileName) as DailyMoodManagerSaveData;
+		DailyMoodManagerSaveData dailyMoodManagerSaveData = SaveSystem.Load(saveFileName) as DailyMoodManagerSaveData;
 
-        if (dailyMoodManagerSaveData != null)
-        {
-            dailyMoodManagerSave = new DailyMoodManagerSave(dailyMoodManagerSaveData);
-        }
-        else
-        {
-            dailyMoodManagerSave = new DailyMoodManagerSave();
-        }
+		if (dailyMoodManagerSaveData != null)
+		{
+			dailyMoodManagerSave = new DailyMoodManagerSave(dailyMoodManagerSaveData);
+		}
+		else
+		{
+			dailyMoodManagerSave = new DailyMoodManagerSave();
+		}
+	}
+
+	public void SaveCurrentMood(MoodType mood) 
+	{
+		
 	}
 
 	public void SaveDailyMoodManager()
@@ -44,8 +49,5 @@ public class DailyMoodManager : MonoBehaviour
 
 		SaveSystem.Save(saveFileName, dailyMoodManagerSaveData);
 	}
-
-
-
 
 }

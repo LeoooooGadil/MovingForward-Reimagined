@@ -12,6 +12,11 @@ public class DailyMoodManagerSave
 		dailyMoodDictionary = _dailyMoodManagerSaveData.dailyMoodDictionary;
 	}
 
+	public void AddMood(CurrentMood currentMood)
+	{
+		
+	}
+
 	public DailyMoodManagerSave()
 	{
         dailyMoodDictionary = new Dictionary<string, Dictionary<string, CurrentMood>>();

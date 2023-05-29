@@ -103,7 +103,11 @@ public class CreateProfileManager : MonoBehaviour
 	{
 		if ((usernameInputField.text != "") && ageInputField.text != "")
 		{
-			CreateProfile(usernameInputField.text);
+			// make sure that it starts with a capital letter and the rest is lowercase
+			string username = usernameInputField.text;
+			username = username.ToLower();
+			username = char.ToUpper(username[0]) + username.Substring(1);
+			CreateProfile(username);
 			CreateProfileAge(ageInputField.text);
 		}
 	}

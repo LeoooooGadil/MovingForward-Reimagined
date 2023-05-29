@@ -406,7 +406,6 @@ GameObject:
   - component: {fileID: 8708315360364546889}
   - component: {fileID: 8708315360364546888}
   - component: {fileID: 2115267917870323538}
-  - component: {fileID: 1370302336036127772}
   - component: {fileID: 4320329353402991638}
   m_Layer: 16
   m_Name: ActivitiyItem
@@ -493,21 +492,6 @@ MonoBehaviour:
   activityScore: 0
   activityDescription: 
   activityTimestamp: 0
---- !u!114 &1370302336036127772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8708315360364546894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e28a399b0e68547ab39ca562a45378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: d638282a6b2795947bb206d198eb2864, type: 2}
-  boolParameterName: isPushed
-  isActive: 1
 --- !u!95 &4320329353402991638
 Animator:
   serializedVersion: 5

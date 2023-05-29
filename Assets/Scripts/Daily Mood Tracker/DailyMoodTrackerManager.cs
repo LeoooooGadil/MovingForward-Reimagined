@@ -9,6 +9,7 @@ public class DailyMoodTrackerManager : MonoBehaviour
 
 	void Start()
 	{
+		AudioManager.instance.PlaySFX("PopClick");
 		InitializeEmojis();
 		UpdateEmojis();
 	}
@@ -45,14 +46,3 @@ public class DailyMoodTrackerManager : MonoBehaviour
 }
 
 public enum MoodType { Loved, Thankful, Happy, Content, Neutral, Tired, Angry, Dissapointed, Sad }
-
-public class Mood
-{
-	public string name;
-	public MoodType type;
-	public Mood(string name, MoodType type)
-	{
-		this.name = name;
-		this.type = type;
-	}
-}

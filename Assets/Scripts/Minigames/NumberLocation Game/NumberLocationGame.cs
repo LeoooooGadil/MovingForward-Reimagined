@@ -516,6 +516,7 @@ public class NumberLocationGame : MonoBehaviour
 		yield return new WaitForSeconds(1);
 		UpdateStatistics();
 		CompensatePlayer();
+		AffirmationManager.instance.ScheduleRandomAffirmation();
 
 		TicketAccess.RemoveOneFromTicket("NumberLocation");
 		int ticketCount = TicketAccess.GetTicketCount("NumberLocation");

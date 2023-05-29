@@ -64,6 +64,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: Open Daily Mood Tracker
+    function:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4549167103968420188}
+          m_TargetAssemblyTypeName: OpenDailyMoodTracker, Assembly-CSharp
+          m_MethodName: OpenDailyMoodPopUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8903452456897886022
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1461844968843324658}
   - component: {fileID: 6438937138945721163}
+  - component: {fileID: 4549167103968420188}
   m_Layer: 0
   m_Name: Actions
   m_TagString: Untagged
@@ -106,5 +123,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8174e0ef876efe24b8f399bad7b3a573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4549167103968420188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903452456897886022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1b5894cda38bc47a7997badbba5447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

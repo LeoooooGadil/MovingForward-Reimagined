@@ -18,7 +18,7 @@ public class TutorialOnStart : MonoBehaviour
 
 	IEnumerator Start()
 	{
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.3f);
 		int phase = TutorialManager.instance.GetPhaseState();
 		Debug.Log("Phase: " + phase);
 		
