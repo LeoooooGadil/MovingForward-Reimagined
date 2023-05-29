@@ -40,6 +40,7 @@ public class DailyMoodTrackerManager : MonoBehaviour
 	public void MoodChanged(MoodType moodType)
 	{
 		currentMoodType = moodType;
+		DailyMoodManager.instance.SetCurrentMood(moodType);
 		UpdateEmojis();
 		AudioManager.instance.PlaySFX("PopClick");
 	}

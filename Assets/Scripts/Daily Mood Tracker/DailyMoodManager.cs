@@ -9,6 +9,8 @@ public class DailyMoodManager : MonoBehaviour
 	[HideInInspector]
 	public DailyMoodManagerSave dailyMoodManagerSave;
 
+	public MoodType currentMoodType = MoodType.Neutral;
+
 	private string saveFileName = "dailyMoodManagerSave";
 
 	void Awake()
@@ -22,6 +24,11 @@ public class DailyMoodManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	void Start()
+	{
+		loadSaveDailyMoodManager();
 	}
 
 	public void loadSaveDailyMoodManager()
@@ -38,9 +45,20 @@ public class DailyMoodManager : MonoBehaviour
 		}
 	}
 
-	public void SaveCurrentMood(MoodType mood) 
+	public void SetCurrentMood(MoodType moodType)
 	{
-		
+		currentMoodType = moodType;
+	}
+
+	public void SaveCurrentMood() 
+	{
+		CurrentMood currentMood = new CurrentMood();
+		currentMood.moodType = currentMoodType;
+		currentMood.timestamp = TimeStamp.GetTimeStamp();
+
+		dailyMoodManagerSave.AddMood(currentMood);
+
+		SaveDailyMoodManager();
 	}
 
 	public void SaveDailyMoodManager()

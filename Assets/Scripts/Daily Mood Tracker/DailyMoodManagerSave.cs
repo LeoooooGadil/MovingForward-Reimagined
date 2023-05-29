@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,25 @@ public class DailyMoodManagerSave
 
 	public void AddMood(CurrentMood currentMood)
 	{
-		
+		string todayString = DateTime.Today.ToString("dd/MM/yyyy"); 
+
+		if (dailyMoodDictionary.ContainsKey(todayString))
+		{
+			if (dailyMoodDictionary[todayString].ContainsKey(currentMood.moodType.ToString()))
+			{
+				dailyMoodDictionary[todayString][currentMood.moodType.ToString()] = currentMood;
+			}
+			else
+			{
+				dailyMoodDictionary[todayString].Add(currentMood.moodType.ToString(), currentMood);
+			}
+		}
+		else
+		{
+			Dictionary<string, CurrentMood> moodDictionary = new Dictionary<string, CurrentMood>();
+			moodDictionary.Add(currentMood.moodType.ToString(), currentMood);
+			dailyMoodDictionary.Add(todayString, moodDictionary);
+		}
 	}
 
 	public DailyMoodManagerSave()
@@ -23,6 +42,7 @@ public class DailyMoodManagerSave
 	}
 }
 
+[System.Serializable]
 public class CurrentMood
 {
 	public MoodType moodType;

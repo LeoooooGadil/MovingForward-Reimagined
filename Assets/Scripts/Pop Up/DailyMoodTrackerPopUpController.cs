@@ -10,7 +10,6 @@ public class DailyMoodTrackerPopUpController : MonoBehaviour
     public UnityAction dailyMoodTrackerPopUpOkButtonAction;
 
     public Button dailyMoodTrackerPopUpOkButton;
-
 	void Start()
 	{
         dailyMoodTrackerPopUpOkButton.onClick.AddListener(OnPopUpOkButtonClicked);
@@ -18,6 +17,7 @@ public class DailyMoodTrackerPopUpController : MonoBehaviour
 
     public void OnPopUpOkButtonClicked()
     {
+        DailyMoodManager.instance.SaveCurrentMood();
         closingAction?.Invoke();
     }
 }

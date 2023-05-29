@@ -54,6 +54,7 @@ public class ThrowMeOutGame : MonoBehaviour
 				UpdateChoreManager();
 				UpdateStatistics();
 				ShowWinLosePanel();
+				AffirmationManager.instance.ScheduleRandomAffirmation();
 			}
 			else
 			{
