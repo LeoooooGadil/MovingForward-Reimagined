@@ -342,7 +342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HOW ARE YOU FEELING?
+  m_Text: HOW DID YOU FEEL?
 --- !u!114 &4180851772022806968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HOW ARE YOU FEELING?
+  m_Text: HOW DID YOU FEEL?
 --- !u!114 &4028090715600959019
 MonoBehaviour:
   m_ObjectHideFlags: 0

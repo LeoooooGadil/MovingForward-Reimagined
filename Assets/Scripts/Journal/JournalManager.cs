@@ -191,6 +191,7 @@ public class JournalManager : MonoBehaviour
 		JournalSaveData data = new JournalSaveData(journalSave);
 		SaveSystem.Save(saveFileName, data);
 		Debug.Log("Journal saved.");
+		AffirmationManager.instance.ScheduleRandomAffirmation();
 	}
 
 	void ResetJournalForm()

@@ -36,6 +36,30 @@ public class DailyMoodManagerSave
 		}
 	}
 
+	internal CurrentMood GetLastMood()
+	{
+		string todayString = DateTime.Today.ToString("dd/MM/yyyy");
+
+		if (dailyMoodDictionary.ContainsKey(todayString))
+		{
+			CurrentMood currentMood = new CurrentMood();
+
+			foreach (KeyValuePair<string, CurrentMood> mood in dailyMoodDictionary[todayString])
+			{
+				if (mood.Value.timestamp > currentMood.timestamp)
+				{
+					currentMood = mood.Value;
+				}
+			}
+
+			return currentMood;
+		}
+		else
+		{
+			return null;
+		}
+	}
+
 	public DailyMoodManagerSave()
 	{
         dailyMoodDictionary = new Dictionary<string, Dictionary<string, CurrentMood>>();

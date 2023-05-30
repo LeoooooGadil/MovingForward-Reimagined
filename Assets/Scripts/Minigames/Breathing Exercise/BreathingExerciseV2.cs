@@ -108,6 +108,7 @@ public class BreathingExerciseV2 : MonoBehaviour
 			{
 				ChoresManager.instance.CompleteChore(chore);
 				UpdateStatistics();
+				AffirmationManager.instance.ScheduleRandomAffirmation();
 				isChoreCompleted = true;
 			}
 		}

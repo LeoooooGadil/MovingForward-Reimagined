@@ -16,21 +16,7 @@ MonoBehaviour:
   GoToNextPhase: 0
   Sequences:
   - Title: 
-    Text: How was it?
-    Position: 1
-    Mood: 3
-    HighlightObject: []
-    disableBackdrop: 0
-    actions: []
-  - Title: 
-    Text: That was a good game.
-    Position: 1
-    Mood: 1
-    HighlightObject: []
-    disableBackdrop: 0
-    actions: []
-  - Title: 
-    Text: Care to tell me what do you feel after that game?
+    Text: That was a good game. Bravo!
     Position: 1
     Mood: 1
     HighlightObject: []

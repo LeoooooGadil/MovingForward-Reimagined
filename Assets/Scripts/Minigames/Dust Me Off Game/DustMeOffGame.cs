@@ -58,7 +58,7 @@ public class DustMeOffGame : MonoBehaviour
 				UpdateChoreManager();
 				UpdateStatistics();
 				ShowWinLosePanel();
-				AffirmationManager.instance.ScheduleRandomAffirmation();
+				// AffirmationManager.instance.ScheduleRandomAffirmation();
 			}
 			currentTimer = 1f;
 		}

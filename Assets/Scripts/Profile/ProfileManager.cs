@@ -70,11 +70,11 @@ public class ProfileManager : MonoBehaviour
 
 	public string GetStatus()
 	{
-		LoadProfile();
+		if (DailyMoodManager.instance == null) return "";
 
-		if (profileManagerSave == null) return null;
+		if (DailyMoodManager.instance.dailyMoodManagerSave == null) return "";
 
-		return "You are doing great!";
+		return DailyMoodManager.instance.GetMood().ToString();
 	}
 
 	public float GetMoney()

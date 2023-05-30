@@ -32,7 +32,7 @@ MonoBehaviour:
     isMandatory: 1
     minScore: 0
   - name: There's a lot of garbage in the living room
-    room: 2
+    room: 1
     type: 1
     sceneName: Throw Me Out Game
     isMandatory: 1
@@ -61,12 +61,12 @@ MonoBehaviour:
     sceneName: Wordle Game
     isMandatory: 0
     minScore: 0
-  - name: Let's Meditate. Complete 10 cycles
+  - name: Let's Meditate. Complete 3 cycles
     room: 0
     type: 5
     sceneName: Old Breathing Game
     isMandatory: 0
-    minScore: 10
+    minScore: 3
   - name: Let's Test Your Memory
     room: 0
     type: 3
