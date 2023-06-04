@@ -65,11 +65,7 @@ public class ChoresManager : MonoBehaviour
 
 		if (thisLifeCycle == null)
 		{
-			if (choresSave.GetDate() != System.DateTime.Now.ToString("dd/MM/yyyy"))
-			{
-				GenerateDailyChores();
-			}
-
+			GenerateDailyChores();
 			CreateNewLifeCycle();
 			return;
 		}
@@ -78,6 +74,7 @@ public class ChoresManager : MonoBehaviour
 		{
 			LifeCycleManager.instance.EnvokeLifeCycleItem("DailyChore");
 			GenerateDailyChores();
+			CreateNewLifeCycle();
 			SendNotification();
 		}
 	}

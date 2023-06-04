@@ -303,7 +303,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &65790124
 RectTransform:
@@ -3399,6 +3399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe965dfa0a8269469bd9a945bcf5175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Backdrop: {fileID: 1261723412}
   itemPrefab: {fileID: 2849301756482151742, guid: 1001fe54430a9e64c8cc28b1bcb443fe, type: 3}
   trashCan: {fileID: 1451605078}
   itemSpawnPoint: {fileID: 524713990}

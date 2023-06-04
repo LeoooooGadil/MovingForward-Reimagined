@@ -471,6 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   affirmationSequences:
   - {fileID: 11400000, guid: 5d558dff291462c4990eafda7f9d94ff, type: 2}
+  inQueueAffirmationSequence: {fileID: 0}
 --- !u!4 &2008875340
 Transform:
   m_ObjectHideFlags: 0

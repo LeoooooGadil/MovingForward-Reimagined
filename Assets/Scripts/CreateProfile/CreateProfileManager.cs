@@ -107,30 +107,42 @@ public class CreateProfileManager : MonoBehaviour
 			string username = usernameInputField.text;
 			username = username.ToLower();
 			username = char.ToUpper(username[0]) + username.Substring(1);
-			CreateProfile(username);
-			CreateProfileAge(ageInputField.text);
+			CreateProfile(username, int.Parse(ageInputField.text));
 		}
 	}
 
-	public void CreateProfile(string username)
+	public void CreateProfile(string username, int age)
 	{
-
 		profileManagerSave.setUsername(username);
-		SaveProfile();
-
+		profileManagerSave.setAge(age.ToString());
+		
 		AudioManager.instance.PlaySFX("ButtonClick");
 
-		LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
-	}
+		if (ProfileManager.instance.CheckIfNoPlayer())
+		{
+			SaveProfile();
 
-	public void CreateProfileAge(string age)
-	{
+			DisclaimerPopUpController disclaimer = PopUpManager.instance.ShowDisclaimer();
 
-		profileManagerSave.setAge(age);
-		SaveProfile();
+			disclaimer.SetDisclaimer("Privacy Disclaimer: Your privacy is important to us. We do not collect any personal information from our players.");
 
-		LevelManager.instance.ChangeScene("Game");
+			disclaimer.additionalAction = () =>
+			{
+				if (PSSAccess.CheckIfScoreIsEmpty())
+				{
+					LevelManager.instance.ChangeScene("PSS Survey", true, SceneTransitionMode.Slide, false);
+					return;
+				}
 
+				LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
+			};
+		}
+		else
+		{
+			SaveProfile();
+
+			LevelManager.instance.ChangeScene("Game", true, SceneTransitionMode.Slide, false);
+		}
 	}
 
 	void SaveProfile()

@@ -14,5 +14,6 @@ public enum PopUpType
 	None,
 	WordleHint,
 	DailyMoodTracker,
-	Tutorial
+	Tutorial,
+	Disclaimer
 }

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7172ba640b1c714897740db5a638344, type: 3}
+  m_Name: PSS Questionaire Manifest
+  m_EditorClassIdentifier: 
+  questions:
+  - qeustionNumber: 1
+    question: how often have you been upset because of something that  happened unexpectedly?
+  - qeustionNumber: 2
+    question: how often have you felt that you were unable to control the  important
+      things in your life?
+  - qeustionNumber: 3
+    question: how often have you felt nervous and stressed?
+  - qeustionNumber: 4
+    question: how often have you felt confident about your ability to handle  your
+      personal problems?
+  - qeustionNumber: 5
+    question: 'how often have you felt that things were going your way? '
+  - qeustionNumber: 6
+    question: how often have you found that you could not cope with  all the things
+      that you had to do?
+  - qeustionNumber: 7
+    question: how often have you been able to control irritations in  your life?
+  - qeustionNumber: 8
+    question: how often have you felt that you were on top of things?
+  - qeustionNumber: 9
+    question: how often have you been angered because of things that  happened that
+      were outside of your control?
+  - qeustionNumber: 10
+    question: how often have you felt difficulties were piling up so high that  you
+      could not overcome them?

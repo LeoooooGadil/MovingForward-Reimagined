@@ -129,6 +129,8 @@ MonoBehaviour:
     PopUpPrefab: {fileID: 8207093556211011974, guid: 87235bc9b2455f14c928290d08e8cef1, type: 3}
   - Type: 3
     PopUpPrefab: {fileID: 6138405046500347228, guid: db4108f78b28e6645a47905af6925b7f, type: 3}
+  - Type: 4
+    PopUpPrefab: {fileID: 8207093556211011974, guid: 9d4b8641bf8320c498ab7af6f934e100, type: 3}
 --- !u!1 &4037302114180140198
 GameObject:
   m_ObjectHideFlags: 0

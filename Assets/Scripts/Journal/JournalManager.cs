@@ -61,6 +61,11 @@ public class JournalManager : MonoBehaviour
 		BackButton.onClick.AddListener(BackButtonHandler);
 		UpdateJournalTitle();
 		UpdateJournalDate();
+
+		DisclaimerPopUpController disclaimer = PopUpManager.instance.ShowDisclaimer();
+		// disclaimer that appears when you first open the journal
+		// it's a disclaimer that says that we don't read your journal entries and that they're stored locally
+		disclaimer.disclaimer = "We DO NOT read your journal entries. They are stored LOCALLY on your device.";
 	}
 
 	void LoadJournal()

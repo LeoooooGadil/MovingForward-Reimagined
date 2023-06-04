@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ThrowMeOutGame : MonoBehaviour
 {
+	public GameObject Backdrop;
 	public GameObject itemPrefab;
 	public Animator trashCan;
 	public Transform itemSpawnPoint;
@@ -226,9 +227,12 @@ public class ThrowMeOutGame : MonoBehaviour
 
 	internal void StartGame()
 	{
+		Backdrop.SetActive(false);
 		livesManager.lives = 5;
 		topPanelGameObject.SetActive(true);
 		contentPanelGameObject.SetActive(true);
+		isTrashButton.onClick.AddListener(IsTrashButtonClicked);
+		isNotTrashButton.onClick.AddListener(IsNotTrashButtonClicked);
 		isGameRunning = true;
 		score = 0;
 		TotalSeconds = 30;
