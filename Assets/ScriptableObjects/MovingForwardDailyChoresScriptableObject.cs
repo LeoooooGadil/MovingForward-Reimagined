@@ -38,7 +38,8 @@ public enum DailyChoreType
 	Wordle,
 	NumberPlacement,
 	JournalEntry,
-	Breathe
+	Breathe,
+	Exercise,
 }
 
 [System.Serializable]

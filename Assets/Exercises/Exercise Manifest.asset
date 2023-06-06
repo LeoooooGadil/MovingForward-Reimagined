@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3ee5f0c806d8e4d87585d1d3058be1, type: 3}
+  m_Name: Exercise Manifest
+  m_EditorClassIdentifier: 
+  Stretchings:
+  - name: Neck Roll
+    steps:
+    - Stand up straight with the feet shoulder-width apart and the arms loose.
+    - Dip the chin slightly toward the chest.
+    - Gently roll the head in a clockwise motion for 1 rotation, taking about 7 seconds.
+    - Rest for 5 seconds, then roll the head anticlockwise in the same motion.
+    - Repeat 3 times.
+  - name: Shoulder Roll
+    steps:
+    - Stand up straight with the arms loose.
+    - Without bending the arms, slowly raise the shoulders and then roll them back
+      in a circular motion.
+    - Roll the shoulders backward 5 times and then reverse the movement, rolling
+      them forward.
+    - Repeat the sequence 2 times.
+  - name: Standing Hip Rotation
+    steps:
+    - Stand with the feet shoulder-width apart and place the hands on the hips.
+    - Slowly move the hips forward, then rotate them clockwise for 3 rotations.
+    - Bring the hips back to the center and then repeat the movement anticlockwise.
+  - name: Front Lunge
+    steps:
+    - Begin by standing upright.
+    - Take a big step forward with the left leg and lower the hips, bending both
+      legs to about 90 degrees and keeping the body upright.
+    - Hold for 30 seconds, then take 10 seconds rest before switching legs.
+    - Repeat the sequence 3 times.
+  - name: Side Lounge
+    steps:
+    - Stand with the feet hip-width wide apart.
+    - Take a big step to the left, keeping both feet facing forward.
+    - Bend the left knee and move the hips toward the left, keeping both feet flat
+      and facing forward.
+    - Hold for 10 seconds and then return to the original position. Rest for 10 seconds,
+      then repeat on the other side.
+    - Repeat the entire sequence 5 times.
+  Exercises: []
