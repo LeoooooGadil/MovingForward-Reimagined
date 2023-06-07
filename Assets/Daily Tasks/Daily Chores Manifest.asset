@@ -73,3 +73,9 @@ MonoBehaviour:
     sceneName: NumberLocation Game
     isMandatory: 0
     minScore: 0
+  - name: Mag exercise tayo tuwing umaga
+    room: 0
+    type: 6
+    sceneName: Physical Activity Game
+    isMandatory: 0
+    minScore: 0

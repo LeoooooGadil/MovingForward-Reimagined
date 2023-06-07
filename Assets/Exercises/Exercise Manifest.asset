@@ -49,4 +49,12 @@ MonoBehaviour:
     - Hold for 10 seconds and then return to the original position. Rest for 10 seconds,
       then repeat on the other side.
     - Repeat the entire sequence 5 times.
-  Exercises: []
+  Exercises:
+  - name: Jumping Jack
+    steps:
+    - Stand upright with your legs together, arms at your sides.
+    - Bend your knees slightly, and jump into the air.
+    - As you jump, spread your legs to be about shoulder-width apart. Stretch your
+      arms out and over your head.
+    - Jump back to starting position.
+    - Repeat.
