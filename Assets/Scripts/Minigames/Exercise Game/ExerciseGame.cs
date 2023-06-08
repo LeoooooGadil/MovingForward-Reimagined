@@ -43,6 +43,28 @@ public class ExerciseGame : MonoBehaviour
 		UpdateExercise();
 	}
 
+	void UpdateChoreStatus()
+	{
+		Chore chore = ChoresManager.instance.GetActiveChore();
+
+		if (chore != null && chore.dailyChoreType == DailyChoreType.Exercise)
+		{
+			UpdateStatistics();
+			ChoresManager.instance.CompleteChore(chore);
+			AffirmationManager.instance.ScheduleRandomAffirmation();
+		}
+	}
+
+	void UpdateStatistics()
+	{
+		PhysicalExerciseCompletedEvent completedEvent = new PhysicalExerciseCompletedEvent(
+			"Completed Physical Exercise Session",
+			true
+		);
+
+		Aggregator.instance.Publish(completedEvent);
+	}
+
 	void UpdateExercise()
 	{
 		// responsible for updating the exercise index
@@ -52,6 +74,7 @@ public class ExerciseGame : MonoBehaviour
 		if (exerciseState == 2)
 		{
 			// do nothing
+			UpdateChoreStatus();
 			StartGamePanel.SetActive(true);
 			ExerciseShowcasePanel.gameObject.SetActive(false);
 			ExerciseCountingPanel.gameObject.SetActive(false);

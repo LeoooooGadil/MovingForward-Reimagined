@@ -15,6 +15,7 @@ public class AggregatorSaveData
 	public Dictionary<string, BreathingExerciseV2Aggregate> breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
 	public Dictionary<string, ChoresAggregate> choresLogs = new Dictionary<string, ChoresAggregate>();
 	public Dictionary<string, JournalAggregate> journalLogs = new Dictionary<string, JournalAggregate>();
+	public Dictionary<string, PhysicalExerciseAggregate> PELogs = new Dictionary<string, PhysicalExerciseAggregate>();
 
 	public AggregatorSaveData(List<string> _keys, AggregatorSave _aggregatorSave)
 	{
@@ -27,6 +28,7 @@ public class AggregatorSaveData
 		takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 		breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
 		choresLogs = new Dictionary<string, ChoresAggregate>();
+		PELogs = new Dictionary<string, PhysicalExerciseAggregate>();
 
 		foreach (KeyValuePair<string, DailyTaskAggregateV2> dailyTaskLog in _aggregatorSave.dailyTaskLogs)
 		{
@@ -66,6 +68,11 @@ public class AggregatorSaveData
 		foreach (KeyValuePair<string, JournalAggregate> journalLog in _aggregatorSave.journalLogs)
 		{
 			journalLogs.Add(journalLog.Key, journalLog.Value);
+		}
+
+		foreach (KeyValuePair<string, PhysicalExerciseAggregate> PELog in _aggregatorSave.PELogs)
+		{
+			PELogs.Add(PELog.Key, PELog.Value);
 		}
 	}
 }

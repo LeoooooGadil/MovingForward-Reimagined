@@ -19,6 +19,7 @@ public class Aggregator : MonoBehaviour
 	public Dictionary<string, BreathingExerciseV2Aggregate> breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
 	public Dictionary<string, ChoresAggregate> choresLogs = new Dictionary<string, ChoresAggregate>();
 	public Dictionary<string, JournalAggregate> journalLogs = new Dictionary<string, JournalAggregate>();
+	public Dictionary<string, PhysicalExerciseAggregate> PELogs = new Dictionary<string, PhysicalExerciseAggregate>();
 
 	void Awake()
 	{
@@ -59,6 +60,7 @@ public class Aggregator : MonoBehaviour
 		breathingExerciseLogs = aggregatorSave.breathingExerciseLogs;
 		choresLogs = aggregatorSave.choresLogs;
 		journalLogs = aggregatorSave.journalLogs;
+		PELogs = aggregatorSave.PELogs;
 	}
 
 	public void Publish(DailyTaskCompletedEvent dailyTaskCompletedEvent)
@@ -152,6 +154,13 @@ public class Aggregator : MonoBehaviour
 		SaveAggregator();
 	}
 
+	public void Publish(PhysicalExerciseCompletedEvent phyiscalExerciseCompletedEvent)
+	{
+		string key = generateKey();
+		PhysicalExerciseAggregate physicalExerciseAggregate = phyiscalExerciseCompletedEvent.GetData();
+
+	}
+
 	public void SaveAggregator()
 	{
 		AggregatorSave aggregatorSave = new AggregatorSave();
@@ -163,6 +172,7 @@ public class Aggregator : MonoBehaviour
 		aggregatorSave.setBreathingExerciseLogs(breathingExerciseLogs);
 		aggregatorSave.setChoresLogs(choresLogs);
 		aggregatorSave.setJournalLogs(journalLogs);
+		aggregatorSave.setPELogs(PELogs);
 
 		AggregatorSaveData aggregatorSaveData = new AggregatorSaveData(keys, aggregatorSave);
 
@@ -397,6 +407,7 @@ public class Aggregator : MonoBehaviour
 		dustMeOffLogs.Clear();
 		takeMeOutLogs.Clear();
 		breathingExerciseLogs.Clear();
+		PELogs.Clear();
 		keys.Clear();
 
 		AudioManager.instance.PlaySFX("PaperCrumbleSfx");

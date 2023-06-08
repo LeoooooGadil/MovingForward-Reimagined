@@ -65,6 +65,7 @@ public class ChoresManager : MonoBehaviour
 
 		if (thisLifeCycle == null)
 		{
+			Debug.Log("lifecycle not found. Generating New Tasks");
 			GenerateDailyChores();
 			CreateNewLifeCycle();
 			return;
@@ -72,6 +73,7 @@ public class ChoresManager : MonoBehaviour
 
 		if (thisLifeCycle.Envoke)
 		{
+			Debug.Log("Lifecycle Finished Timer. Generating New Tasks");
 			LifeCycleManager.instance.EnvokeLifeCycleItem("DailyChore");
 			GenerateDailyChores();
 			CreateNewLifeCycle();
@@ -91,7 +93,7 @@ public class ChoresManager : MonoBehaviour
 		lifeCycleItem.name = "DailyChore";
 		lifeCycleItem.isRepeatable = true;
 
-		lifeCycleItem.startTime = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 8, 0, 0);
+		lifeCycleItem.startTime = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day + 1, 8, 0, 0);
 		lifeCycleItem.maxRepeatCount = -1;
 		lifeCycleItem.repeatType = LifeCycleRepeatType.Daily;
 

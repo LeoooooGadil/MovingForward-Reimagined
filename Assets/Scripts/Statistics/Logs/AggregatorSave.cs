@@ -14,6 +14,7 @@ public class AggregatorSave
 	public Dictionary<string, BreathingExerciseV2Aggregate> breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
 	public Dictionary<string, ChoresAggregate> choresLogs = new Dictionary<string, ChoresAggregate>();
 	public Dictionary<string, JournalAggregate> journalLogs = new Dictionary<string, JournalAggregate>();
+	public Dictionary<string, PhysicalExerciseAggregate> PELogs = new Dictionary<string, PhysicalExerciseAggregate>();
 
 	public AggregatorSave(AggregatorSaveData _aggregatorSaveData)
 	{
@@ -25,6 +26,7 @@ public class AggregatorSave
 		breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
 		choresLogs = new Dictionary<string, ChoresAggregate>();
 		journalLogs = new Dictionary<string, JournalAggregate>();
+		PELogs = new Dictionary<string, PhysicalExerciseAggregate>();
 
 		foreach (KeyValuePair<string, DailyTaskAggregateV2> dailyTaskLog in _aggregatorSaveData.dailyTaskLogs)
 		{
@@ -33,13 +35,13 @@ public class AggregatorSave
 
 		foreach (KeyValuePair<string, NumberLocationAggregate> numberLocationLog in _aggregatorSaveData.numberLocationLogs)
 		{
-            numberLocationLogs.Add(numberLocationLog.Key, numberLocationLog.Value);
+			numberLocationLogs.Add(numberLocationLog.Key, numberLocationLog.Value);
 		}
 
-        foreach (KeyValuePair<string, WordleAggregate> wordleLog in _aggregatorSaveData.wordleLogs)
-        {
-            wordleLogs.Add(wordleLog.Key, wordleLog.Value);
-        }
+		foreach (KeyValuePair<string, WordleAggregate> wordleLog in _aggregatorSaveData.wordleLogs)
+		{
+			wordleLogs.Add(wordleLog.Key, wordleLog.Value);
+		}
 
 		foreach (KeyValuePair<string, DustMeOffAggregate> dustMeOffLog in _aggregatorSaveData.dustMeOffLogs)
 		{
@@ -65,18 +67,24 @@ public class AggregatorSave
 		{
 			journalLogs.Add(journalLog.Key, journalLog.Value);
 		}
+
+		foreach (KeyValuePair<string, PhysicalExerciseAggregate> PELog in _aggregatorSaveData.PELogs)
+		{
+			PELogs.Add(PELog.Key, PELog.Value);
+		}
 	}
 
 	public AggregatorSave()
 	{
 		dailyTaskLogs = new Dictionary<string, DailyTaskAggregateV2>();
 		numberLocationLogs = new Dictionary<string, NumberLocationAggregate>();
-        wordleLogs = new Dictionary<string, WordleAggregate>();
+		wordleLogs = new Dictionary<string, WordleAggregate>();
 		dustMeOffLogs = new Dictionary<string, DustMeOffAggregate>();
 		takeMeOutLogs = new Dictionary<string, TakeMeOutAggregate>();
 		breathingExerciseLogs = new Dictionary<string, BreathingExerciseV2Aggregate>();
 		choresLogs = new Dictionary<string, ChoresAggregate>();
 		journalLogs = new Dictionary<string, JournalAggregate>();
+		PELogs = new Dictionary<string, PhysicalExerciseAggregate>();
 	}
 
 	public void setDailyTaskLogs(Dictionary<string, DailyTaskAggregateV2> _dailyTaskLogs)
@@ -89,10 +97,10 @@ public class AggregatorSave
 		numberLocationLogs = _numberLocationLogs;
 	}
 
-    public void setWordleLogs(Dictionary<string, WordleAggregate> _wordleLogs)
-    {
-        wordleLogs = _wordleLogs;
-    }
+	public void setWordleLogs(Dictionary<string, WordleAggregate> _wordleLogs)
+	{
+		wordleLogs = _wordleLogs;
+	}
 
 	public void setDustMeOffLogs(Dictionary<string, DustMeOffAggregate> _dustMeOffLogs)
 	{
@@ -117,5 +125,10 @@ public class AggregatorSave
 	public void setJournalLogs(Dictionary<string, JournalAggregate> _journalLogs)
 	{
 		journalLogs = _journalLogs;
+	}
+
+	public void setPELogs(Dictionary<string, PhysicalExerciseAggregate> _PELogs)
+	{
+		PELogs = _PELogs;
 	}
 }
