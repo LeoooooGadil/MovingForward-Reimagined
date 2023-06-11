@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PSS survey.unity
     guid: f0f159384e4c7064dbf7ce2120aeec6d
   - enabled: 1
+    path: Assets/Scenes/How Are You.unity
+    guid: c1e9da3bcddf28744ac847cda4978816
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
