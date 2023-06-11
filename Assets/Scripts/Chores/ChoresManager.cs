@@ -68,6 +68,7 @@ public class ChoresManager : MonoBehaviour
 			Debug.Log("lifecycle not found. Generating New Tasks");
 			GenerateDailyChores();
 			CreateNewLifeCycle();
+			SendNotification();
 			return;
 		}
 
@@ -76,7 +77,6 @@ public class ChoresManager : MonoBehaviour
 			Debug.Log("Lifecycle Finished Timer. Generating New Tasks");
 			LifeCycleManager.instance.EnvokeLifeCycleItem("DailyChore");
 			GenerateDailyChores();
-			CreateNewLifeCycle();
 			SendNotification();
 		}
 	}

@@ -42,12 +42,20 @@ public class HowAreYouSave
 	}
 }
 
+[System.Serializable]
 public class HowAreYouItem
 {
 	public HowAreYouResponse response;
 	public long timestamp;
+
+	public HowAreYouItem(HowAreYouResponse _response)
+	{
+		response = _response;
+		timestamp = TimeStamp.GetTimeStamp();
+	}
 }
 
+[System.Serializable]	
 public enum HowAreYouResponse
 {
 	Great,
