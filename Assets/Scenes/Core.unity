@@ -595,12 +595,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1768569292624040478, guid: 4ae1c00fff0d3ca449ee709f87492946, type: 3}
+      propertyPath: actions.Array.data[2].function.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1768569292916137299}
     - target: {fileID: 1768569292624040479, guid: 4ae1c00fff0d3ca449ee709f87492946, type: 3}
       propertyPath: m_Name
       value: Tutorial Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ae1c00fff0d3ca449ee709f87492946, type: 3}
+--- !u!1 &1768569292916137298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8903452456897886022, guid: 4ae1c00fff0d3ca449ee709f87492946, type: 3}
+  m_PrefabInstance: {fileID: 1768569292916137297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1768569292916137299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768569292916137298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1a0803a64bb2f47ba7697bb7ebc395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2228246080256927029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -827,6 +848,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4037302113939317561, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}
+      propertyPath: PopUps.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037302113939317561, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}
+      propertyPath: PopUps.Array.data[4].Type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037302113939317561, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}
+      propertyPath: PopUps.Array.data[4].PopUpPrefab
+      value: 
+      objectReference: {fileID: 8207093556211011974, guid: 9d4b8641bf8320c498ab7af6f934e100, type: 3}
     - target: {fileID: 4037302113939317562, guid: f2e6c3e2dcc719b4680bfea09193f046, type: 3}
       propertyPath: m_RootOrder
       value: 9

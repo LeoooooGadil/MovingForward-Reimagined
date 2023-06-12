@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AfterDailyTaskSecondPhase
   m_EditorClassIdentifier: 
   SequenceName: After Daily Task Phase 3
-  GoToNextPhase: 0
+  GoToNextPhase: 1
   Sequences:
   - Title: 
     Text: So, did you managed to clean up some rooms?
@@ -44,4 +44,5 @@ MonoBehaviour:
     Mood: 0
     HighlightObject: []
     disableBackdrop: 0
-    actions: []
+    actions:
+    - OpenHowAreYou

@@ -29,4 +29,18 @@ public static class PSSAccess
 
 		return false;
 	}
+
+	public static List<PSSSurveyResult> GetLastTwoScores()
+	{
+		List<PSSSurveyResult> lastTwoScores = new List<PSSSurveyResult>();
+
+		PSSSurveySave pssSurveySave = LoadPSSSurveySave();
+
+		if (pssSurveySave.surveyResults.Count == 0)
+			return null;
+
+		if(pssSurveySave.surveyResults.Count == 1) {
+			return 
+		}
+	}
 }

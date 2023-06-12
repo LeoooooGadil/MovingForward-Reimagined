@@ -23,8 +23,7 @@ MonoBehaviour:
     disableBackdrop: 0
     actions: []
   - Title: 
-    Text: Before you begin your journey with us. Answer this 10 question survey for
-      only a few minutes to get started
+    Text: Before we begin. Answer this survey questions for only a few minutes.
     Position: 0
     Mood: 2
     HighlightObject: []
