@@ -136,6 +136,22 @@ public class ExerciseGame : MonoBehaviour
 		}
 	}
 
+	public string GetExerciseName()
+	{
+		if (exerciseState == 0)
+		{
+			return exerciseScriptableObject.Stretchings[exerciseIndex].name;
+		}
+		else if (exerciseState == 1)
+		{
+			return exerciseScriptableObject.Exercises[exerciseIndex].name;
+		}
+		else
+		{
+			return "";
+		}
+	}
+
 	public void StartExercise()
 	{
 		NextExerciseButton.onClick.RemoveListener(StartExercise);

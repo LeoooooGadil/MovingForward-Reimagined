@@ -186,6 +186,7 @@ public class PSSSurveyManager : MonoBehaviour
 
 		resultData.answers = answers;
 		resultData.scores = scores;
+		resultData.totalScore = score;
 
 		surveySave.AddSurveyResult(resultData);
 

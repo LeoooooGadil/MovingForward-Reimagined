@@ -15,7 +15,7 @@ public class DailyMoodManagerSave
 
 	public void AddMood(CurrentMood currentMood)
 	{
-		string todayString = DateTime.Today.ToString("dd/MM/yyyy"); 
+		string todayString = DateTime.Today.ToString("dd/MM/yyyy");
 
 		if (dailyMoodDictionary.ContainsKey(todayString))
 		{
@@ -60,9 +60,24 @@ public class DailyMoodManagerSave
 		}
 	}
 
+	internal List<CurrentMood> GetAllTheMood()
+	{
+		List<CurrentMood> currentMoodList = new List<CurrentMood>();
+
+		foreach (KeyValuePair<string, Dictionary<string, CurrentMood>> mood in dailyMoodDictionary)
+		{
+			foreach (KeyValuePair<string, CurrentMood> mood2 in mood.Value)
+			{
+				currentMoodList.Add(mood2.Value);
+			}
+		}
+
+		return currentMoodList;
+	}
+
 	public DailyMoodManagerSave()
 	{
-        dailyMoodDictionary = new Dictionary<string, Dictionary<string, CurrentMood>>();
+		dailyMoodDictionary = new Dictionary<string, Dictionary<string, CurrentMood>>();
 	}
 }
 

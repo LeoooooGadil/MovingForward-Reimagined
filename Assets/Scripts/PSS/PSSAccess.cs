@@ -30,17 +30,12 @@ public static class PSSAccess
 		return false;
 	}
 
-	public static List<PSSSurveyResult> GetLastTwoScores()
+	public static List<int> GetLastTwoScores()
 	{
 		List<PSSSurveyResult> lastTwoScores = new List<PSSSurveyResult>();
 
 		PSSSurveySave pssSurveySave = LoadPSSSurveySave();
 
-		if (pssSurveySave.surveyResults.Count == 0)
-			return null;
-
-		if(pssSurveySave.surveyResults.Count == 1) {
-			return 
-		}
+		return pssSurveySave.GetLast2Survey();
 	}
 }

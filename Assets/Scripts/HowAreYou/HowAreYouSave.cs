@@ -26,11 +26,11 @@ public class HowAreYouSave
 		{
 			if (responses[todayString].ContainsKey(item.response.ToString()))
 			{
-				responses[todayString][item.response.ToString()] = item;
+				responses[todayString][item.timestamp.ToString()] = item;
 			}
 			else
 			{
-				responses[todayString].Add(item.response.ToString(), item);
+				responses[todayString].Add(item.timestamp.ToString(), item);
 			}
 		}
 		else
@@ -39,6 +39,21 @@ public class HowAreYouSave
             howAreYouDictionary.Add(item.response.ToString(), item);
             responses.Add(todayString, howAreYouDictionary);
 		}
+	}
+
+	public List<HowAreYouItem> AllResponses()
+	{
+		List<HowAreYouItem> howAreYouList = new List<HowAreYouItem>();
+
+		foreach (KeyValuePair<string, Dictionary<string, HowAreYouItem>> mood in responses)
+		{
+			foreach (KeyValuePair<string, HowAreYouItem> item in mood.Value)
+			{
+				howAreYouList.Add(item.Value);
+			}
+		}
+
+		return howAreYouList;
 	}
 }
 

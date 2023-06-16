@@ -6203,8 +6203,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A Casual Life Simulation Game that focuses on improving the overall well-being
-    of an individual
+  m_Text: A 2D Task Management Simulation Game for Emotional Wellbeing
 --- !u!222 &877369352
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ public class HowAreYouController : MonoBehaviour
 
 	void LoadTheResponses()
 	{
-		HowAreYouSaveData howAreYouSaveData = SaveSystem.Load("saveFileName") as HowAreYouSaveData;
+		HowAreYouSaveData howAreYouSaveData = SaveSystem.Load(saveFileName) as HowAreYouSaveData;
 
 		if (howAreYouSaveData != null)
 		{

@@ -51,7 +51,7 @@ public class DailyMoodManager : MonoBehaviour
 		currentMoodType = moodType;
 	}
 
-	public void SaveCurrentMood() 
+	public void SaveCurrentMood()
 	{
 		CurrentMood currentMood = new CurrentMood();
 		currentMood.moodType = currentMoodType;
@@ -82,5 +82,10 @@ public class DailyMoodManager : MonoBehaviour
 
 		// return the last mood saved
 		return currentMood.moodType;
+	}
+
+	public List<CurrentMood> AllMoods()
+	{
+		return dailyMoodManagerSave.GetAllTheMood();
 	}
 }

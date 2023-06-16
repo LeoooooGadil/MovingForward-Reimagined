@@ -33,6 +33,16 @@ public class PopUpManager : MonoBehaviour
 		return activePopUp.GetComponent<WordlePopUpController>();
 	}
 
+	public MoodTrackerListPopUpController ShowMoodTrackerListPopUp()
+	{
+		if (activePopUp != null) return null;
+
+		BackDrop.SetActive(true);
+		activePopUp = Instantiate(PopUps.Find(x => x.Type == PopUpType.MoodTrackerList).PopUpPrefab, GetComponentInChildren<Canvas>().transform);
+		activePopUp.GetComponent<MoodTrackerListPopUpController>().closingAction = () => ClosingPopUp();
+		return activePopUp.GetComponent<MoodTrackerListPopUpController>();
+	}
+
 	public DailyMoodTrackerPopUpController ShowDailyMoodTrackerPopUp()
 	{
 		if (activePopUp != null) return null;
@@ -47,12 +57,12 @@ public class PopUpManager : MonoBehaviour
 	{
 		if (activePopUp != null) return null;
 
-        BackDrop.SetActive(true);
-        activePopUp = Instantiate(PopUps.Find(x => x.Type == PopUpType.Tutorial).PopUpPrefab, GetComponentInChildren<Canvas>().transform);
-        activePopUp.GetComponent<TutorialPopUpController>().closingAction = () => ClosingPopUp();
-        activePopUp.GetComponent<TutorialPopUpController>().movingForwardTutorialSequenceScriptableObject = sequence;
+		BackDrop.SetActive(true);
+		activePopUp = Instantiate(PopUps.Find(x => x.Type == PopUpType.Tutorial).PopUpPrefab, GetComponentInChildren<Canvas>().transform);
+		activePopUp.GetComponent<TutorialPopUpController>().closingAction = () => ClosingPopUp();
+		activePopUp.GetComponent<TutorialPopUpController>().movingForwardTutorialSequenceScriptableObject = sequence;
 		activePopUp.GetComponent<TutorialPopUpController>().SetBackDrop(BackDrop);
-        return activePopUp.GetComponent<TutorialPopUpController>();
+		return activePopUp.GetComponent<TutorialPopUpController>();
 	}
 
 	public DisclaimerPopUpController ShowDisclaimer()

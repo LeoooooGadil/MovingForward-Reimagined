@@ -38,7 +38,7 @@ public class ExerciseCounting : MonoBehaviour
 
 		AudioManager.instance.PlaySFX("MinigameStartSfx");
 
-		upperText.text = "";
+		upperText.text = ExerciseGame.instance.GetExerciseName();
 		for (int i = 1; i <= 8; i++)
 		{
 			centerText.text = i.ToString();

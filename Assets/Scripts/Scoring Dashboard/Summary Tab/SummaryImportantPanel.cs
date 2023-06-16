@@ -14,36 +14,36 @@ public class SummaryImportantPanel : MonoBehaviour
 
     private float currentTimer;
 
-	void Start()
-	{
-		LoadPlayerData();
-	}
+	// void Start()
+	// {
+	// 	LoadPlayerData();
+	// }
 
-	void Update()
-	{
+	// void Update()
+	// {
 
-        if (currentTimer < 0.5)
-        {
-            currentTimer += Time.deltaTime;
-        }
-        else
-        {
-            currentTimer = 0;
-            LoadPlayerData();
-        }
+    //     if (currentTimer < 0.5)
+    //     {
+    //         currentTimer += Time.deltaTime;
+    //     }
+    //     else
+    //     {
+    //         currentTimer = 0;
+    //         LoadPlayerData();
+    //     }
 
-        PlayerName.text = "(" + playerLevel + ") " + playerName;
-        PlayerAge.text = playerAge;
-	}
+    //     PlayerName.text = "(" + playerLevel + ") " + playerName;
+    //     PlayerAge.text = playerAge;
+	// }
 
-	void LoadPlayerData()
-	{
-		string _playerName = ProfileManager.instance.GetUserName();
-		int _playerAge = int.Parse(ProfileManager.instance.GetAge());
-        int _playerLevel = ExperienceManager.instance.GetExperienceSave().level;
+	// void LoadPlayerData()
+	// {
+	// 	string _playerName = ProfileManager.instance.GetUserName();
+	// 	int _playerAge = int.Parse(ProfileManager.instance.GetAge());
+    //     int _playerLevel = ExperienceManager.instance.GetExperienceSave().level;
 
-		playerName = _playerName;
-		playerAge = _playerAge.ToString();
-        playerLevel = _playerLevel;
-	}
+	// 	playerName = _playerName;
+	// 	playerAge = _playerAge.ToString();
+    //     playerLevel = _playerLevel;
+	// }
 }
